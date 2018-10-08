@@ -48,22 +48,27 @@ Integrating MapmyIndia Maps API is easy and effortless. We provide you with an e
 ## MapmyIndia REST APIs
 
 ### [Autosuggest API](https://www.mapmyindia.com/api/advanced-maps/doc/autosuggest-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-auto-suggest-api-example.php)
 
 Get "type as you go" suggestion while searching for a location
 
 ### [Geocoding API](https://www.mapmyindia.com/api/advanced-maps/doc/geocoding-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-geocoding-rest-api-example)
 
 Get most accurate lat long combination for a given address
 
 ### [Reverse Geocoding API](https://www.mapmyindia.com/api/advanced-maps/doc/reverse-geocoding-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-reverse-geocoding-rest-api-example)
 
 Get the nearest address for a given lat long combination
 
 ### [Nearby API](https://www.mapmyindia.com/api/advanced-maps/doc/nearby-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-near-by-api-example)
 
 Search for nearby places in a category near a given location
 
 ### [Place Details / eLoc API](https://www.mapmyindia.com/api/advanced-maps/doc/eloc-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-place-details-api-example)
 
 Bouquet of APIs to integrate the revolutionary, nationwide digital address system
 
@@ -72,10 +77,12 @@ Bouquet of APIs to integrate the revolutionary, nationwide digital address syste
 Get map images for a given lat long point and zoom level
 
 ### [Routing API](https://www.mapmyindia.com/api/advanced-maps/doc/route-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-rest-api-example)
 
 Get optimal & alternate routes between various locations with or without considering live traffic
 
 ### [Driving Distance Matrix API](https://www.mapmyindia.com/api/advanced-maps/doc/distance-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-rest-api-example)
 
 Get driving distance & time from a point to multiple destination
 
