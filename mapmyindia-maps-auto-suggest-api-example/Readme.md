@@ -46,6 +46,21 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	- *`zoom`*  (double): takes the zoom level of the current scope of the map (min: 4, max: 18).
 	- *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
 	- *`tokenizeAddress`* (valueless) provides the different address attributes in a structured object.
+	- *`pod`*  (string) = it takes in the place type code which helps in restricting the results to certain chosen type.  
+    Below mentioned are the codes for the pod -
+	    -  *`SLC`*: Sublocality
+	    - *`LC`*: Locality
+	    - *`CITY`*: City
+	    - *`VLG`*: Village
+	    - *`SDIST`*: Subdistrict
+	    - *`DIST`*: District
+	    - *`STATE`*: State
+	    - *`SSLC`*: Subsublocality
+    - *`filter`*  = this parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.), below mentioned are the both types -  
+	    - *`filter = bounds: lat1, lng1; lat2, lng2`* (latitude, longitude) 
+	    {e.g. `filter=bounds: 28.598882, 77.212407; 28.467375, 77.353513`}
+	    - *`filter  = cop: {eloc}`* (string) 
+	    {e.g. `filter=cop:YMCZ0J`}
 
 
 ## Sample Input
