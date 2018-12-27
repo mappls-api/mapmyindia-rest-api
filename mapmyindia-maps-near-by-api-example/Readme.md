@@ -48,7 +48,7 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	- *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
 	- *`radius*` (integer): provides the range of distance to search over (default: 1000, min: 500, max: 10000).
 	- *`bounds`* (x1,y1;x2,y2): Allows the developer to send in map bounds to provide a nearby search of the geobounds; where x1,y1 are the lat-lng of the bound.
-	- *`sort`* (string): provides configured sorting operations for the client on cloud. Below are the available sorts:
+	- *`sortBy`* (string): provides configured sorting operations for the client on cloud. Below are the available sorts:
 		- *`dist:asc`*  (default) & 
 		- *`dist:desc`* - will sort data in order of distance from the passed location.
 
