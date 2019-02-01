@@ -17,7 +17,7 @@
         </style>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <!--put your map api javascript url with key here-->
-        <script src="https://apis.mapmyindia.com/advancedmaps/v1/<js_lic_key>/map_load?v=0.1"></script>
+        <script src="https://apis.mapmyindia.com/advancedmaps/v1/<js_lic_key>/map_load?v=1.2"></script>
         <script type="text/javascript">
                 var lng = 77.22945570945740;
                 var lat = 28.6129602407977;

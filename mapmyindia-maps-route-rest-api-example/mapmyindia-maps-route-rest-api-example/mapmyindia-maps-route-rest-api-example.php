@@ -7,7 +7,7 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <script type="text/javascript" src="js/jquery.min.js"></script>
                 <!--put your map api javascript url with key here-->
-                <script src="https://apis.mapmyindia.com/advancedmaps/v1/<js_lic_key>/map_load?v=0.1"></script>
+                <script src="https://apis.mapmyindia.com/advancedmaps/v1/<js_lic_key>/map_load?v=1.2"></script>
 
                 <style type="text/css">
                     /*map css **/

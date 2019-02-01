@@ -96,7 +96,7 @@ Get driving distance & time from a point to multiple destination
 For any queries and support, please contact: 
 
 ![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
-Email us at [apisupport@mapmyindia.co.in](mailto:apisupport@mapmyindia.co.in)
+Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
 ![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
 [Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
@@ -111,5 +111,5 @@ Need support? contact us!
 Read about the latest updates & customer stories
 
 
-> © Copyright 2018. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
+> © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
 >  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.

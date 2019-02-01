@@ -8,7 +8,7 @@
             <link rel="icon" href="http://mapmyindia.com/images/favicon.ico" type="image/x-icon">
             <script type="text/javascript" src="/MmiApiDemos/js/jquery.min.js"></script>
             <!--put your map api javascript url with key here-->
-            <script src="https://apis.mapmyindia.com/advancedmaps/v1/<js_lic_key>/map_load?v=0.1"></script>
+            <script src="https://apis.mapmyindia.com/advancedmaps/v1/<js_lic_key>/map_load?v=1.2"></script>
             <style type="text/css">
                 /*map css **/
                 body,html { height: 100%;font-family:Verdana,sans-serif, Arial;color:#555;margin: 0; font-size:12px; padding: 0; background:#fafafa}

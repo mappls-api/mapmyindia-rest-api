@@ -11,7 +11,7 @@
                 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 
                 <!--put your map api javascript url with key here-->
-                <script src="https://apis.mapmyindia.com/advancedmaps/v1/<Enter your map key>/map_load?v=0.1"></script>
+                <script src="https://apis.mapmyindia.com/advancedmaps/v1/<Enter your map key>/map_load?v=1.2"></script>
                 <style>
                     body,html { height: 100%;font-family:Verdana,sans-serif, Arial;color:#555;margin: 0;/*EOL*/font-size:12px; padding: 0; background:#fafafa}
 
