@@ -1,4 +1,4 @@
-# Geocoding API
+﻿# Geocoding API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
@@ -13,24 +13,14 @@ All mapping APIs that are used in mobile or web apps need some geo-position coor
 
 ## Live Demo
 
-[Click here to visit live demonstration page](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-atlas-geocoding-rest-api-example)
-
-## Input URL
-
-`https://atlas.mapmyindia.com/api/places/geocode?`
+[Click here to visit live demonstration page](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-geocoding-rest-api-example)
 
 ## Input Method
 GET
 
-## Security Type
-This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php)
+## Input URL
 
-## Request Headers
-
-The API leverages OAuth 2.0 based security. Hence, the developer would need to send a request for access token using their client_id and client_secret to the OAuth API. Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: “{token_type} {access_token}”.
-
--  `Authorization:  “token_type access_token”`.
-
+`https://apis.mapmyindia.com/advancedmaps/v1/<licence_key>/geo_code?addr=<query>&pin=<query`
 
 ## Response Type
 
@@ -38,19 +28,22 @@ JSON
 
 
 ## Request Parameters
+The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
-### Mandatory Parameters
-
-1.  **`address`**: (string) address to be geocoded e.g. 237 Okhla industrial estate phase 3 new delhi, delhi 110020.
-
-### Optional Parameter
-
-2.  *`itemCount`*  (integer): parameter can be set to get maximum number of result items from the API (default: 1).
+1.  **`addr`**: The below are the supported input queries,  
+    a.  eLoc: The 6-digit alphanumeric code for any location. (e.g. mmi000).  
+    b.  address: The address of a location (e.g. 237 Okhla Phase-III).  
+    c.  POI: The name of the location (e.g. MapmyIndia Head Office).  
+    d.  House Number: The house number of the location in case full address is unknown  
+    (e.g. P 18/114).
+2.  *`pin`*: The pin-code of area (e.g. 110020).
+3.  **`Licence_key`**: the REST API licence key allocated to you by signing into our services and registering yourself as a developer (28 Char Alphanumeric).
+4.  *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
 
 
 ## Sample Input
 
-`https://atlas.mapmyindia.com/api/places/geocode?address=mapmyindia 237 okhla phase 3`
+`https://apis.mapmyindia.com/advancedmaps/v1/<licence_key>/geo_code?addr=saket`
 
 For more details, please visit our full documentation.
 
