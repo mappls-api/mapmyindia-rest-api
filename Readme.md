@@ -1,4 +1,5 @@
-﻿# MapmyIndia Map APIs (REST) !
+﻿
+# MapmyIndia Map APIs (REST) !
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
@@ -53,7 +54,7 @@ Integrating MapmyIndia Maps API is easy and effortless. We provide you with an e
 Get "type as you go" suggestion while searching for a location
 
 ### [Geocoding API](https://www.mapmyindia.com/api/advanced-maps/doc/geocoding-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-geocoding-rest-api-example)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-atlas-geocoding-rest-api-example)
 
 Get most accurate lat long combination for a given address
 
@@ -76,13 +77,13 @@ Bouquet of APIs to integrate the revolutionary, nationwide digital address syste
 
 Get map images for a given lat long point and zoom level
 
-### [Routing API](https://www.mapmyindia.com/api/advanced-maps/doc/route-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-rest-api-example)
+### [Routing API](https://www.mapmyindia.com/api/advanced-maps/doc/routing-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-adv-api-example)
 
 Get optimal & alternate routes between various locations with or without considering live traffic
 
-### [Driving Distance Matrix API](https://www.mapmyindia.com/api/advanced-maps/doc/distance-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-rest-api-example)
+### [Driving Distance Matrix API](https://www.mapmyindia.com/api/advanced-maps/doc/driving-distance-matrix-api)
+##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-matrix-api-example)
 
 Get driving distance & time from a point to multiple destination
 
@@ -90,8 +91,7 @@ Get driving distance & time from a point to multiple destination
 
 ## Our many happy customers
 
-![](https://www.mapmyindia.com/api/landing-page/images/pey-phone.png)  ![](https://www.mapmyindia.com/api/landing-page/images/tvs.png)  ![](https://www.mapmyindia.com/api/landing-page/images/olx.png)  ![](https://www.mapmyindia.com/api/landing-page/images/axis-bank.png)  ![](https://www.mapmyindia.com/api/landing-page/images/hdfc.png)  ![](https://www.mapmyindia.com/api/landing-page/images/sbi.png)  ![](https://www.mapmyindia.com/api/landing-page/images/voda-fone.png)  ![](https://www.mapmyindia.com/api/landing-page/images/idea.png)
-
+![](https://www.mapmyindia.com/api/img/logos1/PhonePe.png)![](https://www.mapmyindia.com/api/img/logos1/Arya-Omnitalk.png)![](https://www.mapmyindia.com/api/img/logos1/delhivery.png)![](https://www.mapmyindia.com/api/img/logos1/hdfc.png)![](https://www.mapmyindia.com/api/img/logos1/TVS.png)![](https://www.mapmyindia.com/api/img/logos1/Paytm.png)![](https://www.mapmyindia.com/api/img/logos1/FastTrackz.png)![](https://www.mapmyindia.com/api/img/logos1/ICICI-Pru.png)![](https://www.mapmyindia.com/api/img/logos1/LeanBox.png)![](https://www.mapmyindia.com/api/img/logos1/MFS.png)![](https://www.mapmyindia.com/api/img/logos1/TTSL.png)![](https://www.mapmyindia.com/api/img/logos1/Novire.png)![](https://www.mapmyindia.com/api/img/logos1/OLX.png)![](https://www.mapmyindia.com/api/img/logos1/sun-telematics.png)![](https://www.mapmyindia.com/api/img/logos1/Sensel.png)![](https://www.mapmyindia.com/api/img/logos1/TATA-MOTORS.png)![](https://www.mapmyindia.com/api/img/logos1/Wipro.png)![](https://www.mapmyindia.com/api/img/logos1/Xamarin.png)
 
 For any queries and support, please contact: 
 
