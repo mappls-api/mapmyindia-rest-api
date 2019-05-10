@@ -31,12 +31,6 @@ The API leverages OAuth 2.0 based security. Hence, the developer would need to s
 
 -  `Authorization:  “token_type access_token”`.
 
-
-## Response Type
-
-JSON
-
-
 ## Request Parameters
 
 ### Mandatory Parameters
@@ -46,13 +40,201 @@ JSON
 ### Optional Parameter
 
 2.  *`itemCount`*  (integer): parameter can be set to get maximum number of result items from the API (default: 1).
+3. *`bias`*  (integer): This parameter can be used to set Urban or Rural bias. A positive value sets the Urban bias and a negative value sets Rural bias. Allowed values are:
+	- `0` : Default: (No bias)
+	- `-1` : Rural
+	- `1` : Urban
+4. *`podFilter`*  (string): This parameter can be used to set admin level restriction. The result will be either the given admin level or equivalent admin or higher in the hierarchy. No lower admin will be considered for geocoding.
+Allowed values are:
+	- `hno` : house number
+	- `hna` : house name
+	- `poi` : point of interest
+	- `street` : street
+	- `sslc` : sub sub locality
+	- `village` : village
+	- `slc` : sub locality
+	- `sdist` : sub district
+	- `loc` : locality
+	- `city` : city
+	- `dist` : district
+	- `pincode` :pincode
+	- `state` : state
+5. *`bound`*  (string): This parameter can be used to set admin boundary, which means geocoding will be done within the given admin. The allowed admin bounds are **Sub-District**, **District**, **City**, **State** and **Pincode**. The parameter accepts the admin eLoc as value.
+6. *`scores`*  (valueless): parameter can be set to get scoring related parameters from the API.
 
+**Note**: Please note that `podFilter` & `bound` parameters are mutually exclusive. They cannot be used together in an API call.
+
+## Response Type
+
+JSON
+
+## Response Codes 
+**Note**:  as HTTP response code
+
+### Success
+1. 200: To denote a successful API call.
+2. 204: To denote the API was a success but no results were found.
+### Client-Side Issues
+3. 400: Bad Request, User made an error while creating a valid request.
+4. 401: Unauthorized, Developer’s key is not allowed to send a request with restricted parameters.
+5. 403: Forbidden, Developer’s key has hit its daily/hourly limit.
+Server-Side Issues:
+6. 500: Internal Server Error, the request caused an error in our systems.
+7. 503: Service Unavailable, during our maintenance break or server down-times.
+
+## Response Messages 
+
+**Note**: as HTTP response message
+
+1. 200: Success.
+2. 204: No matches we’re found for the provided query.
+3. 400: Something’s just not right with the request.
+4. 401: Access Denied.
+5. 403: Services for this key has been suspended due to daily/hourly transactions limit.
+6. 500: Something went wrong.
+7. 503: Maintenance Break.
+
+## Response Parameters
+1. `houseNumber`(string): the houseNumber of the address/location.
+2. `houseName`(string): houseName of the address/location.
+3. `poi`(string): the point of interest or famous landmark nearby the location.
+4. `street`(string): the street or road of the location.
+5. `subsubLocality`(string): the subSubLocality of the location.
+6. `subLocality`(string): the subLocality of the location.
+7. `locality`(string): the locality of the location.
+8. `village`(string): the village of the location.
+9. `subDistrict`(string): the subDistrict of the location.
+10. `district`(string): the district of the location.
+11. `city`(string): the city of the location.
+12. `state`(string): the state of the location.
+13. `pincode`(string): the pincode of the location.
+14. `formattedAddress`(string): the general protocol following address.
+15. `eloc`(string): eloc of the particular location.
+16. `latitude`(double): the latitude for the location.
+17. `longitude`(double): the longitude for the location.
+18. `matching`(string): tags according to matching of terms in the address.
+19. `partial_match`(string): provides score in case of a partial match in matching.
+20. `eopScore`(double): scoring based upon E-O-P tags.
+21. `geocodeLevel`(string): the best matched address component.
+22. `confidenceScore`(float): the confidence for current of geocodelevel.
 
 ## Sample Input
 
 `https://atlas.mapmyindia.com/api/places/geocode?address=mapmyindia 237 okhla phase 3`
 
-For more details, please visit our full documentation.
+## Sample Output
+
+### Single item response
+```json
+{
+    "copResults": {
+        "houseNumber": "237",
+        "houseName": "",
+        "poi": "",
+        "street": "",
+        "subSubLocality": "",
+        "subLocality": "",
+        "locality": "Okhla Industrial Estate Phase 3",
+        "village": "",
+        "subDistrict": "Kalkaji",
+        "district": "South East Delhi District",
+        "city": "New Delhi",
+        "state": "Delhi",
+        "pincode": "110020",
+        "formattedAddress": "237, Okhla Industrial Estate Phase 3, Kalkaji, South East Delhi District, New Delhi, Delhi, 110020",
+        "eLoc": "TIYF9Q",
+        "latitude": 28.550667,
+        "longitude": 77.268952,
+        "geocodeLevel": "houseNumber",
+        "confidenceScore": 0.4,
+        "matching": "E - - - - - E - O O O O O",
+        "partialMatch": "- - - - - - - - - - - - -",
+        "eopScore": 20
+    }
+}
+```
+
+### Multiple item response
+```json
+{
+    "copResults": [
+        {
+            "houseNumber": "",
+            "houseName": "",
+            "poi": "",
+            "street": "",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Lady Irwin College Campus",
+            "village": "",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
+            "city": "New Delhi",
+            "state": "Delhi",
+            "pincode": "110001",
+            "formattedAddress": "Lady Irwin College Campus, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
+            "eLoc": "BGKAFR",
+            "latitude": 28.627695,
+            "longitude": 77.235617,
+            "geocodeLevel": "locality",
+            "confidenceScore": 1,
+            "matching": "- - - - - - E - O O E E E",
+            "partialMatch": "- - - - - - - - - - - - -",
+            "eopScore": 75
+        },
+        {
+            "houseNumber": "",
+            "houseName": "",
+            "poi": "Lady Irwin College",
+            "street": "Sikandra Road",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Lady Irwin College Campus",
+            "village": "",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
+            "city": "New Delhi",
+            "state": "Delhi",
+            "pincode": "110001",
+            "formattedAddress": "Lady Irwin College, Sikandra Road, Lady Irwin College Campus, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
+            "eLoc": "38FD1E",
+            "latitude": 28.626337,
+            "longitude": 77.236464,
+            "geocodeLevel": "street",
+            "confidenceScore": 0.8,
+            "matching": "- - O E - - E - O O E E E",
+            "partialMatch": "- - - - - - - - - - - - -",
+            "eopScore": 78
+        },
+        {
+            "houseNumber": "",
+            "houseName": "",
+            "poi": "Mandi House Metro Station",
+            "street": "Sikandra Road",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Connaught Place",
+            "village": "",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
+            "city": "New Delhi",
+            "state": "Delhi",
+            "pincode": "110001",
+            "formattedAddress": "Mandi House Metro Station, Sikandra Road, Connaught Place, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
+            "eLoc": "DF2F4C",
+            "latitude": 28.625891,
+            "longitude": 77.234079,
+            "geocodeLevel": "street",
+            "confidenceScore": 0.4,
+            "matching": "- - P E - - O - O O E E E",
+            "partialMatch": "- - 48.65 - - - - - - - - - -",
+            "eopScore": 63
+        }
+    ]
+}
+```
+
+For more details, please visit our website (complete documentation).
 
 For any queries and support, please contact: 
 
