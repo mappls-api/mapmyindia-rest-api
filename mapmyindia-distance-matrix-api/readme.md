@@ -18,18 +18,20 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 
 ## API Version History
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 200.17 | 2018-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “distance_matrix_traffic” introduced as resource |
 | 191.17 | 2018-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Initial release |
 
 
 ## Introduction
 
-### Route and Navigation
+### Driving Distance-Time Matrix
 
 Adding driving directions API would help to add predicted travel time & duration from a given origin point to a number of points. This REST API computes the distance and duration of a route between a source/primary position (geographical coordinates) and a list of all supplied secondary positions using to mode of route calculation i.e. optimal and shortest.
 Supported region (countries) are India, Sri Lanka, Nepal, Bangladesh & Bhutan. Please note that maximum number of points are limited to 100 only including source and secondary positions.
@@ -109,11 +111,18 @@ GET
 							</tr>
 						<tr class="&#39;&#39;">
 						</tr>
-						<tr class="&#39;&#39;">
+                        <tr class="&#39;&#39;">
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>distance_matrix_eta</code>	
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported 
+							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration  considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>distance_matrix_traffic</code>; since this doesn't search for a route considering traffic, it only applies delays to the default route. 
+							</td>
+						</tr>
+						<tr class="&#39;&#39;">
+							<td class="cellrowborder" headers="d156249e40 ">
+								<code>distance_matrix_traffic</code>	
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported 
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">

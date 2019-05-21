@@ -18,12 +18,14 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 
 ## API Version History
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 200.17 | 2018-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “route_traffic” introduced as resource |
 | 191.17 | 2018-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 19.1, Document detailing, “route_eta” introduced as resource |
 | 1.3 | 2018-12-24 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Shortest route calculation (Optional) |
 | 1.2 | 2018-05-03 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Slip Road issue resolution, Toll Road avoidance enabled |
@@ -92,7 +94,7 @@ GET
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>route_adv</code>
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to calculate the route & duration without considering traffic conditions.</td>
+							<td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
 						</tr>
 						<tr class="&#39;&#39;">
 							</tr>
@@ -116,10 +118,15 @@ GET
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>route_eta</code>	
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported 
+							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>route_traffic</code>; since this doesn't search for a route considering traffic, it only applies delays to the default route. 
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
+                        	<td class="cellrowborder" headers="d156249e40 ">
+								<code>route_traffic</code>	
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported 
+							</td>
 							</tr>
 						<tr class="&#39;&#39; override_background">
 							<td class="cellrowborder" headers="d156249e37 ">Profile</td>
@@ -282,6 +289,17 @@ JSON: response will served as JSON
 ## Live Demo
 
 [Click Here](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-adv-api-example)
+
+## Addendums
+
+### JavaScript Methods
+
+#### [Decoding Geometry](https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/Decoding-Geometry---JavaScript)
+This method is utilized for decoding the geometry sent in the response of the Routing API. 
+#### [Parsing Instructions](https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/Parsing-Instructions---JavaScript)
+This method is utilized for parsing instructions from the Routing API in easy to understand manner for all possible routes offered in the response.
+Apart from the JavaScript methods, this method also utilizes the following CSS for providing the corresponding icons for the instructions.
+##### [CSS for Instruction Icons](https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/Instruction-Icons---CSS)
 
 For more details, please visit our full documentation.
 
