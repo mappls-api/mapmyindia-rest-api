@@ -123,7 +123,7 @@ GET
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>biking</code>
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>rtype</code>  request parameters are not supported in two-wheeler routing.
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in two-wheeler routing.
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
