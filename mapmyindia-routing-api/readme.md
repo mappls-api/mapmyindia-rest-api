@@ -25,8 +25,9 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
-| 200.17 | 2018-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “route_traffic” introduced as resource |
-| 191.17 | 2018-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 19.1, Document detailing, “route_eta” introduced as resource |
+| 200.17 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “biking” introduced as profile |
+| 200.17 | 2019-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “route_traffic” introduced as resource |
+| 191.17 | 2019-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 19.1, Document detailing, “route_eta” introduced as resource |
 | 1.3 | 2018-12-24 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Shortest route calculation (Optional) |
 | 1.2 | 2018-05-03 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Slip Road issue resolution, Toll Road avoidance enabled |
 | 1.1 | 2018-05-03 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Added support for SNBB and other parameters |
@@ -90,29 +91,11 @@ GET
 							<td class="row-nocellborder" headers="d156249e43 ">The REST API license key authorized to access the resource</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
-							<td class="cellrowborder" rowspan="12" headers="d156249e37 ">Resources</td>
+							<td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>route_adv</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
-						</tr>
-						<tr class="&#39;&#39;">
-							</tr>
-						<tr class="&#39;&#39; override_background">
-						</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-						<tr class="&#39;&#39; override_background">
-						</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-						<tr class="&#39;&#39; override_background">
-						</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-						<tr class="&#39;&#39; override_background">
-							</tr>
-						<tr class="&#39;&#39;">
 						</tr>
 						<tr class="&#39;&#39;">
 							<td class="cellrowborder" headers="d156249e40 ">
@@ -129,11 +112,18 @@ GET
 							</td>
 							</tr>
 						<tr class="&#39;&#39; override_background">
-							<td class="cellrowborder" headers="d156249e37 ">Profile</td>
+							<td class="cellrowborder" headers="d156249e37 " rowspan="2">Profile</td>
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>driving</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">Meant for car routing
+							</td>
+						</tr>
+                        <tr class="&#39;&#39; override_background">
+							<td class="cellrowborder" headers="d156249e40 ">
+							    <code>biking</code>
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>rtype</code>  request parameters are not supported in two-wheeler routing.
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
