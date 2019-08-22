@@ -25,6 +25,7 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 210.17.5221 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “foot” introduced as profile |
 | 200.17 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “biking” introduced as profile |
 | 200.17 | 2019-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “route_traffic” introduced as resource |
 | 191.17 | 2019-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 19.1, Document detailing, “route_eta” introduced as resource |
@@ -112,7 +113,7 @@ GET
 							</td>
 							</tr>
 						<tr class="&#39;&#39; override_background">
-							<td class="cellrowborder" headers="d156249e37 " rowspan="2">Profile</td>
+							<td class="cellrowborder" headers="d156249e37 " rowspan="3">Profile</td>
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>driving</code>
 							</td>
@@ -124,6 +125,13 @@ GET
 							    <code>biking</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in two-wheeler routing.
+							</td>
+						</tr>
+                        <tr class="&#39;&#39; override_background">
+							<td class="cellrowborder" headers="d156249e40 ">
+							    <code>foot</code>
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in pedestrian routing.
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
@@ -217,6 +225,7 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	- `hint`: Unique internal identifier of the segment (ephemeral, not constant over data updates) This can be used on subsequent request to significantly speed up the query and to connect multiple services. E.g. you can use the hint value obtained by the nearest query as hint values for route inputs.
 	- `name`:  Name of the street the coordinate snapped to.
 	- `location`: longitude, latitude pair describing the snapped location of the waypoint.
+	- `distance`: distance to snapped location from actual location.
 
 ### Notes
 1. An intersection gives a full representation of any cross-way the path passes bay. For every step, the very first intersection (intersections[0]) corresponds to the location of the StepManeuver. Further intersections are listed for every cross-way until the next turn instruction.
