@@ -25,7 +25,7 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
-| 210.17.5221 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “foot” introduced as profile |
+| 210.17.5221 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “walking” introduced as profile |
 | 200.17 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “biking” introduced as profile |
 | 200.17 | 2019-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “route_traffic” introduced as resource |
 | 191.17 | 2019-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 19.1, Document detailing, “route_eta” introduced as resource |
@@ -129,7 +129,7 @@ GET
 						</tr>
                         <tr class="&#39;&#39; override_background">
 							<td class="cellrowborder" headers="d156249e40 ">
-							    <code>foot</code>
+							    <code>walking</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in pedestrian routing.
 							</td>
