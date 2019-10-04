@@ -18,6 +18,7 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.3 | October 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 
@@ -25,7 +26,8 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
-| 210.17.5221 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “walking” introduced as profile |
+| 210.17.5221 | 2019-10-04 | MapmyIndia API Team ([PS](https://github.com/map-123)) |“Trucking” introduced as profile |
+| 210.17.5221 | 2019-08-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “walking” introduced as profile |
 | 200.17 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “biking” introduced as profile |
 | 200.17 | 2019-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “route_traffic” introduced as resource |
 | 191.17 | 2019-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 19.1, Document detailing, “route_eta” introduced as resource |
@@ -113,7 +115,7 @@ GET
 							</td>
 							</tr>
 						<tr class="&#39;&#39; override_background">
-							<td class="cellrowborder" headers="d156249e37 " rowspan="3">Profile</td>
+							<td class="cellrowborder" headers="d156249e37 " rowspan="4">Profile</td>
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>driving</code>
 							</td>
@@ -127,11 +129,18 @@ GET
 							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in two-wheeler routing.
 							</td>
 						</tr>
-                        <tr class="&#39;&#39; override_background">
+            <tr class="&#39;&#39; override_background">
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>walking</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in pedestrian routing.
+							</td>
+						</tr>            
+            <tr class="&#39;&#39; override_background">
+							<td class="cellrowborder" headers="d156249e40 ">
+							    <code>trucking</code>
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for Truck routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in truck routing.
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
@@ -141,7 +150,7 @@ GET
 							        "start and destination coordinates"
 							    </code>
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">The coordinates pairs on which route is to be calculated. Minumum two pairs needed.
+							<td class="row-nocellborder" headers="d156249e43 ">The coordinates pairs on which route is to be calculated. Minimum two pairs needed.
 							</td>
 						</tr>
 					</tbody>
@@ -321,4 +330,3 @@ Read about the latest updates & customer stories
 
 
 > © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
