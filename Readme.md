@@ -4,7 +4,7 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+**Now Available**  for Srilanka, Nepal, Bhutan, Myanmar and Bangladesh
 
 Full documentation available here: [https://www.mapmyindia.com/api/index.php#api-stack](https://www.mapmyindia.com/api/index.php#api-stack). 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
@@ -24,8 +24,8 @@ Highly detailed & interactive maps with 2D/3D viewing options &  real-time traff
 #### ROUTES & NAVIGATION
 Get turn-by-turn directions with alternate driving routes between specified locations, with traffic
 
-#### ANALYTICS
-**Coming soon** with multiple data attributes such as demographic data attributes. 
+#### GEOANALYTICS
+GeoAnalytics Web JS APIs with multiple data attributes such as demographic data attributes. 
 Aligned with MapmyIndia Map data, these APIs utilize our vast geo-informatics experience to provide customers a enhanced leverage over competition using query-enabled analytics APIs to draw heatmaps, thematic maps or other types geo-visualizations for your business analysis problems.
 
 ## Why use MapmyIndia Map APIs
