@@ -46,7 +46,7 @@ Snap-To-Road API, snaps given GPS points to the road network in the most plausib
 ## Input Method
 GET
 
-## Contructing the request URL
+## Constructing the request URL
 
 <div class="tablenoborder">
 	<table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
@@ -229,4 +229,3 @@ Read about the latest updates & customer stories
 
 
 > © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
