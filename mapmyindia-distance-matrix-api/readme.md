@@ -18,6 +18,7 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.3 | December 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 
@@ -25,6 +26,7 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 220.19.522 | 2019-12-19 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 22.0, Many to Many distance matrix released |
 | 200.17 | 2018-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “distance_matrix_traffic” introduced as resource |
 | 191.17 | 2018-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Initial release |
 
@@ -87,31 +89,13 @@ GET
 							<td class="row-nocellborder" headers="d156249e43 ">The REST API license key authorized to access the resource</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
-							<td class="cellrowborder" rowspan="12" headers="d156249e37 ">Resources</td>
+							<td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>distance_matrix</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">to calculate the route & duration without considering traffic conditions.</td>
 						</tr>
 						<tr class="&#39;&#39;">
-							</tr>
-						<tr class="&#39;&#39; override_background">
-						</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-						<tr class="&#39;&#39; override_background">
-						</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-						<tr class="&#39;&#39; override_background">
-						</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-						<tr class="&#39;&#39; override_background">
-							</tr>
-						<tr class="&#39;&#39;">
-						</tr>
-                        <tr class="&#39;&#39;">
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>distance_matrix_eta</code>	
 							</td>
@@ -128,11 +112,25 @@ GET
 						<tr class="&#39;&#39; override_background">
 							</tr>
 						<tr class="&#39;&#39; override_background">
-							<td class="cellrowborder" headers="d156249e37 ">Profile</td>
+							<td class="cellrowborder" headers="d156249e37" rowspan="3" >Profile</td>
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>driving</code>
 							</td>
 							<td class="row-nocellborder" headers="d156249e43 ">Meant for car routing
+							</td>
+						</tr>
+						<tr class="&#39;&#39;">
+							<td class="cellrowborder" headers="d156249e40 ">
+								<code>biking</code>	
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Distance calculation with this profile is restricted to <code>distance_matrix</code> resource only. <code>region</code> & <code>rtype</code> request parameters are not supported in two-wheeler routing. 
+							</td>
+						</tr>
+						<tr class="&#39;&#39;">
+							<td class="cellrowborder" headers="d156249e40 ">
+								<code>trucking</code>	
+							</td>
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for truck routing. Distance calculation with this profile is restricted to <code>distance_matrix</code> resource only. <code>region</code> & <code>rtype</code> request parameters are not supported in truck routing. 
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
@@ -178,7 +176,16 @@ For example 77.983936,28.255904;77.05993,28.487555.
 1. *`rtype`* type of route (integer) required for navigation, where values mean:  
 	- `0` optimal (default)  
 	- `1` shortest (it will calculate route by excluding access penalties like private roads, etc.)
-2.  *`region`*(string): This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are `ind` (for India, default), `lka` (for Sri Lanka) , `npl` (for Nepal) , `bgd` (for Bangladesh) and `btn` (for Bhutan)
+2.  *`region`*(string): This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are `ind` (for India, default), `lka` (for Sri Lanka) , `npl` (for Nepal) , `bgd` (for Bangladesh), `mmr` (for Myanmar) and `btn` (for Bhutan)
+
+### Parameters for Many-to-Many Distance Matrix
+#### Important Note
+
+1. *`sources`*: (integers) To specify which of the coordinates supplied in the URL are to be treated as *source* position for many to many distance matrix calculation, indicate that coordinate pair's index. E.g. 0;1 means that 0<sup>th</sup> and 1<sup>st</sup> coordinate pairs are source points.
+Default value is `0`. The indexes must be semi-colon separated. e.g: 0;1;2;...
+2.  *`destinations`*: (integers) To specify which of the coordinates supplied in the URL are to be treated as *destination* position for many to many distance matrix calculation, indicate that coordinate pair's index. E.g. 2;3 means that 0<sup>th</sup> and 1<sup>st</sup> coordinate pairs are destination points.
+Default value is `all`. The indexes must be semi-colon separated. e.g: 3;4;5;...
+
 
 ## Response Type
 JSON: response will served as JSON
@@ -208,9 +215,18 @@ JSON: response will served as JSON
 
 ## Sample Input
 
+### For 1-to-Many Calculations:
+
 `https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/distance_matrix/driving/90.33687,23.470314;90.379249,23.497178;90.497009,23.546286?rtype=1&region=bgd`
 
+### For Many-to-Many Calculations: 
+
+`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;77.15993,28.587555;77.264997,28.554534?sources=0;1&destinations=2;3`
+
 ## Sample Response
+
+### For 1-to-Many Calculations: 
+
 ```json
 {
 	"responseCode": 200,
@@ -232,6 +248,37 @@ JSON: response will served as JSON
 			]
 		]
 	}
+}
+```
+### For Many-to-Many Calculations: 
+
+```json
+{
+    "responseCode": 200,
+    "version": "191.17",
+    "results": {
+        "code": "Ok",
+        "distances": [
+            [
+                128266.7,
+                125884
+            ],
+            [
+                18709.9,
+                29030.3
+            ]
+        ],
+        "durations": [
+            [
+                10306.6,
+                10221.1
+            ],
+            [
+                1213.3,
+                2104.9
+            ]
+        ]
+    }
 }
 ```
 
