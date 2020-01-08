@@ -79,5 +79,4 @@ Need support? contact us!
 [Blog](http://www.mapmyindia.com/blog/)
 Read about the latest updates & customer stories
 
-
 > © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
