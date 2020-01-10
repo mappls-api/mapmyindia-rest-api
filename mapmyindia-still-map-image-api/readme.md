@@ -1,6 +1,6 @@
 ![MapmyIndia APIs](https://www.mapmyindia.com/api/img/mapmyindia-api.png)
 
-# MapmyIndia Traveled Route API
+# MapmyIndia Still Map Image API
 
 The Still Map Image API creates a map based on URL parameters sent through a standard HTTP request and returns the map as an image which you can display on your application. The API lets you embed MapmyIndia Maps image according to geo-position, pixel size and zoom level of the map on your application without requiring any dynamic page loading. The image can be a retina image and markers can be added to the image to indicate position of any object.
 
