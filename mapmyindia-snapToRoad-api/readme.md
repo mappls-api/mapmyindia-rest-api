@@ -1,6 +1,6 @@
 ![MapmyIndia APIs](https://www.mapmyindia.com/api/img/mapmyindia-api.png)
 
-# MapmyIndia Snap To Road API - beta
+# MapmyIndia Snap To Road API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
@@ -135,10 +135,11 @@ JSON: response will served as JSON
 2.	`version`: API’s version information.
 3.	`results`: array of results, each consisting of the following parameters:
 	- `snappedPoints`: Array of Waypoint objects representing all points of the trace in order. If the trace point was omitted by map matching because it is an outlier, the entry will be null. Each Waypoint object has the following additional properties.
-		- `waypoint_index`: Index of the waypoint inside the matched route.
 		- `location`: Location of Matched point (Longitude, Latitude)
-	- `matching`: An array of Route objects that assemble the trace.
-		- `geometry`: returns the whole geometry of the route as per given parameter ‘geometries’ default is encoded ‘polyline’ with 5 digit accuracy for positional coordinates.
+		- `distance`: Distance from the snapped point.
+		- `waypoint_index`: Index of the waypoint inside the matched route.
+	- `matchings`: An array of Route objects that assemble the trace.
+		- `geometry`: Returns the whole geometry of the route as per given parameter ‘geometries’ default is encoded ‘polyline’ with 5 digit accuracy for positional coordinates.
 
 
 ## Response Codes {as HTTP response code}
@@ -161,38 +162,42 @@ JSON: response will served as JSON
 ```json
 {
     "responseCode": 200,
-    "version": "191.17",
+    "version": "220.19.522",
     "results": {
         "snappedPoints": [
             {
-                "waypoint_index": 0,
                 "location": [
                     78.40573,
                     17.373168
-                ]
+                ],
+                "distance": 0.221335,
+                "waypoint_index": 0
             },
             {
-                "waypoint_index": 1,
                 "location": [
                     78.40958,
                     17.373151
-                ]
+                ],
+                "distance": 1.217342,
+                "waypoint_index": 1
             },
             null,
             null,
             {
-                "waypoint_index": 2,
                 "location": [
                     78.420424,
                     17.377454
-                ]
+                ],
+                "distance": 4.014843,
+                "waypoint_index": 2
             },
             {
-                "waypoint_index": 3,
                 "location": [
                     78.421362,
                     17.380197
-                ]
+                ],
+                "distance": 1.317787,
+                "waypoint_index": 3
             }
         ],
         "matchings": [
@@ -213,6 +218,7 @@ For more details, please visit our full documentation.
 For any queries and support, please contact: 
 
 ![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
 ![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
