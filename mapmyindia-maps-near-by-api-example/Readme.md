@@ -6,6 +6,7 @@ Powered with India's most comprehensive and robust mapping functionalities.
 **Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
 
 **Full documentation available here**: [https://www.mapmyindia.com/api/advanced-maps/doc/nearby-api](https://www.mapmyindia.com/api/advanced-maps/doc/nearby-api). 
+
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
 
 ## Introduction
@@ -41,13 +42,14 @@ JSON
 The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
 1. Mandatory Parameters:
-	- **`keywords`***  (string) e.g. FODCOF, Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130 {POI, House Number, keyword, tag}
-	- **`refLocation`**  {string (latitude[double],longitude[double])}: Provides the location around which the search will be performed. e.g. `refLocation=28.454,77.435`
+	- ***`keywords`***  (string) e.g. FODCOF, Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130 {POI, House Number, keyword, tag}
+	- ***`refLocation`***  {string (latitude[double],longitude[double])}: Provides the location around which the search will be performed. e.g. `refLocation=28.454,77.435`
 2.  Optional Parameters:
 	- *`page`*  (integer): provides number of the page to provide results from.
 	- *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
-	- *`radius*` (integer): provides the range of distance to search over (default: 1000, min: 500, max: 10000).
+	- *`radius`* (integer): provides the range of distance to search over (default: 1000, min: 500, max: 10000).
 	- *`bounds`* (x1,y1;x2,y2): Allows the developer to send in map bounds to provide a nearby search of the geobounds; where x1,y1 are the lat-lng of the bound.
+	- *`filter`* (categoryCode:FODCOF): It would restricts the results within the the particular Category Code provided by the user.
 	- *`sortBy`* (string): provides configured sorting operations for the client on cloud. Below are the available sorts:
 		- *`dist:asc`*  (default) & 
 		- *`dist:desc`* - will sort data in order of distance from the passed location.
@@ -55,7 +57,7 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 
 ## Sample Input
 
-https://atlas.mapmyindia.com/api/places/nearby/json?keywords=coffee;beer&refLocation=28.631460,77.217423
+https://atlas.mapmyindia.com/api/places/nearby/json?keywords=coffee;beer&refLocation=28.631460,77.217423&filter=categoryCode:FODCOF
 
 For more details, please visit our full documentation.
 
