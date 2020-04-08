@@ -9,7 +9,7 @@ Powered with India's most comprehensive and robust mapping functionalities.
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
 
 ## Introduction
-The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field.
+The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports hindi language. If a user enters query in hindi language he will get results in hindi.
 
 ## Live Demo
 
@@ -40,7 +40,7 @@ JSON
 The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
 1. Mandatory Parameters:
-	- **`query`***  (string) e.g. Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130 {POI, House Number, keyword, tag}
+	- **`query`***  (string) e.g. Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130, नई दिल्ली {POI, House Number, keyword, tag, place}
 2.  Optional Parameters:
 	- *`location`*  {string (latitude[double],longitude[double])} e.g. `location=28.454,77.435`. Location is required to get location bias autosuggest results.
 	- *`zoom`*  (double): takes the zoom level of the current scope of the map (min: 4, max: 18).
@@ -57,8 +57,9 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	    - *`STATE`*: State
 	    - *`SSLC`*: Subsublocality
     - *`filter`*  = this parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.), below mentioned are the both types -  
-	    - *`filter = bounds: lat1, lng1; lat2, lng2`* (latitude, longitude) 
-	    {e.g. `filter=bounds: 28.598882, 77.212407; 28.467375, 77.353513`}
+	    - *`filter = pin: It takes pincode/postal code of an area`* `{e.g. filter=pin:110055}`
+	    - *`filter = bounds: lat1, lng1; lat2, lng2`* `(latitude, longitude) 
+	    {e.g. filter=bounds: 28.598882, 77.212407; 28.467375, 77.353513`}
 	    - *`filter  = cop: {eloc}`* (string) 
 	    {e.g. `filter=cop:YMCZ0J`}
 
