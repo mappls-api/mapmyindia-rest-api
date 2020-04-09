@@ -11,6 +11,10 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 ## Introduction
 Address Standardization API is a process to convert the non formatted address into the user readable format by omitting unnecessary information in the address. MapmyIndia address standardization API provides real addresses along with admin and other information.
 
+## Live Demo
+
+You can also experience this address standardization API through our demo. For experience please [click here](https://www.mapmyindia.com/api/advanced-maps/woodpecker_demo/)
+
 ## Security Type
 This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php)
 
