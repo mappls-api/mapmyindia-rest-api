@@ -8,7 +8,7 @@ Powered with India's most comprehensive and robust mapping functionalities.
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
 
 ## Introduction
-Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request.
+Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request. This API now supports Hindi language so you can now search queries in Hindi too.
 
 
 ## Security Type
@@ -37,6 +37,7 @@ GET
 1. *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
 2. **`location`**  {string (latitude[double],longitude[double])}: Provides the location around which the search will be performed. e.g. `location=28.454,77.435`
 It is STRONGLY RECOMMENDED to use this parameter for accurate location biased results.
+1. **`filter`**  {filter=pin:110020}: Filter parameter helps you restrict the result by mentioning pincode. e.g. `filter=pin:110020`
 
 ## Response Parameters
 
@@ -57,6 +58,7 @@ It is STRONGLY RECOMMENDED to use this parameter for accurate location biased re
 15. `score`(double): for internal use only.
 16. `suggester`(string): for internal use only.
 17. `addressTokens`(array of objects): for internal use only.
+18. `richInfo`(array of objects): for internal use only.
 
 ## Response Type
 
@@ -81,7 +83,7 @@ JSON
 
 ## Sample Input
 ```html
-https://atlas.mapmyindia.com/api/places/textsearch/json?query=okhla phase 3&region=ind
+https://atlas.mapmyindia.com/api/places/textsearch/json?query=okhla phase 3&region=ind&filter=pin:110020
 ```
 
 ## Sample Response
@@ -108,7 +110,8 @@ https://atlas.mapmyindia.com/api/places/textsearch/json?query=okhla phase 3&regi
             "orderIndex": 1,
             "score": 19905.639213316852,
             "suggester": "placeName",
-            "addressTokens": {}
+            "addressTokens": {},
+            "richInfo": {}
         }
     ],
     "userAddedLocations": []
@@ -119,6 +122,7 @@ https://atlas.mapmyindia.com/api/places/textsearch/json?query=okhla phase 3&regi
 For any queries and support, please contact: 
 
 ![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
 ![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
@@ -135,4 +139,3 @@ Read about the latest updates & customer stories
 
 
 > © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
