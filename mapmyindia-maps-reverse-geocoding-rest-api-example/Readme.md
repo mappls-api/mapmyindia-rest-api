@@ -9,7 +9,7 @@ Powered with India's most comprehensive and robust mapping functionalities.
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
 
 ## Introduction
-Reverse Geocoding is a process to give the closest matching address to a provided geographical coordinates (latitude/longitude). MapmyIndia reverse geocoding API provides real addresses along with nearest popular landmark for any such geo-positions on the map.
+Reverse Geocoding is a process to give the closest matching address to a provided geographical coordinates (latitude/longitude). MapmyIndia reverse geocoding API provides real addresses along with nearest popular landmark for any such geo-positions on the map. This API also works in Hindi language so for that you have to add new paramter introduced lang. 
 
 ## Live Demo
 
@@ -30,10 +30,11 @@ JSON
 ## Request Parameters
 The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
-1.  **`lat`**: the latitude of the location for which the address is required.
-2.  **`lng`**: the longitude of the location for which address is required.
-3.  **`Licence_key`**: the REST API licence key allocated to you by signing into our services and registering yourself as a developer (28 Char Alphanumeric).
-4.  *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
+1.  **`lat`**: The latitude of the location for which the address is required.
+2.  **`lng`**: The longitude of the location for which address is required.
+3.  **`Licence_key`**: The REST API licence key allocated to you by signing into our services and registering yourself as a developer (28 Char Alphanumeric).
+4.  *`region`* (string): It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
+5.  *`lang`* (string): This parameter accepts the "hi" (ISO 639-1 Language Code for Hindi) as a value. 
 
 
 ## Sample Input
@@ -61,4 +62,3 @@ Read about the latest updates & customer stories
 
 
 > © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
