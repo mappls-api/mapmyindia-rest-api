@@ -50,8 +50,9 @@ OAuth 2.0 based security using AES 256 and SHA-1.
 
 **Client-Side Issues:**
 
-1. 400: Bad Request, User made an error while creating a valid request or the body of the request is invalid.4. 401: Unauthorized, Developer’s key is not allowed to send a request with restricted parameters  
-2. 403: Forbidden, Developer’s key has hit its daily/hourly limit
+1. 400: Bad Request, User made an error while creating a valid request or the body of the request is invalid.
+2. 401: Unauthorized, Developer’s key is not allowed to send a request with restricted parameters  
+3. 403: Forbidden, Developer’s key has hit its daily/hourly limit
 
 **Server-Side Issues:**
 
