@@ -59,7 +59,7 @@ OAuth 2.0 based security using AES 256 and SHA-1.
 1. 500: Internal Server Error, the request caused an error in our systems.  
 2. 503: Service Unavailable, during our maintenance break or server downtimes.
 
-### Response Messages (as HTTP response message
+### Response Messages {as HTTP response message}
 
 1. 201: Feedback submitted.  
 2. 400: Something’s just not right with the request.  
