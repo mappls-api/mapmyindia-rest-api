@@ -49,15 +49,97 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	- *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
 	- *`radius`* (integer): provides the range of distance to search over (default: 1000, min: 500, max: 10000).
 	- *`bounds`* (x1,y1;x2,y2): Allows the developer to send in map bounds to provide a nearby search of the geobounds; where x1,y1 are the lat-lng of the bound.
-	- *`filter`* (categoryCode:FODCOF): It would restricts the results within the the particular Category Code provided by the user.
+	- *`filter`* (): It uses key:value pair(s) to fine tune discovery of places by filtering the results. e.g. categoryCode:FODCOF
+        - valid IDs for key value pairs are: 
+            - `categoryCode`: can take in category codes as input
 	- *`sortBy`* (string): provides configured sorting operations for the client on cloud. Below are the available sorts:
 		- *`dist:asc`*  (default) & 
-		- *`dist:desc`* - will sort data in order of distance from the passed location.
+		- *`dist:desc`* - will sort data in order of distance from the passed 
+        location.
+        - *`imp`* - will sort data in order of decreasing prominence of the place.
+    - *`searchBy`* (string): provides configurable search operations for the client on cloud. Below are the available sorts:
+		- *`dist`*  (default) & 
+		- *`imp`* - will search data in order of prominence of the place. 
 
+
+### Operators in `keywords` parameter
+
+To send multiple keywords in a request, we’ve defined a couple of operators that can help the developers wrap their applications around this functionality. Below are the operators:
+
+1. The “ ; ” Operator: This operator is an “or” operator. Defining multiple keywords separated with a “ ; ” would provide results that satisfies either of the keywords.
+2. The “ $ ” Operator: This operator is a “and” operator. Defining multiple keywords separated with a “ $ ” would provide results that satisfy all the provided keywords. (default).
+
+To use these operators, simple just send in the keywords parameter like below:
+```html
+&keywords=coffee ; tea $ sea food ; alcohol
+```
+
+The above nearby search would yield in results that either provide coffee or tea but must provide either sea food or alcohol.
+
+Please Note: the spacing in the above example is of no relevance to the search result. It’s just there to provide better understanding.
+
+## Response Parameters
+
+a. suggestedLocations ([object array])
+
+1. `distance` (integer): provides the distance from the provided location bias in meters.
+2. `eLoc` (string): Place Id of the location 6-char alphanumeric.
+3. `email` (string): Email for contact.
+4. `entryLatitude` (double): latitude of the entrance of the location.
+5. `entryLongitude` (double): longitude of the entrance of the location.
+6. `keywords` ( [ string ] ): provides an array of matched keywords or codes.
+7. `landlineNo` (string): Email for contact.
+8. `latitude` (double): Latitude of the location.
+9. `longitude` (double): longitude of the location.
+10. `mobileNo` : Phone number for contact.
+11. `orderIndex` (integer): the order where this result should be placed
+12. `placeAddress` (string): Address of the location.
+13. `placeName` (string): Name of the location.
+14. `type` (string): Type of location POI or Country or City.
+
+b. pageInfo (object)
+
+1. `pageCount` (integer): The number of pages with results.
+2. `totalHits` (integer): Total number of places in the results.
+3. `totalPages` (integer): Total number of pages as per page size and no of results.
+4. `pageSize` (integer): The number of results per page.
 
 ## Sample Input
 
 https://atlas.mapmyindia.com/api/places/nearby/json?keywords=coffee;beer&refLocation=28.631460,77.217423&filter=categoryCode:FODCOF
+
+
+## Sample Response
+```json
+{
+    "suggestedLocations": [
+        {
+            "distance": 192,
+            "eLoc": "TPIGXI",
+            "email": "",
+            "entryLatitude": 28.5506790000001,
+            "entryLongitude": 77.2705480000001,
+            "keywords": [
+                "FODCOF"
+            ],
+            "landlineNo": "",
+            "latitude": 28.550736,
+            "longitude": 77.2707380000001,
+            "mobileNo": "",
+            "orderIndex": 1,
+            "placeAddress": "Okhla Industrial Estate Phase 3, New Delhi, Delhi, 110020",
+            "placeName": "Urban Sip Cafe",
+            "type": "POI"
+        }
+    ],
+    "pageInfo": {
+        "pageCount": 1,
+        "totalHits": 1,
+        "totalPages": 1,
+        "pageSize": 10
+    }
+}
+```
 
 For more details, please visit our full documentation.
 
