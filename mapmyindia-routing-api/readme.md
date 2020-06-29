@@ -228,13 +228,19 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 			- `ref`: Highway numbers for the way, if available.
 		- `distance`: The distance travelled by the route, in float; unit is meter.
 		- `duration`: The estimated travel time, in float; unit is second.
-		- `weight_name`: Parameter for internal purpose only.
+		- `summary`: Parameter for internal purpose only.
 		- `weight`: Parameter for internal use only.
+	- `weight_name`: Parameter for internal purpose only.
+	- `geometry`: Returns the whole geometry of the route as per given `geometries` request parameter. Default is encoded polyline with 5 digit accuracy (1e5) for positional coordinates.
+	- `weight`: Parameter for internal use only.
+	- `distance`: The distance of travel, in float meters.
+	- `duration`: The estimated travel time, in float number of seconds.
 3.	`waypoints`: Array of Waypoint objects representing all waypoints in order
 	- `hint`: Unique internal identifier of the segment (ephemeral, not constant over data updates) This can be used on subsequent request to significantly speed up the query and to connect multiple services. E.g. you can use the hint value obtained by the nearest query as hint values for route inputs.
 	- `name`:  Name of the street the coordinate snapped to.
 	- `location`: longitude, latitude pair describing the snapped location of the waypoint.
 	- `distance`: distance to snapped location from actual location.
+4. `Server`: Gives Information on active service's server.
 
 ### Notes
 1. An intersection gives a full representation of any cross-way the path passes bay. For every step, the very first intersection (intersections[0]) corresponds to the location of the StepManeuver. Further intersections are listed for every cross-way until the next turn instruction.
