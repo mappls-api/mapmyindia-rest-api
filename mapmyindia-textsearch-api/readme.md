@@ -35,30 +35,30 @@ GET
 
 ### Optional Parameters:
 1. *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
-2. **`location`**  {string (latitude[double],longitude[double])}: Provides the location around which the search will be performed. e.g. `location=28.454,77.435`
+2. *`location`*  {string (latitude[double],longitude[double])}: Provides the location around which the search will be performed. e.g. `location=28.454,77.435`
 It is STRONGLY RECOMMENDED to use this parameter for accurate location biased results.
-1. **`filter`**  {filter=pin:110020}: Filter parameter helps you restrict the result by mentioning pincode. e.g. `filter=pin:110020`
+1. *`filter`*  {filter=pin:110020}: Filter parameter helps you restrict the result by mentioning pincode. e.g. `filter=pin:110020`
 
 ## Response Parameters
 
-1.  `type`(string): Type of location POI or Country or City.
-2. `typeX`(integer): for internal use only.
-3. `placeAddress`(string): Address of the location.
-4. `latitude`(double): Latitude of the location.
-5. `longitude`(double): longitude of the location.
-6. `eLoc`(string): Place Id of the location 6-char alphanumeric.
-7. `entryLatitude`(double): latitude of the entrance of the location.
-8. `entryLongitude`(double): longitude of the entrance of the location.
-9. `placeName`(string): Name of the location.
-10. `alternateName`(string): Alternate name of the location.
-11. `keywords`(nullable [ string ] ): provides an array of matched keywords or codes.
-12. `p`(long integer): for internal use only.
-13. `distance`(nullable integer): for internal use only.
-14. `orderIndex`(integer): the order where this result should be placed
-15. `score`(double): for internal use only.
-16. `suggester`(string): for internal use only.
-17. `addressTokens`(array of objects): for internal use only.
-18. `richInfo`(array of objects): for internal use only.
+1.  `type` (string): Type of location POI or Country or City.
+2. `typeX` (integer): for internal use only.
+3. `placeAddress` (string): Address of the location.
+4. `latitude` (double): Latitude of the location.
+5. `longitude` (double): longitude of the location.
+6. `eLoc` (string): Place Id of the location 6-char alphanumeric.
+7. `entryLatitude` (double): latitude of the entrance of the location.
+8. `entryLongitude` (double): longitude of the entrance of the location.
+9. `placeName` (string): Name of the location.
+10. `alternateName` (string): Alternate name of the location.
+11. `keywords` (nullable [ string ] ): provides an array of matched keywords or codes.
+12. `p` (long integer): for internal use only.
+13. `distance` (nullable integer): for internal use only.
+14. `orderIndex` (integer): the order where this result should be placed
+15. `score` (double): for internal use only.
+16. `suggester` (string): for internal use only.
+17. `addressTokens` (array of objects): for internal use only.
+18. `richInfo` (array of objects): for internal use only.
 
 ## Response Type
 

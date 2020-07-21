@@ -96,6 +96,21 @@ a. suggestedLocations ([object array])
 12. `placeAddress` (string): Address of the location.
 13. `placeName` (string): Name of the location.
 14. `type` (string): Type of location POI or Country or City.
+15. `hourOfOperation`<sup>1</sup> (string): The hours of operation of the POI in a day.
+16. `addressTokens`<sup>2</sup> (object)
+    - `houseNumber` (string): house number of the location.
+    - `houseName` (string): house name of the location.
+    - `poi` (string): name of the POI (if applicable)
+    - `street` (string): name of the street. (if applicable)
+    - `subSubLocality` (string): the sub-sub-locality to which the location belongs. (if applicable)
+    - `subLocality` (string): the sub-locality to which the location belongs. (if applicable)
+    - `locality` (string): the locality to which the location belongs. (if applicable)
+    - `village` (string): the village to which the location belongs. (if applicable)
+    - `subDistrict` (string): the sub-district to which the location belongs. (if applicable)
+    - `district` (string): the district to which the location belongs. (if applicable)
+    - `city` (string): the city to which the location belongs. (if applicable)
+    - `state` (string): the state to which the location belongs. (if applicable)
+    - `pincode` (string): the PIN code to which the location belongs. (if applicable)
 
 b. pageInfo (object)
 
@@ -103,6 +118,10 @@ b. pageInfo (object)
 2. `totalHits` (integer): Total number of places in the results.
 3. `totalPages` (integer): Total number of pages as per page size and no of results.
 4. `pageSize` (integer): The number of results per page.
+
+Footnotes: 
+1. Beta available for extremely limited users. Not part of standard commercial agreements; unless specifically mentioned.
+2. Beta available for extremely limited users. Not part of standard commercial agreements; unless specifically mentioned.
 
 ## Sample Input
 
