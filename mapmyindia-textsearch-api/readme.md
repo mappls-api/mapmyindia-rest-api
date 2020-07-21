@@ -41,6 +41,10 @@ It is STRONGLY RECOMMENDED to use this parameter for accurate location biased re
 
 ## Response Parameters
 
+Multiple objects: 
+
+a. suggestedLocations ([object array])
+
 1.  `type` (string): Type of location POI or Country or City.
 2. `typeX` (integer): for internal use only.
 3. `placeAddress` (string): Address of the location.
@@ -59,6 +63,20 @@ It is STRONGLY RECOMMENDED to use this parameter for accurate location biased re
 16. `suggester` (string): for internal use only.
 17. `addressTokens` (array of objects): for internal use only.
 18. `richInfo` (array of objects): for internal use only.
+
+b. userAddedLocations ([object array])
+
+1. `eLoc` (string): Place Id of the location 6-char alphanumeric.
+2. `placeName` (string): Name of the location.
+3. `placeAddress` (string): Address of the location.
+4. `type` (string): type of location POI or Country or City (if available)
+5. `latitude` (double): Latitude of the location.
+6. `longitude` (double): longitude of the location.
+7. `orderIndex` (integer): the order where this result should be placed
+8. `entryLatitude` (double): Entry point Latitude of the location.
+9. `entryLongitude` (double): Entry point longitude of the location.
+10. `resultType` (string): Type of the result according to user generated content (UGC). Mostly is 'UAP'.
+11. `userName` (string): The username of the person who has added this place.
 
 ## Response Type
 
