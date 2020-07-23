@@ -60,7 +60,6 @@ Allowed values are:
 	- `pincode` :pincode
 	- `state` : state
 5. *`bound`*  (string): This parameter can be used to set admin boundary, which means geocoding will be done within the given admin. The allowed admin bounds are **Sub-District**, **District**, **City**, **State** and **Pincode**. The parameter accepts the admin eLoc as value.
-6. *`scores`*  (valueless): parameter can be set to get scoring related parameters from the API.
 
 **Note**: Please note that `podFilter` & `bound` parameters are mutually exclusive. They cannot be used together in an API call.
 
@@ -112,11 +111,8 @@ Server-Side Issues:
 15. `eloc`(string): eloc of the particular location.
 16. `latitude`(double): the latitude for the location.
 17. `longitude`(double): the longitude for the location.
-18. `matching`(string): tags according to matching of terms in the address.
-19. `partial_match`(string): provides score in case of a partial match in matching.
-20. `eopScore`(double): scoring based upon E-O-P tags.
-21. `geocodeLevel`(string): the best matched address component.
-22. `confidenceScore`(float): the confidence for current of geocodelevel.
+18. `geocodeLevel`(string): the best matched address component.
+19. `confidenceScore`(float): the confidence for current of geocodelevel.
 
 ## Sample Input
 
@@ -146,10 +142,7 @@ Server-Side Issues:
         "latitude": 28.550667,
         "longitude": 77.268952,
         "geocodeLevel": "houseNumber",
-        "confidenceScore": 0.4,
-        "matching": "E - - - - - E - O O O O O",
-        "partialMatch": "- - - - - - - - - - - - -",
-        "eopScore": 20
+        "confidenceScore": 0.4
     }
 }
 ```
@@ -177,10 +170,7 @@ Server-Side Issues:
             "latitude": 28.627695,
             "longitude": 77.235617,
             "geocodeLevel": "locality",
-            "confidenceScore": 1,
-            "matching": "- - - - - - E - O O E E E",
-            "partialMatch": "- - - - - - - - - - - - -",
-            "eopScore": 75
+            "confidenceScore": 1
         },
         {
             "houseNumber": "",
@@ -201,10 +191,7 @@ Server-Side Issues:
             "latitude": 28.626337,
             "longitude": 77.236464,
             "geocodeLevel": "street",
-            "confidenceScore": 0.8,
-            "matching": "- - O E - - E - O O E E E",
-            "partialMatch": "- - - - - - - - - - - - -",
-            "eopScore": 78
+            "confidenceScore": 0.8
         },
         {
             "houseNumber": "",
@@ -225,10 +212,7 @@ Server-Side Issues:
             "latitude": 28.625891,
             "longitude": 77.234079,
             "geocodeLevel": "street",
-            "confidenceScore": 0.4,
-            "matching": "- - P E - - O - O O E E E",
-            "partialMatch": "- - 48.65 - - - - - - - - - -",
-            "eopScore": 63
+            "confidenceScore": 0.4
         }
     ]
 }
