@@ -4,303 +4,373 @@
 
 With POI Along the Route API user will be able to get the details of POIs of a particular category along his set route. The main focus of this API is to provide convenience to the user and help him in locating the place of his interest on his set route.
 
-## API URL
+## Security Type
+This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php)
 
-1.  Basic URL structure:  
-    https://apis.mapmyindia.in/advancedmaps/v1/<lic_key>/along_route?cat=FINATM&path=&buffer=1000&page=1&geometries=polyline5
-2.  **Output**:The output format would be JSON.
-3.  **HTTP Request Method**: POST
+## Request Headers
+
+The API leverages OAuth 2.0 based security. Hence, the developer would need to send a request for access token using their client_id and client_secret to the OAuth API. Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: “{token_type} {access_token}”.
+
+-  `Authorization:  “token_type access_token”`.
+
+## Input Method
+GET/POST
+
+## URL
+
+https://atlas.mapmyindia.com/api/places/along_route/
+
 
 ## Request Parameters
 
 The following input parameters will be supported in the POI Along The Route API request
 
-1.  `cat`: the unique code assigned to that POI category. (See Appendix B).
-2.  `path`: Google Polyline Encoding
-3.  `license_key`: the REST API licence key allocated to you.
-4.  `buffer`: the radius on a particular point. (Min: 50mtr & Max: 1000mtr)
-5.  `page`(integer): provides number of the page to provide results from.
-6.  `geometries`=polyline5 or polyline6 or base64 (bydefault - geometries=polyline5)
+### Mandatory Parameters
 
-**Note**: Buffer must be passed in body parameter and the request parameters would be sent in the format of .x-www-form-urlencoded..
+1. `path` (string) This parameter takes the encoded route along which POIs to be searched.
+2. `category` {string} The POI category code to be searched. Only one category input supported.
 
-## Response Parameters
+### Optional Parameters
+3. `sort` (valueless): Gets the sorted POIs along route.
+4. `geometries` (string): Type of geometry encoding, accepted values are `polyline5`, `polyline6`, and `base64`. Default value is `polyline5`.
+5. `buffer` (number): Buffer of the road. Minimum value is `25`, maximum is `1000` and default is `25`.
+6. `page` (number): Used for pagination. By default, a request returns maximum `10` results and to get the next `10` or so on pass the page value accordingly. Default is 1.
 
-The API returns an enveloped response with the POI Along the Route data in the results object.
 
-The following output parameters will be supported in the POI along the route API response .
 
-1.  `responseCode`:
-2.  `version`:
-3.  `results`: array of results, each consisting of the following parameters
-4.  `poi`: the name of the POI
-5.  `subSubLocality`:
-6.  `subLocality`:
-7.  `locality`:
-8.  `city`:
-9.  `subDistrict`:
-10.  `district`:
-11.  `poplrName`: the name by which the POI is popularly known as.
-12.  `address`:
-13.  `el`:
-14.  `email`:
-15.  `website`:
-16.  `longitude`: longitude of the location.
-17.  `latitude`: latitude of the location.
-18.  `e_lng`: longitude of the location entry point.
-19.  `e_lat`: latitude of the location entry point.
-20.  `state`:
-21.  `place_id`:
-22.  `page_no.`: displays the current page number out of total
+### Important Note
+1. When using POST method, the parameters are sent as `multipart/form-data`
+2. The length of polyline as input is limited as of now. The API can take in polyline of length not more than 30 kms long.
+
+
+## Response Type
+
+JSON
+
+## Response Codes 
+**Note**:  as HTTP response code
+
+### Success
+1. 200: To denote a successful API call.
+2. 204: To denote the API was a success but no results were found.
+### Client-Side Issues
+3. 400: Bad Request, User made an error while creating a valid request.
+4. 401: Unauthorized, Developer’s key is not allowed to send a request with restricted parameters.
+5. 403: Forbidden, Developer’s key has hit its daily/hourly limit.
+Server-Side Issues:
+6. 500: Internal Server Error, the request caused an error in our systems.
+7. 503: Service Unavailable, during our maintenance break or server down-times.
+
+## Response Messages 
+
+**Note**: as HTTP response message
+
+1. 200: Success.
+2. 204: No matches we’re found for the provided query.
+3. 400: Something’s just not right with the request.
+4. 401: Access Denied.
+5. 403: Services for this key has been suspended due to daily/hourly transactions limit.
+6. 500: Something went wrong.
+7. 503: Maintenance Break.
+
+## Reponse Parameters
+
+suggestedPOIs ([object array])
+
+1. `distance`(string): distance of the POI.
+2. `place_id`(string): eLoc of the POI
+3. `poi`(string): Name of the POI
+4. `subSubLocality`(string): Subsublocality of the POI
+5. `subLocality`(string): Sublocality of the POI
+6. `locality`(string): Locality of the POI
+7. `city`(string): City of the POI
+8. `subDistrict`(string): Sub district of the POI
+9. `district`(string): District of the POI
+10. `state`(string): State of the POI
+11. `poplrName`(string): Popular name of the POI
+12. `address`(string): Address of the POI
+13. `tel`(string): Telephone number of the POI
+14. `email`(string): Email of the POI
+15. `website`(string): Website of the POI
+16. `longitude`(double): Longitude of the POI
+17. `latitude`(double): Latitude of the POI
+18. `e_lng`(double): Entry latitude of the POI
+19. `e_lat`(double): Entry latitude of the POI
+20. `brand_code`(string): Brand id of the POI
 
 ## Transaction Information
 
 One request using the API link will be considered as one transaction.
 
-## Example
+## Sample request
 
-**Input**:  
-https://apis.mapmyindia.in/advancedmaps/v1/>licence_key/along_route?cat=FINATM&path=ypfmDe}rvMxCpGz@~FrCXdCnUbCe@mb@tMmDqF}ZwKuFpAyY|V{DzF}CxJRnZcB`PwB~B}Lz@q@b  
-AtBjx@eDxy@mPvp@cEr_ByB@aBcEcEyAoTeBwNeEqIhCwAaBd@{XvKa_@c@mEuCwC&buffer=1000&page=1&geometries=polyline5
+### cURL
+
+```curl
+curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_route' \
+--header 'Authorization: bearer c8502ff0-c0ed-44d3-a114-3a7bcd3c415b' \
+--form 'geometries=polyline5' \
+--form 'path=mfvmDcalvMB?B?@EB}@lABzABrBDAaAFoDFuCFuC@{@@m@DoAFu@D_@VmAFWHSHKBCFCbA]n@S`@IX?^BdAL|ANtCV~ANXBfBDfBBl@Bp@BrA@Pa@FKHMf@@`CHXDLBJFHJHRbD@`D@Z?h@@f@@h@@bAB^@jDDlBB~@BT@N?dDDV?x@Bt@@dCFdCFzB@nD?N?|BEzBEzBE`@AJ?lCOxCMfAClCGnCIlCIlCIhDKfDIhDIzCK|AG|AEbBG`A@d@FVD^FjARlBVn@D`AD|@Fn@DnCZnCZtBTH@J?V@`A@lC@nC@lCB`AGNCTCPEl@SRI|@a@~BqAb@OZGt@E|BEl@AxA?|@?pA@T?V@bCB`AJNBn@L^NpAl@t@`@d@V~BlA`CnA~BnA`A`@VJd@NXF~@JN@xBBL?hA?x@Ar@?x@A@?vCAvCAvCAxCAj@F`@Fd@Nf@RrAn@|@b@dBz@fBz@nBfAJF~Ax@`CfAXLRHp@XtCpAtCrAf@V|@Rf@Px@TxAZ\\F`BL`BLZEPERGNKPQR_@BaBPeEHeAXo@NcDLaDNaDNaDAkB?kAKqDIoD_@mAI{BI{BGgBIgBGiBCm@ASAi@Cu@Cc@Ag@Aa@GgBGgBGkBAu@IeCAUJARARA~@GB?f@C|AK`BIbBIt@IPCPCZO`@[FKLOR]Vk@Pi@DUL{@D[P}CP{C@i@@a@Ae@EiBCiBAyC?_ACaB?QAeBAgB?WB_@BSDSDOTu@dA{Cr@sBRi@JU^q@j@cATYZ_@TUbBsAHIhA}@jA_AlAaA`Ay@bAy@d@c@pAgAv@q@`AcA^_@tAoAVSVQLGdAg@f@Yz@e@W_@KSWIoAuCmAwCLMBCDCNE@AJ?H@F@v@fB\\GNGb@W\\YfAcALI@C@CBADCD@JBDBBBBD@D?DDLBFJNFDHDF@J@|CKbCItAEHCHA@EBEDCDABAF?D@DB@BDH@D?JADL@l@?j@BbAGGcAGiACc@Cm@C[' \
+--form 'category=FODCOF' \
+--form 'buffer=300' \
+--form 'page=1' \
+--form 'sort='
+```
+
+
 ```json
-{ 
-	"responseCode": 200, 
-	"version": "181.16", 
-	"results": [ 
-		{ 
-			"poi": "HDFC ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Okhla Industrial Estate Phase 3", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": null, 
-			"address": "Okhla Industrial Estate Phase 3, New Delhi, Delhi, 110020", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.2715460000001", 
-			"latitude": "28.5486020000001", 
-			"e_lng": "77.271297", 
-			"e_lat": "28.549", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "9W5MZO" 
-		}, 
-		{ 
-			"poi": "ICICI ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Harkesh Nagar", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": null, 
-			"address": "Harkesh Nagar, New Delhi, Delhi, 110020", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.2758620000001", 
-			"latitude": "28.5457290000001", 
-			"e_lng": "77.275918", 
-			"e_lat": "28.54573", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "MWCOK5" 
-		}, 
-		{ 
-			"poi": "Punjab National Bank ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Kalkaji", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": "PNB ATM", 
-			"address": "Kalkaji, New Delhi, Delhi, 110019", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.258989", 
-			"latitude": "28.5493920000001", 
-			"e_lng": "77.258806", 
-			"e_lat": "28.549349", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "3CQV3N" 
-		}, 
-		{ 
-			"poi": "State Bank of India ATM", 
-			"subSubLocality": "", 
-			"subLocality": "Tribhuwan Complex", 
-			"locality": "Ishwar Nagar", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": "SBI ATM", 
-			"address": "Tribhuwan Complex, Ishwar Nagar, New Delhi, Delhi, 110065", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.266826", 
-			"latitude": "28.5602250000001", 
-			"e_lng": "77.26701", 
-			"e_lat": "28.560301", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "135S48" 
-		}, 
-		{ 
-			"poi": "Federal Bank ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Nehru Place", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": "FedBank ATM", 
-			"address": "Nehru Place, New Delhi, Delhi, 110019", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.254128", 
-			"latitude": "28.5479470000001", 
-			"e_lng": "77.254221", 
-			"e_lat": "28.547725", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "53CFS2" 
-		}, 
-		{ 
-			"poi": "Oriental Bank of Commerce ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Nehru Place", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": "OBC ATM", 
-			"address": "Nehru Place, New Delhi, Delhi, 110019", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.253343", 
-			"latitude": "28.547939", 
-			"e_lng": "77.253221", 
-			"e_lat": "28.547868", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "1A1178" 
-		}, 
-		{ 
-			"poi": "HDFC ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Kalkaji", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": null, 
-			"address": "Kalkaji, New Delhi, Delhi, 110019", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.261736", 
-			"latitude": "28.5398080000001", 
-			"e_lng": "77.26182", 
-			"e_lat": "28.540005", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "M0SVTO" 
-		}, 
-		{ 
-			"poi": "ICICI ATM", 
-			"subSubLocality": "The India Mall", 
-			"subLocality": "Commercial Complex", 
-			"locality": "Friends Colony East", 
-			"city": "New Delhi", 
-			"subDistrict": "Kalkaji", 
-			"district": "South East Delhi District", 
-			"poplrName": null, 
-			"address": "The India Mall, Commercial Complex, Friends Colony East, New Delhi, Delhi, 110025", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.2689310000001", 
-			"latitude": "28.5617280000001", 
-			"e_lng": "77.269097", 
-			"e_lat": "28.561832", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "D688T7" 
-		}, 
-		{ 
-			"poi": "State Bank of India ATM", 
-			"subSubLocality": "", 
-			"subLocality": "", 
-			"locality": "Garhi Jharia Maria", 
-			"city": "New Delhi", 
-			"subDistrict": "Defence Colony", 
-			"district": "South East Delhi District", 
-			"poplrName": "SBI ATM", 
-			"address": "Garhi Jharia Maria, New Delhi, Delhi, 110065", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.2515300000001", 
-			"latitude": "28.559288", 
-			"e_lng": "77.251516", 
-			"e_lat": "28.559282", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "Y6UN28" 
-		}, 
-		{ 
-			"poi": "HDFC ATM", 
-			"subSubLocality": "", 
-			"subLocality": "Block G", 
-			"locality": "Sriniwaspuri", 
-			"city": "New Delhi", 
-			"subDistrict": "Defence Colony", 
-			"district": "South East Delhi District", 
-			"poplrName": null, 
-			"address": "Block G, Sriniwaspuri, New Delhi, Delhi, 110065", 
-			"tel": null, 
-			"email": null, 
-			"website": null, 
-			"longitude": "77.25534", 
-			"latitude": "28.565005", 
-			"e_lng": "77.255407", 
-			"e_lat": "28.564914", 
-			"state": "Delhi", 
-			"brand_code": "0", 
-			"place_id": "TC3B3S" 
-		} 
-	] 
+{
+    "suggestedPOIs": [
+        {
+            "distance": "1065",
+            "place_id": "74835C",
+            "poi": "Cafe Nescafe",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Pragati Maidan",
+            "city": "New Delhi",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
+            "state": "Delhi",
+            "poplrName": null,
+            "address": "K 10, Pragati Maidan, New Delhi, Delhi, 110001",
+            "tel": "+911122205205",
+            "email": null,
+            "website": "www.nescafe.com",
+            "longitude": "77.241144000000105",
+            "latitude": "28.619164000000101",
+            "e_lng": "77.241315999999998",
+            "e_lat": "28.619444000000001",
+            "brand_code": "0"
+        },
+        {
+            "distance": "3205",
+            "place_id": "KBFG0E",
+            "poi": "Starbucks",
+            "subSubLocality": "",
+            "subLocality": "Prithviraj Market",
+            "locality": "Khan Market",
+            "city": "New Delhi",
+            "subDistrict": "Chanakya Puri",
+            "district": "New Delhi District",
+            "state": "Delhi",
+            "poplrName": null,
+            "address": "Shop 45, 1st and 2nd Floor, Khan Market, Near Forest Essential, New Delhi, Delhi, 110003",
+            "tel": null,
+            "email": null,
+            "website": null,
+            "longitude": "77.22533",
+            "latitude": "28.600430000000099",
+            "e_lng": "77.225276000000093",
+            "e_lat": "28.6004830000001",
+            "brand_code": "0"
+        },
+        {
+            "distance": "3260",
+            "place_id": "CBME9Q",
+            "poi": "Market Cafe",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Khan Market",
+            "city": "New Delhi",
+            "subDistrict": "Chanakya Puri",
+            "district": "New Delhi District",
+            "state": "Delhi",
+            "poplrName": null,
+            "address": "Khan Market, New Delhi, Delhi, 110003",
+            "tel": null,
+            "email": null,
+            "website": null,
+            "longitude": "77.226467000000099",
+            "latitude": "28.599608",
+            "e_lng": "77.226524999999995",
+            "e_lat": "28.599535000000099",
+            "brand_code": "0"
+        },
+        {
+            "distance": "3982",
+            "place_id": "TEBF71",
+            "poi": "Cafe Coffee Day",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "CGO Complex",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": "CCD",
+            "address": "Shell Petrol Bunk, Bharat Petroleum Petrol Pump, Next To HUDCO, Lodhi Road, New Delhi, Delhi, 110003",
+            "tel": "+911132967812, +911164580769",
+            "email": null,
+            "website": "www.cafecoffeeday.com",
+            "longitude": "77.237439000000094",
+            "latitude": "28.592161000000001",
+            "e_lng": "77.237399999999994",
+            "e_lat": "28.592514000000101",
+            "brand_code": "0"
+        },
+        {
+            "distance": "4880",
+            "place_id": "671A2A",
+            "poi": "Cafe Coffee Day",
+            "subSubLocality": "",
+            "subLocality": "Mehar Chand Market",
+            "locality": "Lodhi Colony",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": "CCD",
+            "address": "Shop No-58, Ground Floor, Mehar Chand Market, Lodhi Road, New Delhi, Delhi, 110003",
+            "tel": "+911132212130, +911164580767",
+            "email": null,
+            "website": "www.cafecoffeeday.com",
+            "longitude": "77.226588000000007",
+            "latitude": "28.584963000000101",
+            "e_lng": "77.226509000000107",
+            "e_lat": "28.584954",
+            "brand_code": "0"
+        },
+        {
+            "distance": "5013",
+            "place_id": "K42JYV",
+            "poi": "Novelty Cafe",
+            "subSubLocality": "",
+            "subLocality": "Block I",
+            "locality": "Jangpura Extension",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": null,
+            "address": "43, Hawkers House, Birbal Road, Jangpura Extension, Jangpura, New Delhi, Delhi, 110014",
+            "tel": "+911124324168, +911124314168",
+            "email": null,
+            "website": null,
+            "longitude": "77.243730000000099",
+            "latitude": "28.583653000000002",
+            "e_lng": "77.243909000000002",
+            "e_lat": "28.583822000000101",
+            "brand_code": "0"
+        },
+        {
+            "distance": "6101",
+            "place_id": "2651B8",
+            "poi": "Brown Sugar",
+            "subSubLocality": "",
+            "subLocality": "Defence Colony Market",
+            "locality": "Defence Colony",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": null,
+            "address": "Shop No-36, 2nd Floor, Defence Colony Market, Defence Colony, New Delhi, Delhi, 110024",
+            "tel": "+911146568950, +911146568951",
+            "email": null,
+            "website": null,
+            "longitude": "77.230516000000094",
+            "latitude": "28.573687000000099",
+            "e_lng": "77.230703000000105",
+            "e_lat": "28.573706000000101",
+            "brand_code": "0"
+        },
+        {
+            "distance": "6132",
+            "place_id": "4S84S3",
+            "poi": "Barista",
+            "subSubLocality": "",
+            "subLocality": "Defence Colony Market",
+            "locality": "Defence Colony",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": null,
+            "address": "Shop No-15, Ground, 1st and 2nd Floor, Defence Colony Market, Defence Colony, New Delhi, Delhi, 110024",
+            "tel": "+911141552472",
+            "email": null,
+            "website": "www.barista.co.in",
+            "longitude": "77.230088000000094",
+            "latitude": "28.573443000000101",
+            "e_lng": "77.230148999999997",
+            "e_lat": "28.573461000000101",
+            "brand_code": "0"
+        },
+        {
+            "distance": "6339",
+            "place_id": "5ZLODU",
+            "poi": "Cafe Coffee Day",
+            "subSubLocality": "",
+            "subLocality": "Block C",
+            "locality": "Lajpat Nagar 2",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": "CCD",
+            "address": "55-56, Ground Floor, Central Market Lajpat Nagar - 2, Near Axis Bank, New Delhi, Delhi, 110024",
+            "tel": null,
+            "email": null,
+            "website": null,
+            "longitude": "77.238290000000106",
+            "latitude": "28.571458000000099",
+            "e_lng": "77.238253",
+            "e_lat": "28.571368000000099",
+            "brand_code": "0"
+        },
+        {
+            "distance": "6534",
+            "place_id": "TSFBC6",
+            "poi": "Cafe Coffee Day",
+            "subSubLocality": "",
+            "subLocality": "Block A",
+            "locality": "Lajpat Nagar 2",
+            "city": "New Delhi",
+            "subDistrict": "Defence Colony",
+            "district": "South East Delhi District",
+            "state": "Delhi",
+            "poplrName": "CCD",
+            "address": "A-10, 1st Floor, Lajpat Nagar 2, New Delhi, Delhi, 110024",
+            "tel": "+911126463858, +911132483408, +911164638586",
+            "email": null,
+            "website": "www.cafecoffeeday.com",
+            "longitude": "77.238612000000003",
+            "latitude": "28.569762000000001",
+            "e_lng": "77.238592999999995",
+            "e_lat": "28.569714000000001",
+            "brand_code": "0"
+        }
+    ]
 }
 ```
 For any queries and support, please contact: 
 
-![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+[<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
-![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
-[Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
-Ask a question under the mapmyindia-api
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-![](https://www.mapmyindia.com/api/img/icons/blog.png)
-[Blog](http://www.mapmyindia.com/blog/)
-Read about the latest updates & customer stories
+<br></br>
+<br></br>
+
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
-> © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
-> mapbox-gl-native copyright (c) 2014-2019 Mapbox.
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
+
+[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/MapmyIndia)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/MapmyIndia)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mapmyindia)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/user/MapmyIndia/)
+
+
+
+
+<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+
+<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>
 
 
 
