@@ -1,5 +1,14 @@
 ![MapmyIndia APIs](https://www.mapmyindia.com/api/img/mapmyindia-api.png)
 
+# Route Optimization API
+
+**Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
+
+Powered with India's most comprehensive and robust mapping functionalities.
+**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+
+You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+
 ## Document Version History
 
 | Version | Last Updated | Author |
@@ -22,9 +31,6 @@
 2. This API provides synchronous route optimization solution to simple TSP. Hence the response time of this API depends on the route complexity and the level of optimization required to process a complex and long route.
 3. MapmyIndia reserves the right to revoke access of this API at its own discrection.
 
-
-
-# Route Optimization API
 
 ## Introduction
 
