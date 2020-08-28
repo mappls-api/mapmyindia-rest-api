@@ -42,7 +42,7 @@ Supported region (countries) are India, Sri Lanka, Nepal, Bangladesh & Bhutan. P
 ## Input Method
 GET
 
-## Contructing the request URL
+## Constructing the request URL
 
 <div class="tablenoborder">
 	<table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">

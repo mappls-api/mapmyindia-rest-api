@@ -36,6 +36,9 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 Route Optimization is the process of determining the most cost-efficient route. It needs to include all relevant factors such as the number and location of all the required stops on the route. In other words, this API will solve the Traveling Salesman Problem of routing and the returned path does not have to be the fastest path. As TSP is NP-hard it only returns an approximation.
 
+## Live Demo
+
+[Click Here](https://www.mapmyindia.com/api/advanced-maps/doc/sample/RouteOptimization/mapmyindia-vector-maps-route_optimization.php)
 
 
 ## General Information
@@ -60,7 +63,7 @@ This APIs follow static API key based security.
 ## Input Method
 GET
 
-## Contructing the request URL
+## Constructing the request URL
 
 <div class="tablenoborder">
 	<table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
@@ -395,9 +398,7 @@ JSON
 }
 ```
 
-## Live Demo
 
-[Click Here]()
 
 
 For any queries and support, please contact: 
