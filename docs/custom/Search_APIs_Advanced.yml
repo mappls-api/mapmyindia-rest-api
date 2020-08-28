@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Search APIs
-  description: "The MapmyIndia Search APIs unlocks the Search capabilities of MapmyIndia services to provide developers location based applications. It helps users discover our maps with rich location data point of interest for over 50 million places."
+  description: "MapmyIndia Search APIs unleashes the full potential Search capabilities of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations."
   termsOfService: 'http://www.mapmyindia.com/about/terms-conditions'
   version: 1.0.0
   license:
@@ -19,7 +19,9 @@ paths:
       get:
         tags:
           - eLoc API
-        description: 'MapmyIndia eloc is a simple, standardized and precise pan-India digital address system. Every location has been assigned a unique digital address or an eLoc. The eLoc API can be used to extract the details of a place with the help of its eLoc i.e. a 6 digit code or a place_id.'
+        description: >-
+          MapmyIndia eloc is a simple, standardized and precise pan-India digital address system. Every location has been assigned a unique digital address or an eLoc. The eLoc API can be used to extract the details of a place with the help of its eLoc i.e. a 6 digit code or a place_id.
+          <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-place-details-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-place-details-api-example">Download Sample Code</a> </p>
         summary: This API returns the POI of the lat lng entered by you.
         operationId: eLocAPI
         parameters:
@@ -28,21 +30,18 @@ paths:
             description: 'Six or Eight Digit unique code.'
             allowEmptyValue: false
             required: true
-            schema:
-              type: string
+            example: "MMI000"
           - name: REST_KEY
             in: path
             description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
             allowEmptyValue: false
             required: true
-            schema:
-              type: string
+            example: "threstapikeywillcomeheretoaccess"
           - name: region
             in: query
             description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
             allowEmptyValue: false
-            schema:
-              type: string
+            example: "IND"
         responses:
           '200':
             description: OK
@@ -67,7 +66,9 @@ paths:
       get:
         tags:
           - Reverse Geocode API
-        description: 'Reverse Geocoding is a process to give the closest matching address to a provided geographical coordinates (latitude/longitude). MapmyIndia reverse geocoding API provides real addresses along with nearest popular landmark for any such geo-positions on the map.'
+        description: >-
+          Reverse Geocoding is a process to give the closest matching address to a provided geographical coordinates (latitude/longitude). MapmyIndia reverse geocoding API provides real addresses along with nearest popular landmark for any such geo-positions on the map. This API also works in Hindi language response.
+          <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-reverse-geocoding-rest-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-reverse-geocoding-rest-api-example">Download Sample Code</a> </p>
         summary: This API returns the POI of the lat lng entered by you.
         operationId: ReverseGeocodeAPI
         parameters:
@@ -77,37 +78,28 @@ paths:
             allowEmptyValue: false
             required: true
             example: '28.569548'
-            schema:
-              type: string
           - name: lng
             in: query
             description: 'The longitude of the location'
             allowEmptyValue: false
             required: true
             example: '77.856954'
-            schema:
-              type: string
           - name: REST_KEY
             in: path
             description: 'The rest key allocated to your account.'
             allowEmptyValue: false
             required: true
-            schema:
-              type: string
+            example: "threstapikeywillcomeheretoaccess"
           - name: region
             in: query
             description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
             allowEmptyValue: false
             example: 'IND'
-            schema:
-              type: string
           - name: lang
             in: query
             description: 'This parameter accepts the "hi" (ISO 639-1 Language Code for Hindi) as a value.'
             allowEmptyValue: false
             example: 'hi'
-            schema:
-              type: string
         responses:
           '200':
             description: OK

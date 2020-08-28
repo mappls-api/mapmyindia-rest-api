@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Search APIs
-  description: "The MapmyIndia Search APIs unlocks the Search capabilities of MapmyIndia services to provide developers location based applications. It helps users discover our maps with rich location data point of interest for over 50 million places."
+  description: "MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations."
   termsOfService: 'http://www.mapmyindia.com/about/terms-conditions'
   version: 1.0.0
   license:
@@ -18,9 +18,11 @@ paths:
   /api/places/search/json:
     get:
       tags: 
-        - Auto Suggest API
-      description: 'Autosuggest is an API that returns information about a set of places based on a string. This API works as a type as you go search.'
-      summary: 'Returns the list of the suggested locations on the basis of the query passed which can be a string or a category code.'
+        - Autosuggest API
+      description: >-
+        The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports Hindi language. If a user enters query in hindi language he will get results in Hindi.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-auto-suggest-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-auto-suggest-api-example">Download Sample Code</a> </p>
+      summary: 'helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app.'
       operationId: AutoSuggestAPI
       parameters:
         - name: query
@@ -28,18 +30,16 @@ paths:
           description: 'Enter the query on which the search has to be done.'
           required: true
           allowEmptyValue: false
-          schema: 
-            type: string
         - name: location
           in: query
-          description: 'Enter the latitude & longitude in the form of comma separated.'
+          description: 'Location is required to get location biased autosuggest results.'
           required: false
           allowEmptyValue: false
-          schema:
-            type: string
+          example: "28.454,77.435"
         - name: region
           in: query
           description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND).'
+          example: "IND"
           required: false
           allowEmptyValue: false
           schema:
@@ -48,9 +48,8 @@ paths:
           in: query
           description: 'It is the valueless parameter provides the different address attributes in a structured object.'
           required: false
+          nullable: true
           allowEmptyValue: true
-          schema:
-            type: string       
         - name: pod
           in: query
           description: 'It takes in the place type code which helps in restricting the results to certain chosen type.<br>
@@ -64,23 +63,19 @@ paths:
             <li>STATE: State
             <li>SSLC: Subsublocality'
           required: false
+          example: "CITY"
           allowEmptyValue: false
-          schema:
-            type: string
         - name: filter
           in: query
           description: 'This parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.), below mentioned are the both types:<br><ul><li>filter = pin:It takes pincode/postal code of an area{e.g. filter=pin:110055}<li>filter = bounds lat1,lng1;lat2,lng2(latitude,longitude){e.g. filter=bounds 28.598882, 77.212407; 28.467375, 77.353513}<li>filter = cop {eloc} (string) {e.g. filter=cop:YMCZ0J}</ul>'
           required: false
+          example: "pin:110001"
           allowEmptyValue: false
-          schema:
-            type: string
         - name: bridge
           in: query
           description: '(Valueless)It initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object.'
           required: false
           allowEmptyValue: true
-          schema:
-            type: string
       responses:
         '200':
           description: OK
@@ -105,26 +100,24 @@ paths:
     get:
       tags:
         - Geocoding API
-      description: 'This api returns the latitude & longitude of the searched string.'
-      summary: 'This api returns the admin details along with address and latitude longitude of the searched string.'
+      description: >-
+        All mapping APIs that are used in mobile or web apps need some geo-position coordinates to refer to any given point on the map. Our Geocoding API converts real addresses into these geographic coordinates (latitude/longitude) to be placed on a map, be it for any street, area, postal code, POI or a house number etc.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-atlas-geocoding-rest-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-geocoding-rest-api-example">Download Sample Code</a> </p>
+      summary: 'converts full human readable addresess to geo-tagged locations on the map'
       operationId: AtlasGeocodeAPI
       parameters:
         - name: address
           in: query
-          description: 'Enter the address to be geocoded.'
+          description: 'address to be geocoded'
           required: true
           allowEmptyValue: false
           example: '237 Okhla industrial estate phase 3 new delhi, delhi 110020'
-          schema: 
-            type: string
         - name: itemCount
           in: query
           description: 'parameter can be set to get maximum number of result items from the API (default: 1).'
           required: false
           allowEmptyValue: false
           example: '1'
-          schema:
-            type: string
         - name: bias
           in: query
           description: 'This parameter can be used to set Urban or Rural bias. A positive value sets the Urban bias and a negative value sets Rural bias. Allowed values are:<br><ul>
@@ -134,8 +127,6 @@ paths:
           required: false
           allowEmptyValue: false
           example: '0'
-          schema:
-            type: integer
         - name: podFilter
           in: query
           description: 'This parameter can be used to set admin level restriction. The result will be either the given admin level or equivalent admin or higher in the hierarchy. No lower admin will be considered for geocoding.<br> Allowed values are:<br>
@@ -152,13 +143,10 @@ paths:
           <li>`dist` : district
           <li>`pincode` :pincode
           <li>`state` : state'
-          schema:
-            type: string
         - name: bound
           in: query
           description: 'This parameter can be used to set admin boundary, which means geocoding will be done within the given admin. The allowed admin bounds are **Sub-District**, **District**, **City**, **State** and **Pincode**. The parameter accepts the admin eLoc as value.<br><br>**Note:** Please note that `podFilter` & `bound` parameters are mutually exclusive. They cannot be used together in an API call.'
-          schema:
-            type: string
+          example: "TAVI5S"
       responses:
         '200':
           description: OK
@@ -183,8 +171,10 @@ paths:
     get:
       tags:
         - Nearby API
-      description: 'Nearby Places API, enables you to add discovery and search of nearby POIs by searching for a generic keyword used to describe a category of places or via the unique code assigned to that category.'
-      summary: This API returns the nearby POI of the Category Code entered by you.
+      description: >-
+        Nearby Places API, enables you to add discovery and search of nearby POIs by searching for a generic keyword used to describe a category of places or via the unique code assigned to that category.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-near-by-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-near-by-api-example">Download Sample Code</a> </p>
+      summary: enables you to add discovery and search of nearby POIs.
       operationId: AtlasNearbyAPI
       parameters:
         - name: keywords
@@ -192,59 +182,50 @@ paths:
           description: 'Enter the query on which the search has to be done.<br><h3>Operators in `Keywords` parameter</h3><h4>To send multiple keywords in a request, we’ve defined a couple of operators that can help the developers wrap their applications around this functionality. Below are the operators:<ol><li>The “ ; ” Operator: This operator is an “or” operator. Defining multiple keywords separated with a “ ; ” would provide results that satisfies either of the keywords.<li>The “ $ ” Operator: This operator is a “and” operator. Defining multiple keywords separated with a “ $ ” would provide results that satisfy all the provided keywords. (default).</ol><br>To use these operators, simple just send in the keywords parameter like below:<br>`&keywords=coffee ; tea $ sea food ; alcohol`<br>The above nearby search would yield in results that either provide coffee or tea but must provide either sea food or alcohol.<br>**Please Note**: the spacing in the above example is of no relevance to the search result. It’s just there to provide better understanding.'
           required: true
           allowEmptyValue: false
-          schema: 
-            type: string
+          example: "FODCOF"
         - name: refLocation
           in: query
           description: 'Provides the location around which the search will be performed. e.g. `refLocation=28.454,77.435`'
+          example: "28.454,77.435"
           required: true
           allowEmptyValue: false
-          schema: 
-            type: string
         - name: page
           in: query
           description: 'provides number of the page to provide results from.'
           required: false
           allowEmptyValue: false
-          schema: 
-            type: integer
+          example: "1"
         - name: region
           in: query
           description: 'it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
           allowEmptyValue: false
           required: false
-          schema:
-            type: string
+          example: "IND"
         - name: radius
           in: query
           description: 'Provides the range of distance to search over (default 1000, min, 500, max, 10000)'
           allowEmptyValue: false
-          schema:
-            type: integer
+          example: "10000"
         - name: bounds
           in: query
-          description: '(x1,y1;x2,y2) Allows the developer to send in map bounds to provide a nearby search of the geobounds. where x1,y1 are the lat lng of the bound'
+          description: '(x1,y1;x2,y2) Allows the developer to send in map bounds to provide a nearby search of the geobounds. where x1,y1 are the lat lng of the bound. The bounds are set from topLeft to bottomRight (North-West to South-East).'
           allowEmptyValue: false
-          schema:
-            type: string
+          example: "28.639256,77.211133;28.625214,77.237483"
         - name: filter
           in: query
           description: 'It uses key:value pair(s) to fine tune discovery of places by filtering the results. e.g. categoryCode:FODCOF <br><ul><li>valid IDs for key value pairs are:<ul><li>`categoryCode`: can take in category codes as input'
           allowEmptyValue: false
-          schema:
-            type: string
+          example: "categoryCode:FODCOF"
         - name: sortBy
           in: query
           description: 'Provides configured sorting operations for the client on cloud. Below are the available sorts:<br><ul><li>`dist:asc & dist:desc` - will sort data in order of distance from the passed location (default).<li>`name:asc & name:desc` - will sort the data on alphabetically bases.<li>`imp` - will sort data in order of decreasing prominence of the place.'
           allowEmptyValue: false
-          schema:
-            type: string
+          example: "dist:asc"
         - name: searchBy
           in: query
           description: 'provides configurable search operations for the client on cloud. Below are the available sorts:<br><ul><li>`dist`(default) - will sort data in order of distance from the passed location (default).<li>`imp` - will search data in order of prominence of the place.'
           allowEmptyValue: false
-          schema:
-            type: string
+          example: "dist"
       responses:
         '200':
           description: OK
@@ -269,7 +250,9 @@ paths:
       get:
         tags:
           - Text Search API
-        description: 'Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request.'
+        description: >-
+          Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request. This API now supports Hindi language so you can now search queries in Hindi too.
+          <p style=text-align:right><strong><a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-textsearch-api">Download Sample Code</a> </p>
         summary: This API returns the POI of the text entered by you.
         operationId: AtlasTextSearchAPI
         parameters:
@@ -278,30 +261,22 @@ paths:
             description: 'e.g. FODCOF, Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130 {POI, House Number, keyword, tag}'
             allowEmptyValue: false
             required: true
-            example: FODCOF
-            schema:
-              type: string
+            example: "Where is Lajpat Nagar"
           - name: region
             in: query
             description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
             allowEmptyValue: false
             example: 'IND'
-            schema:
-              type: string
           - name: location
             in: query
             description: 'Provides the location around which the search will be performed. e.g. `location=28.454,77.435` It is STRONGLY RECOMMENDED to use this parameter for accurate location biased results.'
             allowEmptyValue: false
             example: '28.454,77.435'
-            schema:
-              type: string
           - name: filter
             in: query
             description: 'Filter parameter helps you restrict the result by mentioning pincode. e.g. `filter=pin:110020`'
             allowEmptyValue: false
             example: 'pin:110020'
-            schema:
-              type: string
         responses:
           '200':
             description: OK
@@ -326,24 +301,23 @@ paths:
       get:
         tags:
           - Address Standardization API
-        description: 'Address Standardization API is a process to convert the non formatted address into the user readable format by omitting unnecessary information in the address. MapmyIndia address standardization API provides real addresses along with admin and other information.'
+        description: >-
+          Address Standardization API is a process to convert the non formatted address into the user readable format by omitting unnecessary information in the address. MapmyIndia address standardization API provides real addresses along with admin and other information.
+          <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/woodpecker_demo/">Live Demo</a> </p>
         summary: This API returns the structured address entered by you.
         operationId: WoodpeckerAPI
         parameters:
           - name: address
             in: query
-            description: 'e.g. 237 Okhla industrial estate phase 3 new Delhi, Delhi 110020'
+            description: 'The full human readable address that needs to be standardized'
             allowEmptyValue: false
             required: true
             example: '237 Okhla industrial estate phase 3 new Delhi, Delhi 110020'
-            schema:
-              type: string
           - name: bias
             in: query
             description: 'parameter value can be set to get the bias result towards the urban or rural side. (Default is 1.5 : urban). Where 1 is neutral and < 1 is rural biased and > 1 is Urban biased.'
             allowEmptyValue: false
-            schema:
-              type: string
+            example: "1.5"
         responses:
           '200':
             description: OK
