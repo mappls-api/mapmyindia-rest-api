@@ -1,0 +1,1164 @@
+openapi: 3.0.3
+info:
+  title: Search APIs
+  description: "The MapmyIndia Search APIs unlocks the Search capabilities of MapmyIndia services to provide developers location based applications. It helps users discover our maps with rich location data point of interest for over 50 million places."
+  termsOfService: 'http://www.mapmyindia.com/about/terms-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://atlas.mapmyindia.com
+    description: 'Live Prod server for Atlas APIs'
+paths:
+  /api/places/search/json:
+    get:
+      tags: 
+        - Auto Suggest API
+      description: 'Autosuggest is an API that returns information about a set of places based on a string. This API works as a type as you go search.'
+      summary: 'Returns the list of the suggested locations on the basis of the query passed which can be a string or a category code.'
+      operationId: AutoSuggestAPI
+      parameters:
+        - name: query
+          in: query
+          description: 'Enter the query on which the search has to be done.'
+          required: true
+          allowEmptyValue: false
+          schema: 
+            type: string
+        - name: location
+          in: query
+          description: 'Enter the latitude & longitude in the form of comma separated.'
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: region
+          in: query
+          description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND).'
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: tokenizeAddress
+          in: query
+          description: 'It is the valueless parameter provides the different address attributes in a structured object.'
+          required: false
+          allowEmptyValue: true
+          schema:
+            type: string       
+        - name: pod
+          in: query
+          description: 'It takes in the place type code which helps in restricting the results to certain chosen type.<br>
+            Below mentioned are the codes for the pod:<br><ul>
+            <li>SLC: Sublocality
+            <li>LC: Locality
+            <li>CITY: City
+            <li>VLG: Village
+            <li>SDIST: Subdistrict
+            <li>DIST: District
+            <li>STATE: State
+            <li>SSLC: Subsublocality'
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'This parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.), below mentioned are the both types:<br><ul><li>filter = pin:It takes pincode/postal code of an area{e.g. filter=pin:110055}<li>filter = bounds lat1,lng1;lat2,lng2(latitude,longitude){e.g. filter=bounds 28.598882, 77.212407; 28.467375, 77.353513}<li>filter = cop {eloc} (string) {e.g. filter=cop:YMCZ0J}</ul>'
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: bridge
+          in: query
+          description: '(Valueless)It initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object.'
+          required: false
+          allowEmptyValue: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutosuggestAPIResults'
+        '204':
+          description: Not found
+        '400':
+          description: Bad request
+        '401':
+          description: API access denied
+        '403':
+          description: Forbidden
+        '500':
+          description: Something went wrong
+        '503':
+          description: Internal server error
+      deprecated: false
+  /api/places/geocode:
+    get:
+      tags:
+        - Geocoding API
+      description: 'This api returns the latitude & longitude of the searched string.'
+      summary: 'This api returns the admin details along with address and latitude longitude of the searched string.'
+      operationId: AtlasGeocodeAPI
+      parameters:
+        - name: address
+          in: query
+          description: 'Enter the address to be geocoded.'
+          required: true
+          allowEmptyValue: false
+          example: '237 Okhla industrial estate phase 3 new delhi, delhi 110020'
+          schema: 
+            type: string
+        - name: itemCount
+          in: query
+          description: 'parameter can be set to get maximum number of result items from the API (default: 1).'
+          required: false
+          allowEmptyValue: false
+          example: '1'
+          schema:
+            type: string
+        - name: bias
+          in: query
+          description: 'This parameter can be used to set Urban or Rural bias. A positive value sets the Urban bias and a negative value sets Rural bias. Allowed values are:<br><ul>
+          <li>`0` : Default: (No bias)
+          <li>`-1` : Rural
+          <li>`1` : Urban</ul>'
+          required: false
+          allowEmptyValue: false
+          example: '0'
+          schema:
+            type: integer
+        - name: podFilter
+          in: query
+          description: 'This parameter can be used to set admin level restriction. The result will be either the given admin level or equivalent admin or higher in the hierarchy. No lower admin will be considered for geocoding.<br> Allowed values are:<br>
+          <li>`hno` : house number
+          <li>`hna` : house name
+          <li>`poi` : point of interest
+          <li>`street` : street
+          <li>`sslc` : sub sub locality
+          <li>`village` : village
+          <li>`slc` : sub locality
+          <li>`sdist` : sub district
+          <li>`loc` : locality
+          <li>`city` : city
+          <li>`dist` : district
+          <li>`pincode` :pincode
+          <li>`state` : state'
+          schema:
+            type: string
+        - name: bound
+          in: query
+          description: 'This parameter can be used to set admin boundary, which means geocoding will be done within the given admin. The allowed admin bounds are **Sub-District**, **District**, **City**, **State** and **Pincode**. The parameter accepts the admin eLoc as value.<br><br>**Note:** Please note that `podFilter` & `bound` parameters are mutually exclusive. They cannot be used together in an API call.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/geocodeResults'
+        '204':
+          description: Not found
+        '400':
+          description: Bad request
+        '401':
+          description: API access denied
+        '403':
+          description: Forbidden
+        '500':
+          description: Something went wrong
+        '503':
+          description: Internal server error
+      deprecated: false
+  /api/places/nearby/json:
+    get:
+      tags:
+        - Nearby API
+      description: 'Nearby Places API, enables you to add discovery and search of nearby POIs by searching for a generic keyword used to describe a category of places or via the unique code assigned to that category.'
+      summary: This API returns the nearby POI of the Category Code entered by you.
+      operationId: AtlasNearbyAPI
+      parameters:
+        - name: keywords
+          in: query
+          description: 'Enter the query on which the search has to be done.<br><h3>Operators in `Keywords` parameter</h3><h4>To send multiple keywords in a request, we’ve defined a couple of operators that can help the developers wrap their applications around this functionality. Below are the operators:<ol><li>The “ ; ” Operator: This operator is an “or” operator. Defining multiple keywords separated with a “ ; ” would provide results that satisfies either of the keywords.<li>The “ $ ” Operator: This operator is a “and” operator. Defining multiple keywords separated with a “ $ ” would provide results that satisfy all the provided keywords. (default).</ol><br>To use these operators, simple just send in the keywords parameter like below:<br>`&keywords=coffee ; tea $ sea food ; alcohol`<br>The above nearby search would yield in results that either provide coffee or tea but must provide either sea food or alcohol.<br>**Please Note**: the spacing in the above example is of no relevance to the search result. It’s just there to provide better understanding.'
+          required: true
+          allowEmptyValue: false
+          schema: 
+            type: string
+        - name: refLocation
+          in: query
+          description: 'Provides the location around which the search will be performed. e.g. `refLocation=28.454,77.435`'
+          required: true
+          allowEmptyValue: false
+          schema: 
+            type: string
+        - name: page
+          in: query
+          description: 'provides number of the page to provide results from.'
+          required: false
+          allowEmptyValue: false
+          schema: 
+            type: integer
+        - name: region
+          in: query
+          description: 'it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
+          allowEmptyValue: false
+          required: false
+          schema:
+            type: string
+        - name: radius
+          in: query
+          description: 'Provides the range of distance to search over (default 1000, min, 500, max, 10000)'
+          allowEmptyValue: false
+          schema:
+            type: integer
+        - name: bounds
+          in: query
+          description: '(x1,y1;x2,y2) Allows the developer to send in map bounds to provide a nearby search of the geobounds. where x1,y1 are the lat lng of the bound'
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'It uses key:value pair(s) to fine tune discovery of places by filtering the results. e.g. categoryCode:FODCOF <br><ul><li>valid IDs for key value pairs are:<ul><li>`categoryCode`: can take in category codes as input'
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          description: 'Provides configured sorting operations for the client on cloud. Below are the available sorts:<br><ul><li>`dist:asc & dist:desc` - will sort data in order of distance from the passed location (default).<li>`name:asc & name:desc` - will sort the data on alphabetically bases.<li>`imp` - will sort data in order of decreasing prominence of the place.'
+          allowEmptyValue: false
+          schema:
+            type: string
+        - name: searchBy
+          in: query
+          description: 'provides configurable search operations for the client on cloud. Below are the available sorts:<br><ul><li>`dist`(default) - will sort data in order of distance from the passed location (default).<li>`imp` - will search data in order of prominence of the place.'
+          allowEmptyValue: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/nearbyResults'
+        '204':
+          description: Not found
+        '400':
+          description: Bad request
+        '401':
+          description: API access denied
+        '403':
+          description: Forbidden
+        '500':
+          description: Something went wrong
+        '503':
+          description: Internal server error
+      deprecated: false
+  /api/places/textsearch/json:
+      get:
+        tags:
+          - Text Search API
+        description: 'Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request.'
+        summary: This API returns the POI of the text entered by you.
+        operationId: AtlasTextSearchAPI
+        parameters:
+          - name: query
+            in: query
+            description: 'e.g. FODCOF, Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130 {POI, House Number, keyword, tag}'
+            allowEmptyValue: false
+            required: true
+            example: FODCOF
+            schema:
+              type: string
+          - name: region
+            in: query
+            description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
+            allowEmptyValue: false
+            example: 'IND'
+            schema:
+              type: string
+          - name: location
+            in: query
+            description: 'Provides the location around which the search will be performed. e.g. `location=28.454,77.435` It is STRONGLY RECOMMENDED to use this parameter for accurate location biased results.'
+            allowEmptyValue: false
+            example: '28.454,77.435'
+            schema:
+              type: string
+          - name: filter
+            in: query
+            description: 'Filter parameter helps you restrict the result by mentioning pincode. e.g. `filter=pin:110020`'
+            allowEmptyValue: false
+            example: 'pin:110020'
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/TextSearchAPIResults'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false
+  /api/places/woodpecker:
+      get:
+        tags:
+          - Address Standardization API
+        description: 'Address Standardization API is a process to convert the non formatted address into the user readable format by omitting unnecessary information in the address. MapmyIndia address standardization API provides real addresses along with admin and other information.'
+        summary: This API returns the structured address entered by you.
+        operationId: WoodpeckerAPI
+        parameters:
+          - name: address
+            in: query
+            description: 'e.g. 237 Okhla industrial estate phase 3 new Delhi, Delhi 110020'
+            allowEmptyValue: false
+            required: true
+            example: '237 Okhla industrial estate phase 3 new Delhi, Delhi 110020'
+            schema:
+              type: string
+          - name: bias
+            in: query
+            description: 'parameter value can be set to get the bias result towards the urban or rural side. (Default is 1.5 : urban). Where 1 is neutral and < 1 is rural biased and > 1 is Urban biased.'
+            allowEmptyValue: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/WoodpeckerResults'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false
+components:
+  schemas:
+    AutosuggestAPIResults:
+      title: Autosuggest Results
+      description: The result object which contains the Autosuggest API results.
+      type: object
+      required:
+        - suggestedLocations
+        - userAddedLocation
+        - suggestedSearches
+      properties:
+        suggestedLocations:
+          type: array
+          items: 
+            $ref: '#/components/schemas/AS1'
+        userAddedLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/AS2'
+        suggestedSearches:
+          type: array
+          items:
+            $ref: '#/components/schemas/AS3'
+    AS1:
+      title: Suggested Location
+      type: object
+      required:
+        - type
+        - typeX
+        - placeAddress
+        - latitude
+        - longitude
+        - eLoc
+        - entryLatitude
+        - entryLongitude
+        - placeName
+        - alternateName
+        - keywords
+        - p
+        - distance
+        - orderIndex
+        - score
+        - suggester
+        - addressTokens
+        - richInfo
+      properties:
+        type:
+          type: string
+          description: 'This is the type whether the results is POI or any building point.'
+          format: string
+          example: 'POI'
+        typeX:
+          type: integer
+          description: 'Type attribute for internal use only for MapmyIndia.'
+          format: integer
+          example: 7
+        placeAddress:
+          type: string
+          description: 'Address of the location.'
+          format: string
+          example: 'Yippee Rooms, Sector 56, Gurugram, Haryana, 122011'
+        latitude:
+          type: number
+          description: 'It shows us the latitude of the location searched.'
+          format: double
+          example: 28.4263350000001
+        longitude:
+          type: number
+          description: 'It shows us the longitude of the location searched.'
+          format: double
+          example: 77.092001
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: '2LH9OC'
+        entryLatitude:
+          type: number
+          description: 'It shows us the entry latitude of the location searched.'
+          format: double
+          example: 28.426407
+        entryLongitude:
+          type: number
+          description: 'It shows us the entry longitude of the location searched.'
+          format: double
+          example: 77.092232
+        placeName:
+          type: string
+          description: This shows the name of the POI
+          format: string
+          example: 'OYO Hotel'
+        alternateName: 
+          type: string
+          description: 'This shows the alternate name of the POI'
+          format: string
+          example: 'OyoRooms,OYO 40400 Yippe Rooms,OYO Rooms Hotel'
+        keywords:
+          type: array
+          description: 'The keywords/category codes associated with the given result.'
+          items:
+            $ref: '#/components/schemas/NB4'
+        addressTokens:
+          $ref: '#/components/schemas/NB3'
+        p:
+          type: integer
+          description: 'This shows the priority of the POI'
+          format: integer
+          example: 11663
+        orderIndex:
+          type: integer
+          description: 'This shows the order of the search results priority wise.'
+          format: integer
+          example: 1
+        score:
+          type: number
+          description: 'This shows the score of the POI.'
+          format: integer
+          example: 1.5075794782130676
+        suggester:
+          type: string
+          description: 'This shows on which basis the search results has been found.'
+          format: string
+          example: 'alternateName'
+        richInfo:
+          type: array
+          description: This shows the rich info associated with the given result.
+          items:
+            type: object
+          format: array of strings
+          example: ''
+    NB3:
+      title: tokenizeAddress
+      description: It shows the admin details along with the house address.
+      type: object
+      required:
+        - district
+        - city
+        - state
+      properties:
+        houseNumber:
+          type: string
+          description: House Number of the POI.
+          format: string
+          example: '237'
+        houseName:
+          type: string
+          description: House Name of the POI.
+          format: string
+          example: 'MMI Building'
+        poi:
+          type: string
+          description: Name of the POI.
+          format: string
+          example: 'MapmyIndia Head Office'
+        street:
+          type: string
+          description: Name of the street.
+          format: string
+          example: ''
+        subSubLocality:
+          type: string
+          description: Name of the subsublocality.
+          format: string
+          example: ''
+        subLocality:
+          type: string
+          description: Name of the sublocality.
+          format: string
+          example: ''
+        locality:
+          type: string
+          description: Name of the locality.
+          format: string
+          example: 'Okhla industrial phase 3'
+        village:
+          type: string
+          description: Name of the village.
+          format: string
+          example: 'Okhla Vilage'
+        subDistrict:
+          type: string
+          description: Name of the subDistrict.
+          format: string
+          example: ''
+        district:
+          type: string
+          description: Name of the District.
+          format: string
+          example: 'South Delhi'
+        city:
+          type: string
+          description: Name of the city.
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: Name of the STATE.
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: PINcode of the location.
+          format: string
+          example: '110010'
+    AS2:
+      title: User Added Location
+      description: 'The result object which contains the user added POI results.'
+      type: object
+      required:
+        - eLoc
+        - entryLatitude
+        - entryLongitude
+        - latitude
+        - longitude
+        - orderIndex
+        - placeAddress
+        - placeName
+        - resultType
+        - type
+        - userName
+      properties:
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: '2LH9OC'
+        entryLatitude:
+          type: number
+          format: double
+          example: 28.631708
+          description: 'latitude of the entrance of the location.'
+        entryLongitude:
+          type: number
+          format: double
+          example: 77.631708
+          description: 'longitude of the entrance of the location.'
+        latitude:
+          type: number
+          description: 'It shows us the latitude of the location searched.'
+          format: double
+          example: '28.4263350000001'
+        longitude:
+          type: number
+          description: 'It shows us the longitude of the location searched.'
+          format: double
+          example: 77.092001
+        orderIndex:
+          type: integer
+          description: 'This shows the order of the search results priority wise.'
+          format: integer
+          example: 1
+        placeAddress:
+          type: string
+          description: 'This is the address of the text searched by you.'
+          format: string
+          example: 'Yippee Rooms, Sector 56, Gurugram, Haryana, 122011'
+        placeName:
+          type: string
+          description: 'This shows the name of the POI.'
+          format: string
+          example: OYO Hotel
+        resultType:
+          type: string
+          description: 'It Shows the the category of result falling into. For eg. UAP'
+          format: string
+          example: UAP
+        type: 
+          type: string
+          format: string
+          example: ''
+        userName: 
+          type: string
+          description: 'It shows the UserID of the person who added the location.'
+          format: string
+          example: usr1577100139i799918080
+    AS3:
+      title: Suggested Search
+      description: 'The result object which contains the Auto Suggest API Suggested results shows.'
+      type: object
+      required:
+        - keyword
+        - identifier
+        - location
+        - hyperlink
+        - orderIndex
+        - eLoc
+      properties:
+        keyword:
+          type: string
+          description: 'It shows the result keyword'
+          format: string
+          example: 'corona testing lab'
+        identifier:
+          type: string
+          description: 'on what basis the results shown'
+          format: string
+          example: 'near'
+        location: 
+          type: string
+          description: 'location near the results are shown'
+          format: string
+          example: 'me'
+        hyperlink:
+          type: string
+          description: 'direct link of the poi.'
+          format: string
+          example: 'https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&username=atlasuser&refLocation=28.550592,77.26877&keywords=hsptst'
+        orderIndex:
+          type: integer
+          description: 'This shows the order of the search results priority wise.'
+          format: integer
+          example: 0
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: 'null'
+    geocodeResults:
+      title: Geocode Results
+      description: The result object which contains the Geocode API results.
+      type: object
+      required:
+        - copResults
+      properties:
+        copResults:
+          $ref: '#/components/schemas/GC1'
+    GC1:
+      title: copResult
+      description: This shows the array of results when the itemcount is more than 1.
+      type: object
+      required:
+        - district
+        - city
+        - state
+        - formattedAddress
+        - eLoc
+        - latitude
+        - longitude
+        - geocodeLevel
+        - confidenceScore
+      properties:
+        houseNumber:
+          type: string
+          description: 'House Number of the POI.'
+          format: string
+          example: '237'
+        houseName:
+          type: string
+          description: 'House Name of the POI.'
+          format: string
+          example: 'MMI Building'
+        poi:
+          type: string
+          description: 'Name of the POI.'
+          format: string
+          example: 'MapmyIndia Head Office'
+        street:
+          type: string
+          description: 'Name of the street.'
+          format: string
+          example: ''
+        subSubLocality:
+          type: string
+          description: 'Name of the subsublocality.'
+          format: string
+          example: ''
+        subLocality:
+          type: string
+          description: 'Name of the sublocality.'
+          format: string
+          example: ''
+        locality:
+          type: string
+          description: 'Name of the locality.'
+          format: string
+          example: 'Okhla industrial phase 3'
+        village:
+          type: string
+          description: 'Name of the village.'
+          format: string
+          example: 'Okhla Vilage'
+        subDistrict:
+          type: string
+          description: 'Name of the subDistrict.'
+          format: string
+          example: ''
+        district:
+          type: string
+          description: 'Name of the District.'
+          format: string
+          example: 'South Delhi'
+        city:
+          type: string
+          description: 'Name of the city.'
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: 'Name of the State.'
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: 'Pincode of the location.'
+          format: string
+          example: '110010'
+        formattedAddress:
+          type: string
+          description: 'This shows the formatted address of the POI.'
+          format: string
+          example: '237, MMI Building, MapmyIndia Head Office, Okhla industrial phase 3, Okhla Vilage, South Delhi, New Delhi, Delhi, 110010'
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: '2LH9OC'
+        latitude:
+          type: integer
+          description: 'It shows us the latitude of the location searched.'
+          format: double
+          example: 28.4263350000001
+        longitude:
+          type: integer
+          description: 'It shows us the longitude of the location searched.'
+          format: double
+          example: 77.092001
+        geocodeLevel:
+          type: string
+          description: 'This shows the level of the geocode means on which basis the poi has been geocoded.'
+          format: string
+          example: houseNumber
+        confidenceScore:
+          type: integer
+          description: 'The confidence for current of geocodelevel.'
+          format: float
+          example: 0.4
+    nearbyResults:
+      title: Nearby Results
+      description: The result object which contains the Nearby API results.
+      type: object
+      required:
+        - suggestedLocations
+        - pageInfo
+      properties:
+        suggestedLocations:
+          type: array
+          items:
+            $ref: '#/components/schemas/NB1'
+        pageInfo:
+          $ref: '#/components/schemas/NB2'
+    NB1:
+      title: Suggested Locations
+      required:
+        - addressTokens
+        - distance
+        - eloc
+        - email
+        - entryLatitude
+        - entryLongitude
+        - hourOfOperation
+        - keywords
+        - landlineNo
+        - latitude
+        - longitude
+        - mobileNo
+        - orderIndex
+        - placeAddress
+        - placeName
+        - type
+      type: object
+      properties:
+        addressTokens:
+          type: object
+          $ref: '#/components/schemas/NB3'
+        distance:
+          type: string
+          format: string
+          example: 64
+          description: 'provides the distance from the provided location bias in meters'
+        eloc:
+          type: string
+          format: string
+          example: CHZZ3S
+          description: 'Place Id of the location 6-char alphanumeric'
+        email:
+          type: string
+          format: string
+          example: xyz@email.com
+          description: 'Email for contact'
+        entryLatitude:
+          type: number
+          format: double
+          example: 28.631708
+          description: 'latitude of the entrance of the location'
+        entryLongitude:
+          type: number
+          format: double
+          example: 77.21665
+          description: 'longitude of the entrance of the location'
+        hourOfOperation:
+          type: string
+          format: string
+          example: poi
+          description: 'The hours of operation of the POI in a day.'
+        keywords:
+          type: array
+          description: 'The keywords/category codes associated with the given result.'
+          items:
+            $ref: '#/components/schemas/NB4'
+        landlineNo:
+          type: number
+          format: integer
+          example: 911133107634
+          description: 'phone no for contact'
+        latitude:
+          type: number
+          format: double
+          example: 28.631834
+          description: 'Latitude of the location'
+        longitude:
+          type: number
+          format: double
+          example: 77.2169160000001
+          description: 'longitude of the location'
+        mobileNo:
+          type: number
+          format: integer
+          example: 919999827144
+          description: 'Phone number for contact'
+        orderIndex:
+          type: integer
+          format: integer
+          example: 1
+          description: 'the order where this result should be placed'
+        placeAddress:
+          type: string
+          format: string
+          example: 'G-72, 1st Floor, Outer Circle, Connaught Place, New Delhi, Delhi, 110001'
+          description: 'Address of the location'
+        placeName:
+          type: string
+          format: string
+          example: Lord of The Drinks
+          description: 'Name of the location'
+        type:
+          type: string
+          format: string
+          example: poi
+          description: 'Type of location POI or Country or City'
+    NB2:
+      title: Page Info
+      required:
+        - pageCount
+        - totalHits
+        - totalPages
+        - pageSize
+      properties:
+        pageCount:
+          type: integer
+          format: integer
+          example: 1
+          description: 'The number of pages with results.'
+        totalHits:
+          type: integer
+          format: integer
+          example: 2730
+          description: 'Total number of places in the results.'
+        totalPages:
+          type: integer
+          format: integer
+          example: 2730
+          description: 'Total number of pages as per page size and no of results.'
+        pageSize:
+          type: integer
+          format: integer
+          example: 2730
+          description: 'The number of results per page.'
+    NB4:
+      title: Keywords
+      type: object
+      example: 'FINATM'
+    TextSearchAPIResults:
+      title: Text Search API Results
+      description: The result object which contains the Text Search API results.
+      type: object
+      required:
+        - suggestedLocations
+        - userAddedLocations
+      properties:
+        suggestedLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/AS1'
+        userAddedLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/AS2'
+    WoodpeckerResults:
+      title: Woodpecker Result
+      description: The result object which contains the Address Standardization API results.
+      type: object
+      required: 
+        - inputAddress
+        - remainingAddress
+        - referentialInformation
+        - addressInformation
+      properties:
+        inputAddress:
+          type: string
+          description: this is the address entered by the user.
+          format: string
+          example: '237, MapmyIndia Head Office, Okhla Phase 3, New Delhi, Delhi 110010'
+        remainingAddress:
+          type: string
+          description: this is the address striked out by the API.
+          format: string
+          example: 'mapmyindia head office, okhla new'
+        referentialInformation:
+          $ref: '#/components/schemas/WP1'
+        addressInformation:
+          $ref: '#/components/schemas/WP3'
+    WP1:
+      title: Woodpecker Referential Information
+      description: The result object which contains the Address Standardization API results.
+      type: object
+      required:
+        - pincodes
+        - floors
+        - roads
+        - postOffices
+        - careOfs
+        - landmarks
+        - houseNumbers
+      properties:
+        pincodes:
+          type: string
+          description: PIN code tagged from input address if found any.
+          format: string
+          example: '110010'
+        floors:
+          type: string
+          description: Floor info tagged from input address if found any.
+          format: string
+          example: 'Floor No 1'
+        roads:
+          type: string
+          description: Road tagged from the input address if found any.
+          format: string
+          example: 'Okhla Road'
+        postOffices:
+          type: string
+          description: Post offices tagged from the input address if found any.
+          format: string
+          example: ''
+        careOfs:
+          type: string
+          description: Care of (C/O) tagged from the input address if found any.
+          format: string
+          example: ''
+        landmarks:
+          type: string
+          description: Landmark tagged from the input address if found any.
+          format: string
+          example: ''
+        houseNumbers:
+          description: House number information tagged from the input address if found any.
+          $ref: '#/components/schemas/WP2'
+    WP2:
+      title: House Numbers Array
+      description: The result object which contains the House Number Arrays of Woodpecker API.
+      type: object
+      required:
+        - prefix
+        - houseNo
+        - formatted
+      properties:
+        prefix:
+          type: string
+          description: ''
+          format: string
+          example: ''
+        houseNo:
+          type: string
+          description: ''
+          format: string
+          example: '237'
+        formatted:
+          type: string
+          description: ''
+          format: string
+          example: '237'
+    WP3:
+      title: Address Information Object
+      description: The result object which contains the Address Standardization API results.
+      type: object
+      required:
+        - adminDetails
+        - adminPattern
+      properties:
+        adminDetails:
+          $ref: '#/components/schemas/WP4'
+        adminPattern:
+          type: array
+          items:
+            type: string
+          example:
+            - "state"
+            - "city"
+            - "locality"
+            - "subLocality"
+    WP4:
+      title: Admin Details of Woodpecker API
+      description: The result object which contains the Admin Details of Address Standardization API results
+      type: object
+      required:
+        - state
+        - locality
+        - city
+        - sublocality
+        - subsublocality
+      properties:
+        state:
+          $ref: '#/components/schemas/WP5'
+        locality:
+          $ref: '#/components/schemas/WP6'
+        city:
+          $ref: '#/components/schemas/WP7'
+        sublocality:
+          $ref: '#/components/schemas/WP8'
+        subsublocality:
+          $ref: '#/components/schemas/WP9'
+    WP5:
+      title: State Original Name
+      type: object
+      required:
+        - originalName
+      properties:
+        originalName:
+          type: string
+          description: ''
+          format: string
+          example: 'Delhi'
+    WP6:
+      title: locality Original Name
+      type: object
+      required:
+        - originalName
+      properties:
+        originalName:
+          type: string
+          description: ''
+          format: string
+          example: 'New Moti Nagar'
+    WP7:
+      title: city Original Name
+      type: object
+      required:
+        - originalName
+      properties:
+        originalName:
+          type: string
+          description: ''
+          format: string
+          example: 'New Delhi'
+    WP8:
+      title: sublocality Original Name
+      type: object
+      required:
+        - originalName
+      properties:
+        originalName:
+          type: string
+          description: ''
+          format: string
+          example: 'Phase 3'
+    WP9:
+      title: subsublocality Original Name
+      type: object
+      required:
+        - originalName
+      properties:
+        originalName:
+          type: string
+          description: ''
+          format: string
+          example: 'Okhla'
+    WP10:
+      title: Admin Pattern of Woodpecker API
+      description: The result object which contains the Admin Pattern of Address Standardization API results
+      type: array
+      example: "state"
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerToken: []
