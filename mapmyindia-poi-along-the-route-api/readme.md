@@ -77,7 +77,7 @@ Server-Side Issues:
 
 suggestedPOIs ([object array])
 
-1. `distance`(string): distance of the POI.
+1. `distance`(integer): distance of the POI.
 2. `place_id`(string): eLoc of the POI
 3. `poi`(string): Name of the POI
 4. `subSubLocality`(string): Subsublocality of the POI
@@ -122,7 +122,7 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
 {
     "suggestedPOIs": [
         {
-            "distance": "1065",
+            "distance": 1065,
             "place_id": "74835C",
             "poi": "Cafe Nescafe",
             "subSubLocality": "",
@@ -137,14 +137,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911122205205",
             "email": null,
             "website": "www.nescafe.com",
-            "longitude": "77.241144000000105",
-            "latitude": "28.619164000000101",
-            "e_lng": "77.241315999999998",
-            "e_lat": "28.619444000000001",
+            "longitude": 77.2411440000001,
+            "latitude": 28.6191640000001,
+            "e_lng": 77.241316,
+            "e_lat": 28.619444,
             "brand_code": "0"
         },
         {
-            "distance": "3205",
+            "distance": 3205,
             "place_id": "KBFG0E",
             "poi": "Starbucks",
             "subSubLocality": "",
@@ -159,14 +159,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": null,
             "email": null,
             "website": null,
-            "longitude": "77.22533",
-            "latitude": "28.600430000000099",
-            "e_lng": "77.225276000000093",
-            "e_lat": "28.6004830000001",
+            "longitude": 77.22533,
+            "latitude": 28.6004300000001,
+            "e_lng": 77.2252760000001,
+            "e_lat": 28.6004830000001,
             "brand_code": "0"
         },
         {
-            "distance": "3260",
+            "distance": 3260,
             "place_id": "CBME9Q",
             "poi": "Market Cafe",
             "subSubLocality": "",
@@ -181,14 +181,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": null,
             "email": null,
             "website": null,
-            "longitude": "77.226467000000099",
-            "latitude": "28.599608",
-            "e_lng": "77.226524999999995",
-            "e_lat": "28.599535000000099",
+            "longitude": 77.2264670000001,
+            "latitude": 28.599608,
+            "e_lng": 77.226525,
+            "e_lat": 28.5995350000001,
             "brand_code": "0"
         },
         {
-            "distance": "3982",
+            "distance": 3982,
             "place_id": "TEBF71",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
@@ -203,14 +203,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911132967812, +911164580769",
             "email": null,
             "website": "www.cafecoffeeday.com",
-            "longitude": "77.237439000000094",
-            "latitude": "28.592161000000001",
-            "e_lng": "77.237399999999994",
-            "e_lat": "28.592514000000101",
+            "longitude": 77.2374390000001,
+            "latitude": 28.592161,
+            "e_lng": 77.2374,
+            "e_lat": 28.5925140000001,
             "brand_code": "0"
         },
         {
-            "distance": "4880",
+            "distance": 4880,
             "place_id": "671A2A",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
@@ -225,14 +225,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911132212130, +911164580767",
             "email": null,
             "website": "www.cafecoffeeday.com",
-            "longitude": "77.226588000000007",
-            "latitude": "28.584963000000101",
-            "e_lng": "77.226509000000107",
-            "e_lat": "28.584954",
+            "longitude": 77.226588,
+            "latitude": 28.5849630000001,
+            "e_lng": 77.2265090000001,
+            "e_lat": 28.584954,
             "brand_code": "0"
         },
         {
-            "distance": "5013",
+            "distance": 5013,
             "place_id": "K42JYV",
             "poi": "Novelty Cafe",
             "subSubLocality": "",
@@ -247,14 +247,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911124324168, +911124314168",
             "email": null,
             "website": null,
-            "longitude": "77.243730000000099",
-            "latitude": "28.583653000000002",
-            "e_lng": "77.243909000000002",
-            "e_lat": "28.583822000000101",
+            "longitude": 77.2437300000001,
+            "latitude": 28.583653,
+            "e_lng": 77.243909,
+            "e_lat": 28.5838220000001,
             "brand_code": "0"
         },
         {
-            "distance": "6101",
+            "distance": 6101,
             "place_id": "2651B8",
             "poi": "Brown Sugar",
             "subSubLocality": "",
@@ -269,14 +269,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911146568950, +911146568951",
             "email": null,
             "website": null,
-            "longitude": "77.230516000000094",
-            "latitude": "28.573687000000099",
-            "e_lng": "77.230703000000105",
-            "e_lat": "28.573706000000101",
+            "longitude": 77.2305160000001,
+            "latitude": 28.5736870000001,
+            "e_lng": 77.2307030000001,
+            "e_lat": 28.5737060000001,
             "brand_code": "0"
         },
         {
-            "distance": "6132",
+            "distance": 6132,
             "place_id": "4S84S3",
             "poi": "Barista",
             "subSubLocality": "",
@@ -291,14 +291,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911141552472",
             "email": null,
             "website": "www.barista.co.in",
-            "longitude": "77.230088000000094",
-            "latitude": "28.573443000000101",
-            "e_lng": "77.230148999999997",
-            "e_lat": "28.573461000000101",
+            "longitude": 77.2300880000001,
+            "latitude": 28.5734430000001,
+            "e_lng": 77.230149,
+            "e_lat": 28.5734610000001,
             "brand_code": "0"
         },
         {
-            "distance": "6339",
+            "distance": 6339,
             "place_id": "5ZLODU",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
@@ -313,14 +313,14 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": null,
             "email": null,
             "website": null,
-            "longitude": "77.238290000000106",
-            "latitude": "28.571458000000099",
-            "e_lng": "77.238253",
-            "e_lat": "28.571368000000099",
+            "longitude": 77.2382900000001,
+            "latitude": 28.5714580000001,
+            "e_lng": 77.238253,
+            "e_lat": 28.5713680000001,
             "brand_code": "0"
         },
         {
-            "distance": "6534",
+            "distance": 6534,
             "place_id": "TSFBC6",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
@@ -335,10 +335,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911126463858, +911132483408, +911164638586",
             "email": null,
             "website": "www.cafecoffeeday.com",
-            "longitude": "77.238612000000003",
-            "latitude": "28.569762000000001",
-            "e_lng": "77.238592999999995",
-            "e_lat": "28.569714000000001",
+            "longitude": 77.238612,
+            "latitude": 28.569762,
+            "e_lng": 77.238593,
+            "e_lat": 28.569714,
             "brand_code": "0"
         }
     ]
