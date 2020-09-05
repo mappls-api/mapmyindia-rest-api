@@ -10,7 +10,7 @@ The API provides the building information between two geo coordinates. The input
 
 
 ## Input Method
-POST
+GET/POST
 
 ## URL
 
