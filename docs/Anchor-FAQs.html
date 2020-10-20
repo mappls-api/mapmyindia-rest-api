@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Anchor-FAQs.md</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	<style>
+		/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+		/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+		body {
+			font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+			font-size: var(--vscode-markdown-font-size, 14px);
+			padding: 0 26px;
+			line-height: var(--vscode-markdown-line-height, 22px);
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
+
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
+
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
+
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
+
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
+
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left-width: 5px;
+			border-left-style: solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 1em;
+			line-height: 1.357em;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		pre code {
+			color: var(--vscode-editor-foreground);
+			tab-size: 4;
+		}
+
+		/** Theming */
+
+		.vscode-light pre {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+	</style>
+
+	<style>
+		/* Tomorrow Theme */
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+		/* Tomorrow Comment */
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		/* Tomorrow Red */
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		/* Tomorrow Orange */
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		/* Tomorrow Yellow */
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		/* Tomorrow Green */
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		/* Tomorrow Blue */
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		/* Tomorrow Purple */
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		/*
+ * Markdown PDF CSS
+ */
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+			padding: 0 12px;
+			margin-left: 48px;
+		}
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		code {
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		/* for inline code */
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
+
+		/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+		.page {
+			page-break-after: always;
+		}
+	</style>
+
+	<!-- CSS for Accordion & Panel Classes -->
+	<style>
+		/* Style the element that is used to open and close the accordion class */
+		p.accordion {
+			background-color: #eee;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 97.5%;
+			text-align: left;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+			margin-bottom: 10px;
+			/* margin-right: 36px; */
+			/* margin-left: 18px; */
+		}
+
+		/* Add a background color to the accordion if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+		p.accordion.active,
+		p.accordion:hover {
+			background-color: #0072C6;
+			color: #ffffff;
+
+		}
+
+		/* Unicode character for "plus" sign (+) */
+		p.accordion:after {
+			content: '\2795';
+			font-size: 13px;
+			color: #777;
+			float: right;
+			margin-left: 5px;
+		}
+
+		/* Unicode character for "minus" sign (-) */
+		p.accordion.active:after {
+			content: "\2796";
+		}
+
+		/* Style the element that is used for the panel class */
+
+		div.panel {
+			padding: 0 18px;
+			background-color: white;
+			max-height: 0;
+			overflow: hidden;
+			transition: 0.4s ease-in-out;
+			opacity: 0;
+			margin-bottom: 10px;
+			margin-left: 10px;
+			width: 97.5%;
+		}
+
+		div.panel.show {
+			opacity: 1;
+			max-height: 500px;
+			/* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+		}
+	</style>
+
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+
+	<!-- script for toggling accordion -->
+	<!-- // this one toggles only one open at a time
+// Ref  - http://stackoverflow.com/questions/37745154/only-open-one-accordion-tab-at-one-time -->
+	<!-- <script>
+		document.addEventListener("DOMContentLoaded", function (event) {
+
+
+			var acc = document.getElementsByClassName("accordion");
+			var panel = document.getElementsByClassName('panel');
+
+			for (var i = 0; i < acc.length; i++) {
+				acc[i].onclick = function () {
+					var setClasses = !this.classList.contains('active');
+					setClass(acc, 'active', 'remove');
+					setClass(panel, 'show', 'remove');
+
+					if (setClasses) {
+						this.classList.toggle("active");
+						this.nextElementSibling.classList.toggle("show");
+					}
+				}
+			}
+
+			function setClass(els, className, fnName) {
+				for (var i = 0; i < els.length; i++) {
+					els[i].classList[fnName](className);
+				}
+			}
+
+		});
+	</script> -->
+
+	<!-- this toggles each question independently
+	ref - http://www.w3schools.com/howto/howto_js_accordion.asp -->
+	<script>
+		/* Toggle between adding and removing the "active" and "show" classes when the user clicks on one of the "Section" buttons. The "active" class is used to add a background color to the current button when its belonging panel is open. The "show" class is used to open the specific accordion panel */
+		document.addEventListener("DOMContentLoaded", function (event) {
+			var acc = document.getElementsByClassName("accordion");
+			for (var i = 0; i < acc.length; i++) {
+				acc[i].onclick = function () {
+					this.classList.toggle("active");
+					this.nextElementSibling.classList.toggle("show");
+
+				};
+			}
+		});
+
+	</script>
+
+
+</head>
+
+<body>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+				? 'dark'
+				: 'default'
+		});
+	</script>
+	<p align="center"> <img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png"> </p>
+	<h1 id="div-align%22center%22mapmyindia-developer-console-faqs-div">
+		<div align="center">MapmyIndia Developer Console FAQs </div>
+	</h1>
+	<p align="center"><strong>Frequently Asked Questions: How to use MapmyIndia Developer Console?</strong></p>
+	<p class="accordion"><strong>Q1. Difference b/w Projects Reports &amp; Account Reports Section?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: Reports under Projects Section shows us the Report (commonly known as Timeline Report) of that
+			Particular
+			Project &amp; Reports under Account Reports Section shows us the Report of the whole account as the account
+			may
+			have more than one project.</p>
+	</div>
+	<p class="accordion"><strong>Q2. What is a Latency Report?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: This is the report which shows the average response time for the various APIs you have used in the said
+			duration. This is the part of the performance report.</p>
+	</div>
+	<p class="accordion"><strong>Q3. What is a Status Code Report?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: This is the report which shows the status codes of the APIs you have used corresponding to the Request
+			count
+			of the APIs. This is the part of the performance report.</p>
+	</div>
+	<p class="accordion"><strong>Q4. What are the types of status code we have?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>:</p>
+		<table>
+			<thead>
+				<tr>
+					<th><strong>Status Code</strong></th>
+					<th><strong>Meaning</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>200</td>
+					<td>success</td>
+				</tr>
+				<tr>
+					<td>204</td>
+					<td>no matching result</td>
+				</tr>
+				<tr>
+					<td>400</td>
+					<td>bad request</td>
+				</tr>
+				<tr>
+					<td>401</td>
+					<td>unauthorised; access denied</td>
+				</tr>
+				<tr>
+					<td>403</td>
+					<td>services for this key has been suspended due to hourly/daily transaction limit</td>
+				</tr>
+				<tr>
+					<td>500</td>
+					<td>something went wrong; internal server error</td>
+				</tr>
+				<tr>
+					<td>503</td>
+					<td>services unavailable; maintenance break</td>
+				</tr>
+				<tr>
+					<td>412</td>
+					<td>precondition failed; expected combination not provided</td>
+				</tr>
+				<tr>
+					<td>499</td>
+					<td>client redacted request in middle of processing</td>
+				</tr>
+				<tr>
+					<td>409</td>
+					<td>conflict; unexpected state</td>
+				</tr>
+				<tr>
+					<td>417</td>
+					<td>expectation failed</td>
+				</tr>
+				<tr>
+					<td>404</td>
+					<td>resource not found</td>
+				</tr>
+				<tr>
+					<td>504</td>
+					<td>gateway timeout</td>
+				</tr>
+				<tr>
+					<td>301</td>
+					<td>moved permanently; redirection; mostly used in http calls</td>
+				</tr>
+				<tr>
+					<td>304</td>
+					<td>not modified; similar in all terms &amp; purposes to 200</td>
+				</tr>
+				<tr>
+					<td>408</td>
+					<td>request timeout</td>
+				</tr>
+				<tr>
+					<td>502</td>
+					<td>Bad gateway</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p class="accordion"><strong>Q5. What does API Groups Means?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: We have distributed our APIs in Groups just like as mentioned below:</p>
+		<table>
+			<thead>
+				<tr>
+					<th><strong>API Groups</strong></th>
+					<th><strong>API Name</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Directions</td>
+					<td>Route Adv API w/o traffic, Route eta API w/ traffic, Route traffic API w/ traffic, Distance
+						Matrix
+						API w/o traffic, Distance Matrix ETA API w/ traffic, Distance Matrix Traffic API w/ traffic,
+						Route
+						Optimization API, Snap to road API, POI Along the route</td>
+				</tr>
+				<tr>
+					<td>Search</td>
+					<td>Autosuggest, Text Search, Reverse Geocode, Geocoding, Nearby, eLOC API, Address Standardization
+						API
+					</td>
+				</tr>
+				<tr>
+					<td>Maps</td>
+					<td>Raster SDK, Vector SDK</td>
+				</tr>
+				<tr>
+					<td>GeoAnalytics</td>
+					<td>State, District, SubDistrict, Pincode, Locality, SubLocality, SubSubLocaity, Road</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p class="accordion"><strong>Q6. Can I monitor project wise utilization?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: Yes, you can monitor project wise utilization by using the project name filter.</p>
+	</div>
+	<p class="accordion"><strong>Q7. What is the difference between Used Hits and Request Count in a downloaded
+			report?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: Used Hits are the hits which are based on the transaction strategy of the particular API whereas Request
+			Count are the counts that how many times a particular API has been hit through the server. For example: The
+			transaction strategy of our Directions APIs are basically based on how many coordinates you are passing
+			through
+			the request.</p>
+	</div>
+	<p class="accordion"><strong>Q8. If I need multiple sets of keys for different Projects, how can I do so?</strong>
+	</p>
+	<div class="panel">
+		<p><strong>Ans</strong>: Currently, You have a single set of keys against a project whereas you can have multiple projects in
+			your
+			account. For doing so you have to place the request to the MapmyIndia API support team at <a
+				href="mailto:apisupport@mapmyindia.com">apisupport@mapmyindia.com</a>. This feature is available; but
+			each
+			user is requested to take demonstration from MapmyIndia API support prior to attempting to create
+			credentials on
+			your own, as it may lead to unforeseen consequences.</p>
+	</div>
+	<p class="accordion"><strong>Q9. Where should I contact your team for any help?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: You can always feel free to contact MapmyIndia API Support Team at <a
+				href="mailto:apisupport@mapmyindia.com">apisupport@mapmyindia.com</a>, we are always available here to
+			serve
+			you better.</p>
+	</div>
+	<p class="accordion"><strong>Q10. How can I add multiple Projects in my Dashboard?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: Currently, You have to place the request to the MapmyIndia API support team at <a
+				href="mailto:apisupport@mapmyindia.com">apisupport@mapmyindia.com</a>.</p>
+	</div>
+	<p class="accordion"><strong>Q11. Where do I go for APIs &amp; SDKs Documentation?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: All the documentation of our APIs &amp; SDKs are available on our official website <a
+				href="https://www.mapmyindia.com/api">www.mapmyindia.com/api</a> &amp; at our Github Repository
+			available
+			here at <a href="https://www.github.com/mapmyindia">www.github.com/mapmyindia</a>.</p>
+	</div>
+	<p class="accordion"><strong>Q12. What is IP/Domain Whitelisting/Blacklisting?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: This feature lets you whitelist or blacklist the particular IP/Domain in our project, so that the
+			credentials are binded to allowed IPs/Domains.</p>
+	</div>
+	<p class="accordion"><strong>Q13. How to reset Password?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: If you forget your password, you can reset it by visiting the following URL: <a
+				href="https://anchor.mapmyindia.com/app/#/forgotPassword">https://anchor.mapmyindia.com/app/#/forgotPassword</a>
+		</p>
+	</div>
+	<p class="accordion"><strong>Q14. What are the types of billing?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: Following are the types of billing as mentioned below:</p>
+		<ol>
+			<li><strong>Free:</strong> This is for evaluation (non-commercial usage) users who just signed up fresh on
+				MapmyIndia API Portal.</li>
+			<li><strong>Custom:</strong> This is for paid users. Flexible billing that depends on the use case as well
+				as
+				the agreement that the user/organization has with MapmyIndia.</li>
+		</ol>
+	</div>
+	<p class="accordion"><strong>Q15. What is Project Type?</strong></p>
+	<div class="panel">
+		<p><strong>Ans</strong>: It shows that the project falls in which category like free, enterprise, projects, etc.</p>
+	</div>
+	<p>Team MapmyIndia</p>
+	<h4 id="staysafe">#StaySafe</h4>
+	<p>For any queries and support, please contact:</p>
+	<p><a href="https://www.mapmyindia.com/api"><img src="https://www.mapmyindia.com/images/logo.png" height="40" />
+	</p></a>
+	Email us at <a href="mailto:apisupport@mapmyindia.com">apisupport@mapmyindia.com</a></p>
+	<p><a href="https://stackoverflow.com/questions/tagged/mapmyindia-api">
+			<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png" />
+		</a><a href="https://www.mapmyindia.com/api/index.php#f_cont"><img
+				src="https://www.mapmyindia.com/api/img/icons/support.png" alt=""></a><a
+			href="https://www.mapmyindia.com/blog/"><img src="https://www.mapmyindia.com/api/img/icons/blog.png"
+				alt=""></a><a href="https://github.com/MapmyIndia"><img
+				src="https://www.mapmyindia.com/api/img/icons/gethub.png" alt=""></a><a
+			href="https://www.npmjs.com/org/mapmyindia"><img
+				src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png"
+				height="40" /> </p></a></p>
+	<br>
+	<p><a href="https://www.facebook.com/MapmyIndia">
+			<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png" />
+		</a><a href="https://twitter.com/MapmyIndia"><img src="https://www.mapmyindia.com/june-newsletter/icon2.png"
+				alt=""></a><a href="https://www.linkedin.com/company/mapmyindia"><img
+				src="https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png" alt=""></a><a
+			href="https://www.youtube.com/user/MapmyIndia/"><img
+				src="https://www.mapmyindia.com/june-newsletter/icon3.png" alt=""></a></p>
+	<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+	<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a
+			href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a
+			href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier
+			Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health &
+			Safety Policy</a> | <a
+			href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy
+			& CSR Report</a>
+		<div align="center">Customer Care: +91-9999333223</div>
+</body>
+
+</html>
