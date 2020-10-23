@@ -1,0 +1,1445 @@
+openapi: 3.0.3
+info:
+  title: Routing & Navigation APIs
+  description: >-
+    Unlock the power of location intelligence for complex routing problems. <br><br>Provide reliable directions as well as cater up-to 98 via points for wander enthusiasts or to make multiple stops to ease shipments. <br><br>We at MapmyIndia engineer rigorously tested routing algorithms for safe and efficient journeys that incorporate anticipated real time traffic updates for the most optimal and energy efficient routes. <br><br>Make hassle free routing experience for your users by creating efficient itineraries for fleets, plan for spikes in traffic or guide rental car customers from their work to their home. <br><br>Put your best foot forward in the industry with MapmyIndia High Performance Routing Engine. <br><br> Note: *<strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://apis.mapmyindia.com/advancedmaps/v1
+    description: 'Live Prod server for Routing APIs'
+paths:
+  /{REST_KEY}/{resources}/{profile}/{coordinates}:
+    get: 
+      tags: 
+        - Routing API
+      description: >-
+        Routing and displaying driving directions on map, including instructions for navigation, distance to destination, traffic etc. are few of the most important parts of developing a map based application. This REST API calculates driving routes between specified locations including via points based on route calculation type(optimal or shortest).<br>Please note that maximum number of points are limited to 100 only including source and secondary positions.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-adv-api-example">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-routing-api">Download Sample Code</a> </p>
+      summary: Routing API
+      operationId: routingAPI
+      parameters: 
+        - name: REST_KEY
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        - name: resources
+          in: path
+          description: >-
+            The different resources available within MapmyIndia Routing API. These resources have their own individual allocations and not all are allocated for evalulations be default. <br>For allocating particular resource on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 1. </span>Resources
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>route_adv</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>route_eta</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>route_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>route_traffic</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. Largely biased towards aggressive traffic congestion avoidance, will basic path preference only. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "route_eta"
+          schema:
+            type: string
+            enum: [route_adv, route_eta, route_traffic]
+        - name: profile
+          in: path
+          description: >-
+            The different profiles available within MapmyIndia Routing API. These profiles have their own individual transport modes and not all are allocated for evalulations be default. <br>For allocating particular profiles on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 2. </span>Profiles
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="4" headers="d156249e37 ">Profiles</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>driving</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for 4-wheeler/passenger car routing.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>biking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in two-wheeler routing. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>walking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in pedestrian routing. 
+                            </td>
+                            </tr>
+                            <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trucking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for Truck routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in truck routing. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "driving"
+          schema:
+            type: string
+            enum: [driving, biking, walking, trucking]
+        - name: coordinates
+          in: path
+          description: >-
+            Coordinate are pairs of <strong>comma separated longitude & latitude</strong> values. First coordinate will be consider as start point (mandatory); a last coordinate will be considered as end point (mandatory) and those in between are via points (optional). <br>Example: {longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...] (part of URL).
+          allowEmptyValue: false
+          required: true
+          example: "77.131123,28.552413;77.113091,28.544649"
+          schema:
+            type: string
+        - name: geometries
+          in: query
+          description: >-
+            This parameter used to change the route geometry format/density (influences overview and per step).
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum: [polyline, polyline6, geojson]
+            default: polyline
+          required: false
+        - name: rtype
+          in: query
+          description: >-
+            type of route (integer) required for navigation, where values mean:<br>           <code>0</code> optimal (default)<br> <code>1</code> shortest (it will calculate route by excluding access penalties like private roads, etc.)
+          allowEmptyValue: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          required: false
+        - name: steps
+          in: query
+          description: >-
+            Return route steps for each route leg. Possible values are true/false. By default it will be used as false. <Recommended=false; unless otherwise recommended by MapmyIndia>
+          allowEmptyValue: false
+          schema:
+            type: boolean
+            default: false
+            enum: [true, false]
+          required: false
+        - name: exclude
+          in: query
+          description: >-
+            Additive list of road classes to avoid, order does not matter. <br>Possible values are toll, motorway & ferry. <br>Multiple values can be sent separated by comma.
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "ferry"
+        - name: region
+          in: query
+          description: >-
+            This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), MMR for Myanmar and btn (for Bhutan)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: IND
+            enum: [IND, MMR, LKA, NPL, BTN, BGD]
+          required: false
+          example: "IND"
+        - name: bearings
+          in: query
+          description: >-
+            Limits the search to segments with given bearing in degrees. The referencing will be to the true north and in clockwise direction. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: integer
+          required: false
+          example: 180
+        - name: alternatives
+          in: query
+          description: >-
+            Search for alternative routes. Passing a number: e.g. <code>alternatives=n</code> searches for up to <strong>n</strong> alternative routes. <br>Please note that even if alternative routes are requested, a result cannot be guaranteed.
+          allowEmptyValue: false
+          schema:
+            type: integer
+          required: false
+          example: 2
+        - name: radiuses
+          in: query
+          description: >-
+            Limits the search to given radius in meters. For all way-points including start and end points. {radius};{radius}[;{radius} ...]. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "100;100"
+        - name: overview
+          in: query
+          description: >-
+            Add overview geometry either full, simplified according to highest zoom level it could be display on, or not at all. <br>Possible values are <code>simplified</code> (default), <code>full</code>, <code>false</code>. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: simplified
+            enum: [simplified, full, false]
+          required: false
+          example: "simplified"
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/routing'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+  /{rest-key}/{resources}/{profile}/{coordinates}:
+    get: 
+      tags: 
+        - Distance Matrix APIs
+      description: >-
+        This REST API computes the distance and durations in a matrix of routes between a set of source/primary positions (geographical coordinates) and a set of all supplied secondary positions. <br>Please note that maximum number of points are limited to 100 only including source and secondary positions.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-matrix-api-example">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-distance-matrix-api">Download Sample Code</a> </p>
+      summary: Distance Matrix API
+      operationId: dmAPI
+      parameters: 
+        - name: rest-key
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        - name: resources
+          in: path
+          description: >-
+            The different resources available within MapmyIndia Distance Matrix API. These resources have their own individual allocations and not all are allocated for evalulations be default. <br>For allocating particular resource on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 1. </span>Resources
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>distance_matrix</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>distance_matrix_eta</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>distance_matrix_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>distance_matrix_traffic</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. Largely biased towards aggressive traffic congestion avoidance, will basic path preference only. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "distance_matrix_eta"
+          schema:
+            type: string
+            enum: [distance_matrix, distance_matrix_eta, distance_matrix_traffic]
+        - name: profile
+          in: path
+          description: >-
+            The different profiles available within MapmyIndia Distance Matrix API. These profiles have their own individual transport modes and not all are allocated for evalulations be default. <br>For allocating particular profiles on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 2. </span>Profiles
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="4" headers="d156249e37 ">Profiles</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>driving</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for 4-wheeler/passenger car routing.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>biking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>distance_matrix</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in two-wheeler routing. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>walking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>distance_matrix</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in pedestrian routing. 
+                            </td>
+                            </tr>
+                            <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trucking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for Truck routing. Routing with this profile is restricted to <code>distance_matrix</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in truck routing. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "driving"
+          schema:
+            type: string
+            enum: [driving, biking, walking, trucking]
+        - name: coordinates
+          in: path
+          description: >-
+            Coordinates are pair of <strong>comma separated longitude & latitude</strong> values. First coordinate will be consider as start point (mandatory); a last coordinate will be considered as end point (mandatory) and those in between are via points (optional). <br>Example: {longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...] (part of URL).
+          allowEmptyValue: false
+          required: true
+          example: "77.131123,28.552413;77.113091,28.544649"
+          schema:
+            type: string
+        - name: sources
+          in: query
+          description: >-
+            To specify which of the coordinates supplied in the URL are to be treated as source position for many to many distance matrix calculation, indicate that coordinate pair's index. E.g. 0;1 means that 0th and 1st coordinate pairs are source points. Default value is <code>0</code>. The indexes must be semi-colon separated. e.g: 0;1;2;...
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "0;1;2"
+        - name: rtype
+          in: query
+          description: >-
+            type of route (integer) required for navigation, where values mean:<br>           <code>0</code> optimal (default)<br> <code>1</code> shortest (it will calculate route by excluding access penalties like private roads, etc.)
+          allowEmptyValue: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          required: false
+        - name: destinations
+          in: query
+          description: >-
+            To specify which of the coordinates supplied in the URL are to be treated as destination position for many to many distance matrix calculation, indicate that coordinate pair's index. E.g. 2;3 means that 0th and 1st coordinate pairs are destination points. Default value is <code>all</code>. The indexes must be semi-colon separated. e.g: 3;4;5;...
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "3;4;5"
+        - name: region
+          in: query
+          description: >-
+            This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), MMR for Myanmar and btn (for Bhutan)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: IND
+            enum: [IND, MMR, LKA, NPL, BTN, BGD]
+          required: false
+          example: "IND"
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/distanceMatrix'
+          '204':
+            description: DB Connection error.
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '404':
+            description: Not found
+          '412':
+            description: Precondition Failed, i.e. Some existing pre-condition in formulating a valid API request was not fulfilled.
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+  /{REST_KEY}/distance_matrix_predictive/driving/{coordinates}:
+    get: 
+      tags: 
+        - Distance Matrix APIs
+      description: >-
+        This API computes the distance and duration of a route between a source/primary position (geographical coordinates) and a list of all supplied secondary positions. Optionally one can input the <code>dep_time</code> parameter and get the distance and duration optimized for that part of the day of a week. Time based functionality is available for selected cities only. Please note that maximum number of points are limited to 100 only including source and secondary positions.
+        <p style=text-align:right><strong>PREMIUM API* </p>
+      summary: Distance Matrix Predictive ETA API
+      operationId: dmPAPI
+      parameters: 
+        - name: REST_KEY
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        - name: coordinates
+          in: path
+          description: >-
+            Coordinates are pair of <strong>comma separated longitude & latitude</strong> values. First coordinate will be consider as start point (mandatory); a last coordinate will be considered as end point (mandatory) and those in between are via points (optional). <br>Example: {longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...] (part of URL).
+          allowEmptyValue: false
+          required: true
+          example: "77.131123,28.552413;77.113091,28.544649"
+          schema:
+            type: string
+        - name: dep_time
+          in: query
+          description: >-
+            the UNIX timestamp of departure in seconds. Distance and ETA will be optimized as per given time.
+          allowEmptyValue: false
+          schema:
+            type: integer
+          required: false
+          example: 1531543500
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/distanceMatrixPredictive'
+          '204':
+            description: DB Connection error.
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '404':
+            description: Not found
+          '412':
+            description: Precondition Failed, i.e. Some existing pre-condition in formulating a valid API request was not fulfilled.
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+  /{REST_KEY}/snapToRoad:
+    post: 
+      tags: 
+        - Snap to Road API
+      description: >-
+        Snap-To-Road API, snaps given GPS points to the road network in the most plausible way. Maximum number of points are limited to 100 only. Our USP is to take GPS points collected along a route and return a similar set of corrected & aligned data with the points matched to the road with our intelligent Snap To Road API.<br>
+        Now seamlessly calculate accurate distances from points which follow the geometry of the road & show accurate positions on map. This API provides a critical feature that is immensely valuable when tracking assets and for data analytics of path traversed by vehicle, people or assets.
+        <br><br><strong>Note</strong>: <ol><li>The request might result multiple sub-traces.</li><li>Large jumps in the timestamps (> 60s) or improbable transitions lead to trace splits if a complete matching could not be found.</li><li>The algorithm might not be able to match all points. Outliers are removed if they cannot be matched successfully.</li></ol>
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-snaptoroad-example">Live Demo</a></p>
+      summary: Snap to Road API
+      operationId: snapToRoadAPI
+      parameters: 
+        - name: REST_KEY
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+      requestBody: 
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+             properties:
+                pts: 
+                  description: >-
+                    Coordinate is pair of comma separated longitude & latitude value, First coordinate will be consider as start point; a last coordinate will be as end points and between are via points; like {longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...]. At present maximum number of points are limited to 100 in a single request.
+                  type: string
+                  example: "78.40573,17.37317;78.40958,17.37314;78.41845,17.37449;78.409992,17.37328;78.420460,17.377443;78.421350,17.380200"
+                timestamps:
+                  description: >-
+                    Timestamps for the input locations in seconds since UNIX epoch. Timestamps need to be monotonically increasing. Values must be integer {timestamp};{timestamp};{timestamp} ...
+                  type: string
+                  example: "1527056019;1527056020;1527056021;1527056022;1527056023;1527056024"
+                geometries: 
+                  description: >-
+                    This parameter used to change the route geometry format/density (influences overview and per step). Default value is <code>polyline</code> with 5 digit precision; <code>polyline6</code> for 6digit precision; <code>geojson</code> for geometries as geojson. Please note that “timestamps” parameter is mandatory for enabling geometries.
+                  type: string
+                  example: "polyline"
+                radiuses: 
+                  description: >-
+                    Standard deviation of GPS precision used for map matching. If available use GPS accuracy in meters. Default value is 5 metres. Values must be integer {radius};{radius};{radius} ...
+                  type: string
+                  example: "50;50;50;50;50;50"
+                region: 
+                  description: >-
+                    This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), mmr (for Myanmar) and btn (for Bhutan)
+                  type: string
+                  example: "IND"
+             required:
+               - pts
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/snapToRoad'
+          '204':
+            description: DB Connection error.
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '404':
+            description: Not found
+          '412':
+            description: Precondition Failed, i.e. Some existing pre-condition in formulating a valid API request was not fulfilled.
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+  /{rest_key}/{resources}/{profile}/{coordinates}:
+    get: 
+      tags: 
+        - Route Optimization API
+      description: >-
+        Route Optimization is the process of determining the most cost-efficient route. It needs to include all relevant factors such as the number and location of all the required stops on the route. In other words, this API will solve the Traveling Salesman Problem of routing and the returned path does not have to be the fastest path. As TSP is NP-hard it only returns an approximation. <br><br>
+        Currently, not all combinations of roundtrip, source and destination are supported. Right now, the following combinations are possible:
+          | roundtrip | source | destination | supported |
+          | --- | --- | --- | --- |
+          | true | first | last | yes |
+          | true | first | any | yes |
+          | true | any | last | yes |
+          | true | any | any | yes |
+          | false | first | any | yes |
+          <br>
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/RouteOptimization/mapmyindia-vector-maps-route_optimization.php">Live Demo</a> | PREMIUM API* </p>
+      summary: Route Optimization API
+      operationId: routeOptAPI
+      parameters: 
+        - name: rest_key
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        - name: resources
+          in: path
+          description: >-
+            The different resources available within MapmyIndia Routing API. These resources have their own individual allocations and not all are allocated for evalulations be default. <br>For allocating particular resource on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 1. </span>Resources
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trip_optimization</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trip_optimization_eta</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>trip_optimization_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trip_optimization_traffic</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. Largely biased towards aggressive traffic congestion avoidance, will basic path preference only. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "route_eta"
+          schema:
+            type: string
+            enum: [trip_optimization, trip_optimization_eta, trip_optimization_traffic]
+            default: trip_optimization
+        - name: profile
+          in: path
+          description: >-
+            The different profiles available within MapmyIndia Routing API. These profiles have their own individual transport modes and not all are allocated for evalulations be default. <br>For allocating particular profiles on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 2. </span>Profiles
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="4" headers="d156249e37 ">Profiles</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>driving</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for 4-wheeler/passenger car routing.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>biking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>trip_optimization</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in two-wheeler routing. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>walking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>trip_optimization</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in pedestrian routing. 
+                            </td>
+                            </tr>
+                            <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trucking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for Truck routing. Routing with this profile is restricted to <code>trip_optimization</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in truck routing. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "route_eta"
+          schema:
+            type: string
+            enum: [driving, biking, walking, trucking]
+            default: driving
+        - name: coordinates
+          in: path
+          description: >-
+            Coordinate are pairs of <strong>comma separated longitude & latitude</strong> values. First coordinate will be consider as start point (mandatory); a last coordinate will be considered as end point (mandatory) and those in between are via points (optional). <br>Example: {longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...] (part of URL).
+          allowEmptyValue: false
+          required: true
+          example: "77.131123,28.552413;77.113091,28.544649"
+          schema:
+            type: string
+        - name: geometries
+          in: query
+          description: >-
+            This parameter used to change the route geometry format/density (influences overview and per step).
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum: [polyline, polyline6, geojson]
+            default: polyline
+          required: false
+        - name: source
+          in: query
+          description: >-
+            Use location with given index as source.
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum: ["first", "last", "any"]
+            default: "any"
+          required: false
+        - name: destination
+          in: query
+          description: >-
+            Use location with given index as destination.
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum: ["first", "last", "any"]
+            default: "any"
+          required: false
+        - name: steps
+          in: query
+          description: >-
+            Return route steps for each route leg. Possible values are true/false. By default it will be used as false. <Recommended=false; unless otherwise recommended by MapmyIndia>
+          allowEmptyValue: false
+          schema:
+            type: boolean
+            default: false
+            enum: [true, false]
+          required: false
+        - name: region
+          in: query
+          description: >-
+            This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), MMR for Myanmar and btn (for Bhutan)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: IND
+            enum: [IND, MMR, LKA, NPL, BTN, BGD]
+          required: false
+          example: "IND"
+        - name: roundtrip
+          in: query
+          description: >-
+            Returned route is a roundtrip (route returns to first location).
+          allowEmptyValue: false
+          schema:
+            type: boolean
+            default: true
+            enum: [true, false]
+          required: false
+        - name: overview
+          in: query
+          description: >-
+            Add overview geometry either full, simplified according to highest zoom level it could be display on, or not at all. <br>Possible values are <code>simplified</code> (default), <code>full</code>, <code>false</code>. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: simplified
+            enum: [simplified, full, false]
+          required: false
+          example: "simplified"
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/routeOpt'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+components: 
+  schemas: 
+    routing: 
+      title: Routing results object
+      description: 'Routing results object'
+      type: object
+      required: 
+        - routes
+        - code
+        - Server
+        - waypoints
+      properties: 
+        routes: 
+          type: array
+          items:
+              $ref: '#/components/schemas/routes'
+        waypoints: 
+            type: array
+            items:
+              $ref: '#/components/schemas/waypoints'
+        code: 
+          type: string
+          title: 'code'
+          description: >-
+             if request is successful, response is ‘ok’. Else, see the service dependent and general status codes as available in the enum. <br>In case of error, “NoRoute” code is supported (in addition to the general ones) which means “no route found”. <br> <ul><li><code>Ok</code>: Request could be processed as expected.</li><li><code>InvalidUrl</code>: URL string is invalid.</li><li>InvalidService: Service name is invalid.</li><li><code>InvalidVersion</code>: Version is not found.</li><li><code>InvalidOptions</code>: Options are invalid.</li><li><code>InvalidQuery</code>: The query string is synctactically malformed.</li><li><code>InvalidValue</code>: The successfully parsed query parameters are invalid.</li><li><code>NoSegment</code>: One of the supplied input coordinates could not snap to street segment.</li><li><code>TooBig</code>: The request size violates one of the service specific request size restrictions.</li><li><code>NoRoute</code>: Means No Route Found.</li></ul>
+          format: string
+          default: "Ok"
+          enum: [Ok, InvalidUrl, InvalidService, InvalidVersion, InvalidOptions, InvalidQuery, InvalidValue, NoSegment, TooBig, NoRoute]
+        Server: 
+          type: string
+          title: 'Server'
+          description: >-
+             Gives Information on active service's server.
+          format: string
+          example: "ETA-5100"
+    waypoints: 
+      title: waypoints object
+      description: 'waypoints object'
+      type: object
+      required: 
+        - hint
+        - name
+        - location
+        - distance
+      properties:
+        hint: 
+          type: string
+          title: 'hint'
+          description: >-
+             Unique internal identifier of the segment (ephemeral, not constant over data updates) This can be used on subsequent request to significantly speed up the query and to connect multiple services. E.g. you can use the hint value obtained by the nearest query as hint values for route inputs.
+          format: string
+          example: "bEADgP___39tAAAA6QAAAChAAAB4CAAASdEuQaohRUHInMxEeg6MQwYAAAANAAAArAMAAHwAAADoAAAAiu2YBNCsswFz7ZgE3ayzAQ8AXw3Mm4K5"
+        name: 
+          type: string
+          title: 'name'
+          description: >-
+             Name of the street the coordinate snapped to.
+          format: string
+          example: "Delhi Gurgaon Expressway"
+        distance: 
+          type: number
+          title: 'snappingDistance'
+          description: >-
+             distance to snapped location from actual location.
+          format: string
+          example: 4.033839
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'rawInputCoordinates'
+          description: >-
+             longitude, latitude pair describing the snapped location of the waypoint.
+          example: [77.113089,28.544643]
+    routes: 
+      title: routes object
+      description: 'routes object'
+      type: object
+      required: 
+        - legs
+        - weight_name
+        - geometry
+        - weight
+        - distance
+        - duration
+      properties:
+        legs: 
+          type: array
+          items:
+              $ref: '#/components/schemas/legs'
+        weight_name: 
+          type: number
+          title: 'routesWeightName'
+          description: >-
+             Parameter for internal purpose only.
+          format: string
+          example: "routability"
+        geometry: 
+          type: number
+          title: 'routesGeometry'
+          description: >-
+             Returns the whole geometry of the route as per given geometries request parameter. Default is encoded polyline with 5 digit accuracy (1e5) for positional coordinates.
+          format: string
+          example: "osgmDutwuMjA~@vEfGx@X~RlXLnAhGbJfHjQzBxDb@jEpAj@nAFt@`A?fAQn@aDbBcAhBmChQ"
+        weight: 
+          type: number
+          title: 'routesWeight'
+          description: >-
+             Parameter for internal purpose only.
+          format: number
+          example: 2282.2
+        distance: 
+          type: number
+          title: 'routesDistance'
+          description: >-
+             The distance of travel, in float meters.
+          format: number
+          example: 2282.2
+        duration: 
+          type: number
+          title: 'routesDuration'
+          description: >-
+             The estimated travel time, in float number of seconds.
+          format: number
+          example: 252.4
+    legs: 
+      title: legs object
+      description: 'legs object'
+      type: object
+      required: 
+        - steps
+        - summary
+        - weight
+        - distance
+        - duration
+      properties:
+        steps: 
+          type: array
+          items:
+              $ref: '#/components/schemas/steps'
+        summary: 
+          type: number
+          title: 'legsSummary'
+          description: >-
+             Parameter for internal purpose only.
+          format: string
+          example: "Patel Road, Bhagwan Mahavir Marg"
+        weight: 
+          type: number
+          title: 'legsWeight'
+          description: >-
+             Parameter for internal purpose only.
+          format: number
+          example: 2282.2
+        distance: 
+          type: number
+          title: 'legsDistance'
+          description: >-
+             The distance of travel in the leg, in float meters.
+          format: number
+          example: 2282.2
+        duration: 
+          type: number
+          title: 'legsDuration'
+          description: >-
+             The estimated travel time in the leg, in float number of seconds.
+          format: number
+          example: 252.4
+    steps: 
+      title: steps object
+      description: 'steps object'
+      type: object
+      required: 
+        - intersections
+        - driving_side
+        - weight
+        - distance
+        - duration
+        - name
+        - geometry
+        - mode
+        - maneuver
+      properties:
+        weight: 
+          type: number
+          title: 'stepsWeight'
+          description: >-
+             Parameter for internal purpose only.
+          format: number
+          example: 2282.2
+        distance: 
+          type: number
+          title: 'stepsDistance'
+          description: >-
+             The distance of travel in the leg, in float meters.
+          format: number
+          example: 2282.2
+        duration: 
+          type: number
+          title: 'stepsDuration'
+          description: >-
+             The estimated travel time in the leg, in float number of seconds.
+          format: number
+          example: 252.4
+        geometry: 
+          type: number
+          title: 'stepsGeometry'
+          description: >-
+             The un-simplified geometry of the step segment, depends on the given geometries request parameter.
+          format: string
+          example: "qfvmDcalvMWCWHEBE@K@kA@"
+        intersections: 
+          description: >-
+            A list of Intersection objects(1) that are passed along the segment, the very first belonging to the StepManeuver(2). <br>Note: <ol><li>An intersection gives a full representation of any cross-way the path passes bay. For every step, the very first intersection (intersections[0]) corresponds to the location of the StepManeuver. Further intersections are listed for every cross-way until the next turn instruction. </li><li>An object type representing maneuver.</li></ol>
+          type: array
+          items:
+              $ref: '#/components/schemas/intersections'
+        driving_side: 
+          type: number
+          title: 'driving side'
+          description: >-
+             “Left” (default) for India, Sri Lanka, Nepal, Bangladesh & Bhutan.
+          format: string
+          example: "left"
+        name: 
+          type: string
+          title: 'stepName'
+          description: >-
+             The name of the way along which travel proceeds.
+          format: string
+          example: "Safdar Hashmi Marg"
+        mode: 
+          type: string
+          title: 'mode'
+          description: >-
+             signifies the mode of transportation; driving as default.
+          format: string
+          example: "driving"
+        maneuver: 
+          $ref: '#/components/schemas/maneuver'
+    maneuver: 
+      title: maneuver object
+      description: 'maneuver object'
+      type: object
+      required: 
+        - location
+        - bearing_before
+        - bearing_after
+        - modifier
+        - type
+      properties:
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'maneuverLocation'
+          description: >-
+             A [longitude, latitude] pair describing the location of the turn.
+          example: [77.113089,28.544643]
+        bearing_before: 
+          type: integer
+          title: 'bearing before'
+          description: >-
+             The clockwise angle from true north to the direction of travel immediately before the maneuver.
+          example: 357
+        bearing_after: 
+          type: integer
+          title: 'bearing after'
+          description: >-
+             The clockwise angle from true north to the direction of travel immediately after the maneuver.
+          example: 254
+        modifier: 
+          type: string
+          title: 'modifier'
+          description: >-
+             An optional string indicating the direction change of the maneuver. To see the complete list of modifiers, please see <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/modifiers">article</a> in wiki.
+          example: "left"
+        type: 
+          type: string
+          title: 'type'
+          description: >-
+             A string indicating the type of maneuver. New identifiers might be introduced without API change. Types unknown to the client should be handled like the ‘turn’ type, the existence of correct modifier values is guaranteed. To see the complete list of types, please see <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/types">article</a> in wiki.
+          example: "turn"
+    intersections: 
+      title: intersections object
+      description: 'intersections object'
+      type: object
+      required: 
+        - classes
+        - location
+        - bearings
+        - entry
+        - in
+        - out
+        - lanes
+      properties:
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'intersectionLocation'
+          description: >-
+             longitude, latitude pair describing the location of the intersection.
+          example: [77.113089,28.544643]
+        classes:
+          type: array
+          items: 
+            type: string  
+          title: 'classes'
+          description: >-
+             Categorised types of road segments e.g. Motorway
+          example: ["motorway"]
+        bearings:
+          type: array
+          items: 
+            type: integer  
+          title: 'bearings'
+          description: >-
+             A list of bearing values (e.g. [0,90,180,270]) that are available at the intersection. The bearings describe all available roads at the intersection.
+          example: [60, 210, 240]
+        entry:
+          type: array
+          items: 
+            type: boolean  
+          title: 'entry'
+          description: >-
+             A list of entry flags, corresponding in a 1:1 relationship to the bearings. A value of true indicates that the respective road could be entered on a valid route. false indicates that the turn onto the respective road would violate a restriction.
+          example: [false, true, true]
+        in:
+          type: integer
+          title: 'in'
+          description: >-
+             index into bearings/entry array. Used to calculate the bearing just before the turn. Namely, the clockwise angle from true north to the direction of travel immediately before the maneuver/passing the intersection. Bearings are given relative to the intersection. To get the bearing in the direction of driving, the bearing has to be rotated by a value of 180. The value is not supplied for depart maneuvers.
+          example: 0
+        out:
+          type: integer
+          title: 'out'
+          description: >-
+             index into the bearings/entry array. Used to extract the bearing just after the turn. Namely, The clockwise angle from true north to the direction of travel immediately after the maneuver/passing the intersection. The value is not supplied for arrive maneuvers.
+          example: 2
+        lanes:
+          description: >-
+            Array of Lane objects that denote the available turn lanes at the intersection. If no lane information is available for an intersection, the lanes property will not be present.
+          type: array
+          items:
+              $ref: '#/components/schemas/lanes'
+    lanes: 
+      title: lanes object
+      description: 'lanes object'
+      type: object
+      required: 
+        - valid
+        - indications
+      properties:
+        valid:
+          type: boolean
+          title: 'valid'
+          description: >-
+             verifying lane info.
+          example: false
+        indications: 
+          type: array
+          items: 
+            type: string  
+          title: 'indications'
+          description: >-
+             Indicating a sign of directions like Straight, Slight Left, Right, etc. To see the complete list of indications, please see <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/indications">article</a> in wiki.
+          example: ["straight", "slight left"]
+    distanceMatrix: 
+      title: dm object
+      description: 'dm object'
+      type: object
+      required: 
+        - Server
+        - version
+        - results
+        - responseCode
+      properties:
+        Server: 
+          type: string
+          title: 'Server'
+          description: >-
+             Gives Information on active service's server.
+          format: string
+          example: "ETA-5100"
+        version: 
+          type: string
+          title: 'version'
+          description: >-
+             API’s version information.
+          format: string
+          example: "250.19.5222"
+        responseCode:
+          type: integer
+          title: 'responseCode'
+          description: >-
+             See the service dependent and general status codes
+          format: string
+          example: 200
+        results:
+          $ref: '#/components/schemas/DMresults'
+    DMresults: 
+      title: dm results
+      description: 'dm results'
+      type: object
+      required: 
+        - distances
+        - code
+        - durations
+      properties:
+        code: 
+          type: string
+          title: 'dmCode'
+          description: >-
+             if request is successful, response is ‘ok’. Else, see the service dependent and general status codes as available in the enum. <br>In case of error, “NoRoute” code is supported (in addition to the general ones) which means “no route found”. <br> <ul><li><code>Ok</code>: Request could be processed as expected.</li><li><code>InvalidUrl</code>: URL string is invalid.</li><li>InvalidService: Service name is invalid.</li><li><code>InvalidVersion</code>: Version is not found.</li><li><code>InvalidOptions</code>: Options are invalid.</li><li><code>InvalidQuery</code>: The query string is synctactically malformed.</li><li><code>InvalidValue</code>: The successfully parsed query parameters are invalid.</li><li><code>NoSegment</code>: One of the supplied input coordinates could not snap to street segment.</li><li><code>TooBig</code>: The request size violates one of the service specific request size restrictions.</li><li><code>NoRoute</code>: Means No Route Found.</li></ul>
+          format: string
+          example: "Ok"
+        distances: 
+          description: >-
+            array of float distances in metres.
+          type: array
+          items: 
+            example: [14076.1, 30927.6]
+        durations: 
+          description: >-
+            array of float durations in seconds.
+          type: array
+          items: 
+            example: [1884.9, 2644.1]
+    distanceMatrixPredictive: 
+      title: dmp object
+      description: 'dmp object'
+      type: object
+      required: 
+        - check
+        - version
+        - results
+        - responseCode
+      properties:
+        check: 
+          type: string
+          title: 'check'
+          description: >-
+             internal response (for MMI internal purposes only)
+          format: integer
+          example: 5025
+        version: 
+          type: string
+          title: 'version'
+          description: >-
+             API’s version information.
+          format: string
+          example: "250.19.5222"
+        responseCode:
+          type: string
+          title: 'responseCode'
+          description: >-
+             See the service dependent and general status codes
+          format: string
+          example: "200"
+        results:
+          $ref: '#/components/schemas/DMresults'
+    snapToRoad: 
+      title: snap to road object
+      description: 'snap to road object'
+      type: object
+      required: 
+        - Server
+        - version
+        - results
+        - responseCode
+      properties:
+        Server: 
+          type: string
+          title: 'Server'
+          description: >-
+             Gives Information on active service's server.
+          format: string
+          example: "Adv-5400"
+        version: 
+          type: string
+          title: 'version'
+          description: >-
+             API’s version information.
+          format: string
+          example: "250.19.5222"
+        responseCode:
+          type: string
+          title: 'responseCode'
+          description: >-
+             See the service dependent and general status codes
+          format: string
+          example: "200"
+        results:
+          $ref: '#/components/schemas/snapRoRoadResults'
+    snapRoRoadResults: 
+      title: snap to road results
+      description: 'snap to road results'
+      type: object
+      required: 
+        - snappedPoints
+        - matchings
+      properties:
+        snappedPoints: 
+          description: >-
+            Array of Waypoint objects representing all points of the trace in order. If the trace point was omitted by map matching because it is an outlier, the entry will be null.
+          type: array
+          items:
+              $ref: '#/components/schemas/snappedPoints'
+        matchings: 
+          description: >-
+            An array of Route objects that assemble the trace.
+          type: array
+          items:
+              $ref: '#/components/schemas/matchings'
+    matchings: 
+      title: snap to road matchings
+      description: 'snap to road matchings'
+      type: object
+      required: 
+        - geometry
+      properties:
+        geometry: 
+          description: >-
+            Returns the whole geometry of the route as per given parameter ‘geometries’ default is encoded ‘polyline’ with 5 digit accuracy for positional coordinates.
+          type: string
+          example: "ie`iByrp}MN{HKeMXmOKuGq@}JaBaHaDmIgB{BuDcCuGeBeP{D"
+    snappedPoints: 
+      title: snap to road snapped points
+      description: 'snap to road snapped points'
+      type: object
+      required: 
+        - location
+        - distance
+        - waypoint_index
+      properties:
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'matchedCoordinates'
+          description: >-
+             Location of Matched point (Longitude, Latitude)
+          example: [77.113089,28.544643]
+        distance: 
+          type: number
+          title: 'snappingDistanceSnap-To-Road'
+          description: >-
+             Distance from the snapped point.
+          format: number
+          example: 4.014843
+        waypoint_index: 
+          type: number
+          title: 'snappingDistanceSnap-To-Road'
+          description: >-
+             Distance from the snapped point.
+          format: integer
+          example: 0
+    routeOpt: 
+      title: Route Optimization object
+      description: 'Route Optimization object'
+      type: object
+      required: 
+        - trips
+        - code
+        - Server
+        - waypoints
+      properties: 
+        trips: 
+          type: array
+          items:
+              $ref: '#/components/schemas/routes'
+        waypoints: 
+            type: array
+            items:
+              $ref: '#/components/schemas/waypoints'
+        code: 
+          type: string
+          title: 'code'
+          description: >-
+             if request is successful, response is ‘ok’. Else, see the service dependent and general status codes as available in the enum. <br>In case of error, “NoRoute” code is supported (in addition to the general ones) which means “no route found”. <br> <ul><li><code>Ok</code>: Request could be processed as expected.</li><li><code>InvalidUrl</code>: URL string is invalid.</li><li>InvalidService: Service name is invalid.</li><li><code>InvalidVersion</code>: Version is not found.</li><li><code>InvalidOptions</code>: Options are invalid.</li><li><code>InvalidQuery</code>: The query string is synctactically malformed.</li><li><code>InvalidValue</code>: The successfully parsed query parameters are invalid.</li><li><code>NoSegment</code>: One of the supplied input coordinates could not snap to street segment.</li><li><code>TooBig</code>: The request size violates one of the service specific request size restrictions.</li><li><code>NoRoute</code>: Means No Route Found.</li></ul>
+          format: string
+          default: "Ok"
+          enum: [Ok, InvalidUrl, InvalidService, InvalidVersion, InvalidOptions, InvalidQuery, InvalidValue, NoSegment, TooBig, NoRoute]
+        Server: 
+          type: string
+          title: 'Server'
+          description: >-
+             Gives Information on active service's server.
+          format: string
+          example: "ETA-5100"
