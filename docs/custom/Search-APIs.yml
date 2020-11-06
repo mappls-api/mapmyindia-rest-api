@@ -11,13 +11,13 @@ info:
     name: MapmyIndia API Support
     email: apisupport@mapmyindia.com
     url: https://www.mapmyindia.com/api/
-servers:
-  - url: https://atlas.mapmyindia.com
-    description: 'Live Prod server for OAuth 2 based APIs'
-  - url: https://apis.mapmyindia.com/advancedmaps/v1
-    description: 'Live Prod server for Static Key based APIs'
-  - url: https://outpost.mapmyindia.com/api
-    description: 'Live Prod Server for Token Generation API'
+# servers:
+#   - url: https://atlas.mapmyindia.com
+#     description: 'Live Prod server for OAuth 2 based APIs'
+#   - url: https://apis.mapmyindia.com/advancedmaps/v1
+#     description: 'Live Prod server for Static Key based APIs'
+#   - url: https://outpost.mapmyindia.com/api
+#     description: 'Live Prod Server for Token Generation API'
 paths:
   /security/oauth/token: 
     post: 
@@ -70,6 +70,9 @@ paths:
           description: Something went wrong.
         '503':
           description: Maintenance break.
+      servers:
+        - url: https://outpost.mapmyindia.com/api
+          description: 'Live Prod Server for Token Generation API'
   /api/places/search/json:
     get:
       tags: 
@@ -173,6 +176,9 @@ paths:
         '503':
           description: Internal server error
       deprecated: false
+      servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
   /api/places/geocode:
     get:
       tags:
@@ -183,6 +189,9 @@ paths:
       summary: >-
         Geocode API
       operationId: AtlasGeocodeAPI
+      servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
       parameters:
         - name: Authorization
           in: header
@@ -274,6 +283,9 @@ paths:
       summary: >-
         Nearby API
       operationId: AtlasNearbyAPI
+      servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
       parameters:
         - name: Authorization
           in: header
@@ -382,6 +394,9 @@ paths:
         summary: >-
           Text Search API
         operationId: AtlasTextSearchAPI
+        servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
         parameters:
           - name: Authorization
             in: header
@@ -451,6 +466,9 @@ paths:
         summary: >-
           Address Standardization API
         operationId: WoodpeckerAPI
+        servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
         parameters:
           - name: Authorization
             in: header
@@ -506,6 +524,9 @@ paths:
         summary: >-
           eLoc API (Place Detail)
         operationId: eLocAPI
+        servers:
+        - url: https://apis.mapmyindia.com/advancedmaps/v1
+          description: 'Live Prod server for Static Key based APIs'
         parameters:
           - name: place_id
             in: query
@@ -560,6 +581,9 @@ paths:
         summary: >-
           Reverse Geocode API
         operationId: ReverseGeocodeAPI
+        servers:
+        - url: https://apis.mapmyindia.com/advancedmaps/v1
+          description: 'Live Prod server for Static Key based APIs'
         parameters:
           - name: lat
             in: query
@@ -628,6 +652,9 @@ paths:
         summary: >-
           POI Along the Route API
         operationId: AtlasPOIAlongtheRouteAPI
+        servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
         parameters:
           - name: Authorization
             in: header

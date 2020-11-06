@@ -44,7 +44,7 @@ Snap-To-Road API, snaps given GPS points to the road network in the most plausib
 
 
 ## Input Method
-GET
+GET / POST
 
 ## Constructing the request URL
 
@@ -100,10 +100,27 @@ GET
 				</table>
 			</div>
 
-### Example URL: 
-```html
-https://apis.mapmyindia.com/advancedmaps/v1/<assigned_license_key>/snapToRoad?pts=78.40573,17.37317;78.40958,17.37314;78.41845,17.37449;78.409992,17.37328;78.420460,17.377443;78.421350,17.380200&timestamps=1527056019;1527056020;1527056021;1527056022;1527056023;1527056024
+<br>
+
+### Important Note
+1. When using POST method, the parameters are sent with `Content-Type` as `application/x-www-form-urlencoded`.
+
+
+### Example using GET
+```json
+https://apis.mapmyindia.com/advancedmaps/v1/{rest-api-key}/snapToRoad?pts=78.40573,17.37317;78.40958,17.37314;78.41845,17.37449;78.409992,17.37328;78.420460,17.377443;78.421350,17.380200&timestamps=1527056019;1527056020;1527056021;1527056022;1527056023;1527056024
 ```
+
+### Example using POST
+```c
+curl --location --request POST 'https://apis.mapmyindia.com/advancedmaps/v1/{rest-api-key}/snapToRoad' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'pts=78.40573,17.37317;78.40958,17.37314;78.41845,17.37449;78.409992,17.37328;78.420460,17.377443;78.421350,17.380200' \
+--data-urlencode 'timestamps=1527056019;1527056020;1527056021;1527056022;1527056023;1527056024' \
+--data-urlencode 'geometries=polyline' \
+--data-urlencode 'radiuses=50;50;50;50;50;50'
+```
+
 **Note**: The position input is in decimal degree notation of longitude,latitude.
 
 
