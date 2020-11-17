@@ -1,7 +1,8 @@
 openapi: 3.0.3
 info:
   title: Search APIs
-  description: "MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations."
+  description: >-
+    MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
   termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
   version: 1.0.0
   license:
@@ -812,12 +813,12 @@ components:
           example: 'Yippee Rooms, Sector 56, Gurugram, Haryana, 122011'
         latitude:
           type: number
-          description: 'It shows us the latitude of the location searched.'
+          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 28.4263350000001
         longitude:
           type: number
-          description: 'It shows us the longitude of the location searched.'
+          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 77.092001
         eLoc:
@@ -827,12 +828,12 @@ components:
           example: '2LH9OC'
         entryLatitude:
           type: number
-          description: 'It shows us the entry latitude of the location searched.'
+          description: 'It shows us the entry latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 28.426407
         entryLongitude:
           type: number
-          description: 'It shows us the entry longitude of the location searched.'
+          description: 'It shows us the entry longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 77.092232
         placeName:
@@ -881,7 +882,8 @@ components:
           example: ''
     NB3:
       title: tokenizeAddress
-      description: It shows the admin details along with the house address.
+      description: >-
+        It shows the admin details along with the house address. Address token information is NOT available in generic response; and is RESTRICTED.
       type: object
       required:
         - district
@@ -979,20 +981,20 @@ components:
           type: number
           format: double
           example: 28.631708
-          description: 'latitude of the entrance of the location.'
+          description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         entryLongitude:
           type: number
           format: double
           example: 77.631708
-          description: 'longitude of the entrance of the location.'
+          description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         latitude:
           type: number
-          description: 'It shows us the latitude of the location searched.'
+          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: '28.4263350000001'
         longitude:
           type: number
-          description: 'It shows us the longitude of the location searched.'
+          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 77.092001
         orderIndex:
@@ -1167,12 +1169,12 @@ components:
           example: '2LH9OC'
         latitude:
           type: integer
-          description: 'It shows us the latitude of the location searched.'
+          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 28.4263350000001
         longitude:
           type: integer
-          description: 'It shows us the longitude of the location searched.'
+          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: 77.092001
         geocodeLevel:
@@ -1242,12 +1244,12 @@ components:
           type: number
           format: double
           example: 28.631708
-          description: 'latitude of the entrance of the location'
+          description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         entryLongitude:
           type: number
           format: double
           example: 77.21665
-          description: 'longitude of the entrance of the location'
+          description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         hourOfOperation:
           type: string
           format: string
@@ -1267,12 +1269,12 @@ components:
           type: number
           format: double
           example: 28.631834
-          description: 'Latitude of the location'
+          description: 'Latitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         longitude:
           type: number
           format: double
           example: 77.2169160000001
-          description: 'longitude of the location'
+          description: 'longitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         mobileNo:
           type: number
           format: integer
@@ -1638,12 +1640,12 @@ components:
           example: '110010'
         longitude:
           type: string
-          description: 'It shows us the longitude of the location searched.'
+          description: 'It shows us the longitude of the location searched. Geometry information may NOT be available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: '77.092001'
         latitude:
           type: string
-          description: 'It shows us the latitude of the location searched.'
+          description: 'It shows us the latitude of the location searched. Geometry information may NOT be available in most use-case driven response; and is RESTRICTED.'
           format: double
           example: '28.426335'
         type:
@@ -1926,28 +1928,28 @@ components:
           type: number
           title: 'longitude'
           description: >-
-             Longitude of the POI
+             Longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           format: number
           example: 77.2411440000001
         latitude: 
           type: number
           title: 'latitude'
           description: >-
-             Latitude of the POI
+             Latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           format: number
           example: 28.6191640000001
         e_lng: 
           type: number
           title: 'e_lng'
           description: >-
-             Entry longitude of the POI
+             Entry longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           format: number
           example: 77.241316
         e_lat: 
           type: number
           title: 'e_lat'
           description: >-
-             Entry latitude of the POI
+             Entry latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           format: number
           example: 28.619444
         brand_code: 

@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Routing & Navigation APIs
   description: >-
-    Unlock the power of location intelligence for complex routing problems. <br><br>Provide reliable directions as well as cater up-to 98 via points for wander enthusiasts or to make multiple stops to ease shipments. <br><br>We at MapmyIndia engineer rigorously tested routing algorithms for safe and efficient journeys that incorporate anticipated real time traffic updates for the most optimal and energy efficient routes. <br><br>Make hassle free routing experience for your users by creating efficient itineraries for fleets, plan for spikes in traffic or guide rental car customers from their work to their home. <br><br>Put your best foot forward in the industry with MapmyIndia High Performance Routing Engine. <br><br> Note: *<strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.
+    Unlock the power of location intelligence for complex routing problems. <br><br>Provide reliable directions as well as cater up-to 98 via points for wander enthusiasts or to make multiple stops to ease shipments. <br><br>We at MapmyIndia engineer rigorously tested routing algorithms for safe and efficient journeys that incorporate anticipated real time traffic updates for the most optimal and energy efficient routes. <br><br>Make hassle free routing experience for your users by creating efficient itineraries for fleets, plan for spikes in traffic or guide rental car customers from their work to their home. <br><br>Put your best foot forward in the industry with MapmyIndia High Performance Routing Engine. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
   termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
   version: 1.0.0
   license:
@@ -953,7 +953,7 @@ components:
           type: number
           title: 'routesGeometry'
           description: >-
-             Returns the whole geometry of the route as per given geometries request parameter. Default is encoded polyline with 5 digit accuracy (1e5) for positional coordinates.
+             Returns the whole geometry of the route as per given geometries request parameter. Default is encoded polyline with 5 digit accuracy (1e5) for positional coordinates. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           format: string
           example: "osgmDutwuMjA~@vEfGx@X~RlXLnAhGbJfHjQzBxDb@jEpAj@nAFt@`A?fAQn@aDbBcAhBmChQ"
         weight: 
@@ -1060,7 +1060,7 @@ components:
           type: number
           title: 'stepsGeometry'
           description: >-
-             The un-simplified geometry of the step segment, depends on the given geometries request parameter.
+             The un-simplified geometry of the step segment, depends on the given geometries request parameter. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           format: string
           example: "qfvmDcalvMWCWHEBE@K@kA@"
         intersections: 
@@ -1376,7 +1376,7 @@ components:
       properties:
         geometry: 
           description: >-
-            Returns the whole geometry of the route as per given parameter ‘geometries’ default is encoded ‘polyline’ with 5 digit accuracy for positional coordinates.
+            Returns the whole geometry of the route as per given parameter ‘geometries’ default is encoded ‘polyline’ with 5 digit accuracy for positional coordinates. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
           type: string
           example: "ie`iByrp}MN{HKeMXmOKuGq@}JaBaHaDmIgB{BuDcCuGeBeP{D"
     snappedPoints: 
