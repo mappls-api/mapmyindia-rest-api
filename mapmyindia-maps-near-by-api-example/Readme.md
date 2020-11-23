@@ -62,6 +62,12 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
     - *`searchBy`* (string): provides configurable search operations for the client on cloud. Below are the available sorts:
 		- *`dist`*  (default) & 
 		- *`imp`* - will search data in order of prominence of the place. 
+    - *`pod`* (string): it takes in the place type code which helps in restricting the results to certain chosen type. Access to this parameter is controlled from the backend. This parameter if provided will override any values provided in `keywords` request param.
+    Below mentioned are the codes for the pod -
+	    -  *`SLC`*: Sublocality
+	    - *`LC`*: Locality
+	    - *`CITY`*: City
+	    - *`STATE`*: State
 
 
 ### Operators in `keywords` parameter
