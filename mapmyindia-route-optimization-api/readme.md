@@ -50,7 +50,7 @@ Currently, not all combinations of roundtrip, source and destination are support
 | true | first | any | yes |
 | true | any | last | yes |
 | true | any | any | yes |
-| false | first | any | yes |
+| false | first | last | yes |
 
 
 <br>
