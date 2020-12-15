@@ -14,6 +14,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.4 | December 2020 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.3 | October 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
@@ -22,6 +23,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| ETA-5100 | 2020-12-15 | MapmyIndia API Team ([PS](https://github.com/map-123)) | eLoc support introduced |
 | 210.17.5221 | 2019-10-04 | MapmyIndia API Team ([PS](https://github.com/map-123)) |“Trucking” introduced as profile |
 | 210.17.5221 | 2019-08-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “walking” introduced as profile |
 | 200.17 | 2019-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | “biking” introduced as profile |
@@ -155,13 +157,13 @@ GET
 
 ### Example URL: 
 ```html
-https://apis.mapmyindia.com/advancedmaps/v1/<assigned_license_key>/route_adv/driving/77.131123,28.552413;77.113091,28.544649?
+https://apis.mapmyindia.com/advancedmaps/v1/<assigned_license_key>/route_adv/driving/77.131123,28.552413;17ZUL7?
 ```
 where: 
 - "route_adv" is the chosen resource.
 - profile is "driving"
 - "77.131123,28.552413" is the start position.
-- "77.113091,28.544649" is the end position of the route.
+- "17ZUL7" is the end position of the route.
 **Note**: The position input is in decimal degree notation of longitude,latitude.
 
 
@@ -172,7 +174,11 @@ where:
 The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
 1.  **`lic_key`**: Allocated REST API license key. (part of URL).
-2.  **`coordinates`**: Coordinate is pair of comma separated longitude & latitude value. First coordinate will be consider as start point (**mandatory**); a last coordinate will be considered as end point (**mandatory**) and those in between are via points (*optional*). Example:  {longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...] (part of URL).
+2.  **`geo-positions`**: geopositions is either
+	- pair of comma separated longitude & latitude values OR
+	- eLoc(s). 
+	
+	First geoposition will be consider as start point (**mandatory**); a last geoposition will be considered as end point (**mandatory**) and those in between are via points (*optional*). Example:  {longitude1},{latitude1};{longitude2},{latitude2};eLoc1;eLoc2; ...] (part of URL).
 
 ### Optional Parameters
 
@@ -259,7 +265,7 @@ JSON: response will served as JSON
 
 ## Sample Input
 
-`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/route_adv/driving/77.131123,28.552413;77.113091,28.544649?steps=false&rtype=1`
+`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/route_adv/driving/77.131123,28.552413;17ZUL7?steps=false&rtype=1`
 
 ## Sample Response
 ```json

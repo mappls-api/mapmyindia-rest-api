@@ -14,6 +14,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.4 | December 2020 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.3 | December 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
@@ -22,6 +23,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 250.19.5222 | 2020-12-15 | MapmyIndia API Team ([PS](https://github.com/map-123)) | eLoc support released |
 | 220.19.522 | 2019-12-19 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 22.0, Many to Many distance matrix released |
 | 200.17 | 2018-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “distance_matrix_traffic” introduced as resource |
 | 191.17 | 2018-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Initial release |
@@ -145,7 +147,7 @@ GET
 
 ### Example URL: 
 ```html
-https://apis.mapmyindia.com/advancedmaps/v1/<assigned_license_key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;77.15993,28.587555?
+https://apis.mapmyindia.com/advancedmaps/v1/<assigned_license_key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;17ZUL7?
 ```
 where: 
 - "distance_matrix" is the chosen resource.
@@ -162,10 +164,14 @@ where:
 The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
 1.  **`lic_key`**: Allocated REST API license key. (part of URL).
-2.  **`source`**: The first location is pair of comma separated longitude & latitude value which is taken as the source from which distance and ETA is to be calculated for the other locations specified in the rest of the ‘secondary_locations’ (part of URL).
-3. **`secondary_locations`**: The coordinates of _rest of the locations_ whose distance from source will be calculated (part of URL). 
-Format for each coordinate is the same as for the source, and they are semi-colon “;” delimited. 
-For example 77.983936,28.255904;77.05993,28.487555.
+2.  **`source`**: The first location is either 
+	- a pair of comma separated longitude & latitude value OR
+	- an eLoc
+
+	which is taken as the source from which distance and ETA is to be calculated for the other locations specified in the rest of the ‘secondary_locations’ (part of URL).
+3. **`secondary_locations`**: The geopositions of _rest of the locations_ whose distance from source will be calculated (part of URL). 
+Format for each geoposition is the same as for the source, and they are semi-colon “;” delimited. 
+For example `77.983936,28.255904;77.05993,28.487555` OR `mmi000`.
 
 ### Optional Parameters
 
@@ -213,11 +219,11 @@ JSON: response will served as JSON
 
 ### For 1-to-Many Calculations:
 
-`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/distance_matrix/driving/90.33687,23.470314;90.379249,23.497178;90.497009,23.546286?rtype=1&region=bgd`
+`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;77.15993,28.587555;17ZUL7?rtype=0&region=ind`
 
 ### For Many-to-Many Calculations: 
 
-`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;77.15993,28.587555;77.264997,28.554534?sources=0;1&destinations=2;3`
+`https://apis.mapmyindia.com/advancedmaps/v1/<lic_key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;77.15993,28.587555;17ZUL7?sources=0;1&destinations=2;3`
 
 ## Sample Response
 
