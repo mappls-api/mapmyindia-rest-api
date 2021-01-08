@@ -16,7 +16,7 @@ servers:
   - url: https://apis.mapmyindia.com/advancedmaps/v1
     description: 'Live Prod server for Route Optimization API'
 paths:
-  /{rest_key}/{resources}/{profile}/{coordinates}:
+  /{rest_key}/{resources}/{profile}/{geopositions}:
     get: 
       tags: 
         - Route Optimization API

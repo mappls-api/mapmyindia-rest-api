@@ -16,7 +16,7 @@ servers:
   - url: https://apis.mapmyindia.com/advancedmaps/v1
     description: 'Live Prod server for Distance Matrix APIs'
 paths:
-  /{rest-key}/{resources}/{profile}/{coordinates}:
+  /{rest-key}/{resources}/{profile}/{geopositions}:
     get: 
       tags: 
         - Distance Matrix APIs

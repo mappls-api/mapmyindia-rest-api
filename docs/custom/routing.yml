@@ -16,7 +16,7 @@ servers:
   - url: https://apis.mapmyindia.com/advancedmaps/v1
     description: 'Live Prod server for Routing APIs'
 paths:
-  /{REST_KEY}/{resources}/{profile}/{coordinates}:
+  /{REST_KEY}/{resources}/{profile}/{geopositions}:
     get: 
       tags: 
         - Routing API
