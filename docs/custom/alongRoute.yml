@@ -1,0 +1,278 @@
+openapi: 3.0.3
+info:
+  title: POI Along the Route API
+  description: >-
+    MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations. <br><br> With POI Along the Route API user will be able to get the details of POIs of a particular category along his set route. The main focus of this API is to provide convenience to the user and help him in locating the place of his interest on his set route. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+security: 
+  - BearerAuth: []
+paths:
+  /api/places/along_route: 
+    post:
+        tags:
+          - POI Along the Route API
+        description: >-
+          With POI Along the Route API user will be able to get the details of POIs of a particular category along his set route. The main focus of this API is to provide convenience to the user and help him in locating the place of his interest on his set route.
+        summary: >-
+          POI Along the Route API
+        operationId: AtlasPOIAlongtheRouteAPI
+        servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
+        # parameters:
+        #   - name: Authorization
+        #     in: header
+        #     description: >-
+        #       Authorization header with the value: “{token_type} {access_token}”. <br> Please generate your token from token generation API before calling this API.
+        #     required: true
+        #     allowEmptyValue: false
+        #     schema:
+        #       type: string
+        #     example: "bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6"
+        requestBody:
+          content:
+            'application/x-www-form-urlencoded':
+              schema:
+               properties:
+                  path: 
+                    description: >-
+                      This parameter takes the encoded route along which POIs to be searched.
+                    type: string
+                    example: "mfvmDcalvMB?B?@EB}@lABzABrBDAaAFoDFuCFuC@{@@m@DoAFu@D_@VmAFWHSHKBCFCbA]n@S`@IX?^BdAL|ANtCV~ANXBfBDfBBl@Bp@BrA@Pa@FKHMf@@`CHXDLBJFHJHRbD@`D@Z?h@@f@@h@@bAB^@jDDlBB~@BT@N?dDDV?x@Bt@@dCFdCFzB@nD?N?|BEzBEzBE`@AJ?lCOxCMfAClCGnCIlCIlCIhDKfDIhDIzCK|AG|AEbBG`A@d@FVD^FjARlBVn@D`AD|@Fn@DnCZnCZtBTH@J?V@`A@lC@nC@lCB`AGNCTCPEl@SRI|@a@~BqAb@OZGt@E|BEl@AxA?|@?pA@T?V@bCB`AJNBn@L^NpAl@t@`@d@V~BlA`CnA~BnA`A`@VJd@NXF~@JN@xBBL?hA?x@Ar@?x@A@?vCAvCAvCAxCAj@F`@Fd@Nf@RrAn@|@b@dBz@fBz@nBfAJF~Ax@`CfAXLRHp@XtCpAtCrAf@V|@Rf@Px@TxAZ\\F`BL`BLZEPERGNKPQR_@BaBPeEHeAXo@NcDLaDNaDNaDAkB?kAKqDIoD_@mAI{BI{BGgBIgBGiBCm@ASAi@Cu@Cc@Ag@Aa@GgBGgBGkBAu@IeCAUJARARA~@GB?f@C|AK`BIbBIt@IPCPCZO`@[FKLOR]Vk@Pi@DUL{@D[P}CP{C@i@@a@Ae@EiBCiBAyC?_ACaB?QAeBAgB?WB_@BSDSDOTu@dA{Cr@sBRi@JU^q@j@cATYZ_@TUbBsAHIhA}@jA_AlAaA`Ay@bAy@d@c@pAgAv@q@`AcA^_@tAoAVSVQLGdAg@f@Yz@e@W_@KSWIoAuCmAwCLMBCDCNE@AJ?H@F@v@fB\\GNGb@W\\YfAcALI@C@CBADCD@JBDBBBBD@D?DDLBFJNFDHDF@J@|CKbCItAEHCHA@EBEDCDABAF?D@DB@BDH@D?JADL@l@?j@BbAGGcAGiACc@Cm@C["
+                  category:
+                    description: >-
+                      The POI category code to be searched. Only one category input supported.
+                    type: string
+                    example: "FODCOF"
+                  geometries: 
+                    description: >-
+                      Type of geometry encoding, accepted values are <code>polyline5</code>, <code>polyline6</code>, and <code>base64</code>. Default value is polyline5.
+                    type: string
+                    example: "polyline5"
+                  buffer: 
+                    description: >-
+                      Buffer of the road. Minimum value is 25, maximum is 1000 and default is 25.
+                    type: integer
+                    example: 50
+                  sort: 
+                    description: >-
+                      Gets the sorted POIs along route. Valueless parameter.
+                    type: boolean
+                  page: 
+                    description: >-
+                      Used for pagination. By default, a request returns maximum 10 results and to get the next 10 or so on pass the page value accordingly. Default is 1.
+                    type: integer
+                    example: 1
+               required:
+                 - path
+                 - category
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/POIalongtheRouteObject'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false
+components:
+  schemas:
+    POIalongtheRouteObject: 
+      title: POI along the Route Object
+      description: 'POI along the Route Object'
+      type: object
+      required: 
+        - suggestedPOIs
+      properties:
+        suggestedPOIs: 
+          type: array
+          items:
+              $ref: '#/components/schemas/suggestedPOIs'
+    suggestedPOIs: 
+      title: suggestedPOIs Object
+      description: 'suggestedPOIs Object'
+      type: object
+      required: 
+        - distance
+        - place_id
+        - poi
+        - subSubLocality
+        - subLocality
+        - locality
+        - city
+        - subDistrict
+        - district
+        - state
+        - poplrName
+        - address
+        - tel
+        - email
+        - website
+        - longitude
+        - latitude
+        - e_lng
+        - e_lat
+        - brand_code
+      properties:
+        distance: 
+          type: integer
+          title: 'distance'
+          description: >-
+             distance of the POI.
+          format: integer
+          example: 1065
+        place_id: 
+          type: string
+          title: 'place_id'
+          description: >-
+             eLoc of the POI
+          format: string
+          example: "74835C"
+        poi: 
+          type: string
+          title: 'poi'
+          description: >-
+             Name of the POI.
+          format: string
+          example: "Cafe Nescafe"
+        subSubLocality: 
+          type: string
+          title: 'subSubLocality'
+          description: >-
+             Subsublocality of the POI
+          format: string
+        subLocality: 
+          type: string
+          title: 'subLocality'
+          description: >-
+             Sublocality of the POI
+          format: string
+        locality: 
+          type: string
+          title: 'locality'
+          description: >-
+             Locality of the POI
+          format: string
+          example: "Pragati Maidan"
+        city: 
+          type: string
+          title: 'city'
+          description: >-
+             City of the POI
+          format: string
+          example: "New Delhi"
+        subDistrict: 
+          type: string
+          title: 'subDistrict'
+          description: >-
+             Sub district of the POI
+          format: string
+          example: "Connaught Place"
+        district: 
+          type: string
+          title: 'district'
+          description: >-
+             District of the POI
+          format: string
+          example: "New Delhi District"
+        state: 
+          type: string
+          title: 'state'
+          description: >-
+             State of the POI
+          format: string
+          example: "Delhi"
+        poplrName: 
+          type: string
+          title: 'poplrName'
+          description: >-
+             Popular name of the POI
+          format: string
+          example: "Oberoi Hotel New Delhi"
+        address: 
+          type: string
+          title: 'address'
+          description: >-
+             Address of the POI
+          format: string
+          example: "Khan Market, New Delhi, Delhi, 110003"
+        tel: 
+          type: string
+          title: 'tel'
+          description: >-
+             Telephone number of the POI
+          format: string
+          example: "+911122205205"
+        email: 
+          type: string
+          title: 'email'
+          description: >-
+             Email of the POI
+          format: string
+          example: "reservations@oberoigroup.com"
+        website: 
+          type: string
+          title: 'website'
+          description: >-
+             Website of the POI
+          format: string
+          example: "www.nescafe.com"
+        longitude: 
+          type: number
+          title: 'longitude'
+          description: >-
+             Longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+          format: number
+          example: 'RESTRICTED'
+        latitude: 
+          type: number
+          title: 'latitude'
+          description: >-
+             Latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+          format: number
+          example: 'RESTRICTED'
+        e_lng: 
+          type: number
+          title: 'e_lng'
+          description: >-
+             Entry longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+          format: number
+          example: 'RESTRICTED'
+        e_lat: 
+          type: number
+          title: 'e_lat'
+          description: >-
+             Entry latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+          format: number
+          example: 'RESTRICTED'
+        brand_code: 
+          type: string
+          title: 'brand_code'
+          description: >-
+             Brand id of the POI
+          format: string
+          example: "0"
+  securitySchemes:
+    BearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: 'bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6'

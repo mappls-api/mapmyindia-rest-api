@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Still Map Image API
+  description: >-
+    Nothing gives more context than beautifully designed maps. We are radically transforming the way the world interacts, lives and moves. With MapmyIndia you'll see the world the way you want with our mapping experience.<br> The Still Map Image API creates a map based on URL parameters sent through a standard HTTP request and returns the map as an image which you can display on your application. The API lets you embed MapmyIndia Maps image according to geo-position, pixel size and zoom level of the map on your application without requiring any dynamic page loading. The image can be a retina image and markers can be added to the image to indicate position of any object.<br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://apis.mapmyindia.com/advancedmaps/v1
+    description: 'Live Prod server for Still Map Image API'
+paths:
+  /{REST_KEY}/still_image:
+      get:
+        tags:
+          - Still Map Image API
+        description: >-
+          The Still Map Image API creates a map based on URL parameters sent through a standard HTTP request and returns the map as an image which you can display on your application. The API lets you embed MapmyIndia Maps image according to geo-position, pixel size and zoom level of the map on your application without requiring any dynamic page loading. The image can be a retina image and markers can be added to the image to indicate position of any object.
+        summary: >-
+          Still Map Image API
+        operationId: stillMapImageAPI
+        parameters:
+          - name: center
+            in: query
+            description: 'A WGS-84 position coordinate that specifies the centre of the image requested.'
+            allowEmptyValue: false
+            required: true
+            example: "28.5959394,77.2255611"
+            schema:
+              type: string
+          - name: REST_KEY
+            in: path
+            description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+            allowEmptyValue: false
+            required: true
+            example: "threstapikeywillcomeheretoaccess"
+            schema:
+              type: string
+          - name: zoom
+            in: query
+            description: 'The zoom level for which the image is requested. Ranges from 4 to 18 with 18 being the highest zoomed in level.'
+            allowEmptyValue: false
+            example: 15
+            schema:
+              type: integer
+          - name: size
+            in: query
+            description: 'The size of the image requested in pixels as <code>width</code>x<code>height</code>.'
+            allowEmptyValue: false
+            example: "400x400"
+            schema:
+              type: string
+          - name: ssf
+            in: query
+            description: >-
+              scale factor indicating retina or non-retina tiles.<br><ul><li>0 = non retina tiles </li><li>1 = retina tiles</li></ul>
+            allowEmptyValue: false
+            example: 1
+            schema:
+              type: integer
+              enum: [0, 1]
+              default: 0
+          - name: markers
+            in: query
+            description: 'Optional markers that you may want to add to the map tile. Specified by WGS-84 position coordinates, seperated by semi-colon.'
+            allowEmptyValue: false
+            example: "28.5959394,77.2255611"
+            schema:
+              type: string
+          - name: markers_icon
+            in: query
+            description: 'The URL of the Custom Marker.'
+            allowEmptyValue: false
+            example: "https://img.icons8.com/material-outlined/96/000000/truck.png"
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+            content:
+              image/png:
+                schema:
+                  format: binary
+                  example: "https://kunalbharti.github.io/mapmyindia-rest-api-beta/custom/stillMapImageResponse.png"
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false

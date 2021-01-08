@@ -1,0 +1,121 @@
+openapi: 3.0.3
+info:
+  title: Traveled Route Image API
+  description: >-
+      Nothing gives more context than beautifully designed maps. We are radically transforming the way the world interacts, lives and moves. With MapmyIndia you'll see the world the way you want with our mapping experience.<br> MapmyIndia Map Data has been at the forefront of mapping innovations for decades. <br> <br>This API can be used to get an image of map with traveled route plotted on it. The image size can be specified; which will dynamically create an image of varying zoom levels with the start and end locations plotted on it.<br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://apis.mapmyindia.com/advancedmaps/v1
+    description: 'Live Prod server for Traveled Route Image API'
+paths:
+  /{REST_KEY}/still_image_polyline:
+      post:
+        tags:
+          - Traveled Route Image API
+        description: >-
+          This API can be used to get an image of map with traveled route plotted on it. The image size can be specified; which will dynamically create an image of varying zoom levels with the start and end locations plotted on it.
+        summary: >-
+          Traveled Route Image API
+        operationId: stillImagePolylineAPI
+        parameters: 
+        - name: REST_KEY
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        requestBody: 
+          content:
+            'multipart/form-data:':
+              schema:
+               properties:
+                  height: 
+                    description: >-
+                      The height of the image resolution that is required.
+                    type: integer
+                    example: 400
+                  width:
+                    description: >-
+                      The width of the image resolution that is required.
+                    type: integer
+                    example: 400
+                  polyline: 
+                    description: >-
+                      An array of comma separated [Longitude,Latitude] points that define the polyline along which the route was traversed.
+                    type: string
+                    example: "[[77.227437,28.611004],[77.227385,28.611011],[77.226859,28.610907],[77.224885,28.610022],[77.224906,28.609965],[77.224906,28.609843],[77.224885,28.609786],[77.224788,28.609682],[77.224702,28.609644],[77.224595,28.609635],[77.224456,28.609682],[77.224349,28.609795],[77.220347,28.608005],[77.21892,28.607336],[77.218963,28.607148],[77.218942,28.60696],[77.218824,28.606677],[77.21876,28.606602],[77.218578,28.606385],[77.218374,28.606263],[77.218235,28.606216],[77.218063,28.606188],[77.217956,28.606197],[77.217945,28.605199],[77.217902,28.60438],[77.217859,28.603674],[77.217827,28.603033],[77.217773,28.602223],[77.217698,28.600933],[77.217805,28.600924],[77.217902,28.600886],[77.217988,28.600829],[77.218074,28.600707],[77.218106,28.600622],[77.218106,28.6005],[77.218085,28.600434],[77.218021,28.60033],[77.217882,28.600226],[77.217753,28.600188],[77.217571,28.600197],[77.217453,28.600244],[77.217389,28.600291],[77.217292,28.600404],[77.216798,28.600197],[77.215897,28.599801],[77.214384,28.599123],[77.212785,28.598407],[77.211326,28.597729],[77.211347,28.597682],[77.211336,28.597588],[77.211239,28.597484],[77.211196,28.597465],[77.211067,28.597465],[77.210992,28.597493],[77.210938,28.59755],[77.209575,28.596947],[77.20935,28.596853],[77.207998,28.59625],[77.20759,28.596071],[77.207526,28.596005],[77.207462,28.595996],[77.207033,28.596109],[77.20684,28.596156],[77.205295,28.596495],[77.204555,28.596561],[77.203546,28.596533],[77.20243,28.59642],[77.201218,28.59609],[77.200596,28.596109],[77.19992,28.596137],[77.199019,28.596175],[77.198826,28.596053],[77.198826,28.595996],[77.198772,28.595855],[77.198675,28.59577],[77.1986,28.595742],[77.198557,28.595723],[77.198428,28.595723],[77.198299,28.595761],[77.198235,28.595808],[77.197055,28.595516],[77.196529,28.59545],[77.196132,28.595431],[77.19566,28.595459],[77.194533,28.595695],[77.193986,28.595865],[77.193911,28.595799],[77.193772,28.595761],[77.193633,28.595789],[77.193515,28.595883],[77.193472,28.596005],[77.193483,28.596062],[77.193032,28.596241],[77.190908,28.597108],[77.190854,28.597042],[77.190768,28.596995],[77.190661,28.596967],[77.190532,28.596976],[77.190457,28.597004],[77.19035,28.597089],[77.190307,28.597155],[77.190286,28.597287],[77.190318,28.597391],[77.189095,28.5979],[77.188655,28.59807],[77.187775,28.598419],[77.187743,28.598362],[77.187646,28.598296],[77.187549,28.598268],[77.18741,28.598287],[77.187313,28.598334],[77.187238,28.598438],[77.187227,28.598532],[77.187259,28.598626],[77.183686,28.600058],[77.181991,28.600727],[77.181809,28.60084],[77.181498,28.601057],[77.181058,28.601528],[77.180897,28.601726],[77.180715,28.601811],[77.180618,28.60183],[77.180403,28.601811],[77.17933,28.601265],[77.175446,28.599212],[77.17521,28.59909],[77.174877,28.598911],[77.173965,28.598431],[77.173718,28.598309],[77.173471,28.598168],[77.172666,28.597754]]"
+                  color: 
+                    description: >-
+                      hex color ie. #3edhhs
+                    type: string
+                    example: "#ff00f7"
+                  icon_from: 
+                    description: >-
+                      The URL of the custom icon that indicates the origin of the path.
+                    type: string
+                    example: "https://maps.mapmyindia.com/images/from.png"
+                  icon_to: 
+                    description: >-
+                      The URL of the custom icon that indicates the destination of the path.
+                    type: string
+                    example: "https://maps.mapmyindia.com/images/to.png"
+                  offset: 
+                    description: >-
+                      The offset of the marker pointer from top right corner of the icons.
+                    type: string
+                    example: "10,44"
+                  padding_x: 
+                    description: >-
+                      Padding for path rendering from x axis image (in pixels); Max: 150
+                    type: integer
+                    example: 50
+                  padding_y: 
+                    description: >-
+                      Padding for path rendering from y axis image (in pixels); Max: 150
+                    type: integer
+                    example: 100
+                  markers_icon: 
+                    description: >-
+                      The marker icons for the via points to be rendered on the polyline.
+                    type: string
+                    example: "https://img.icons8.com/fluent/48/000000/marker-storm.png"
+                  markers: 
+                    description: >-
+                      An Array of comma separated [Longitude,Latitude], Custom Markers to be embedded in the image during the trip.
+                    type: string
+                    example: "[77.187238,28.598438],[77.200596,28.596109]"
+               required:
+                 - height
+                 - width
+                 - polyline
+        responses:
+          '200':
+            description: OK
+            content:
+              image/png:
+                schema:
+                  format: binary
+                  example: "https://kunalbharti.github.io/mapmyindia-rest-api-beta/custom/stillImagePolylineResponse.png"
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false

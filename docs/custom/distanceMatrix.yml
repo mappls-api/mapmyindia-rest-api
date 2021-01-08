@@ -1,0 +1,286 @@
+openapi: 3.0.3
+info:
+  title: Distance Matrix APIs
+  description: >-
+    Unlock the power of location intelligence for complex routing problems. <br><br>We at MapmyIndia engineer rigorously tested routing algorithms for safe and efficient journeys that incorporate anticipated real time traffic updates for the most optimal and energy efficient routes. <br><br> This REST API computes the distance and durations in a matrix of routes between a set of source/primary positions (geographical coordinates) and a set of all supplied secondary positions. <br>Please note that maximum number of points are limited to 100 only including source and secondary positions. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://apis.mapmyindia.com/advancedmaps/v1
+    description: 'Live Prod server for Distance Matrix APIs'
+paths:
+  /{rest-key}/{resources}/{profile}/{coordinates}:
+    get: 
+      tags: 
+        - Distance Matrix APIs
+      description: >-
+        This REST API computes the distance and durations in a matrix of routes between a set of source/primary positions (geographical coordinates) and a set of all supplied secondary positions. <br>Please note that maximum number of points are limited to 100 only including source and secondary positions.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-matrix-api-example">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-distance-matrix-api">Download Sample Code</a> </p>
+      summary: Distance Matrix API
+      operationId: dmAPI
+      parameters: 
+        - name: rest-key
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        - name: resources
+          in: path
+          description: >-
+            The different resources available within MapmyIndia Distance Matrix API. These resources have their own individual allocations and not all are allocated for evalulations be default. <br>For allocating particular resource on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 1. </span>Resources
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>distance_matrix</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>distance_matrix_eta</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>distance_matrix_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>distance_matrix_traffic</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. Largely biased towards aggressive traffic congestion avoidance, will basic path preference only. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "distance_matrix_eta"
+          schema:
+            type: string
+            enum: [distance_matrix, distance_matrix_eta, distance_matrix_traffic]
+        - name: profile
+          in: path
+          description: >-
+            The different profiles available within MapmyIndia Distance Matrix API. These profiles have their own individual transport modes and not all are allocated for evalulations be default. <br>For allocating particular profiles on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 2. </span>Profiles
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="4" headers="d156249e37 ">Profiles</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>driving</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for 4-wheeler/passenger car routing.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>biking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>distance_matrix</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in two-wheeler routing. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>walking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>distance_matrix</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in pedestrian routing. 
+                            </td>
+                            </tr>
+                            <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>trucking</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">Meant for Truck routing. Routing with this profile is restricted to <code>distance_matrix</code> only. <code>region</code> & <code>rtype</code> request parameters are not supported in truck routing. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "driving"
+          schema:
+            type: string
+            enum: [driving, biking, walking, trucking]
+        - name: geopositions
+          in: path
+          description: >-
+            geopositions(part of URL) are either: <ul><li>pair of comma separated longitude & latitude values OR</li><li>eLoc(s).</li></ul> First geoposition will be considered as origin point (mandatory); and rest of the geopositions will be considered as destination points (mandatory). <br><br>Example: <code>77.983936,28.255904;77.05993,28.487555</code> OR <code>mmi000</code>. Geoposition separator is a semicolon <code>;</code>.
+          allowEmptyValue: false
+          required: true
+          example: "mmi000;77.983936,28.255904"
+          schema:
+            type: string
+        - name: sources
+          in: query
+          description: >-
+            To specify which of the coordinates supplied in the URL are to be treated as source position for many to many distance matrix calculation, indicate that coordinate pair's index. E.g. 0;1 means that 0th and 1st coordinate pairs are source points. Default value is <code>0</code>. The indexes must be semi-colon separated. e.g: 0;1;2;...
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "0;1;2"
+        - name: rtype
+          in: query
+          description: >-
+            type of route (integer) required for navigation, where values mean:<br>           <code>0</code> optimal (default)<br> <code>1</code> shortest (it will calculate route by excluding access penalties like private roads, etc.)
+          allowEmptyValue: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          required: false
+        - name: destinations
+          in: query
+          description: >-
+            To specify which of the coordinates supplied in the URL are to be treated as destination position for many to many distance matrix calculation, indicate that coordinate pair's index. E.g. 2;3 means that 0th and 1st coordinate pairs are destination points. Default value is <code>all</code>. The indexes must be semi-colon separated. e.g: 3;4;5;...
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "3;4;5"
+        - name: region
+          in: query
+          description: >-
+            This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), MMR for Myanmar and btn (for Bhutan)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: IND
+            enum: [IND, MMR, LKA, NPL, BTN, BGD]
+          required: false
+          example: "IND"
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/distanceMatrix'
+          '204':
+            description: DB Connection error.
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '404':
+            description: Not found
+          '412':
+            description: Precondition Failed, i.e. Some existing pre-condition in formulating a valid API request was not fulfilled.
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+components: 
+  schemas:
+    distanceMatrix: 
+      title: dm object
+      description: 'dm object'
+      type: object
+      required: 
+        - Server
+        - version
+        - results
+        - responseCode
+      properties:
+        Server: 
+          type: string
+          title: 'Server'
+          description: >-
+             Gives Information on active service's server.
+          format: string
+          example: "ETA-5100"
+        version: 
+          type: string
+          title: 'version'
+          description: >-
+             API’s version information.
+          format: string
+          example: "250.19.5222"
+        responseCode:
+          type: integer
+          title: 'responseCode'
+          description: >-
+             See the service dependent and general status codes
+          format: string
+          example: 200
+        results:
+          $ref: '#/components/schemas/DMresults'
+    DMresults: 
+      title: dm results
+      description: 'dm results'
+      type: object
+      required: 
+        - distances
+        - code
+        - durations
+      properties:
+        code: 
+          type: string
+          title: 'dmCode'
+          description: >-
+             if request is successful, response is ‘ok’. Else, see the service dependent and general status codes as available in the enum. <br>In case of error, “NoRoute” code is supported (in addition to the general ones) which means “no route found”. <br> <ul><li><code>Ok</code>: Request could be processed as expected.</li><li><code>InvalidUrl</code>: URL string is invalid.</li><li>InvalidService: Service name is invalid.</li><li><code>InvalidVersion</code>: Version is not found.</li><li><code>InvalidOptions</code>: Options are invalid.</li><li><code>InvalidQuery</code>: The query string is synctactically malformed.</li><li><code>InvalidValue</code>: The successfully parsed query parameters are invalid.</li><li><code>NoSegment</code>: One of the supplied input coordinates could not snap to street segment.</li><li><code>TooBig</code>: The request size violates one of the service specific request size restrictions.</li><li><code>NoRoute</code>: Means No Route Found.</li></ul>
+          format: string
+          example: "Ok"
+        distances: 
+          description: >-
+            array of float distances in metres.
+          type: array
+          items: 
+            example: [14076.1, 30927.6]
+        durations: 
+          description: >-
+            array of float durations in seconds.
+          type: array
+          items: 
+            example: [1884.9, 2644.1]

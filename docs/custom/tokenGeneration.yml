@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: Token Generation API
+  description: >-
+    This API is required to generate tokens authorize the oAuth 2 based APIs. <br> Hence, the developer would need to send a request for access token using their client_id and client_secret to the Token Generation API. <br>Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: <strong> {token_type} {access_token} </strong>
+            <br><br> <code>Authorization: {token_type} {access_token}</code>.
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+paths:
+  /security/oauth/token: 
+    post: 
+      tags: 
+        - Token Generation API
+      description: >-
+        This API is required to generate tokens authorize the oAuth 2 based APIs. <br> Hence, the developer would need to send a request for access token using their client_id and client_secret to the Token Generation API. <br>Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: <strong> {token_type} {access_token} </strong>
+            <br> Authorization: “token_type access_token”.
+      summary: >-
+        Token Generation API
+      operationId: tokenGenerationAPI
+      requestBody:
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+             properties:
+                grant_type: 
+                  description: >-
+                    The grant type applicable to the token. By default, it is set at "client_credentials".
+                  type: string
+                  example: "client_credentials"
+                client_id:
+                  description: >-
+                    The client ID provided to thec client for accessing oAuth 2 based APIs.
+                  type: string
+                  example: "this-is-client-id-provided-to-client"
+                client_secret: 
+                  description: >-
+                    The client secret provided to thec client for accessing oAuth 2 based APIs.
+                  type: string
+                  example: "this-is-client-secret-provided-to-client"
+             required:
+               - grant_type
+               - client_id
+               - client_secret
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tokenResults'
+        '400':
+          description: Bad request; User made an error while creating a valid request.
+        '401':
+          description: Unauthorized, if the clientID doesn’t exist or an invalid clientSecret is provided.
+        '403':
+          description: Forbidden.
+        '500':
+          description: Something went wrong.
+        '503':
+          description: Maintenance break.
+      servers:
+        - url: https://outpost.mapmyindia.com/api
+          description: 'Live Prod Server for Token Generation API'
+components:
+  schemas:
+    tokenResults: 
+      title: Token Generation Result
+      description: >-
+        The result object which contains the token generated from Token Generation API.
+      type: object
+      required: 
+        - access_token
+        - token_type
+        - expires_in
+        - scope
+        - project_code
+      properties: 
+        access_token: 
+          type: string
+          example: '0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6'
+        token_type: 
+          type: string
+          example: 'bearer'
+        expires_in: 
+          type: integer
+          example: 86499
+        scope: 
+          type: 'string'
+          example: 'READ'
+        project_code: 
+          type: 'string'
+          example: 'prj1234567890987654321'

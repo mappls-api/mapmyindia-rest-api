@@ -1,0 +1,362 @@
+openapi: 3.0.3
+info:
+  title: Nearby API
+  description: >-
+    MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations.  <br><br> Nearby Places API, enables you to add discovery and search of nearby POIs by searching for a generic keyword used to describe a category of places or via the unique code assigned to that category. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs/Parameters</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+security: 
+  - BearerAuth: []
+paths:
+  /api/places/nearby/json:
+    get:
+      tags:
+        - Nearby API
+      description: >-
+        Nearby Places API, enables you to add discovery and search of nearby POIs by searching for a generic keyword used to describe a category of places or via the unique code assigned to that category.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-near-by-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-near-by-api-example">Download Sample Code</a> </p>
+      summary: >-
+        Nearby API
+      operationId: AtlasNearbyAPI
+      servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   description: >-
+        #     Authorization header with the value: “{token_type} {access_token}”. <br> Please generate your token from token generation API before calling this API.
+        #   required: true
+        #   allowEmptyValue: false
+        #   schema:
+        #     type: string
+        #   example: "bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6"
+        - name: keywords
+          in: query
+          description: 'Enter the query on which the search has to be done.<br><h3>Operators in `Keywords` parameter</h3><h4>To send multiple keywords in a request, we’ve defined a couple of operators that can help the developers wrap their applications around this functionality. Below are the operators:<ol><li>The “ ; ” Operator: This operator is an “or” operator. Defining multiple keywords separated with a “ ; ” would provide results that satisfies either of the keywords.<li>The “ $ ” Operator: This operator is a “and” operator. Defining multiple keywords separated with a “ $ ” would provide results that satisfy all the provided keywords. (default).</ol><br>To use these operators, simple just send in the keywords parameter like below:<br>`&keywords=coffee ; tea $ sea food ; alcohol`<br>The above nearby search would yield in results that either provide coffee or tea but must provide either sea food or alcohol.<br>**Please Note**: the spacing in the above example is of no relevance to the search result. It’s just there to provide better understanding.'
+          required: true
+          allowEmptyValue: false
+          example: "FODCOF"
+          schema:
+            type: string
+        - name: refLocation
+          in: query
+          description: >-
+            Provides the location around which the search will be performed. e.g. `refLocation=28.454,77.435`. <br> The refLocation parameter can also accept <strong>eLoc</strong> as reference location. <br> This configuration is not active by default. <br>Please contact MapmyIndia API support for further details. <br>Example: <code>refLocation=17ZUL7</code>
+          example: "28.454,77.435"
+          required: true
+          schema:
+            type: string
+          allowEmptyValue: false
+        - name: page
+          in: query
+          description: 'provides number of the page to provide results from.'
+          required: false
+          allowEmptyValue: false
+          example: 1
+          schema:
+            type: integer
+        - name: region
+          in: query
+          description: 'it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
+          allowEmptyValue: false
+          required: false
+          example: "IND"
+          schema:
+            type: string
+        - name: radius
+          in: query
+          description: 'Provides the range of distance to search over (default 1000, min, 500, max, 10000)'
+          allowEmptyValue: false
+          example: 10000
+          schema:
+            type: integer
+        - name: bounds
+          in: query
+          description: '(x1,y1;x2,y2) Allows the developer to send in map bounds to provide a nearby search of the geobounds. where x1,y1 are the lat lng of the bound. The bounds are set from topLeft to bottomRight (North-West to South-East).'
+          allowEmptyValue: false
+          example: "28.639256,77.211133;28.625214,77.237483"
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'It uses key:value pair(s) to fine tune discovery of places by filtering the results. e.g. categoryCode:FODCOF <br><ul><li>valid IDs for key value pairs are:<ul><li>`categoryCode`: can take in category codes as input'
+          allowEmptyValue: false
+          example: "categoryCode:FODCOF"
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          description: 'Provides configured sorting operations for the client on cloud. Below are the available sorts:<br><ul><li>`dist:asc & dist:desc` - will sort data in order of distance from the passed location (default).<li>`name:asc & name:desc` - will sort the data on alphabetically bases.<li>`imp` - will sort data in order of decreasing prominence of the place.'
+          allowEmptyValue: false
+          example: "dist:asc"
+          schema:
+            type: string
+        - name: searchBy
+          in: query
+          description: 'provides configurable search operations for the client on cloud. Below are the available sorts:<br><ul><li>`dist`(default) - will sort data in order of distance from the passed location (default).<li>`imp` - will search data in order of prominence of the place.'
+          allowEmptyValue: false
+          schema:
+            type: string
+          example: "dist"
+        - name: pod
+          in: query
+          description: 'It takes in the place type code which helps in restricting the results to certain chosen type. Access to this parameter is controlled from the backend. This parameter, if provided will override any values provided in keywords request param. Below mentioned are the available values for pod:<br><ul><li>`SLC` - Sublocality<li>`LC` - Locality<li>`CITY` - City<li>`STATE` - State </li></ul>'
+          allowEmptyValue: false
+          example: "LC"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/nearbyResults'
+        '204':
+          description: Not found
+        '400':
+          description: Bad request
+        '401':
+          description: API access denied
+        '403':
+          description: Forbidden
+        '500':
+          description: Something went wrong
+        '503':
+          description: Internal server error
+      deprecated: false
+components:
+  schemas:
+    NB3:
+      title: tokenizeAddress
+      description: >-
+        It shows the admin details along with the house address. Address token information is NOT available in generic response; and is RESTRICTED.
+      type: object
+      required:
+        - district
+        - city
+        - state
+      properties:
+        houseNumber:
+          type: string
+          description: House Number of the POI.
+          format: string
+          example: '237'
+        houseName:
+          type: string
+          description: House Name of the POI.
+          format: string
+          example: 'MMI Building'
+        poi:
+          type: string
+          description: Name of the POI.
+          format: string
+          example: 'MapmyIndia Head Office'
+        street:
+          type: string
+          description: Name of the street.
+          format: string
+          example: ''
+        subSubLocality:
+          type: string
+          description: Name of the subsublocality.
+          format: string
+          example: ''
+        subLocality:
+          type: string
+          description: Name of the sublocality.
+          format: string
+          example: ''
+        locality:
+          type: string
+          description: Name of the locality.
+          format: string
+          example: 'Okhla industrial phase 3'
+        village:
+          type: string
+          description: Name of the village.
+          format: string
+          example: 'Okhla Vilage'
+        subDistrict:
+          type: string
+          description: Name of the subDistrict.
+          format: string
+          example: ''
+        district:
+          type: string
+          description: Name of the District.
+          format: string
+          example: 'South Delhi'
+        city:
+          type: string
+          description: Name of the city.
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: Name of the STATE.
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: PINcode of the location.
+          format: string
+          example: '110010'
+    nearbyResults:
+      title: Nearby Results
+      description: The result object which contains the Nearby API results.
+      type: object
+      required:
+        - suggestedLocations
+        - pageInfo
+      properties:
+        suggestedLocations:
+          type: array
+          items:
+            $ref: '#/components/schemas/NB1'
+        pageInfo:
+          $ref: '#/components/schemas/NB2'
+    NB1:
+      title: Suggested Locations
+      required:
+        - addressTokens
+        - distance
+        - eloc
+        - email
+        - entryLatitude
+        - entryLongitude
+        - hourOfOperation
+        - keywords
+        - landlineNo
+        - latitude
+        - longitude
+        - mobileNo
+        - orderIndex
+        - placeAddress
+        - placeName
+        - type
+      type: object
+      properties:
+        addressTokens:
+          type: object
+          $ref: '#/components/schemas/NB3'
+        distance:
+          type: string
+          format: string
+          example: 64
+          description: 'provides the distance from the provided location bias in meters'
+        eloc:
+          type: string
+          format: string
+          example: CHZZ3S
+          description: 'Place Id of the location 6-char alphanumeric'
+        email:
+          type: string
+          format: string
+          example: xyz@email.com
+          description: 'Email for contact'
+        entryLatitude:
+          type: number
+          format: double
+          example: 'RESTRICTED'
+          description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        entryLongitude:
+          type: number
+          format: double
+          example: 'RESTRICTED'
+          description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        hourOfOperation:
+          type: string
+          format: string
+          example: poi
+          description: 'The hours of operation of the POI in a day.'
+        keywords:
+          type: array
+          description: 'The keywords/category codes associated with the given result.'
+          items:
+            $ref: '#/components/schemas/NB4'
+        landlineNo:
+          type: number
+          format: integer
+          example: 911133107634
+          description: 'phone no for contact'
+        latitude:
+          type: number
+          format: double
+          example: 'RESTRICTED'
+          description: 'Latitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        longitude:
+          type: number
+          format: double
+          example: 'RESTRICTED'
+          description: 'longitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        mobileNo:
+          type: number
+          format: integer
+          example: 919999827144
+          description: 'Phone number for contact'
+        orderIndex:
+          type: integer
+          format: integer
+          example: 1
+          description: 'the order where this result should be placed'
+        placeAddress:
+          type: string
+          format: string
+          example: 'G-72, 1st Floor, Outer Circle, Connaught Place, New Delhi, Delhi, 110001'
+          description: 'Address of the location'
+        placeName:
+          type: string
+          format: string
+          example: Lord of The Drinks
+          description: 'Name of the location'
+        type:
+          type: string
+          format: string
+          example: poi
+          description: 'Type of location POI or Country or City'
+    NB2:
+      title: Page Info
+      required:
+        - pageCount
+        - totalHits
+        - totalPages
+        - pageSize
+      properties:
+        pageCount:
+          type: integer
+          format: integer
+          example: 1
+          description: 'The number of pages with results.'
+        totalHits:
+          type: integer
+          format: integer
+          example: 2730
+          description: 'Total number of places in the results.'
+        totalPages:
+          type: integer
+          format: integer
+          example: 2730
+          description: 'Total number of pages as per page size and no of results.'
+        pageSize:
+          type: integer
+          format: integer
+          example: 2730
+          description: 'The number of results per page.'
+    NB4:
+      title: Keywords
+      type: object
+      example: 'FINATM'
+  securitySchemes:
+    BearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: 'bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6'

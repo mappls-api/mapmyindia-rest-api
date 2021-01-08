@@ -1,0 +1,369 @@
+openapi: 3.0.3
+info:
+  title: Text Search API
+  description: >-
+    MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations. <br><br> Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request. This API now supports Hindi language so you can now search queries in Hindi too. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs/Parameters</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+security: 
+  - BearerAuth: []
+paths:
+  /api/places/textsearch/json:
+      get:
+        tags:
+          - Text Search API
+        description: >-
+          Text Search API is a service that aims to provide information about a list of places on the basis of a text string entered by the user. It uses the location information that is provided along with the query to try to understand the request. This API now supports Hindi language so you can now search queries in Hindi too.
+          <p style=text-align:right><strong><a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-textsearch-api">Download Sample Code</a> </p>
+        summary: >-
+          Text Search API
+        operationId: AtlasTextSearchAPI
+        servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
+        parameters:
+          # - name: Authorization
+          #   in: header
+          #   description: >-
+          #     Authorization header with the value: “{token_type} {access_token}”. <br> Please generate your token from token generation API before calling this API.
+          #   required: true
+          #   allowEmptyValue: false
+          #   schema:
+          #     type: string
+          #   example: "bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6"
+          - name: query
+            in: query
+            description: 'e.g. FODCOF, Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130 {POI, House Number, keyword, tag}'
+            allowEmptyValue: false
+            required: true
+            schema:
+              type: string
+            example: "Where is Lajpat Nagar"
+          - name: region
+            in: query
+            description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
+            schema:
+              type: string
+            allowEmptyValue: false
+            example: 'IND'
+          - name: location
+            in: query
+            description: 'Provides the location around which the search will be performed. e.g. `location=28.454,77.435` It is STRONGLY RECOMMENDED to use this parameter for accurate location biased results.'
+            allowEmptyValue: false
+            schema:
+              type: string
+            example: '28.454,77.435'
+          - name: filter
+            in: query
+            description: 'Filter parameter helps you restrict the result by mentioning pincode. e.g. `filter=pin:110020`'
+            allowEmptyValue: false
+            schema:
+              type: string
+            example: 'pin:110020'
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/TextSearchAPIResults'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false
+components:
+  schemas:
+    TextSearchAPIResults:
+      title: Text Search API Results
+      description: The result object which contains the Text Search API results.
+      type: object
+      required:
+        - suggestedLocations
+        - userAddedLocations
+      properties:
+        suggestedLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/AS1'
+        userAddedLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/AS2'
+    AS1:
+      title: Suggested Location
+      type: object
+      required:
+        - type
+        - typeX
+        - placeAddress
+        - latitude
+        - longitude
+        - eLoc
+        - entryLatitude
+        - entryLongitude
+        - placeName
+        - alternateName
+        - keywords
+        - p
+        - distance
+        - orderIndex
+        - score
+        - suggester
+        - addressTokens
+        - richInfo
+      properties:
+        type:
+          type: string
+          description: 'This is the type whether the results is POI or any building point.'
+          format: string
+          example: 'POI'
+        typeX:
+          type: integer
+          description: 'Type attribute for internal use only for MapmyIndia.'
+          format: integer
+          example: 7
+        placeAddress:
+          type: string
+          description: 'Address of the location.'
+          format: string
+          example: 'Yippee Rooms, Sector 56, Gurugram, Haryana, 122011'
+        latitude:
+          type: number
+          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        longitude:
+          type: number
+          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: '2LH9OC'
+        entryLatitude:
+          type: number
+          description: 'It shows us the entry latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        entryLongitude:
+          type: number
+          description: 'It shows us the entry longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        placeName:
+          type: string
+          description: This shows the name of the POI
+          format: string
+          example: 'OYO Hotel'
+        alternateName: 
+          type: string
+          description: 'This shows the alternate name of the POI'
+          format: string
+          example: 'OyoRooms,OYO 40400 Yippe Rooms,OYO Rooms Hotel'
+        keywords:
+          type: array
+          description: 'The keywords/category codes associated with the given result.'
+          items:
+            $ref: '#/components/schemas/NB4'
+        addressTokens:
+          $ref: '#/components/schemas/NB3'
+        p:
+          type: integer
+          description: 'This shows the priority of the POI'
+          format: integer
+          example: 11663
+        orderIndex:
+          type: integer
+          description: 'This shows the order of the search results priority wise.'
+          format: integer
+          example: 1
+        score:
+          type: number
+          description: 'This shows the score of the POI.'
+          format: integer
+          example: 1.5075794782130676
+        suggester:
+          type: string
+          description: 'This shows on which basis the search results has been found.'
+          format: string
+          example: 'alternateName'
+        richInfo:
+          type: array
+          description: This shows the rich info associated with the given result.
+          items:
+            type: object
+          format: array of strings
+          example: ''
+    NB3:
+      title: tokenizeAddress
+      description: >-
+        It shows the admin details along with the house address. Address token information is NOT available in generic response; and is RESTRICTED.
+      type: object
+      required:
+        - district
+        - city
+        - state
+      properties:
+        houseNumber:
+          type: string
+          description: House Number of the POI.
+          format: string
+          example: '237'
+        houseName:
+          type: string
+          description: House Name of the POI.
+          format: string
+          example: 'MMI Building'
+        poi:
+          type: string
+          description: Name of the POI.
+          format: string
+          example: 'MapmyIndia Head Office'
+        street:
+          type: string
+          description: Name of the street.
+          format: string
+          example: ''
+        subSubLocality:
+          type: string
+          description: Name of the subsublocality.
+          format: string
+          example: ''
+        subLocality:
+          type: string
+          description: Name of the sublocality.
+          format: string
+          example: ''
+        locality:
+          type: string
+          description: Name of the locality.
+          format: string
+          example: 'Okhla industrial phase 3'
+        village:
+          type: string
+          description: Name of the village.
+          format: string
+          example: 'Okhla Vilage'
+        subDistrict:
+          type: string
+          description: Name of the subDistrict.
+          format: string
+          example: ''
+        district:
+          type: string
+          description: Name of the District.
+          format: string
+          example: 'South Delhi'
+        city:
+          type: string
+          description: Name of the city.
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: Name of the STATE.
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: PINcode of the location.
+          format: string
+          example: '110010'
+    AS2:
+      title: User Added Location
+      description: 'The result object which contains the user added POI results.'
+      type: object
+      required:
+        - eLoc
+        - entryLatitude
+        - entryLongitude
+        - latitude
+        - longitude
+        - orderIndex
+        - placeAddress
+        - placeName
+        - resultType
+        - type
+        - userName
+      properties:
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: '2LH9OC'
+        entryLatitude:
+          type: number
+          format: double
+          example: 'RESTRICTED'
+          description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        entryLongitude:
+          type: number
+          format: double
+          example: 'RESTRICTED'
+          description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        latitude:
+          type: number
+          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        longitude:
+          type: number
+          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        orderIndex:
+          type: integer
+          description: 'This shows the order of the search results priority wise.'
+          format: integer
+          example: 1
+        placeAddress:
+          type: string
+          description: 'This is the address of the text searched by you.'
+          format: string
+          example: 'Yippee Rooms, Sector 56, Gurugram, Haryana, 122011'
+        placeName:
+          type: string
+          description: 'This shows the name of the POI.'
+          format: string
+          example: OYO Hotel
+        resultType:
+          type: string
+          description: 'It Shows the the category of result falling into. For eg. UAP'
+          format: string
+          example: UAP
+        type: 
+          type: string
+          format: string
+          example: ''
+        userName: 
+          type: string
+          description: 'It shows the UserID of the person who added the location.'
+          format: string
+          example: usr1577100139i799918080
+    NB4:
+      title: Keywords
+      type: object
+      example: 'FINATM'
+  securitySchemes:
+    BearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: 'bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6'

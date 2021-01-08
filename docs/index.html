@@ -33,8 +33,8 @@
   <body>
     <div id="swagger-ui"></div>
 
-    <script src="./dist/swagger-ui-bundle.js"> </script>
-    <script src="./dist/swagger-ui-standalone-preset.js"> </script>
+    <script src="./dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
+    <script src="./dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
     <script>
     window.onload = function() {
       // Begin Swagger UI call region
@@ -59,6 +59,70 @@
         {
           url: "./custom/Static-Map-APIs.yml",
           name: "Static-Map-APIs"
+        },
+        {
+          url: "./custom/tokenGeneration.yml",
+          name: "token-Generation"
+        }, 
+        {
+          url: "./custom/autosuggest.yml",
+          name: "Autosuggest" 
+        },
+        {
+          url: "./custom/geocode.yml",
+          name: "Geocode"
+        },
+        {
+          url: "./custom/nearby.yml",
+          name: "Nearby" 
+        },
+        {
+          url: "./custom/textsearch.yml",
+          name: "Text-Search"
+        },
+        {
+          url: "./custom/woodpecker.yml",
+          name: "Address-Standardization"
+        },
+        {
+          url: "./custom/alongRoute.yml",
+          name: "POI-Along-the-Route"
+        },
+        {
+          url: "./custom/placeDetail-adv.yml",
+          name: "eLoc-Place-Detail"
+        },
+        {
+          url: "./custom/revGeocode.yml",
+          name: "Reverse-Geocode"
+        },
+        {
+          url: "./custom/routing.yml",
+          name: "Routing"
+        },
+        {
+          url: "./custom/distanceMatrix.yml",
+          name: "DistanceMatrix"
+        },
+        {
+          url: "./custom/predictiveETA.yml",
+          name: "DistanceMatrixPredictive"
+        },
+        {
+          url: "./custom/snapToRoad.yml",
+          name: "SnapToRoad"
+        },
+        {
+          url: "./custom/routeOpt.yml",
+          name: "RouteOptimization"
+        },
+        {
+          url: "./custom/StillImagePolyline.yml",
+          name: "Traveled Route Image API"
+        },
+        {
+          url: "./custom/StillMapImageAPI.yml",
+          name: "Still Map Image API"
         }
         ],
         dom_id: '#swagger-ui',

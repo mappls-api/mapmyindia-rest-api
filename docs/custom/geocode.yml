@@ -1,0 +1,237 @@
+openapi: 3.0.3
+info:
+  title: Geocode API
+  description: >-
+    MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations.  <br><br> Geocoding API converts real addresses into these geographic reference positions to be placed on a map, be it for any street, area, postal code, POI or a house number etc. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs/Parameters</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+security: 
+  - BearerAuth: []
+paths:
+  /api/places/geocode:
+    get:
+      tags:
+        - Geocode API
+      description: >-
+        All mapping APIs that are used in mobile or web apps need some geo-position coordinates to refer to any given point on the map. Our Geocoding API converts real addresses into these geographic reference positions to be placed on a map, be it for any street, area, postal code, POI or a house number etc.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-atlas-geocoding-rest-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-geocoding-rest-api-example">Download Sample Code</a> </p>
+      summary: >-
+        Geocode API
+      operationId: AtlasGeocodeAPI
+      servers:
+        - url: https://atlas.mapmyindia.com
+          description: 'Live Prod server for OAuth 2 based APIs'
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   description: >-
+        #     Authorization header with the value: “{token_type} {access_token}”. <br> Please generate your token from token generation API before calling this API.
+        #   required: true
+        #   allowEmptyValue: false
+        #   schema:
+        #     type: string
+        #   example: "bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6"
+        - name: address
+          in: query
+          description: 'address to be geocoded'
+          required: true
+          allowEmptyValue: false
+          schema:
+            type: string
+          example: '237 Okhla industrial estate phase 3 new delhi, delhi 110020'
+        - name: itemCount
+          in: query
+          description: 'parameter can be set to get maximum number of result items from the API (default: 1).'
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: integer
+          example: 1
+        - name: bias
+          in: query
+          description: 'This parameter can be used to set Urban or Rural bias. A positive value sets the Urban bias and a negative value sets Rural bias. Allowed values are:<br><ul>
+          <li>`0` : Default: (No bias)
+          <li>`-1` : Rural
+          <li>`1` : Urban</ul>'
+          required: false
+          allowEmptyValue: false
+          example: 0
+          schema:
+            type: integer
+        - name: podFilter
+          in: query
+          description: 'This parameter can be used to set admin level restriction. The result will be either the given admin level or equivalent admin or higher in the hierarchy. No lower admin will be considered for geocoding.<br> Allowed values are:<br>
+          <li>`hno` : house number
+          <li>`hna` : house name
+          <li>`poi` : point of interest
+          <li>`street` : street
+          <li>`sslc` : sub sub locality
+          <li>`village` : village
+          <li>`slc` : sub locality
+          <li>`sdist` : sub district
+          <li>`loc` : locality
+          <li>`city` : city
+          <li>`dist` : district
+          <li>`pincode` :pincode
+          <li>`state` : state'
+          schema:
+            type: string
+        - name: bound
+          in: query
+          description: 'This parameter can be used to set admin boundary, which means geocoding will be done within the given admin. The allowed admin bounds are **Sub-District**, **District**, **City**, **State** and **Pincode**. The parameter accepts the admin eLoc as value.<br><br>**Note:** Please note that `podFilter` & `bound` parameters are mutually exclusive. They cannot be used together in an API call.'
+          example: "TAVI5S"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/geocodeResults'
+        '204':
+          description: Not found
+        '400':
+          description: Bad request
+        '401':
+          description: API access denied
+        '403':
+          description: Forbidden
+        '500':
+          description: Something went wrong
+        '503':
+          description: Internal server error
+      deprecated: false
+components:
+  schemas:
+    geocodeResults:
+      title: Geocode Results
+      description: The result object which contains the Geocode API results.
+      type: object
+      required:
+        - copResults
+      properties:
+        copResults:
+          $ref: '#/components/schemas/GC1'
+    GC1:
+      title: copResult
+      description: This shows the array of results when the itemcount is more than 1.
+      type: object
+      required:
+        - district
+        - city
+        - state
+        - formattedAddress
+        - eLoc
+        - latitude
+        - longitude
+        - geocodeLevel
+        - confidenceScore
+      properties:
+        houseNumber:
+          type: string
+          description: 'House Number of the POI.'
+          format: string
+          example: '237'
+        houseName:
+          type: string
+          description: 'House Name of the POI.'
+          format: string
+          example: 'MMI Building'
+        poi:
+          type: string
+          description: 'Name of the POI.'
+          format: string
+          example: 'MapmyIndia Head Office'
+        street:
+          type: string
+          description: 'Name of the street.'
+          format: string
+          example: ''
+        subSubLocality:
+          type: string
+          description: 'Name of the subsublocality.'
+          format: string
+          example: ''
+        subLocality:
+          type: string
+          description: 'Name of the sublocality.'
+          format: string
+          example: ''
+        locality:
+          type: string
+          description: 'Name of the locality.'
+          format: string
+          example: 'Okhla industrial phase 3'
+        village:
+          type: string
+          description: 'Name of the village.'
+          format: string
+          example: 'Okhla Vilage'
+        subDistrict:
+          type: string
+          description: 'Name of the subDistrict.'
+          format: string
+          example: ''
+        district:
+          type: string
+          description: 'Name of the District.'
+          format: string
+          example: 'South Delhi'
+        city:
+          type: string
+          description: 'Name of the city.'
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: 'Name of the State.'
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: 'Pincode of the location.'
+          format: string
+          example: '110010'
+        formattedAddress:
+          type: string
+          description: 'This shows the formatted address of the POI.'
+          format: string
+          example: '237, MMI Building, MapmyIndia Head Office, Okhla industrial phase 3, Okhla Vilage, South Delhi, New Delhi, Delhi, 110010'
+        eLoc:
+          type: string
+          description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
+          format: string
+          example: '2LH9OC'
+        latitude:
+          type: integer
+          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        longitude:
+          type: integer
+          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+          format: double
+          example: 'RESTRICTED'
+        geocodeLevel:
+          type: string
+          description: 'This shows the level of the geocode means on which basis the poi has been geocoded.'
+          format: string
+          example: houseNumber
+        confidenceScore:
+          type: integer
+          description: 'The confidence for current of geocodelevel.'
+          format: float
+          example: 0.4
+  securitySchemes:
+    BearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: 'bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6'

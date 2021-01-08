@@ -1,0 +1,215 @@
+openapi: 3.0.3
+info:
+  title: Reverse Geocode API
+  description: >-
+    MapmyIndia Search APIs unleash the full potential of MapmyIndia Maps to provide users with ultimate location discoverability experience. It helps users explore our comprehensive & accurate map with over 50 million places mapped for India & its neighbouring nations. <br><br> Reverse Geocoding is a process to give the closest matching address to a provided geographical coordinates (latitude/longitude). MapmyIndia reverse geocoding API provides real addresses along with nearest popular landmark for any such geo-positions on the map. This API also works in Hindi language response. <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+paths:
+  /{REST_KEY}/rev_geocode:
+      get:
+        tags:
+          - Reverse Geocode API
+        description: >-
+          Reverse Geocoding is a process to give the closest matching address to a provided geographical coordinates (latitude/longitude). MapmyIndia reverse geocoding API provides real addresses along with nearest popular landmark for any such geo-positions on the map. This API also works in Hindi language response.
+          <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-reverse-geocoding-rest-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-reverse-geocoding-rest-api-example">Download Sample Code</a> </p>
+        summary: >-
+          Reverse Geocode API
+        operationId: ReverseGeocodeAPI
+        servers:
+        - url: https://apis.mapmyindia.com/advancedmaps/v1
+          description: 'Live Prod server for Static Key based APIs'
+        parameters:
+          - name: lat
+            in: query
+            description: 'The latitude of the location'
+            allowEmptyValue: false
+            required: true
+            example: 28.569548
+            schema:
+              type: number
+          - name: lng
+            in: query
+            description: 'The longitude of the location'
+            allowEmptyValue: false
+            required: true
+            example: 77.856954
+            schema:
+              type: number
+          - name: REST_KEY
+            in: path
+            description: 'The rest key allocated to your account.'
+            allowEmptyValue: false
+            required: true
+            example: "threstapikeywillcomeheretoaccess"
+            schema:
+              type: string
+          - name: region
+            in: query
+            description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
+            allowEmptyValue: false
+            example: 'IND'
+            schema:
+              type: string
+          - name: lang
+            in: query
+            description: 'This parameter accepts the "hi" (ISO 639-1 Language Code for Hindi) as a value.'
+            allowEmptyValue: false
+            example: 'hi'
+            schema:
+              type: string
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/RG1'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+        deprecated: false
+components:
+  schemas:
+    RG1:
+      title: Reverse Geocode API Results
+      description: The result object which contains the Reverse Geocode API results.
+      type: object
+      required:
+        - responseCode
+        - version
+        - results
+      properties:
+        responseCode:
+          type: integer
+          description: This shows the response code of the results.
+          format: integer
+          example: 200
+        version:
+          type: string
+          description: This shows the API version
+          format: string
+          example: '211.19'
+        results:
+          type: array
+          description: The object contains the results of the reverse geocode API.
+          items:
+            $ref: '#/components/schemas/RG2'
+    RG2:
+      title: Reverse geocode results object
+      description: The result object which contains the Reverse Geocode API results.
+      type: object
+      required:
+        - district
+        - city
+        - state
+        - lat
+        - lng
+        - formatted_address
+      properties:
+        houseNumber:
+          type: string
+          description: 'House Number of the POI.'
+          format: string
+          example: '237'
+        houseName:
+          type: string
+          description: 'House Name of the POI.'
+          format: string
+          example: 'MMI Building'
+        poi:
+          type: string
+          description: 'Name of the POI.'
+          format: string
+          example: 'MapmyIndia Head Office'
+        poi_dist:
+          type: string
+          description: 'The value of the poi district'
+          format: string
+          example: '8'
+        street:
+          type: string
+          description: 'Name of the street.'
+          format: string
+          example: 'Unnamed Road'
+        street_dist:
+          type: string
+          description: 'The value of the street district.'
+          format: string
+          example: '14'
+        subSubLocality:
+          type: string
+          description: 'Name of the subsublocality.'
+          format: string
+          example: ''
+        subLocality:
+          type: string
+          description: 'Name of the sublocality.'
+          format: string
+          example: ''
+        locality:
+          type: string
+          description: 'Name of the locality.'
+          format: string
+          example: 'Okhla industrial phase 3'
+        village:
+          type: string
+          description: 'Name of the village.'
+          format: string
+          example: 'Okhla Vilage'
+        subDistrict:
+          type: string
+          description: 'Name of the subDistrict.'
+          format: string
+          example: ''
+        city:
+          type: string
+          description: 'Name of the city.'
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: 'Name of the state.'
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: 'Pincode of the location.'
+          format: string
+          example: '110010'
+        lat:
+          type: string
+          description: 'It shows us the latitude of the location searched.'
+          format: double
+          example: '28.426335'
+        lng:
+          type: string
+          description: 'It shows us the longitude of the location searched.'
+          format: double
+          example: '77.092001'
+        area:
+          type: string
+          description: 'It shows the area on which the result has been found. for eg: India, Bangladesh, etc.'
+          format: string
+          example: 'India'
+        formatted_address:
+          type: string
+          description: 'This shows the formatted address of the POI.'
+          format: string
+          example: '237, MMI Building, MapmyIndia Head Office, Okhla industrial phase 3, Okhla Vilage, South Delhi, New Delhi, Delhi, 110010'
