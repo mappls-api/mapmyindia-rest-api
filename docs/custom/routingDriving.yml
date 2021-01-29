@@ -1,0 +1,576 @@
+openapi: 3.0.3
+info:
+  title: Routing API for Passenger Vehicles
+  description: >-
+    Unlock the power of location intelligence for complex routing problems.  <br><br>We at MapmyIndia engineer rigorously tested routing algorithms for safe and efficient journeys that incorporate anticipated real time traffic updates for the most optimal and energy efficient routes. <br><br> Routing and displaying driving directions on map, including instructions for navigation, distance to destination, traffic etc. are few of the most important parts of developing a map based application. This REST API calculates driving routes between specified locations including via points based on route calculation type(optimal or shortest). <br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+  termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
+  version: 1.0.0
+  license:
+    name: MapmyIndia License Key Signup
+    url: https://www.mapmyindia.com/api/signup
+  contact:
+    name: MapmyIndia API Support
+    email: apisupport@mapmyindia.com
+    url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://apis.mapmyindia.com/advancedmaps/v1
+    description: 'Live Prod server for Routing APIs'
+paths:
+  /{REST_KEY}/{resources}/driving/{geopositions}:
+    get: 
+      tags: 
+        - Routing API with Driving Profile
+      description: >-
+        Routing and displaying driving directions on map, including instructions for navigation, distance to destination, traffic etc. are few of the most important parts of developing a map based application. This REST API calculates driving routes between specified locations including via points based on route calculation type(optimal or shortest).<br>Please note that maximum number of points are limited to 100 only including source and secondary positions.
+        <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-adv-api-example">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-routing-api">Download Sample Code</a> </p>
+      summary: Routing API with driving profile
+      operationId: routingAPI
+      parameters: 
+        - name: REST_KEY
+          in: path
+          description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
+          allowEmptyValue: false
+          required: true
+          example: "threstapikeywillcomeheretoaccess"
+          schema:
+            type: string
+        - name: resources
+          in: path
+          description: >-
+            The different resources available within MapmyIndia Routing API. These resources have their own individual allocations and not all are allocated for evalulations be default. <br>For allocating particular resource on your API credentials, please contact <code>apisupport@mapmyindia.com</code>
+                <div class="tablenoborder">
+                <table cellpadding="4" cellspacing="0" summary="" id="request-constructing__table-basic-request-elements" frame="hsides" border="1" rules="all">
+                  <caption>
+                    <span class="tablecap">
+                      <span class="table--title-label">Table 1. </span>Resources
+                    </span>
+                  </caption>
+                  <colgroup>
+                    <col style="width:28.57142857142857%">
+                      <col style="width:28.57142857142857%">
+                        <col style="width:42.857142857142854%">
+                        </colgroup>
+                        <thead>
+                          <tr class="&#39;&#39;">
+                            <th class="cellrowborder" id="d156249e37">Element</th>
+                            <th class="cellrowborder" id="d156249e40">Value</th>
+                            <th class="row-nocellborder" id="d156249e43">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="&#39;&#39; override_background">
+                            <td class="cellrowborder" rowspan="3" headers="d156249e37 ">Resources</td>
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>route_adv</code>
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to calculate a route & its duration without considering traffic conditions.</td>
+                          </tr>
+                          <tr class="&#39;&#39;">
+                            <td class="cellrowborder" headers="d156249e40 ">
+                              <code>route_eta</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>route_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance. 
+                            </td>
+                          </tr>
+                          <tr class="&#39;&#39; override_background">
+                                        <td class="cellrowborder" headers="d156249e40 ">
+                              <code>route_traffic</code>  
+                            </td>
+                            <td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. Largely biased towards aggressive traffic congestion avoidance, will basic path preference only. 
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          allowEmptyValue: false
+          required: true
+          example: "route_eta"
+          schema:
+            type: string
+            enum: [route_adv, route_eta, route_traffic]
+
+        - name: geopositions
+          in: path
+          description: >-
+            geopositions(part of URL) are either: <ul><li>pair of comma separated longitude & latitude values OR</li><li>eLoc(s).</li></ul> First geoposition will be consider as start point (mandatory); a last geoposition will be considered as end point (mandatory) and those in between are via points (optional). <br>{longitude1},{latitude1};{longitude2},{latitude2};eLoc1;eLoc2; ... (part of URL).
+          allowEmptyValue: false
+          required: true
+          example: "KIC4FK;77.131123,28.552413;77.113091,28.544649"
+          schema:
+            type: string
+        - name: geometries
+          in: query
+          description: >-
+            This parameter used to change the route geometry format/density (influences overview and per step).
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum: [polyline, polyline6, geojson]
+            default: polyline
+          required: false
+        - name: rtype
+          in: query
+          description: >-
+            type of route (integer) required for navigation, where values mean:<br>           <code>0</code> optimal (default)<br> <code>1</code> shortest (it will calculate route by excluding access penalties like private roads, etc.)
+          allowEmptyValue: false
+          schema:
+            type: integer
+            enum: [0, 1]
+            default: 0
+          required: false
+        - name: steps
+          in: query
+          description: >-
+            Return route steps for each route leg. Possible values are true/false. By default it will be used as false. <Recommended=false; unless otherwise recommended by MapmyIndia>
+          allowEmptyValue: false
+          schema:
+            type: boolean
+            default: false
+            enum: [true, false]
+          required: false
+        - name: exclude
+          in: query
+          description: >-
+            Additive list of road classes to avoid, order does not matter. <br>Possible values are toll, motorway & ferry. <br>Multiple values can be sent separated by comma.
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "ferry"
+        - name: region
+          in: query
+          description: >-
+            This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), MMR for Myanmar and btn (for Bhutan)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: IND
+            enum: [IND, MMR, LKA, NPL, BTN, BGD]
+          required: false
+          example: "IND"
+        - name: bearings
+          in: query
+          description: >-
+            Limits the search to segments with given bearing in degrees. The referencing will be to the true north and in clockwise direction. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: integer
+          required: false
+          example: 180
+        - name: alternatives
+          in: query
+          description: >-
+            Search for alternative routes. Passing a number: e.g. <code>alternatives=n</code> searches for up to <strong>n</strong> alternative routes. <br>Please note that even if alternative routes are requested, a result cannot be guaranteed.
+          allowEmptyValue: false
+          schema:
+            type: integer
+          required: false
+          example: 2
+        - name: radiuses
+          in: query
+          description: >-
+            Limits the search to given radius in meters. For all way-points including start and end points. {radius};{radius}[;{radius} ...]. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: string
+          required: false
+          example: "100;100"
+        - name: overview
+          in: query
+          description: >-
+            Add overview geometry either full, simplified according to highest zoom level it could be display on, or not at all. <br>Possible values are <code>simplified</code> (default), <code>full</code>, <code>false</code>. (Part of premium offering)
+          allowEmptyValue: false
+          schema:
+            type: string
+            default: simplified
+            enum: [simplified, full, false]
+          required: false
+          example: "simplified"
+      responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/routing'
+          '204':
+            description: Not found
+          '400':
+            description: Bad request
+          '401':
+            description: API access denied
+          '403':
+            description: Forbidden
+          '500':
+            description: Something went wrong
+          '503':
+            description: Internal server error
+      deprecated: false
+components: 
+  schemas: 
+    routing: 
+      title: Routing results object
+      description: 'Routing results object'
+      type: object
+      required: 
+        - routes
+        - code
+        - Server
+        - waypoints
+      properties: 
+        routes: 
+          type: array
+          items:
+              $ref: '#/components/schemas/routes'
+        waypoints: 
+            type: array
+            items:
+              $ref: '#/components/schemas/waypoints'
+        code: 
+          type: string
+          title: 'code'
+          description: >-
+             if request is successful, response is ‘ok’. Else, see the service dependent and general status codes as available in the enum. <br>In case of error, “NoRoute” code is supported (in addition to the general ones) which means “no route found”. <br> <ul><li><code>Ok</code>: Request could be processed as expected.</li><li><code>InvalidUrl</code>: URL string is invalid.</li><li>InvalidService: Service name is invalid.</li><li><code>InvalidVersion</code>: Version is not found.</li><li><code>InvalidOptions</code>: Options are invalid.</li><li><code>InvalidQuery</code>: The query string is synctactically malformed.</li><li><code>InvalidValue</code>: The successfully parsed query parameters are invalid.</li><li><code>NoSegment</code>: One of the supplied input coordinates could not snap to street segment.</li><li><code>TooBig</code>: The request size violates one of the service specific request size restrictions.</li><li><code>NoRoute</code>: Means No Route Found.</li></ul>
+          format: string
+          default: "Ok"
+          enum: [Ok, InvalidUrl, InvalidService, InvalidVersion, InvalidOptions, InvalidQuery, InvalidValue, NoSegment, TooBig, NoRoute]
+        Server: 
+          type: string
+          title: 'Server'
+          description: >-
+             Gives Information on active service's server.
+          format: string
+          example: "ETA-5100"
+    waypoints: 
+      title: waypoints object
+      description: 'waypoints object'
+      type: object
+      required: 
+        - hint
+        - name
+        - location
+        - distance
+      properties:
+        hint: 
+          type: string
+          title: 'hint'
+          description: >-
+             Unique internal identifier of the segment (ephemeral, not constant over data updates) This can be used on subsequent request to significantly speed up the query and to connect multiple services. E.g. you can use the hint value obtained by the nearest query as hint values for route inputs.
+          format: string
+          example: "bEADgP___39tAAAA6QAAAChAAAB4CAAASdEuQaohRUHInMxEeg6MQwYAAAANAAAArAMAAHwAAADoAAAAiu2YBNCsswFz7ZgE3ayzAQ8AXw3Mm4K5"
+        name: 
+          type: string
+          title: 'name'
+          description: >-
+             Name of the street the coordinate snapped to.
+          format: string
+          example: "Delhi Gurgaon Expressway"
+        distance: 
+          type: number
+          title: 'snappingDistance'
+          description: >-
+             distance to snapped location from actual location.
+          format: string
+          example: 4.033839
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'rawInputCoordinates'
+          description: >-
+             longitude, latitude pair describing the snapped location of the waypoint.
+          example: [77.113089,28.544643]
+    routes: 
+      title: routes object
+      description: 'routes object'
+      type: object
+      required: 
+        - legs
+        - weight_name
+        - geometry
+        - weight
+        - distance
+        - duration
+      properties:
+        legs: 
+          type: array
+          items:
+              $ref: '#/components/schemas/legs'
+        weight_name: 
+          type: number
+          title: 'routesWeightName'
+          description: >-
+             Parameter for internal purpose only.
+          format: string
+          example: "routability"
+        geometry: 
+          type: number
+          title: 'routesGeometry'
+          description: >-
+             Returns the whole geometry of the route as per given geometries request parameter. Default is encoded polyline with 5 digit accuracy (1e5) for positional coordinates. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+          format: string
+          example: "osgmDutwuMjA~@vEfGx@X~RlXLnAhGbJfHjQzBxDb@jEpAj@nAFt@`A?fAQn@aDbBcAhBmChQ"
+        weight: 
+          type: number
+          title: 'routesWeight'
+          description: >-
+             Parameter for internal purpose only.
+          format: number
+          example: 2282.2
+        distance: 
+          type: number
+          title: 'routesDistance'
+          description: >-
+             The distance of travel, in float meters.
+          format: number
+          example: 2282.2
+        duration: 
+          type: number
+          title: 'routesDuration'
+          description: >-
+             The estimated travel time, in float number of seconds.
+          format: number
+          example: 252.4
+    legs: 
+      title: legs object
+      description: 'legs object'
+      type: object
+      required: 
+        - steps
+        - summary
+        - weight
+        - distance
+        - duration
+      properties:
+        steps: 
+          type: array
+          items:
+              $ref: '#/components/schemas/steps'
+        summary: 
+          type: number
+          title: 'legsSummary'
+          description: >-
+             Parameter for internal purpose only.
+          format: string
+          example: "Patel Road, Bhagwan Mahavir Marg"
+        weight: 
+          type: number
+          title: 'legsWeight'
+          description: >-
+             Parameter for internal purpose only.
+          format: number
+          example: 2282.2
+        distance: 
+          type: number
+          title: 'legsDistance'
+          description: >-
+             The distance of travel in the leg, in float meters.
+          format: number
+          example: 2282.2
+        duration: 
+          type: number
+          title: 'legsDuration'
+          description: >-
+             The estimated travel time in the leg, in float number of seconds.
+          format: number
+          example: 252.4
+    steps: 
+      title: steps object
+      description: 'steps object'
+      type: object
+      required: 
+        - intersections
+        - driving_side
+        - weight
+        - distance
+        - duration
+        - name
+        - geometry
+        - mode
+        - maneuver
+      properties:
+        weight: 
+          type: number
+          title: 'stepsWeight'
+          description: >-
+             Parameter for internal purpose only.
+          format: number
+          example: 2282.2
+        distance: 
+          type: number
+          title: 'stepsDistance'
+          description: >-
+             The distance of travel in the leg, in float meters.
+          format: number
+          example: 2282.2
+        duration: 
+          type: number
+          title: 'stepsDuration'
+          description: >-
+             The estimated travel time in the leg, in float number of seconds.
+          format: number
+          example: 252.4
+        geometry: 
+          type: number
+          title: 'stepsGeometry'
+          description: >-
+             The un-simplified geometry of the step segment, depends on the given geometries request parameter. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+          format: string
+          example: "qfvmDcalvMWCWHEBE@K@kA@"
+        intersections: 
+          description: >-
+            A list of Intersection objects(1) that are passed along the segment, the very first belonging to the StepManeuver(2). <br>Note: <ol><li>An intersection gives a full representation of any cross-way the path passes bay. For every step, the very first intersection (intersections[0]) corresponds to the location of the StepManeuver. Further intersections are listed for every cross-way until the next turn instruction. </li><li>An object type representing maneuver.</li></ol>
+          type: array
+          items:
+              $ref: '#/components/schemas/intersections'
+        driving_side: 
+          type: number
+          title: 'driving side'
+          description: >-
+             “Left” (default) for India, Sri Lanka, Nepal, Bangladesh & Bhutan.
+          format: string
+          example: "left"
+        name: 
+          type: string
+          title: 'stepName'
+          description: >-
+             The name of the way along which travel proceeds.
+          format: string
+          example: "Safdar Hashmi Marg"
+        mode: 
+          type: string
+          title: 'mode'
+          description: >-
+             signifies the mode of transportation; driving as default.
+          format: string
+          example: "driving"
+        maneuver: 
+          $ref: '#/components/schemas/maneuver'
+    maneuver: 
+      title: maneuver object
+      description: 'maneuver object'
+      type: object
+      required: 
+        - location
+        - bearing_before
+        - bearing_after
+        - modifier
+        - type
+      properties:
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'maneuverLocation'
+          description: >-
+             A [longitude, latitude] pair describing the location of the turn.
+          example: [77.113089,28.544643]
+        bearing_before: 
+          type: integer
+          title: 'bearing before'
+          description: >-
+             The clockwise angle from true north to the direction of travel immediately before the maneuver.
+          example: 357
+        bearing_after: 
+          type: integer
+          title: 'bearing after'
+          description: >-
+             The clockwise angle from true north to the direction of travel immediately after the maneuver.
+          example: 254
+        modifier: 
+          type: string
+          title: 'modifier'
+          description: >-
+             An optional string indicating the direction change of the maneuver. To see the complete list of modifiers, please see <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/modifiers">article</a> in wiki.
+          example: "left"
+        type: 
+          type: string
+          title: 'type'
+          description: >-
+             A string indicating the type of maneuver. New identifiers might be introduced without API change. Types unknown to the client should be handled like the ‘turn’ type, the existence of correct modifier values is guaranteed. To see the complete list of types, please see <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/types">article</a> in wiki.
+          example: "turn"
+    intersections: 
+      title: intersections object
+      description: 'intersections object'
+      type: object
+      required: 
+        - classes
+        - location
+        - bearings
+        - entry
+        - in
+        - out
+        - lanes
+      properties:
+        location: 
+          type: array
+          items: 
+            type: string  
+          title: 'intersectionLocation'
+          description: >-
+             longitude, latitude pair describing the location of the intersection.
+          example: [77.113089,28.544643]
+        classes:
+          type: array
+          items: 
+            type: string  
+          title: 'classes'
+          description: >-
+             Categorised types of road segments e.g. Motorway
+          example: ["motorway"]
+        bearings:
+          type: array
+          items: 
+            type: integer  
+          title: 'bearings'
+          description: >-
+             A list of bearing values (e.g. [0,90,180,270]) that are available at the intersection. The bearings describe all available roads at the intersection.
+          example: [60, 210, 240]
+        entry:
+          type: array
+          items: 
+            type: boolean  
+          title: 'entry'
+          description: >-
+             A list of entry flags, corresponding in a 1:1 relationship to the bearings. A value of true indicates that the respective road could be entered on a valid route. false indicates that the turn onto the respective road would violate a restriction.
+          example: [false, true, true]
+        in:
+          type: integer
+          title: 'in'
+          description: >-
+             index into bearings/entry array. Used to calculate the bearing just before the turn. Namely, the clockwise angle from true north to the direction of travel immediately before the maneuver/passing the intersection. Bearings are given relative to the intersection. To get the bearing in the direction of driving, the bearing has to be rotated by a value of 180. The value is not supplied for depart maneuvers.
+          example: 0
+        out:
+          type: integer
+          title: 'out'
+          description: >-
+             index into the bearings/entry array. Used to extract the bearing just after the turn. Namely, The clockwise angle from true north to the direction of travel immediately after the maneuver/passing the intersection. The value is not supplied for arrive maneuvers.
+          example: 2
+        lanes:
+          description: >-
+            Array of Lane objects that denote the available turn lanes at the intersection. If no lane information is available for an intersection, the lanes property will not be present.
+          type: array
+          items:
+              $ref: '#/components/schemas/lanes'
+    lanes: 
+      title: lanes object
+      description: 'lanes object'
+      type: object
+      required: 
+        - valid
+        - indications
+      properties:
+        valid:
+          type: boolean
+          title: 'valid'
+          description: >-
+             verifying lane info.
+          example: false
+        indications: 
+          type: array
+          items: 
+            type: string  
+          title: 'indications'
+          description: >-
+             Indicating a sign of directions like Straight, Slight Left, Right, etc. To see the complete list of indications, please see <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/wiki/indications">article</a> in wiki.
+          example: ["straight", "slight left"]
