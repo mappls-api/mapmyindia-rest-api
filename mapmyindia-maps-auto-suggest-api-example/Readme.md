@@ -3,10 +3,16 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+**Now Available**  for Srilanka, Nepal, Bhutan, Myanmar and Bangladesh
 
-**Full documentation available here**: [https://www.mapmyindia.com/api/advanced-maps/doc/autosuggest-api](https://www.mapmyindia.com/api/advanced-maps/doc/autosuggest-api). 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+
+# Note 
+1. The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs.
+2. Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer.
+3. For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.
+4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
+5. `lang` is a premium response parameter linked to our regional language support. Only clients who have specific agreements for its usage will be able to get this in their response parameter.
 
 ## Introduction
 The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports hindi language. If a user enters query in hindi language he will get results in hindi.
@@ -75,12 +81,16 @@ a. suggestedLocations ([object array])
 3. `placeAddress` (string): Address of the location.
 4. `type` (string): type of location POI or Country or City
 5. `latitude` (double): Latitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 6. `longitude` (double): longitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 7. `entryLatitude` (double): Entry point Latitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 8. `entryLongitude` (double): Entry point longitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 9. `orderIndex` (integer): the order where this result should be placed
 10. `keywords` (object): contains the category code to which the POI result(if applicable) belongs to.
-11. `addressTokens` (object)
+11. `addressTokens` (object) Address token information is NOT available in generic response; and is RESTRICTED.
     - `houseNumber` (string): house number of the location.
     - `houseName` (string): house name of the location.
     - `poi` (string): name of the POI (if applicable)
@@ -104,10 +114,14 @@ b. userAddedLocations ([object array])
 3. `placeAddress` (string): Address of the location.
 4. `type` (string): type of location POI or Country or City (if available)
 5. `latitude` (double): Latitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 6. `longitude` (double): longitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 7. `orderIndex` (integer): the order where this result should be placed
 8. `entryLatitude` (double): Entry point Latitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 9. `entryLongitude` (double): Entry point longitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 10. `resultType` (string): Type of the result according to user generated content (UGC). Mostly is 'UAP'.
 11. `userName` (string): The username of the person who has added this place.
 
@@ -119,6 +133,8 @@ c. suggestedSearches ([object array])
 4. `hyperlink` (string): the ready-made link for the nearby API pre-initialized with all default parameters and location with code to search for.
 5. `orderIndex` (integer): the order where this result should be placed.
 6. `eLoc` (string): Place Id of the location 6-char alphanumeric. (if applicable)
+
+d. `lang`<sup>1</sup> (string): used to indicate if the response is in some language other than the default(which is `en`). Valid values are `hi`, which indicates Hindi response.
 
 
 ## Sample Input
@@ -133,11 +149,11 @@ https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550
             "type": "POI",
             "typeX": 7,
             "placeAddress": "Sant Nirankari Colony, New Delhi, Delhi, 110033",
-            "latitude": 28.7230190000001,
-            "longitude": 77.1968330000001,
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
             "eLoc": "DSEC7S",
-            "entryLatitude": 28.7225250000001,
-            "entryLongitude": 77.1989810000001,
+            "entryLatitude": RESTRICTED,
+            "entryLongitude": RESTRICTED,
             "placeName": "Coronation Memorial",
             "alternateName": "",
             "keywords": [
@@ -170,8 +186,8 @@ https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550
             "eLoc": "U09GOU",
             "entryLatitude": 0,
             "entryLongitude": 0,
-            "latitude": 10.002463351332818,
-            "longitude": 76.35638058185577,
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
             "orderIndex": 13,
             "placeAddress": "SFC Plus, Nilampathinja Mughal Road Confident Corona Kakkanad Kerala",
             "placeName": "SFC Plus",
@@ -193,24 +209,30 @@ https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550
 }
 ```
 
-For more details, please visit our full documentation.
-
 For any queries and support, please contact: 
 
-![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+[<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
-![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
-[Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
-Ask a question under the mapmyindia-api
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-![](https://www.mapmyindia.com/api/img/icons/blog.png)
-[Blog](http://www.mapmyindia.com/blog/)
-Read about the latest updates & customer stories
+<br></br>
+<br></br>
+
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
-> © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
+
+[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/MapmyIndia)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/MapmyIndia)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mapmyindia)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/user/MapmyIndia/)
+
+
+
+
+<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+
+<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>

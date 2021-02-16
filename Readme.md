@@ -9,9 +9,11 @@ Powered with India's most comprehensive and robust mapping functionalities.
 Full documentation available here: [https://www.mapmyindia.com/api/index.php#api-stack](https://www.mapmyindia.com/api/index.php#api-stack). 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
 
-## MOVE UP INDIA
+## Store-To-Door
 
-Presenting MapmyIndia APIs, using India's most powerful and granular map data down to the building level. We are more economical and precise than any other maps available in the market.
+Store-to-Door Experiences created with India’s best Location APIs & SDKs.
+In this new ‘at home’ world, we’re helping India’s leading apps take their products & services from the stores straight to the consumer’s door. Let us help you too.
+Top apps have already gone store-to-door: 
 
 Our APIs are categorized into the following major categories: 
 
@@ -28,15 +30,15 @@ Get turn-by-turn directions with alternate driving routes between specified loca
 GeoAnalytics Web JS APIs with multiple data attributes such as demographic data attributes. 
 Aligned with MapmyIndia Map data, these APIs utilize our vast geo-informatics experience to provide customers a enhanced leverage over competition using query-enabled analytics APIs to draw heatmaps, thematic maps or other types geo-visualizations for your business analysis problems.
 
-## Why use MapmyIndia Map APIs
+## Why choose us?
 
-### We can help you save up to 10X more on your map APIs
+### Accurate
 
-We are the most cost-effective maps API in India. At least 10 times more economical than others. We even provide our initial services worth  21,000 for free.
+Most accurate door-step level turn by turn directions covering 66 lakh kilometers across all highways and city roads and lanes,
 
 ### We know India better than anyone else
 
-We have been mapping India since 1992. Which is why, we have the most advanced, location-intelligent and accurate map data for India.
+Powered by India’s best, most detailed house address level maps covering 3 crore places across 7000 cities and 7 lakh villages
 
 ### We abide by Government of India regulations
 
@@ -46,46 +48,7 @@ We are the only local Map APIs that follows Government of India.s regulations. W
 
 Integrating MapmyIndia Maps API is easy and effortless. We provide you with an expert team, to guide and work with you.
 
-## MapmyIndia REST APIs
-
-### [Autosuggest API](https://www.mapmyindia.com/api/advanced-maps/doc/autosuggest-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-auto-suggest-api-example.php)
-
-Get "type as you go" suggestion while searching for a location
-
-### [Geocoding API](https://www.mapmyindia.com/api/advanced-maps/doc/geocoding-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-atlas-geocoding-rest-api-example)
-
-Get most accurate lat long combination for a given address
-
-### [Reverse Geocoding API](https://www.mapmyindia.com/api/advanced-maps/doc/reverse-geocoding-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-reverse-geocoding-rest-api-example)
-
-Get the nearest address for a given lat long combination
-
-### [Nearby API](https://www.mapmyindia.com/api/advanced-maps/doc/nearby-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-near-by-api-example)
-
-Search for nearby places in a category near a given location
-
-### [Place Details / eLoc API](https://www.mapmyindia.com/api/advanced-maps/doc/eloc-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-place-details-api-example)
-
-Bouquet of APIs to integrate the revolutionary, nationwide digital address system
-
-### [Still Map Image API](https://www.mapmyindia.com/api/advanced-maps/doc/still-map-image-api)
-
-Get map images for a given lat long point and zoom level
-
-### [Routing API](https://www.mapmyindia.com/api/advanced-maps/doc/routing-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-route-adv-api-example)
-
-Get optimal & alternate routes between various locations with or without considering live traffic
-
-### [Driving Distance Matrix API](https://www.mapmyindia.com/api/advanced-maps/doc/driving-distance-matrix-api)
-##### [LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-matrix-api-example)
-
-Get driving distance & time from a point to multiple destination
+<br>
 
 
 
@@ -95,21 +58,28 @@ Get driving distance & time from a point to multiple destination
 
 For any queries and support, please contact: 
 
-![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+[<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
-![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
-[Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
-Ask a question under the mapmyindia-api
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-![](https://www.mapmyindia.com/api/img/icons/blog.png)
-[Blog](http://www.mapmyindia.com/blog/)
-Read about the latest updates & customer stories
+<br></br>
+<br></br>
+
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
-> © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
+
+[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/MapmyIndia)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/MapmyIndia)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mapmyindia)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/user/MapmyIndia/)
+
+
+
+
+<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+
+<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>

@@ -1,5 +1,12 @@
 
 ![MapmyIndia APIs](https://www.mapmyindia.com/api/img/mapmyindia-api.png)
+
+# Note 
+1. The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs.
+2. Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer.
+3. For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.
+4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
+
 # POI Along The Route
 
 With POI Along the Route API user will be able to get the details of POIs of a particular category along his set route. The main focus of this API is to provide convenience to the user and help him in locating the place of his interest on his set route.
@@ -92,10 +99,14 @@ suggestedPOIs ([object array])
 13. `tel`(string): Telephone number of the POI
 14. `email`(string): Email of the POI
 15. `website`(string): Website of the POI
-16. `longitude`(double): Longitude of the POI
-17. `latitude`(double): Latitude of the POI
-18. `e_lng`(double): Entry latitude of the POI
-19. `e_lat`(double): Entry latitude of the POI
+16. `longitude`(double): Longitude of the POI.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+17. `latitude`(double): Latitude of the POI.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+18. `e_lng`(double): Entry latitude of the POI.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+19. `e_lat`(double): Entry latitude of the POI.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 20. `brand_code`(string): Brand id of the POI
 
 ## Transaction Information
@@ -137,10 +148,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911122205205",
             "email": null,
             "website": "www.nescafe.com",
-            "longitude": 77.2411440000001,
-            "latitude": 28.6191640000001,
-            "e_lng": 77.241316,
-            "e_lat": 28.619444,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -159,10 +170,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": null,
             "email": null,
             "website": null,
-            "longitude": 77.22533,
-            "latitude": 28.6004300000001,
-            "e_lng": 77.2252760000001,
-            "e_lat": 28.6004830000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -181,10 +192,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": null,
             "email": null,
             "website": null,
-            "longitude": 77.2264670000001,
-            "latitude": 28.599608,
-            "e_lng": 77.226525,
-            "e_lat": 28.5995350000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -203,10 +214,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911132967812, +911164580769",
             "email": null,
             "website": "www.cafecoffeeday.com",
-            "longitude": 77.2374390000001,
-            "latitude": 28.592161,
-            "e_lng": 77.2374,
-            "e_lat": 28.5925140000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -225,10 +236,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911132212130, +911164580767",
             "email": null,
             "website": "www.cafecoffeeday.com",
-            "longitude": 77.226588,
-            "latitude": 28.5849630000001,
-            "e_lng": 77.2265090000001,
-            "e_lat": 28.584954,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -247,10 +258,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911124324168, +911124314168",
             "email": null,
             "website": null,
-            "longitude": 77.2437300000001,
-            "latitude": 28.583653,
-            "e_lng": 77.243909,
-            "e_lat": 28.5838220000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -269,10 +280,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911146568950, +911146568951",
             "email": null,
             "website": null,
-            "longitude": 77.2305160000001,
-            "latitude": 28.5736870000001,
-            "e_lng": 77.2307030000001,
-            "e_lat": 28.5737060000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -291,10 +302,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911141552472",
             "email": null,
             "website": "www.barista.co.in",
-            "longitude": 77.2300880000001,
-            "latitude": 28.5734430000001,
-            "e_lng": 77.230149,
-            "e_lat": 28.5734610000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -313,10 +324,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": null,
             "email": null,
             "website": null,
-            "longitude": 77.2382900000001,
-            "latitude": 28.5714580000001,
-            "e_lng": 77.238253,
-            "e_lat": 28.5713680000001,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         },
         {
@@ -335,10 +346,10 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
             "tel": "+911126463858, +911132483408, +911164638586",
             "email": null,
             "website": "www.cafecoffeeday.com",
-            "longitude": 77.238612,
-            "latitude": 28.569762,
-            "e_lng": 77.238593,
-            "e_lat": 28.569714,
+            "longitude": RESTRICTED,
+            "latitude": RESTRICTED,
+            "e_lng": RESTRICTED,
+            "e_lat": RESTRICTED,
             "brand_code": "0"
         }
     ]

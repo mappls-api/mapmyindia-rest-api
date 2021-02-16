@@ -6,8 +6,13 @@
 Powered with India's most comprehensive and robust mapping functionalities.
 **Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
 
-
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+
+# Note 
+1. The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs.
+2. Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer.
+3. For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.
+4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
 
 ## Introduction
 Nearby Places API, enables you to add discovery and search of nearby POIs by searching for a generic keyword used to describe a category of places or via the unique code assigned to that category.
@@ -98,7 +103,9 @@ a. suggestedLocations ([object array])
 6. `keywords` ( [ string ] ): provides an array of matched keywords or codes.
 7. `landlineNo` (string): Email for contact.
 8. `latitude` (double): Latitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 9. `longitude` (double): longitude of the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 10. `mobileNo` : Phone number for contact.
 11. `orderIndex` (integer): the order where this result should be placed
 12. `placeAddress` (string): Address of the location.
@@ -106,6 +113,7 @@ a. suggestedLocations ([object array])
 14. `type` (string): Type of location POI or Country or City.
 15. `hourOfOperation`<sup>1</sup> (string): The hours of operation of the POI in a day.
 16. `addressTokens`<sup>2</sup> (object)
+Address token information is NOT available in generic response; and is RESTRICTED.
     - `houseNumber` (string): house number of the location.
     - `houseName` (string): house name of the location.
     - `poi` (string): name of the POI (if applicable)
@@ -144,14 +152,14 @@ https://atlas.mapmyindia.com/api/places/nearby/json?keywords=coffee;beer&refLoca
             "distance": 192,
             "eLoc": "TPIGXI",
             "email": "",
-            "entryLatitude": 28.5506790000001,
-            "entryLongitude": 77.2705480000001,
+            "entryLatitude": RESTRICTED,
+            "entryLongitude": RESTRICTED,
             "keywords": [
                 "FODCOF"
             ],
             "landlineNo": "",
-            "latitude": 28.550736,
-            "longitude": 77.2707380000001,
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
             "mobileNo": "",
             "orderIndex": 1,
             "placeAddress": "Okhla Industrial Estate Phase 3, New Delhi, Delhi, 110020",

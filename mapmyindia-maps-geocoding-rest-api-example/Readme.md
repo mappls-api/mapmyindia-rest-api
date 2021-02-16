@@ -3,10 +3,15 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+**Now Available**  for Srilanka, Nepal, Bhutan, Myanmar and Bangladesh
 
-**Full documentation available here**: [https://www.mapmyindia.com/api/advanced-maps/doc/geocoding-api](https://www.mapmyindia.com/api/advanced-maps/doc/geocoding-api). 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+
+# Note 
+1. The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs.
+2. Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer.
+3. For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.
+4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
 
 ## Introduction
 All mapping APIs that are used in mobile or web apps need some geo-position coordinates to refer to any given point on the map. Our Geocoding API converts real addresses into these geographic coordinates (latitude/longitude) to be placed on a map, be it for any street, area, postal code, POI or a house number etc.
@@ -110,7 +115,9 @@ Server-Side Issues:
 14. `formattedAddress`(string): the general protocol following address.
 15. `eloc`(string): eloc of the particular location.
 16. `latitude`(double): the latitude for the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 17. `longitude`(double): the longitude for the location.
+Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 18. `geocodeLevel`(string): the best matched address component.
 19. `confidenceScore`(float): the confidence for current of geocodelevel.
 
@@ -139,8 +146,8 @@ Server-Side Issues:
         "pincode": "110020",
         "formattedAddress": "237, Okhla Industrial Estate Phase 3, Kalkaji, South East Delhi District, New Delhi, Delhi, 110020",
         "eLoc": "TIYF9Q",
-        "latitude": 28.550667,
-        "longitude": 77.268952,
+        "latitude": RESTRICTED,
+        "longitude": RESTRICTED,
         "geocodeLevel": "houseNumber",
         "confidenceScore": 0.4
     }
@@ -167,8 +174,8 @@ Server-Side Issues:
             "pincode": "110001",
             "formattedAddress": "Lady Irwin College Campus, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
             "eLoc": "BGKAFR",
-            "latitude": 28.627695,
-            "longitude": 77.235617,
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
             "geocodeLevel": "locality",
             "confidenceScore": 1
         },
@@ -188,8 +195,8 @@ Server-Side Issues:
             "pincode": "110001",
             "formattedAddress": "Lady Irwin College, Sikandra Road, Lady Irwin College Campus, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
             "eLoc": "38FD1E",
-            "latitude": 28.626337,
-            "longitude": 77.236464,
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
             "geocodeLevel": "street",
             "confidenceScore": 0.8
         },
@@ -209,8 +216,8 @@ Server-Side Issues:
             "pincode": "110001",
             "formattedAddress": "Mandi House Metro Station, Sikandra Road, Connaught Place, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
             "eLoc": "DF2F4C",
-            "latitude": 28.625891,
-            "longitude": 77.234079,
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
             "geocodeLevel": "street",
             "confidenceScore": 0.4
         }
@@ -218,25 +225,30 @@ Server-Side Issues:
 }
 ```
 
-For more details, please visit our website (complete documentation).
-
 For any queries and support, please contact: 
 
-![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+[<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
-![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
-[Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
-Ask a question under the mapmyindia-api
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-![](https://www.mapmyindia.com/api/img/icons/blog.png)
-[Blog](http://www.mapmyindia.com/blog/)
-Read about the latest updates & customer stories
+<br></br>
+<br></br>
+
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
-> © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
->  Written with [StackEdit](https://stackedit.io/) by MapmyIndia.
+
+[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/MapmyIndia)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/MapmyIndia)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mapmyindia)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/user/MapmyIndia/)
+
+
+
+
+<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+
+<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>
