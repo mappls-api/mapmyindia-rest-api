@@ -81,6 +81,7 @@ components:
         - expires_in
         - scope
         - project_code
+        - client_id
       properties: 
         access_token: 
           type: string
@@ -97,3 +98,6 @@ components:
         project_code: 
           type: 'string'
           example: 'prj1234567890987654321'
+        client_id: 
+          type: 'string'
+          example: 'thisistheplace-whereyour-clientIdisprovidedback'

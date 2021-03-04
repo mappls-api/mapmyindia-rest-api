@@ -35,7 +35,7 @@ The following input parameters will be supported in the POI Along The Route API 
 ### Mandatory Parameters
 
 1. `path` (string) This parameter takes the encoded route along which POIs to be searched.
-2. `category` {string} The POI category code to be searched. Only one category input supported.
+2. `category` {string} The POI category code to be searched. Only one category input supported by default. API does have the capability to search across multiple categories  simultaneously (`PREMIUM` Offering). To access multiple category search, please contact [API Support](mailto:apisupport@mapmyindia.com).  
 
 ### Optional Parameters
 3. `sort` (valueless): Gets the sorted POIs along route.
@@ -108,18 +108,17 @@ Geometry information is NOT available in most use-case driven response; and is R
 19. `e_lat`(double): Entry latitude of the POI.
 Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
 20. `brand_code`(string): Brand id of the POI
+21. `category`<sup>1</sup> (string): the category code to which this POI belongs to. Comes only when multiple category search is used.
+<br><br>
 
-## Transaction Information
 
-One request using the API link will be considered as one transaction.
+## Sample requests
 
-## Sample request
-
-### cURL
+### cURL for single category search
 
 ```curl
 curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_route' \
---header 'Authorization: bearer c8502ff0-c0ed-44d3-a114-3a7bcd3c415b' \
+--header 'Authorization: bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6' \
 --form 'geometries=polyline5' \
 --form 'path=mfvmDcalvMB?B?@EB}@lABzABrBDAaAFoDFuCFuC@{@@m@DoAFu@D_@VmAFWHSHKBCFCbA]n@S`@IX?^BdAL|ANtCV~ANXBfBDfBBl@Bp@BrA@Pa@FKHMf@@`CHXDLBJFHJHRbD@`D@Z?h@@f@@h@@bAB^@jDDlBB~@BT@N?dDDV?x@Bt@@dCFdCFzB@nD?N?|BEzBEzBE`@AJ?lCOxCMfAClCGnCIlCIlCIhDKfDIhDIzCK|AG|AEbBG`A@d@FVD^FjARlBVn@D`AD|@Fn@DnCZnCZtBTH@J?V@`A@lC@nC@lCB`AGNCTCPEl@SRI|@a@~BqAb@OZGt@E|BEl@AxA?|@?pA@T?V@bCB`AJNBn@L^NpAl@t@`@d@V~BlA`CnA~BnA`A`@VJd@NXF~@JN@xBBL?hA?x@Ar@?x@A@?vCAvCAvCAxCAj@F`@Fd@Nf@RrAn@|@b@dBz@fBz@nBfAJF~Ax@`CfAXLRHp@XtCpAtCrAf@V|@Rf@Px@TxAZ\\F`BL`BLZEPERGNKPQR_@BaBPeEHeAXo@NcDLaDNaDNaDAkB?kAKqDIoD_@mAI{BI{BGgBIgBGiBCm@ASAi@Cu@Cc@Ag@Aa@GgBGgBGkBAu@IeCAUJARARA~@GB?f@C|AK`BIbBIt@IPCPCZO`@[FKLOR]Vk@Pi@DUL{@D[P}CP{C@i@@a@Ae@EiBCiBAyC?_ACaB?QAeBAgB?WB_@BSDSDOTu@dA{Cr@sBRi@JU^q@j@cATYZ_@TUbBsAHIhA}@jA_AlAaA`Ay@bAy@d@c@pAgAv@q@`AcA^_@tAoAVSVQLGdAg@f@Yz@e@W_@KSWIoAuCmAwCLMBCDCNE@AJ?H@F@v@fB\\GNGb@W\\YfAcALI@C@CBADCD@JBDBBBBD@D?DDLBFJNFDHDF@J@|CKbCItAEHCHA@EBEDCDABAF?D@DB@BDH@D?JADL@l@?j@BbAGGcAGiACc@Cm@C[' \
 --form 'category=FODCOF' \
@@ -129,227 +128,182 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
 ```
 
 
+### cURL for multiple category search
+
+```curl
+curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_route' \
+--header 'Authorization: bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6' \
+--form 'geometries="polyline5"' \
+--form 'path="k{{mDyhlvMD@J?jCJlCRL@|AFt@Af@CTCPCRIh@SnAy@nAw@lBmA|B}ApA_ArA}@Ng@BQDWFg@Oe@W_AGWEe@EgAAyBDcCFaCBsBAc@Cs@Eq@E[EYEWI_@I_@Qq@Oo@EUTKl@UrAm@RG^O~@UzCu@|Cu@|Cu@zCu@lBa@JCPAhACtCDtCBvCBtCBlCBnCDd@?t@@dC?T?fA@tB?tB@VCl@Qt@UPEf@AlDDz@H\\\\?xBK`AEtBCvBAlAB`DPdA^NDL@h@@fACxAE\\\\?~BA~BA~BAtBAL?nBC~@Af@g@HIJQFOBQ@WAUEWISOYOQQMQIOGQASAO@QDMFKJU\\\\_@f@@nC?b@@R?ZFvBDzB@JDlBFxBBbAD~AHhCHzDN^DFDFFFXPbAAT@L@VBH@z@NJDRLlAv@lAx@~AKnAOn@G`@IX?^BdAL|ANtCV~ANXBfBDfBBl@Bp@BrA@Pa@FKHMf@@`CHXDLBJFHJHRbD@`D@Z?h@@f@@h@@bAB^@jDDlBB~@BT@N?dDDV?x@Bt@@dCFdCFzB@nD?N?|BEzBEzBE`@AJ?lCOxCMfAClCGnCIlCIlCIhDKfDIhDIzCK|AG|AEbBG`A@^Sz@e@f@Yr@c@pCgB~@o@~AeA`BcAhA[XQb@_@\\\\YZe@?QBMDMDIDEDEJEDCFAF?"' \
+--form 'category="FODCOF;TRNPMP;HOTPRE"' \
+--form 'buffer="300"' \
+--form 'page="1"' \
+--form 'sort=""'
+```
+
+## Sample Response
+
 ```json
 {
     "suggestedPOIs": [
         {
-            "distance": 1065,
-            "place_id": "74835C",
-            "poi": "Cafe Nescafe",
+            "distance": 760,
+            "place_id": "TT9FFL",
+            "poi": "Indian Oil Petrol Pump",
+            "subSubLocality": "",
+            "subLocality": "Parda Bagh",
+            "locality": "Daryaganj",
+            "city": "New Delhi",
+            "subDistrict": "Darya Ganj",
+            "district": "Central District",
+            "state": "Delhi",
+            "poplrName": "",
+            "address": "Elgin Road, Netaji Subhash Marg, New Delhi, Delhi, 110002",
+            "category": "TRNPMP",
+            "brand_code": "0"
+        },
+        {
+            "distance": 2833,
+            "place_id": "2ZU43P",
+            "poi": "Cafe Coffee Day",
             "subSubLocality": "",
             "subLocality": "",
-            "locality": "Pragati Maidan",
+            "locality": "Indraprastha Estate",
+            "city": "New Delhi",
+            "subDistrict": "Darya Ganj",
+            "district": "Central District",
+            "state": "Delhi",
+            "poplrName": "CCD",
+            "address": "MBD House, Gulab Bhavan, 6, Bhadurshah Zafar Marg, New Delhi, Delhi, 110002",
+            "category": "FODCOF",
+            "brand_code": "0"
+        },
+        {
+            "distance": 3232,
+            "place_id": "WPSIFH",
+            "poi": "SPA Canteen",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Indraprastha Estate",
+            "city": "New Delhi",
+            "subDistrict": "Darya Ganj",
+            "district": "Central District",
+            "state": "Delhi",
+            "poplrName": "",
+            "address": "School of Planning and Architecture, Indraprashta Marg, Balmiki Basti, Vikram Nagar, New Delhi, Delhi, 110002",
+            "category": "FODCOF",
+            "brand_code": "0"
+        },
+        {
+            "distance": 3705,
+            "place_id": "E1TFF1",
+            "poi": "Le Cafe Royal",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Connaught Place",
             "city": "New Delhi",
             "subDistrict": "Connaught Place",
             "district": "New Delhi District",
             "state": "Delhi",
-            "poplrName": null,
-            "address": "K 10, Pragati Maidan, New Delhi, Delhi, 110001",
-            "tel": "+911122205205",
-            "email": null,
-            "website": "www.nescafe.com",
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
+            "poplrName": "",
+            "address": "Centre Point, 13, Connaught Place, Kasturba Gandhi Marg, New Delhi, Delhi, 110001",
+            "category": "FODCOF",
             "brand_code": "0"
         },
         {
-            "distance": 3205,
-            "place_id": "KBFG0E",
-            "poi": "Starbucks",
-            "subSubLocality": "",
-            "subLocality": "Prithviraj Market",
-            "locality": "Khan Market",
-            "city": "New Delhi",
-            "subDistrict": "Chanakya Puri",
-            "district": "New Delhi District",
-            "state": "Delhi",
-            "poplrName": null,
-            "address": "Shop 45, 1st and 2nd Floor, Khan Market, Near Forest Essential, New Delhi, Delhi, 110003",
-            "tel": null,
-            "email": null,
-            "website": null,
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
-            "brand_code": "0"
-        },
-        {
-            "distance": 3260,
-            "place_id": "CBME9Q",
-            "poi": "Market Cafe",
-            "subSubLocality": "",
-            "subLocality": "",
-            "locality": "Khan Market",
-            "city": "New Delhi",
-            "subDistrict": "Chanakya Puri",
-            "district": "New Delhi District",
-            "state": "Delhi",
-            "poplrName": null,
-            "address": "Khan Market, New Delhi, Delhi, 110003",
-            "tel": null,
-            "email": null,
-            "website": null,
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
-            "brand_code": "0"
-        },
-        {
-            "distance": 3982,
-            "place_id": "TEBF71",
+            "distance": 3741,
+            "place_id": "2ZVYE1",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
             "subLocality": "",
-            "locality": "CGO Complex",
+            "locality": "Connaught Place",
             "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
             "state": "Delhi",
             "poplrName": "CCD",
-            "address": "Shell Petrol Bunk, Bharat Petroleum Petrol Pump, Next To HUDCO, Lodhi Road, New Delhi, Delhi, 110003",
-            "tel": "+911132967812, +911164580769",
-            "email": null,
-            "website": "www.cafecoffeeday.com",
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
+            "address": "44, Janpath, New Delhi, Delhi, 110001",
+            "category": "FODCOF",
             "brand_code": "0"
         },
         {
-            "distance": 4880,
-            "place_id": "671A2A",
+            "distance": 3743,
+            "place_id": "Q0RX2E",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
-            "subLocality": "Mehar Chand Market",
-            "locality": "Lodhi Colony",
+            "subLocality": "",
+            "locality": "Connaught Place",
             "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
             "state": "Delhi",
             "poplrName": "CCD",
-            "address": "Shop No-58, Ground Floor, Mehar Chand Market, Lodhi Road, New Delhi, Delhi, 110003",
-            "tel": "+911132212130, +911164580767",
-            "email": null,
-            "website": "www.cafecoffeeday.com",
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
+            "address": "Connaught Place, New Delhi, Delhi, 110001",
+            "category": "FODCOF",
             "brand_code": "0"
         },
         {
-            "distance": 5013,
-            "place_id": "K42JYV",
-            "poi": "Novelty Cafe",
-            "subSubLocality": "",
-            "subLocality": "Block I",
-            "locality": "Jangpura Extension",
-            "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
-            "state": "Delhi",
-            "poplrName": null,
-            "address": "43, Hawkers House, Birbal Road, Jangpura Extension, Jangpura, New Delhi, Delhi, 110014",
-            "tel": "+911124324168, +911124314168",
-            "email": null,
-            "website": null,
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
-            "brand_code": "0"
-        },
-        {
-            "distance": 6101,
-            "place_id": "2651B8",
-            "poi": "Brown Sugar",
-            "subSubLocality": "",
-            "subLocality": "Defence Colony Market",
-            "locality": "Defence Colony",
-            "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
-            "state": "Delhi",
-            "poplrName": null,
-            "address": "Shop No-36, 2nd Floor, Defence Colony Market, Defence Colony, New Delhi, Delhi, 110024",
-            "tel": "+911146568950, +911146568951",
-            "email": null,
-            "website": null,
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
-            "brand_code": "0"
-        },
-        {
-            "distance": 6132,
-            "place_id": "4S84S3",
-            "poi": "Barista",
-            "subSubLocality": "",
-            "subLocality": "Defence Colony Market",
-            "locality": "Defence Colony",
-            "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
-            "state": "Delhi",
-            "poplrName": null,
-            "address": "Shop No-15, Ground, 1st and 2nd Floor, Defence Colony Market, Defence Colony, New Delhi, Delhi, 110024",
-            "tel": "+911141552472",
-            "email": null,
-            "website": "www.barista.co.in",
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
-            "brand_code": "0"
-        },
-        {
-            "distance": 6339,
-            "place_id": "5ZLODU",
+            "distance": 3744,
+            "place_id": "B2D6E4",
             "poi": "Cafe Coffee Day",
             "subSubLocality": "",
-            "subLocality": "Block C",
-            "locality": "Lajpat Nagar 2",
+            "subLocality": "",
+            "locality": "Connaught Place",
             "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
             "state": "Delhi",
             "poplrName": "CCD",
-            "address": "55-56, Ground Floor, Central Market Lajpat Nagar - 2, Near Axis Bank, New Delhi, Delhi, 110024",
-            "tel": null,
-            "email": null,
-            "website": null,
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
+            "address": "40/42, Ground Floor, Pearl Sons Pvt Ltd, Opposite To Janpath Market, Janpath Road, Near HDFC Bank, Connaught Place, New Delhi, Delhi, 110001",
+            "category": "FODCOF",
             "brand_code": "0"
         },
         {
-            "distance": 6534,
-            "place_id": "TSFBC6",
-            "poi": "Cafe Coffee Day",
+            "distance": 3760,
+            "place_id": "D7S55S",
+            "poi": "Indian Oil Petrol Pump",
             "subSubLocality": "",
-            "subLocality": "Block A",
-            "locality": "Lajpat Nagar 2",
+            "subLocality": "",
+            "locality": "Connaught Place",
             "city": "New Delhi",
-            "subDistrict": "Defence Colony",
-            "district": "South East Delhi District",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
             "state": "Delhi",
-            "poplrName": "CCD",
-            "address": "A-10, 1st Floor, Lajpat Nagar 2, New Delhi, Delhi, 110024",
-            "tel": "+911126463858, +911132483408, +911164638586",
-            "email": null,
-            "website": "www.cafecoffeeday.com",
-            "longitude": RESTRICTED,
-            "latitude": RESTRICTED,
-            "e_lng": RESTRICTED,
-            "e_lat": RESTRICTED,
+            "poplrName": "",
+            "address": "Tolstoy Marg, Connaught Place, New Delhi, Delhi, 110001",
+            "category": "TRNPMP",
+            "brand_code": "0"
+        },
+        {
+            "distance": 3822,
+            "place_id": "ABC4M2",
+            "poi": "Cottage Cafe by Smoothie Factory",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Connaught Place",
+            "city": "New Delhi",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
+            "state": "Delhi",
+            "poplrName": "",
+            "address": "Jawahar Vyapar Bhawan, Cottage Emporium Janpath, Near Monga Handicrafts, New Delhi, Delhi, 110001",
+            "category": "FODCOF",
+            "brand_code": "0"
+        },
+        {
+            "distance": 3963,
+            "place_id": "FBE365",
+            "poi": "The Imperial New Delhi",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "Connaught Place",
+            "city": "New Delhi",
+            "subDistrict": "Connaught Place",
+            "district": "New Delhi District",
+            "state": "Delhi",
+            "poplrName": "Imperial Hotel New Delhi",
+            "address": "Janpath Lane, Connaught Place, New Delhi, Delhi, 110001",
+            "category": "HOTPRE",
             "brand_code": "0"
         }
     ]
