@@ -14,7 +14,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
 
 ## Introduction
-All mapping APIs that are used in mobile or web apps need some geo-position coordinates to refer to any given point on the map. Our Geocoding API converts real addresses into these geographic coordinates (latitude/longitude) to be placed on a map, be it for any street, area, postal code, POI or a house number etc.
+All mapping APIs that are used in mobile or web apps need some geo-position coordinates to refer to any given point on the map. Our Geocoding API converts real addresses into these geographic positional information(eLoc) to be placed on a map, be it for any street, area, postal code, POI or a house number etc.
 
 ## Live Demo
 
