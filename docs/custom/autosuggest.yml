@@ -12,6 +12,9 @@ info:
     name: MapmyIndia API Support
     email: apisupport@mapmyindia.com
     url: https://www.mapmyindia.com/api/
+servers:
+  - url: 'https://atlas.mapmyindia.com'
+    description: 'Live Prod server for OAuth 2 based APIs'
 security: 
   - BearerAuth: []
 paths:
@@ -118,9 +121,9 @@ paths:
         '503':
           description: Internal server error
       deprecated: false
-      servers:
-        - url: https://atlas.mapmyindia.com
-          description: 'Live Prod server for OAuth 2 based APIs'
+      # servers:
+      #   - url: https://atlas.mapmyindia.com
+      #     description: 'Live Prod server for OAuth 2 based APIs'
 components:
   schemas:
     AutosuggestAPIResults:
