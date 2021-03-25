@@ -13,6 +13,9 @@ info:
     name: MapmyIndia API Support
     email: apisupport@mapmyindia.com
     url: https://www.mapmyindia.com/api/
+servers:
+  - url: https://outpost.mapmyindia.com/api
+    description: 'Live Prod Server for Token Generation API'
 paths:
   /security/oauth/token: 
     post: 
