@@ -18,7 +18,7 @@ All mapping APIs that are used in mobile or web apps need some geo-position coor
 
 ## Live Demo
 
-[Click here to visit live demonstration page](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-atlas-geocoding-rest-api-example)
+[Click here to visit live demonstration page](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-atlas-geocoding-rest-api-example.php)
 
 ## Input URL
 
