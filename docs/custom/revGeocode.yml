@@ -12,6 +12,9 @@ info:
     name: MapmyIndia API Support
     email: apisupport@mapmyindia.com
     url: https://www.mapmyindia.com/api/
+servers:
+        - url: https://apis.mapmyindia.com/advancedmaps/v1
+          description: 'Live Prod server for Static Key based APIs'
 paths:
   /{REST_KEY}/rev_geocode:
       get:

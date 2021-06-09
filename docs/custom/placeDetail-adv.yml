@@ -1,7 +1,8 @@
 openapi: 3.0.3
 info:
-  title: eLoc API
+  title: Place Detail API
   description: >-
+    This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php). <br><br>
     **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
   termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
   version: 1.0.0
@@ -12,51 +13,52 @@ info:
     name: MapmyIndia API Support
     email: apisupport@mapmyindia.com
     url: https://www.mapmyindia.com/api/
+security: 
+  - BearerAuth: []
+servers:
+  - url: 'https://explore.mapmyindia.com'
+    description: 'Live Prod server for Place Detail API'
 paths:
-  /{REST_KEY}/place_detail:
+  /apis/O2O/entity/{eLoc}:
       get:
         tags:
-          - eLoc API (Place Detail)
+          - Place Detail API
         description: >-
-          MapmyIndia eloc is a simple, standardized and precise pan-India digital address system. Every location has been assigned a unique digital address or an eLoc. The eLoc API can be used to extract the details of a place with the help of its eLoc i.e. a 6 digit code or a place_id.
-          <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-place-details-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-place-details-api-example">Download Sample Code</a> </p>
+          MapmyIndia eloc is a simple, standardized and precise pan-India digital address system. Every location has been assigned a unique digital address or an eLoc. Place Detail API can be used to extract the details of a place with the help of its eLoc i.e. a 6 digit code or a place_id.
+# <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-place-details-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-place-details-api-example">Download Sample Code</a> </p>
         summary: >-
-          eLoc API (Place Detail)
+          Place Detail API
         operationId: eLocAPI
         servers:
-        - url: https://apis.mapmyindia.com/advancedmaps/v1
-          description: 'Live Prod server for Static Key based APIs'
+        - url: https://explore.mapmyindia.com
+          description: 'Live Prod server for Place Detail API'
         parameters:
-          - name: place_id
-            in: query
+          - name: eLoc
+            in: path
             description: 'Six or Eight Digit unique code.'
             allowEmptyValue: false
             required: true
             example: "MMI000"
             schema:
               type: string
-          - name: REST_KEY
-            in: path
-            description: 'The REST API licence key allocated to you by signing into our services and registering yourself as a developer.'
-            allowEmptyValue: false
-            required: true
-            example: "threstapikeywillcomeheretoaccess"
-            schema:
-              type: string
-          - name: region
-            in: query
-            description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)'
-            allowEmptyValue: false
-            example: "IND"
-            schema:
-              type: string
         responses:
           '200':
-            description: OK
+            description: >-
+              This API is highly configurable API that enables to provision the required set of attributes to the user on the basis of their required use case. The default configuration with available with basic pay-as-you-go rates is that of `General Details` subtemplate.
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/EL1'
+                  anyOf:
+                    - $ref: '#/components/schemas/sbt_general_details'
+                    - $ref: '#/components/schemas/sbt_admin_token'
+                    - $ref: '#/components/schemas/sbt_address_token'
+                    - $ref: '#/components/schemas/sbt_contact_details'
+                    - $ref: '#/components/schemas/sbt_loc_coordinates'
+                    - $ref: '#/components/schemas/sbt_nav_coordinates'
+                  example: 
+                    eloc: "3F45CB"
+                    name: "The Lalit New Delhi"
+                    address: "15, Barakhamba Avenue, Connaught Place, New Delhi, Delhi, 110001"
           '204':
             description: Not found
           '400':
@@ -72,72 +74,130 @@ paths:
         deprecated: false
 components:
   schemas:
-    EL1:
-      title: eLoc API Results
-      description: The result object which contains the eLoc API results.
+    sbt_general_details:
+      title: General Details
+      description: >-
+        Generic details about a place.
       type: object
       required:
-        - responseCode
-        - version
-        - results
+        - eloc
+        - name
+        - address
       properties:
-        responseCode:
-          type: integer
-          description: This shows the response code of the results.
-          format: integer
-          example: 200
-        version:
+        eloc:
           type: string
-          description: This shows the API version
+          description: '6 characters alphanumeric unique identifier.'
           format: string
-          example: '211.19'
-        results:
-          type: array
-          description: The object contains the results of the reverse geocode API.
-          items:
-            $ref: '#/components/schemas/EL2'
-    EL2:
-      title: eLoc results object
-      description: The result object which contains the Reverse Geocode API results.
+          example: '3F45CB'
+        name: 
+          type: string
+          description: 'Name of the place.'
+          format: string
+          example: 'The Lalit New Delhi'
+        address: 
+          type: string
+          description: 'address of the place.'
+          format: string
+          example: '3F45CB'
+    sbt_admin_token:
+      title: Admin Tokens
+      description: >-
+        Details about the administrative hierarchy of the place.
       type: object
       required:
         - district
+        - subDistrict
         - city
         - state
-        - lat
-        - lng
-        - formatted_address
+        - pincode
+      properties:
+        subDistrict:
+          type: string
+          description: 'The name of the sub-district in which the location exists.'
+          format: string
+          example: 'Connaught Place'
+        city:
+          type: string
+          description: 'The name of the city in which the location exists.'
+          format: string
+          example: 'New Delhi'
+        state:
+          type: string
+          description: 'The name of the state in which the location exists.'
+          format: string
+          example: 'Delhi'
+        pincode:
+          type: integer
+          description: 'The pin code of the location area.'
+          format: string
+          example: '110010'
+        district:
+          type: string
+          description: 'The name of the district in which the location exists.'
+          format: string
+          example: 'New Delhi District'
+    sbt_loc_coordinates: 
+      title: Location Coordinates
+      description: >-
+        Details about the location geometry of the place.
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        longitude:
+          type: number
+          description: 'It shows us the longitude of the location searched.'
+          format: double
+          example: 77.2274580000001
+        latitude:
+          type: number
+          description: 'It shows us the latitude of the location searched.'
+          format: double
+          example: 28.6311600000001
+    sbt_address_token: 
+      title: Address Tokens
+      description: >-
+        Details about the address of the place.
+      type: object
+      required:
+        - houseNumber
+        - houseName
+        - locality
+        - street
+        - subSubLocality
+        - subLocality
+        - village
+        - poi
       properties:
         houseNumber:
           type: string
-          description: 'House Number of the POI.'
+          description: 'House Number of the place.'
           format: string
           example: '237'
         houseName:
           type: string
-          description: 'House Name of the POI.'
+          description: 'House Name of the place.'
           format: string
           example: 'MMI Building'
         poi:
           type: string
           description: 'Name of the POI.'
           format: string
-          example: 'MapmyIndia Head Office'
+          example: 'The Lalit New Delhi'
         street:
           type: string
-          description: 'Name of the street.'
+          description: 'Name of the street of the place.'
           format: string
-          example: 'Unnamed Road'
+          example: 'Barakhamba Road'
         subSubLocality:
           type: string
-          description: 'Name of the subsublocality.'
+          description: 'Name of the subsublocality to which the place belongs.'
           format: string
-          example: ''
         subLocality:
           type: string
           description: 'Name of the sublocality.'
           format: string
-          example: ''
         locality:
           type: string
           description: 'Name of the locality.'
@@ -147,44 +207,76 @@ components:
           type: string
           description: 'Name of the village.'
           format: string
-          example: 'Okhla Vilage'
-        subDistrict:
-          type: string
-          description: 'Name of the subDistrict.'
-          format: string
-          example: ''
-        city:
-          type: string
-          description: 'Name of the city.'
-          format: string
-          example: 'New Delhi'
-        state:
-          type: string
-          description: 'Name of the state.'
-          format: string
-          example: 'Delhi'
-        pincode:
-          type: integer
-          description: 'Pincode of the location.'
-          format: string
-          example: '110010'
-        longitude:
-          type: string
-          description: 'It shows us the longitude of the location searched. Geometry information may NOT be available in most use-case driven response; and is RESTRICTED.'
+          example: 'Okhla Vilage'    
+    sbt_nav_coordinates: 
+      title: Entry-Exit Coordinates
+      description: >-
+        Details about the Entry / Exit geometry of the place.
+      type: object
+      required:
+        - entry_lat
+        - entry_lon
+      properties:
+        entry_lon:
+          type: number
+          description: 'It shows us the entry longitude of the location searched.'
           format: double
-          example: 'RESTRICTED'
-        latitude:
-          type: string
-          description: 'It shows us the latitude of the location searched. Geometry information may NOT be available in most use-case driven response; and is RESTRICTED.'
+          example: 77.2689280000001
+        entry_lat:
+          type: number
+          description: 'It shows us the entry latitude of the location searched.'
           format: double
-          example: 'RESTRICTED'
-        type:
+          example: 28.5507160000001    
+    sbt_contact_details: 
+      title: Contact Details
+      description: >-
+        Details about the contact information of the place.
+      required: 
+        - keyinfo
+      properties:
+        keyinfo: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/contactObject'
+    contactObject: 
+      title: Array of KeyInfo objects
+      type: object
+      required: 
+        - heading
+        - values
+      properties: 
+        heading: 
           type: string
-          description: ''
+          description: 'The type of keyinfo object.'
           format: string
-          example: 'POI'
-        place_id:
+          example: 'Contact Details'
+        values: 
+          type: array
+          description: 'array of key value pairs containing required information of the place.'
+          items: 
+            $ref: '#/components/schemas/valueObject'
+          example: 
+            - title: 'Email'
+              value: 'contact@mapmyindia.com'
+            - title: 'Telephone'
+              value: '+911146009900'
+            - title: 'Website'
+              value: 'www.mapmyindia.com'
+            - title: 'Mobile'
+              value: '+91-9999333223'
+    valueObject: 
+      title: key value pairs
+      description: >-
+        key-value pair with title and their respective values.
+      required: 
+        - title
+        - value
+      properties: 
+        heading: 
           type: string
-          description: 'Place ID of the POI.'
+          description: 'The type of keyinfo object.'
           format: string
-          example: 'MMI000'
+        value: 
+          type: string
+          description: 'The type of keyinfo object.'
+          format: string

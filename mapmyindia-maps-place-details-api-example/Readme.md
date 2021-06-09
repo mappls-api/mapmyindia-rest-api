@@ -85,9 +85,9 @@ The default configuration with available with basic pay-as-you-go rates is that 
 
 The parameters are group in sub templates. Here is the list of attributes with sub template information.  
 
-#### [Subtemplate 1 : General Details](#Subtemplate_1_:_Sbt_general_details)
-1.	Eloc (string) : 6 characters alphanumeric unique identifier 
-2.	placeName (string) : Name of the place 
+#### [Subtemplate 1 : General Details](#Subtemplate_1_:_sbt_general_details)
+1.	eloc (string) : 6 characters alphanumeric unique identifier 
+2.	name (string) : Name of the place 
 3.	address (string) : address of the place 
 4.	type: defines the type of location matched (HOUSE_NUMBER, HOUSE_NAME, POI, 
 	STREET, SUB_LOCALITY, LOCALITY, VILLAGE, DISTRICT, SUB_DISTRICT, CITY, STATE, 
