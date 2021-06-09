@@ -25,10 +25,12 @@ paths:
           - Place Detail API
         description: >-
           MapmyIndia eloc is a simple, standardized and precise pan-India digital address system. Every location has been assigned a unique digital address or an eLoc. Place Detail API can be used to extract the details of a place with the help of its eLoc i.e. a 6 digit code or a place_id.
+          <br>This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php).
+          <br>The API leverages OAuth 2.0 based security. Hence, the developer would need to send a request for access token using their client_id and client_secret to the OAuth API. Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: "{`token_type`} {`access_token`}”. <br><strong>Authorization</strong>: `token_type` `access_token`.
 # <p style=text-align:right><strong><a href="https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-vector-maps-place-details-api-example.php">Live Demo</a> | <a href="https://github.com/MapmyIndia/mapmyindia-rest-api/tree/master/mapmyindia-maps-place-details-api-example">Download Sample Code</a> </p>
         summary: >-
           Place Detail API
-        operationId: eLocAPI
+        operationId: placeDetail
         servers:
         - url: https://explore.mapmyindia.com
           description: 'Live Prod server for Place Detail API'
@@ -280,3 +282,8 @@ components:
           type: string
           description: 'The type of keyinfo object.'
           format: string
+  securitySchemes:
+    BearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: 'bearer 0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6'
