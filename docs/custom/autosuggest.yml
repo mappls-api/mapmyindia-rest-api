@@ -101,6 +101,14 @@ paths:
           allowEmptyValue: true
           schema:
             type: boolean
+        - name: hyperLocal
+          in: query
+          description: >-
+            (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however theu will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter.
+          required: false
+          allowEmptyValue: true
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK

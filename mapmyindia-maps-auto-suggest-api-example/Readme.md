@@ -1,4 +1,5 @@
-﻿# Autosuggest API
+﻿[<img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://www.mapmyindia.com/api)
+# Autosuggest API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
@@ -68,7 +69,8 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	    {e.g. filter=bounds: 28.598882, 77.212407; 28.467375, 77.353513`}
 	    - *`filter  = cop: {eloc}`* (string) 
 	    {e.g. `filter=cop:YMCZ0J`}
-	- *`bridge`* (valueless) initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object. 
+	- *`bridge`* (valueless): initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object. 
+    - *`hyperLocal`* (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however theu will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter.
 
 ## Response Parameters
 
