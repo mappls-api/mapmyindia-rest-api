@@ -5,7 +5,7 @@
 Powered with India's most comprehensive and robust mapping functionalities.
 **Now Available**  for Srilanka, Nepal, Bhutan, Myanmar and Bangladesh
 
-You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
 # Note 
 1. The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs.

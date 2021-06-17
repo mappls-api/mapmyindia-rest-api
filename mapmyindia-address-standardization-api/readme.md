@@ -6,7 +6,7 @@
 Powered with India's most comprehensive and robust mapping functionalities.
 **Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
 
-You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
 ## Introduction
 Address Standardization API is a process to convert the non formatted address into the user readable format by omitting unnecessary information in the address. MapmyIndia address standardization API provides real addresses along with admin and other information.
