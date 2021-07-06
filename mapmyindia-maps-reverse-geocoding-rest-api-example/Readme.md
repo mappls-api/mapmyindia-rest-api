@@ -41,6 +41,40 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 
 `https://apis.mapmyindia.com/advancedmaps/v1/<licence_key>/rev_geocode?lat=26.5645&lng=85.9914`
 
+## Sample Output
+```json
+{
+    "responseCode": 200,
+    "version": "270.191",
+    "results": [
+        {
+            "houseNumber": "",
+            "houseName": "",
+            "poi": "Panchayat Headquarter",
+            "poi_dist": "508",
+            "street": "Unnamed Road",
+            "street_dist": "7",
+            "subSubLocality": "",
+            "subLocality": "",
+            "locality": "",
+            "village": "Basopatti",
+            "district": "Madhubani District",
+            "subDistrict": "Basopatti",
+            "city": "",
+            "state": "Bihar",
+            "pincode": "847225",
+            "lat": "26.5645",
+            "lng": "85.9914",
+            "area": "India",
+            "formatted_address": "Unnamed Road, Basopatti, Basopatti, Madhubani District, Bihar. 508 m from Panchayat Headquarter pin-847225 (India)"
+        }
+    ]
+}
+```
+<br> <br>
+
+
+
 For more details, please visit our full documentation.
 
 For any queries and support, please contact: 
