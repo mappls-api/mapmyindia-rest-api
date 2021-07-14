@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Routing API for Passenger Vehicles
   description: >-
-    **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+    <br><br> <strong>Global Coverage</strong> Now Available ! <br>Routing API is **Now Available**  for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) across the world.<br><br>**Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
   termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
   version: 1.0.0
   license:
@@ -140,12 +140,11 @@ paths:
         - name: region
           in: query
           description: >-
-            This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are ind (for India, default), lka (for Sri Lanka) , npl (for Nepal) , bgd (for Bangladesh), MMR for Myanmar and btn (for Bhutan)
+            This parameter is optional for India; for other countries (such as Sri Lanka, Nepal, Bangladesh, Bhutan + many more) this parameter is mandatory. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md).
           allowEmptyValue: false
           schema:
             type: string
             default: IND
-            enum: [IND, MMR, LKA, NPL, BTN, BGD]
           required: false
           example: "IND"
         - name: bearings

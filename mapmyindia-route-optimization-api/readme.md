@@ -5,7 +5,9 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+## Global Coverage Now Available !
+
+Route Optimization API is **Now Available**  for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) across the world.
 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
@@ -13,6 +15,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.2 | July 2021 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | August 2020 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 
 <br>
@@ -21,6 +24,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 270.19.5222 | 2021-07-13 | MapmyIndia API Team ([PS](https://github.com/map-123)) | [Global](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) support added for `trip_optimization` resource. |
 | 1.0 | 2018-05-01 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Intial Release |
 
 <br>
@@ -216,6 +220,7 @@ JSON
         - `simplified` (default) simplified geometry for higher zoomed out levels (~state zoom levels).
         - `full` Detailed geometry for display at all zoom levels.
         - `false` to not provide geometry at all.
+    - *`region`*(string): This parameter is optional for India; for other countries (such as Sri Lanka, Nepal, Bangladesh, Bhutan + many more) this parameter is mandatory. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md).
 
 ## Response Parameters
 

@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Autosuggest API
   description: >-
-    This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php). <br><br>The API leverages OAuth 2.0 based security. Hence, the developer would need to send a request for access token using their client_id and client_secret to the OAuth API. Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: "{`token_type`} {`access_token`}”. <br><strong>Authorization</strong>: `token_type` `access_token`.<br><br> **Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs/Parameters</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
+    This APIs follow OAuth2 based security. **To know more on how to create your authorization tokens, please use our authorization token URL. More details available**  [here](https://www.mapmyindia.com/api/advanced-maps/doc/authentication-api.php). <br><br>The API leverages OAuth 2.0 based security. Hence, the developer would need to send a request for access token using their client_id and client_secret to the OAuth API. Once validated from the OAuth API, the access_token and the token_type need to be sent as Authorization header with the value: "{`token_type`} {`access_token`}”. <br><strong>Authorization</strong>: `token_type` `access_token`.<br><br> <strong>Global Coverage</strong> Now Available ! <br>Autosuggest API is **Now Available**  for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) across the world.<br><br>**Note**: <ol> <li> The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs. </li><li> Not all response parameters mentioned in the below documentation is assured to be present in all the use-cases. The response of any of the below search API is thus, dependent on the use-case agreed upon between MapmyIndia & it's API consumer. </i><li> For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.</li><li> <strong>PREMIUM APIs/Parameters</strong> are not available for evalulation on signup. To get access, please contact API Support.</li></ol>
   termsOfService: 'https://www.mapmyindia.com/api/terms-&-conditions'
   version: 1.0.0
   license:
@@ -56,7 +56,7 @@ paths:
             type: string
         - name: region
           in: query
-          description: 'It takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND).'
+          description: 'It takes in the country code. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md). Default is India (IND).'
           example: "IND"
           required: false
           allowEmptyValue: false
@@ -71,7 +71,7 @@ paths:
             type: boolean
         - name: pod
           in: query
-          description: 'It takes in the place type code which helps in restricting the results to certain chosen type.<br>
+          description: 'It takes in the place type code which helps in restricting the results to certain chosen type. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).<br>
             Below mentioned are the codes for the pod:<br><ul>
             <li>SLC: Sublocality
             <li>LC: Locality
@@ -88,7 +88,7 @@ paths:
           allowEmptyValue: false
         - name: filter
           in: query
-          description: 'This parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.), below mentioned are the both types:<br><ul><li>filter = pin:It takes pincode/postal code of an area{e.g. filter=pin:110055}<li>filter = bounds lat1,lng1;lat2,lng2(latitude,longitude){e.g. filter=bounds 28.598882, 77.212407; 28.467375, 77.353513}<li>filter = cop {eloc} (string) {e.g. filter=cop:YMCZ0J}</ul>'
+          description: 'This parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.). This optional parameter & its related effect on response is not applicable for regions apart from India (IND). Below mentioned are the available types:<br><ul><li>filter = pin:It takes pincode/postal code of an area{e.g. filter=pin:110055}<li>filter = bounds lat1,lng1;lat2,lng2(latitude,longitude){e.g. filter=bounds 28.598882, 77.212407; 28.467375, 77.353513}<li>filter = cop {eloc} (string) {e.g. filter=cop:YMCZ0J}</ul>'
           required: false
           example: "pin:110001"
           allowEmptyValue: false
@@ -96,7 +96,7 @@ paths:
             type: string
         - name: bridge
           in: query
-          description: '(Valueless)It initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object.'
+          description: '(Valueless)It initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).'
           required: false
           allowEmptyValue: true
           schema:
@@ -104,7 +104,7 @@ paths:
         - name: hyperLocal
           in: query
           description: >-
-            (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however they will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter.
+            (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however they will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
           required: false
           allowEmptyValue: true
           schema:

@@ -4,7 +4,9 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan, Myanmar and Bangladesh
+## Global Coverage Now Available !
+
+Autosuggest API is **Now Available**  for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) across the world.
 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
@@ -50,10 +52,10 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	- **`query`***  (string) e.g. Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130, नई दिल्ली {POI, House Number, keyword, tag, place}
 2.  Optional Parameters:
 	- *`location`*  {string (latitude[double],longitude[double])} e.g. `location=28.454,77.435`. Location is required to get location bias autosuggest results.
-	- *`zoom`*  (double): takes the zoom level of the current scope of the map (min: 4, max: 18).
-	- *`region`* (string): it takes in the country code. LKA, IND, BTN, BGD, NPL for Sri-Lanka, India, Bhutan, Bangladesh, Nepal respectively. Default is India (IND)
+	- *`zoom`*  (double): takes the zoom level of the current scope of the map (min: 4, max: 18). This optional parameter & its related effect on response is not applicable for regions apart from India (IND). 
+	- *`region`* (string): it takes in the country code. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md). Default is India (IND)
 	- *`tokenizeAddress`* (valueless) provides the different address attributes in a structured object.
-	- *`pod`*  (string) = it takes in the place type code which helps in restricting the results to certain chosen type.  
+	- *`pod`*  (string) = it takes in the place type code which helps in restricting the results to certain chosen type. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
     Below mentioned are the codes for the pod -
 	    -  *`SLC`*: Sublocality
 	    - *`LC`*: Locality
@@ -63,14 +65,14 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	    - *`DIST`*: District
 	    - *`STATE`*: State
 	    - *`SSLC`*: Subsublocality
-    - *`filter`*  = this parameter helps you restrict the result either by mentioning a bounded area or to certain eloc (6 digit code to any poi, locality, city, etc.), below mentioned are the both types -  
+    - *`filter`*  = this parameter helps you restrict the result either by mentioning a bounded area or to certain eloc or to a PIN(6 digit code to any poi, locality, city, etc.). This optional parameter & its related effect on response is not applicable for regions apart from India (IND). Below mentioned are the both types -  
 	    - *`filter = pin: It takes pincode/postal code of an area`* `{e.g. filter=pin:110055}`
 	    - *`filter = bounds: lat1, lng1; lat2, lng2`* `(latitude, longitude) 
 	    {e.g. filter=bounds: 28.598882, 77.212407; 28.467375, 77.353513`}
 	    - *`filter  = cop: {eloc}`* (string) 
 	    {e.g. `filter=cop:YMCZ0J`}
-	- *`bridge`* (valueless): initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object. 
-    - *`hyperLocal`* (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however theu will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter.
+	- *`bridge`* (valueless): initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
+    - *`hyperLocal`* (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however theu will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
 
 ## Response Parameters
 

@@ -5,7 +5,11 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+<br>
+
+## Global Coverage Now Available !
+
+Distance Matrix API is **Now Available**  for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) across the world.
 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
@@ -14,6 +18,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.5 | July 2021 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.4 | December 2020 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.3 | December 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.2 | May 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
@@ -23,6 +28,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
+| 270.19.5222 | 2021-07-13 | MapmyIndia API Team ([PS](https://github.com/map-123)) | [Global](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) support added for `distance_matrix` resource. |
 | 250.19.5222 | 2020-12-15 | MapmyIndia API Team ([PS](https://github.com/map-123)) | eLoc support released |
 | 220.19.522 | 2019-12-19 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 22.0, Many to Many distance matrix released |
 | 200.17 | 2018-05-21 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update ver 20.0, CORS enabled, “distance_matrix_traffic” introduced as resource |
@@ -34,7 +40,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 ### Driving Distance-Time Matrix
 
 Adding driving directions API would help to add predicted travel time & duration from a given origin point to a number of points. This REST API computes the distance and duration of a route between a source/primary position (geographical coordinates) and a list of all supplied secondary positions using to mode of route calculation i.e. optimal and shortest.
-Supported region (countries) are India, Sri Lanka, Nepal, Bangladesh & Bhutan. Please note that maximum number of points are limited to 100 only including source and secondary positions.
+Distance matrix is supported for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) via the region parameter. Please note that maximum number of points are limited to 100 only including source and secondary positions.
 
 ## Security Type
 - License key based authentication
@@ -97,14 +103,14 @@ GET
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>distance_matrix_eta</code>	
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration  considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>distance_matrix_traffic</code>; since this doesn't search for a route considering traffic, it only applies delays to the default route. 
+							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration  considering live traffic; Applicable for India only “region=ind”; and “rtype=1” is not supported. This is different from <code>distance_matrix_traffic</code>; since this doesn't search for a route considering traffic, it only applies delays to the default route. 
 							</td>
 						</tr>
 						<tr class="&#39;&#39;">
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>distance_matrix_traffic</code>	
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported 
+							<td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind”; and “rtype=1” is not supported 
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
@@ -178,7 +184,7 @@ For example `77.983936,28.255904;77.05993,28.487555` OR `mmi000`.
 1. *`rtype`* type of route (integer) required for navigation, where values mean:  
 	- `0` optimal (default)  
 	- `1` shortest (it will calculate route by excluding access penalties like private roads, etc.)
-2.  *`region`*(string): This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are `ind` (for India, default), `lka` (for Sri Lanka) , `npl` (for Nepal) , `bgd` (for Bangladesh), `mmr` (for Myanmar) and `btn` (for Bhutan)
+2.  *`region`*(string): This parameter is optional for India; for other countries (such as Sri Lanka, Nepal, Bangladesh, Bhutan + many more) this parameter is mandatory. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md).
 
 ### Parameters for Many-to-Many Distance Matrix
 #### Important Note

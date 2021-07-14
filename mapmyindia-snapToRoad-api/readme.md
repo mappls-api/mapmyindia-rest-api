@@ -5,7 +5,9 @@
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+## Global Coverage Now Available !
+
+Snap to Road API is **Now Available**  for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) across the world.
 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
@@ -18,20 +20,23 @@ It is mandatory to take permissions from the author before sharing with any pers
 
 | Version | Last Updated | Author |
 | ---- | ---- | ---- |
+| 0.0.2 | July 2021 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 | 0.0.1 | February 2019 | MapmyIndia API Team ([KB](https://github.com/kunalbharti)) |
 
 ## API Version History
 
 | Version | Last Updated | Author | Revised Sections |
 | ---- | ---- | ---- | ---- |
-| 1.0 | 2018-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Initial release |
+| 270.19 | 2021-07-13 | MapmyIndia API Team ([PS](https://github.com/map-123)) | [Global](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) support added. |
 | 191.17 | 2019-02-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Data update to V19.1; Added support for SNBB |
+| 1.0 | 2018-06-07 | MapmyIndia API Team ([PS](https://github.com/map-123)) | Initial release |
+
 
 ## Introduction
 
 ### Route and Navigation
 
-Snap-To-Road API, snaps given GPS points to the road network in the most plausible way. Maximum number of points are limited to 100 only. Supported region (countries) are India, Sri Lanka, Nepal, Bangladesh & Bhutan.
+Snap-To-Road API, snaps given GPS points to the road network in the most plausible way. Maximum number of points are limited to 100 only. Snap to Road API is supported for [238 countries](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) via the region parameter.
 
 #### Note
 1. The request might result multiple sub-traces. 
@@ -140,7 +145,7 @@ For example 77.983936,28.255904;77.05993,28.487555.
 1. *`timestamps`*: Timestamps for the input locations in seconds since UNIX epoch. Timestamps need to be monotonically increasing. Values must be integer {timestamp};{timestamp};{timestamp} ...
 2.  *`geometries`*: This parameter used to change the route geometry format/density (influences overview and per step). Default value is `polyline` with 5 digit precision; `polyline6` for 6digit precision; `geojson` for geometries as geojson. **Please note that “timestamps” parameter is mandatory for enabling geometries**
 3. *`radiuses`*: Standard deviation of GPS precision used for map matching. If available use GPS accuracy in meters. Default value is `5` metres. Values must be integer {radius};{radius};{radius} ...
-4. *`region`*: This parameter is optional for India; for other countries (Sri Lanka, Nepal, Bangladesh & Bhutan) this parameter is mandatory. Possible values are `ind` (for India, default), `lka` (for Sri Lanka) , `npl` (for Nepal) , `bgd` (for Bangladesh) and `btn` (for Bhutan)
+4. *`region`*: This parameter is optional for India; for other countries (such as Sri Lanka, Nepal, Bangladesh, Bhutan + many more) this parameter is mandatory. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md).
 
 ## Response Type
 JSON: response will served as JSON
