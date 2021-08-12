@@ -16,7 +16,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 3. For any further clarifications on what all of the response structure is available for your use case, please contact your business relationship manager or contact MapmyIndia API support.
 4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
 5. `lang` is a premium response parameter linked to our regional language support. Only clients who have specific agreements for its usage will be able to get this in their response parameter.
-
+6. The maximum length of valid input query is 45. For longer queries, API will return 400 Bad Request - Too Long Input
 ## Introduction
 The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports hindi language. If a user enters query in hindi language he will get results in hindi.
 
