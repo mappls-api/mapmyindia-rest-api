@@ -93,7 +93,7 @@ paths:
                     </div>
           allowEmptyValue: false
           required: true
-          example: "route_eta"
+          example: "trip_optimization_eta"
           schema:
             type: string
             enum: [trip_optimization, trip_optimization_eta, trip_optimization_traffic]
@@ -155,7 +155,7 @@ paths:
                     </div>
           allowEmptyValue: false
           required: true
-          example: "route_eta"
+          example: "driving"
           schema:
             type: string
             enum: [driving, biking, walking, trucking]
