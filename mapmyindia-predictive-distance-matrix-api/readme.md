@@ -153,7 +153,6 @@ JSON: response will served as JSON
         ]
     ]
 }
-``
 ```
 
 ## Live Demo
