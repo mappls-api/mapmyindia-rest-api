@@ -35,7 +35,7 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 
 1.  **`lat`**: The latitude of the location for which the address is required.
 2.  **`lng`**: The longitude of the location for which address is required.
-3.  **`Licence_key`**: The REST API licence key allocated to you by signing into our services and registering yourself as a developer (28 Char Alphanumeric).
+3.  **`Licence_key`**: The REST API licence key allocated to you by signing into our services and registering yourself as a developer (32 Char Alphanumeric).
 4.  *`region`*(string): This parameter is optional for India; for other countries (such as Sri Lanka, Nepal, Bangladesh, Bhutan + many more) this parameter is mandatory. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md). Default is India (IND)
 5.  *`lang`* (string): This parameter accepts the "hi" (ISO 639-1 Language Code for Hindi) as a value. 
 
