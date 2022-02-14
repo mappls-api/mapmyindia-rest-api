@@ -106,14 +106,14 @@ GET
 							<td class="cellrowborder" headers="d156249e40 ">
 								<code>route_eta</code>	
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>route_traffic</code>; since this doesn't search for a route considering traffic, it only applies delays to the default route. 
+							<td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>route_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance. 
 							</td>
 						</tr>
 						<tr class="&#39;&#39; override_background">
                         	<td class="cellrowborder" headers="d156249e40 ">
 								<code>route_traffic</code>	
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported 
+							<td class="row-nocellborder" headers="d156249e43 ">to search for routes considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. Largely biased towards aggressive traffic congestion avoidance, will do basic path preference only. 
 							</td>
 							</tr>
 						<tr class="&#39;&#39; override_background">
@@ -128,14 +128,14 @@ GET
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>biking</code>
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in two-wheeler routing.
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for two-wheeler routing. <code>region</code> & <code>rtype</code>  request parameters are not supported in two-wheeler routing.
 							</td>
 						</tr>
             <tr class="&#39;&#39; override_background">
 							<td class="cellrowborder" headers="d156249e40 ">
 							    <code>walking</code>
 							</td>
-							<td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. Routing with this profile is restricted to <code>route_adv</code> only. <code>region</code> & <code>rtype</code>  request parameters are not supported in pedestrian routing.
+							<td class="row-nocellborder" headers="d156249e43 ">Meant for pedestrian routing. <code>region</code> & <code>rtype</code>  request parameters are not supported in pedestrian routing.
 							</td>
 						</tr>            
             <tr class="&#39;&#39; override_background">

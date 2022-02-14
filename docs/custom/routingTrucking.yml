@@ -69,7 +69,7 @@ paths:
                             <td class="cellrowborder" headers="d156249e40 ">
                               <code>route_eta</code>  
                             </td>
-                            <td class="row-nocellborder" headers="d156249e43 ">Not applicable with trucking profile.
+                            <td class="row-nocellborder" headers="d156249e43 ">to get the updated duration of a route considering live traffic; Applicable for India only “region=ind” and “rtype=1” is not supported. This is different from <code>route_traffic</code>; this resource balances between a preferred path and aggressive traffic congestion avoidance.
                             </td>
                           </tr>
                           <tr class="&#39;&#39; override_background">
