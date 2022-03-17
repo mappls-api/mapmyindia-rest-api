@@ -18,7 +18,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 5. `lang` is a premium response parameter linked to our regional language support. Only clients who have specific agreements for its usage will be able to get this in their response parameter.
 6. The maximum length of valid input query is 45. For longer queries, API will return 400 Bad Request - Too Long Input
 ## Introduction
-The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports hindi language. If a user enters query in hindi language he will get results in hindi.
+The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports Hindi language. If a user enters query in Hindi language he will get results in Hindi.
 
 ## Live Demo
 
@@ -46,7 +46,6 @@ JSON
 
 
 ## Request Parameters
-The “**bold**” one’s are mandatory, and the “*italic*” one’s are optional.
 
 1. Mandatory Parameters:
 	- **`query`***  (string) e.g. Shoes, Coffee, Versace, Gucci, H&M, Adidas, Starbucks, B130, नई दिल्ली {POI, House Number, keyword, tag, place}
@@ -73,6 +72,12 @@ The “**bold**” one’s are mandatory, and the “*italic*” one’s are opt
 	    {e.g. `filter=cop:YMCZ0J`}
 	- *`bridge`* (valueless): initiates a bridge to be created to provide applicable nearby API searches in the `suggestedSearches` response object. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
     - *`hyperLocal`* (valueless): This parameter lets the search give results that are hyper-localized to the reference location passed in the `location` parameter. This means that nearby results are given higher ranking than results far from the reference location. Highly prominent results will still appear in the search results, however theu will be lower in the list of results. This parameter will work ONLY in conjunction with the `location` parameter. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
+    - *`responseLang`* (string): This parameter can be used to change the response language.
+        - valid values are: 
+            - `hi` for Hindi response.
+            - `en` for English response
+        - By default, for a Hinglish query, the response will be returned in Hindi.
+        -  If the response is to be viewed in English, pass "en" as the value in this parameter.
 
 ## Response Parameters
 
@@ -145,7 +150,7 @@ d. `lang`<sup>1</sup> (string): used to indicate if the response is in some lang
 
 https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550592,77.268770&region=IND&tokenizeAddress&bridge=
 
-## Sample Response
+## Sample Response for English
 ```json
 {
     "suggestedLocations": [
@@ -213,6 +218,82 @@ https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550
 }
 ```
 
+## Sample request for Hindi
+
+```
+https://atlas.mapmyindia.com/api/places/search/json?query=गोदरेज Palm Retreat&responseLang=hi
+```
+
+## Sample Response for Hindi
+```json
+{
+    "suggestedLocations": [
+        {
+            "type": "HOUSE_NUMBER",
+            "typeX": 12,
+            "placeAddress": "लोटस ग्रीन, सेक्टर 150, नोएडा, उत्तर प्रदेश, 201306",
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
+            "eLoc": "OF4T44",
+            "entryLatitude": RESTRICTED,
+            "entryLongitude": RESTRICTED,
+            "placeName": "ए.सी.ई. गोदरेज पाम रिट्रीट",
+            "alternateName": "",
+            "keywords": [],
+            "addressTokens": {},
+            "p": 18684,
+            "orderIndex": 3,
+            "score": 6.106412388359316,
+            "suggester": "placeName",
+            "distance": 24773,
+            "richInfo": {}
+        },
+        {
+            "type": "SUB_LOCALITY",
+            "typeX": 6,
+            "placeAddress": "सेक्टर 83, फरीदाबाद, हरियाणा, 121002",
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
+            "eLoc": "SF7L5B",
+            "entryLatitude": RESTRICTED,
+            "entryLongitude": RESTRICTED,
+            "placeName": "गोदरेज रिट्रीट",
+            "alternateName": "",
+            "keywords": [],
+            "addressTokens": {},
+            "p": 8229,
+            "orderIndex": 1,
+            "score": 16.618524682438448,
+            "suggester": "placeName",
+            "distance": 20342,
+            "richInfo": {}
+        },
+        {
+            "type": "SUB_LOCALITY",
+            "typeX": 6,
+            "placeAddress": "सेक्टर 88, फरीदाबाद, हरियाणा, 121002",
+            "latitude": RESTRICTED,
+            "longitude": RESTRICTED,
+            "eLoc": "SF8290",
+            "entryLatitude": RESTRICTED,
+            "entryLongitude": RESTRICTED,
+            "placeName": "द ग्रैंड रिट्रीट",
+            "alternateName": "द रिट्रीट",
+            "keywords": [],
+            "addressTokens": {},
+            "p": 8229,
+            "orderIndex": 2,
+            "score": 6.222562487158036,
+            "suggester": "alternateName",
+            "distance": 17113,
+            "richInfo": {}
+        }        
+    ],
+    "userAddedLocations": [],
+    "suggestedSearches": []
+}
+```
+
 For any queries and support, please contact: 
 
 [<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
@@ -235,7 +316,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
