@@ -115,6 +115,7 @@ Geometry information is NOT available in most use-case driven response; and is R
     - `pincode` (string): the PIN code to which the location belongs. (if applicable)
 12. `typeX` (integer): Type attribute for internal use only for MapmyIndia.
 13. `alternateName` (string): Aliases or alternates names, if available, for the place.
+14. `distance` (integer): The aerial distance of the result from the location as specified in the location input parameter.
 
 b. userAddedLocations ([object array])
 
