@@ -75,8 +75,6 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/snapToRoad'
-          '204':
-            description: DB Connection error.
           '400':
             description: Bad request
           '401':
@@ -85,6 +83,10 @@ paths:
             description: Forbidden
           '404':
             description: Not found
+          '407':
+            description: Server Authentication failure
+          '408':
+            description: Request Timeout
           '412':
             description: Precondition Failed, i.e. Some existing pre-condition in formulating a valid API request was not fulfilled.
           '500':

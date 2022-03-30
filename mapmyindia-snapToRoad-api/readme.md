@@ -167,11 +167,12 @@ JSON: response will served as JSON
 ## Response Codes {as HTTP response code}
 
 - 200: To denote a successful API call.
-- 204: DB Connection error.
 - 400: Bad Request, User made an error while creating a valid request.
 - 401: Unauthorized, Developer’s key is not allowed to send a request.
 - 403: Forbidden, Developer’s key has hit its daily/hourly limit or IP or domain not white-listed.
 - 404: HTTP not found
+- 407: Server Authentication failure
+- 408: Request Timeout
 - 412: Precondition Failed, i.e. Mandatory parameter is missing
 - 500: Internal Server Error, the request caused an error in our systems.
 - 503: Service Unavailable, during our maintenance break or server down-times.
