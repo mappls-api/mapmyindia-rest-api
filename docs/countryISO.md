@@ -2,248 +2,243 @@
 
 ## Global Coverage Now Available !
 
-MapmyIndia APIs are **Now Available**  for following 238 countries across the world.
+MapmyIndia APIs are **Now Available**  for following 231 countries & territories across the world.
 
-|SNo.|Country|ISO|
-|----|----|----|
-|1|Akrotiri and Dhekelia|xad|
-|2|Albania|alb|
-|3|Algeria|dza|
-|4|American Samoa|asm|
-|5|Andorra|and|
-|6|Angola|ago|
-|7|Anguilla|aia|
-|8|Antigua and Barbuda|atg|
-|9|Argentina|arg|
-|10|Armenia|arm|
-|11|Aruba|abw|
-|12|Australia|aus|
-|13|Austria|aut|
-|14|Azerbaijan|aze|
-|15|Bahamas|bhs|
-|16|Bahrain|bhr|
-|17|Bangladesh|bgd|
-|18|Barbados|brb|
-|19|Belarus|blr|
-|20|Belgium|bel|
-|21|Belize|blz|
-|22|Benin|ben|
-|23|Bermuda|bmu|
-|24|Bhutan|btn|
-|25|Bolivia|bol|
-|26|Bosnia and Herzegovina|bih|
-|27|Botswana|bwa|
-|28|Bouvet Island|bvt|
-|29|Brazil|bra|
-|30|British Indian Ocean Territory|iot|
-|31|British Virgin Islands|vgb|
-|32|Brunei|brn|
-|33|Bulgaria|bgr|
-|34|Burkina Faso|bfa|
-|35|Burundi|bdi|
-|36|Cambodia|khm|
-|37|Cameroon|cmr|
-|38|Canada|can|
-|39|Cape Verde|cpv|
-|40|Caspian Sea|xca|
-|41|Cayman Islands|cym|
-|42|Central African Republic|caf|
-|43|Chad|tcd|
-|44|Chile|chl|
-|45|Christmas Island|cxr|
-|46|Clipperton Island|xcl|
-|47|Cocos Islands|cck|
-|48|Colombia|col|
-|49|Comoros|com|
-|50|Costa Rica|cri|
-|51|Croatia|hrv|
-|52|Cuba|cub|
-|53|CuraÃ§ao|cuw|
-|54|Cyprus|cyp|
-|55|Czech Republic|cze|
-|56|CÃ´te d'Ivoire|civ|
-|57|Democratic Republic of the Congo|cod|
-|58|Denmark|dnk|
-|59|Djibouti|dji|
-|60|Dominica|dma|
-|61|Dominican Republic|dom|
-|62|Ecuador|ecu|
-|63|Egypt|egy|
-|64|El Salvador|slv|
-|65|Equatorial Guinea|gnq|
-|66|Eritrea|eri|
-|67|Estonia|est|
-|68|Ethiopia|eth|
-|69|Falkland Islands|flk|
-|70|Faroe Islands|fro|
-|71|Finland|fin|
-|72|France|fra|
-|73|French Guiana|guf|
-|74|French Polynesia|pyf|
-|75|Gabon|gab|
-|76|Gambia|gmb|
-|77|Georgia|geo|
-|78|Germany|deu|
-|79|Ghana|gha|
-|80|Gibraltar|gib|
-|81|Greece|grc|
-|82|Grenada|grd|
-|83|Guadeloupe|glp|
-|84|Guam|gum|
-|85|Guatemala|gtm|
-|86|Guernsey|ggy|
-|87|Guinea|gin|
-|88|Guinea-Bissau|gnb|
-|89|Guyana|guy|
-|90|Haiti|hti|
-|91|Heard Island and McDonald Islands|hmd|
-|92|Honduras|hnd|
-|93|Hong Kong|hkg|
-|94|Hungary|hun|
-|95|Iceland|isl|
-|96|India|ind|
-|97|Indonesia|idn|
-|98|Iran|irn|
-|99|Iraq|irq|
-|100|Ireland|irl|
-|101|Isle of Man|imn|
-|102|Israel|isr|
-|103|Italy|ita|
-|104|Jamaica|jam|
-|105|Japan|jpn|
-|106|Jersey|jey|
-|107|Jordan|jor|
-|108|Kazakhstan|kaz|
-|109|Kenya|ken|
-|110|Kosovo|xko|
-|111|Kuwait|kwt|
-|112|Kyrgyzstan|kgz|
-|113|Laos|lao|
-|114|Latvia|lva|
-|115|Lebanon|lbn|
-|116|Lesotho|lso|
-|117|Liberia|lbr|
-|118|Libya|lby|
-|119|Liechtenstein|lie|
-|120|Lithuania|ltu|
-|121|Luxembourg|lux|
-|122|Macao|mac|
-|123|Macedonia|mkd|
-|124|Madagascar|mdg|
-|125|Malawi|mwi|
-|126|Malaysia|mys|
-|127|Mali|mli|
-|128|Malta|mlt|
-|129|Martinique|mtq|
-|130|Mauritania|mrt|
-|131|Mauritius|mus|
-|132|Mayotte|myt|
-|133|Mexico|mex|
-|134|Moldova|mda|
-|135|Monaco|mco|
-|136|Mongolia|mng|
-|137|Montenegro|mne|
-|138|Montserrat|msr|
-|139|Morocco|mar|
-|140|Mozambique|moz|
-|141|Myanmar|mmr|
-|142|Namibia|nam|
-|143|Nauru|nru|
-|144|Nepal|npl|
-|145|Netherlands|nld|
-|146|New Caledonia|ncl|
-|147|New Zealand|nzl|
-|148|Nicaragua|nic|
-|149|Niger|ner|
-|150|Nigeria|nga|
-|151|Niue|niu|
-|152|Norfolk Island|nfk|
-|153|North Korea|prk|
-|154|Northern Cyprus|xnc|
-|155|Northern Mariana Islands|mnp|
-|156|Norway|nor|
-|157|Oman|omn|
-|158|Palau|plw|
-|159|Palestina|pse|
-|160|Panama|pan|
-|161|Papua New Guinea|png|
-|162|Paracel Islands|xpi|
-|163|Paraguay|pry|
-|164|Peru|per|
-|165|Philippines|phl|
-|166|Poland|pol|
-|167|Portugal|prt|
-|168|Puerto Rico|pri|
-|169|Qatar|qat|
-|170|Republic of Congo|cog|
-|171|Reunion|reu|
-|172|Romania|rou|
-|173|Russia|rus|
-|174|Rwanda|rwa|
-|175|Saint Helena|shn|
-|176|Saint Kitts and Nevis|kna|
-|177|Saint Lucia|lca|
-|178|Saint Pierre and Miquelon|spm|
-|179|Saint Vincent and the Grenadines|vct|
-|180|Saint-BarthÃ©lemy|blm|
-|181|Saint-Martin|maf|
-|182|Samoa|wsm|
-|183|San Marino|smr|
-|184|Saudi Arabia|sau|
-|185|Senegal|sen|
-|186|Serbia|srb|
-|187|Seychelles|syc|
-|188|Sierra Leone|sle|
-|189|Singapore|sgp|
-|190|Sint Maarten|sxm|
-|191|Slovakia|svk|
-|192|Slovenia|svn|
-|193|Somalia|som|
-|194|South Africa|zaf|
-|195|South Georgia and the South Sandwich Islands|sgs|
-|196|South Korea|kor|
-|197|South Sudan|ssd|
-|198|Spain|esp|
-|199|Spratly Islands|xsp|
-|200|Sri Lanka|lka|
-|201|Sudan|sdn|
-|202|Suriname|sur|
-|203|Swaziland|swz|
-|204|Sweden|swe|
-|205|Switzerland|che|
-|206|Syria|syr|
-|207|SÃ£o TomÃ© and PrÃ­ncipe|stp|
-|208|Taiwan|twn|
-|209|Tajikistan|tjk|
-|210|Tanzania|tza|
-|211|Thailand|tha|
-|212|Timor-Leste|tls|
-|213|Togo|tgo|
-|214|Tokelau|tkl|
-|215|Tonga|ton|
-|216|Trinidad and Tobago|tto|
-|217|Tunisia|tun|
-|218|Turkey|tur|
-|219|Turkmenistan|tkm|
-|220|Turks and Caicos Islands|tca|
-|221|Tuvalu|tuv|
-|222|Uganda|uga|
-|223|Ukraine|ukr|
-|224|United Arab Emirates|are|
-|225|United Kingdom|gbr|
-|226|United States|usa|
-|227|Uruguay|ury|
-|228|Uzbekistan|uzb|
-|229|Vatican City|vat|
-|230|Venezuela|ven|
-|231|Vietnam|vnm|
-|232|Virgin Islands, U.S.|vir|
-|233|Wallis and Futuna|wlf|
-|234|Western Sahara|esh|
-|235|Yemen|yem|
-|236|Zambia|zmb|
-|237|Zimbabwe|zwe|
-|238|Ã…land|ala|
+| S No. | Country/Territory | ISO Alpha 3 | ISO Alpha 2 |
+|----|----|----|----|
+| 1 | Albania | alb | al |
+| 2 | Algeria | dza | dz |
+| 3 | American Samoa | asm | as |
+| 4 | Andorra | and | ad |
+| 5 | Angola | ago | ao |
+| 6 | Anguilla | aia | ai |
+| 7 | Antigua and Barbuda | atg | ag |
+| 8 | Argentina | arg | ar |
+| 9 | Armenia | arm | am |
+| 10 | Aruba | abw | aw |
+| 11 | Australia | aus | au |
+| 12 | Austria | aut | at |
+| 13 | Azerbaijan | aze | az |
+| 14 | Bahamas | bhs | bs |
+| 15 | Bahrain | bhr | bh |
+| 16 | Bangladesh | bgd | bd |
+| 17 | Barbados | brb | bb |
+| 18 | Belarus | blr | by |
+| 19 | Belgium | bel | be |
+| 20 | Belize | blz | bz |
+| 21 | Benin | ben | bj |
+| 22 | Bermuda | bmu | bm |
+| 23 | Bhutan | btn | bt |
+| 24 | Bolivia | bol | bo |
+| 25 | Bosnia and Herzegovina | bih | ba |
+| 26 | Botswana | bwa | bw |
+| 27 | Bouvet Island | bvt | bv |
+| 28 | Brazil | bra | br |
+| 29 | British Indian Ocean Territory | iot | io |
+| 30 | British Virgin Islands | vgb | vg |
+| 31 | Brunei | brn | bn |
+| 32 | Bulgaria | bgr | bg |
+| 33 | Burkina Faso | bfa | bf |
+| 34 | Burundi | bdi | bi |
+| 35 | Cambodia | khm | kh |
+| 36 | Cameroon | cmr | cm |
+| 37 | Canada | can | ca |
+| 38 | Cape Verde | cpv | cv |
+| 39 | Cayman Islands | cym | ky |
+| 40 | Central African Republic | caf | cf |
+| 41 | Chad | tcd | td |
+| 42 | Chile | chl | cl |
+| 43 | Christmas Island | cxr | cx |
+| 44 | Cocos Islands | cck | cc |
+| 45 | Colombia | col | co |
+| 46 | Comoros | com | km |
+| 47 | Costa Rica | cri | cr |
+| 48 | Croatia | hrv | hr |
+| 49 | Cuba | cub | cu |
+| 50 | CuraÃ§ao | cuw | cw |
+| 51 | Cyprus | cyp | cy |
+| 52 | Czech Republic | cze | cz |
+| 53 | CÃ´te d'Ivoire | civ | ci |
+| 54 | Democratic Republic of the Congo | cod | cd |
+| 55 | Denmark | dnk | dk |
+| 56 | Djibouti | dji | dj |
+| 57 | Dominica | dma | dm |
+| 58 | Dominican Republic | dom | do |
+| 59 | Ecuador | ecu | ec |
+| 60 | Egypt | egy | eg |
+| 61 | El Salvador | slv | sv |
+| 62 | Equatorial Guinea | gnq | gq |
+| 63 | Eritrea | eri | er |
+| 64 | Estonia | est | ee |
+| 65 | Ethiopia | eth | et |
+| 66 | Falkland Islands | flk | fk |
+| 67 | Faroe Islands | fro | fo |
+| 68 | Finland | fin | fi |
+| 69 | France | fra | fr |
+| 70 | French Guiana | guf | gf |
+| 71 | French Polynesia | pyf | pf |
+| 72 | Gabon | gab | ga |
+| 73 | Gambia | gmb | gm |
+| 74 | Georgia | geo | ge |
+| 75 | Germany | deu | de |
+| 76 | Ghana | gha | gh |
+| 77 | Gibraltar | gib | gi |
+| 78 | Greece | grc | gr |
+| 79 | Grenada | grd | gd |
+| 80 | Guadeloupe | glp | gp |
+| 81 | Guam | gum | gu |
+| 82 | Guatemala | gtm | gt |
+| 83 | Guernsey | ggy | gg |
+| 84 | Guinea | gin | gn |
+| 85 | Guinea-Bissau | gnb | gw |
+| 86 | Guyana | guy | gy |
+| 87 | Haiti | hti | ht |
+| 88 | Heard Island and McDonald Islands | hmd | hm |
+| 89 | Honduras | hnd | hn |
+| 90 | Hong Kong | hkg | hk |
+| 91 | Hungary | hun | hu |
+| 92 | Iceland | isl | is |
+| 93 | India | ind | in |
+| 94 | Indonesia | idn | id |
+| 95 | Iran | irn | ir |
+| 96 | Iraq | irq | iq |
+| 97 | Ireland | irl | ie |
+| 98 | Isle of Man | imn | im |
+| 99 | Israel | isr | il |
+| 100 | Italy | ita | it |
+| 101 | Jamaica | jam | jm |
+| 102 | Japan | jpn | jp |
+| 103 | Jersey | jey | je |
+| 104 | Jordan | jor | jo |
+| 105 | Kazakhstan | kaz | kz |
+| 106 | Kenya | ken | ke |
+| 107 | Kuwait | kwt | kw |
+| 108 | Kyrgyzstan | kgz | kg |
+| 109 | Laos | lao | la |
+| 110 | Latvia | lva | lv |
+| 111 | Lebanon | lbn | lb |
+| 112 | Lesotho | lso | ls |
+| 113 | Liberia | lbr | lr |
+| 114 | Libya | lby | ly |
+| 115 | Liechtenstein | lie | li |
+| 116 | Lithuania | ltu | lt |
+| 117 | Luxembourg | lux | lu |
+| 118 | Macao | mac | mo |
+| 119 | Macedonia | mkd | mk |
+| 120 | Madagascar | mdg | mg |
+| 121 | Malawi | mwi | mw |
+| 122 | Malaysia | mys | my |
+| 123 | Mali | mli | ml |
+| 124 | Malta | mlt | mt |
+| 125 | Martinique | mtq | mq |
+| 126 | Mauritania | mrt | mr |
+| 127 | Mauritius | mus | mu |
+| 128 | Mayotte | myt | yt |
+| 129 | Mexico | mex | mx |
+| 130 | Moldova | mda | md |
+| 131 | Monaco | mco | mc |
+| 132 | Mongolia | mng | mn |
+| 133 | Montenegro | mne | me |
+| 134 | Montserrat | msr | ms |
+| 135 | Morocco | mar | ma |
+| 136 | Mozambique | moz | mz |
+| 137 | Myanmar | mmr | mm |
+| 138 | Namibia | nam | na |
+| 139 | Nauru | nru | nr |
+| 140 | Nepal | npl | np |
+| 141 | Netherlands | nld | nl |
+| 142 | New Caledonia | ncl | nc |
+| 143 | New Zealand | nzl | nz |
+| 144 | Nicaragua | nic | ni |
+| 145 | Niger | ner | ne |
+| 146 | Nigeria | nga | ng |
+| 147 | Niue | niu | nu |
+| 148 | Norfolk Island | nfk | nf |
+| 149 | North Korea | prk | kp |
+| 150 | Northern Mariana Islands | mnp | mp |
+| 151 | Norway | nor | no |
+| 152 | Oman | omn | om |
+| 153 | Palau | plw | pw |
+| 154 | Palestina | pse | ps |
+| 155 | Panama | pan | pa |
+| 156 | Papua New Guinea | png | pg |
+| 157 | Paraguay | pry | py |
+| 158 | Peru | per | pe |
+| 159 | Philippines | phl | ph |
+| 160 | Poland | pol | pl |
+| 161 | Portugal | prt | pt |
+| 162 | Puerto Rico | pri | pr |
+| 163 | Qatar | qat | qa |
+| 164 | Republic of Congo | cog | cg |
+| 165 | Reunion | reu | re |
+| 166 | Romania | rou | ro |
+| 167 | Russia | rus | ru |
+| 168 | Rwanda | rwa | rw |
+| 169 | Saint Helena | shn | sh |
+| 170 | Saint Kitts and Nevis | kna | kn |
+| 171 | Saint Lucia | lca | lc |
+| 172 | Saint Pierre and Miquelon | spm | pm |
+| 173 | Saint Vincent and the Grenadines | vct | vc |
+| 174 | Saint-BarthÃ©lemy | blm | bl |
+| 175 | Saint-Martin | maf | mf |
+| 176 | Samoa | wsm | ws |
+| 177 | San Marino | smr | sm |
+| 178 | Saudi Arabia | sau | sa |
+| 179 | Senegal | sen | sn |
+| 180 | Serbia | srb | rs |
+| 181 | Seychelles | syc | sc |
+| 182 | Sierra Leone | sle | sl |
+| 183 | Singapore | sgp | sg |
+| 184 | Sint Maarten | sxm | sx |
+| 185 | Slovakia | svk | sk |
+| 186 | Slovenia | svn | si |
+| 187 | Somalia | som | so |
+| 188 | South Africa | zaf | za |
+| 189 | South Georgia and the South Sandwich Islands | sgs | gs |
+| 190 | South Korea | kor | kr |
+| 191 | South Sudan | ssd | ss |
+| 192 | Spain | esp | es |
+| 193 | Sri Lanka | lka | lk |
+| 194 | Sudan | sdn | sd |
+| 195 | Suriname | sur | sr |
+| 196 | Swaziland | swz | sz |
+| 197 | Sweden | swe | se |
+| 198 | Switzerland | che | ch |
+| 199 | Syria | syr | sy |
+| 200 | SÃ£o TomÃ© and PrÃncipe | stp | st |
+| 201 | Taiwan | twn | tw |
+| 202 | Tajikistan | tjk | tj |
+| 203 | Tanzania | tza | tz |
+| 204 | Thailand | tha | th |
+| 205 | Timor-Leste | tls | tl |
+| 206 | Togo | tgo | tg |
+| 207 | Tokelau | tkl | tk |
+| 208 | Tonga | ton | to |
+| 209 | Trinidad and Tobago | tto | tt |
+| 210 | Tunisia | tun | tn |
+| 211 | Turkey | tur | tr |
+| 212 | Turkmenistan | tkm | tm |
+| 213 | Turks and Caicos Islands | tca | tc |
+| 214 | Tuvalu | tuv | tv |
+| 215 | Uganda | uga | ug |
+| 216 | Ukraine | ukr | ua |
+| 217 | United Arab Emirates | are | ae |
+| 218 | United Kingdom | gbr | gb |
+| 219 | United States | usa | us |
+| 220 | Uruguay | ury | uy |
+| 221 | Uzbekistan | uzb | uz |
+| 222 | Vatican City | vat | va |
+| 223 | Venezuela | ven | ve |
+| 224 | Vietnam | vnm | vn |
+| 225 | Virgin Islands, U.S. | vir | vi |
+| 226 | Wallis and Futuna | wlf | wf |
+| 227 | Western Sahara | esh | eh |
+| 228 | Yemen | yem | ye |
+| 229 | Zambia | zmb | zm |
+| 230 | Zimbabwe | zwe | zw |
+| 231 | Ã…land | ala | ax |
+
+<br>
 
 That's All !
 
@@ -258,7 +253,7 @@ Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-<br></br>
+<br><br>
 
 [<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
