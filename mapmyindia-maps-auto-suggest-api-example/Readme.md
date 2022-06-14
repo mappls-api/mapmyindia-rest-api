@@ -17,6 +17,7 @@ You can get your api key to be used in this document here: [https://www.mapmyind
 4. PREMIUM APIs/Parameters are not available for evalulation on signup. To get access, please contact API Support.
 5. `lang` is a premium response parameter linked to our regional language support. Only clients who have specific agreements for its usage will be able to get this in their response parameter.
 6. The maximum length of valid input query is 45. For longer queries, API will return 400 Bad Request - Too Long Input
+
 ## Introduction
 The Autosuggest API helps users to complete queries faster by adding intelligent search capabilities to your web or mobile app. This API returns a list of results as well as suggested queries as the user types in the search field. This API also supports Hindi language. If a user enters query in Hindi language he will get results in Hindi.
 
@@ -56,7 +57,7 @@ JSON
 	- *`tokenizeAddress`* (valueless) provides the different address attributes in a structured object.
 	- *`pod`*  (string) = it takes in the place type code which helps in restricting the results to certain chosen type. This optional parameter & its related effect on response is not applicable for regions apart from India (IND).
     Below mentioned are the codes for the pod -
-	    -  *`SLC`*: Sublocality
+	    - *`SLC`*: Sublocality
 	    - *`LC`*: Locality
 	    - *`CITY`*: City
 	    - *`VLG`*: Village
@@ -89,17 +90,9 @@ a. suggestedLocations ([object array])
 2. `placeName` (string): Name of the location.
 3. `placeAddress` (string): Address of the location.
 4. `type` (string): type of location POI or Country or City
-5. `latitude` (double): Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-6. `longitude` (double): longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-7. `entryLatitude` (double): Entry point Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-8. `entryLongitude` (double): Entry point longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-9. `orderIndex` (integer): the order where this result should be placed
-10. `keywords` (object): contains the category code to which the POI result(if applicable) belongs to.
-11. `addressTokens` (object) Address token information is NOT available in generic response; and is RESTRICTED.
+5. `orderIndex` (integer): the order where this result should be placed
+6. `keywords` (object): contains the category code to which the POI result(if applicable) belongs to.
+7. `addressTokens` (object) Address token information is NOT available in generic response; and is RESTRICTED.
     - `houseNumber` (string): house number of the location.
     - `houseName` (string): house name of the location.
     - `poi` (string): name of the POI (if applicable)
@@ -113,9 +106,9 @@ Geometry information is NOT available in most use-case driven response; and is R
     - `city` (string): the city to which the location belongs. (if applicable)
     - `state` (string): the state to which the location belongs. (if applicable)
     - `pincode` (string): the PIN code to which the location belongs. (if applicable)
-12. `typeX` (integer): Type attribute for internal use only for MapmyIndia.
-13. `alternateName` (string): Aliases or alternates names, if available, for the place.
-14. `distance` (integer): The aerial distance of the result from the location as specified in the location input parameter.
+8. `typeX` (integer): Type attribute for internal use only for MapmyIndia.
+9. `alternateName` (string): Aliases or alternates names, if available, for the place.
+10. `distance` (integer): The aerial distance of the result from the location as specified in the location input parameter.
 
 b. userAddedLocations ([object array])
 
@@ -123,17 +116,9 @@ b. userAddedLocations ([object array])
 2. `placeName` (string): Name of the location.
 3. `placeAddress` (string): Address of the location.
 4. `type` (string): type of location POI or Country or City (if available)
-5. `latitude` (double): Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-6. `longitude` (double): longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-7. `orderIndex` (integer): the order where this result should be placed
-8. `entryLatitude` (double): Entry point Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-9. `entryLongitude` (double): Entry point longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-10. `resultType` (string): Type of the result according to user generated content (UGC). Mostly is 'UAP'.
-11. `userName` (string): The username of the person who has added this place.
+5. `orderIndex` (integer): the order where this result should be placed
+6. `resultType` (string): Type of the result according to user generated content (UGC). Mostly is 'UAP'.
+7. `userName` (string): The username of the person who has added this place.
 
 c. suggestedSearches ([object array])
 
@@ -147,9 +132,13 @@ c. suggestedSearches ([object array])
 d. `lang`<sup>1</sup> (string): used to indicate if the response is in some language other than the default(which is `en`). Valid values are `hi`, which indicates Hindi response.
 
 
-## Sample Input
+## Sample Input cURL
 
-https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550592,77.268770&region=IND&tokenizeAddress&bridge=
+```js
+curl --location --request GET 'https://atlas.mapmyindia.com/api/places/search/json?bridge=&query=mapmyindia&location=28.627133913995547,77.23553525204144' \
+--header 'Authorization: bearer 6xxxxxx4-9xxx-xxx7-xxxb-8dxxa7xxxdc'
+```
+
 
 ## Sample Response for English
 ```json
@@ -157,61 +146,53 @@ https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550
     "suggestedLocations": [
         {
             "type": "POI",
-            "typeX": 7,
-            "placeAddress": "Sant Nirankari Colony, New Delhi, Delhi, 110033",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
-            "eLoc": "DSEC7S",
-            "entryLatitude": RESTRICTED,
-            "entryLongitude": RESTRICTED,
-            "placeName": "Coronation Memorial",
-            "alternateName": "",
+            "placeAddress": "2943, Zorawar Singh Marg, Hamilton Road, Mori Gate, New Delhi, Delhi, 110006",
+            "eLoc": "KY9Y57",
+            "placeName": "Gagan Car Palace",
+            "alternateName": "Ganga Info System,MapmyIndia Device Dealer",
             "keywords": [
-                "HISMON"
+                "STROTH"
             ],
-            "addressTokens": {
-                "houseNumber": "",
-                "houseName": "",
-                "poi": "Coronation Memorial",
-                "street": "",
-                "subSubLocality": "",
-                "subLocality": "",
-                "locality": "Jahangirpuri;Jhangir Puri",
-                "village": "",
-                "subDistrict": "Model Town",
-                "district": "North District",
-                "city": "New Delhi",
-                "state": "Delhi",
-                "pincode": "110033"
-            },
-            "p": 764,
             "orderIndex": 1,
-            "score": 426.3966512712821,
+            "suggester": "alternateName",
+            "distance": 4116
+        },
+        {
+            "type": "POI",
+            "placeAddress": "237, Okhla Industrial Estate Phase 3, Near Modi Mill, New Delhi, Delhi, 110020",
+            "eLoc": "MMI000",
+            "placeName": "MapmyIndia Head Office New Delhi",
+            "alternateName": "CE Infosystems Ltd,MapmyIndia New Delhi,Map My India New Delhi,MapmyIndia HO New Delhi, Mappls HO New Delhi, Mappls",
+            "keywords": [
+                "COMHDO"
+            ],
+            "orderIndex": 2,
             "suggester": "placeName",
-            "richInfo": {}
+            "distance": 9101
         }
     ],
     "userAddedLocations": [
         {
-            "eLoc": "U09GOU",
-            "entryLatitude": 0,
-            "entryLongitude": 0,
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
+            "eLoc": "DPRKL1",
             "orderIndex": 13,
-            "placeAddress": "SFC Plus, Nilampathinja Mughal Road Confident Corona Kakkanad Kerala",
-            "placeName": "SFC Plus",
-            "resultType": "UAP",
-            "type": "",
-            "userName": "mcitybng"
+            "placeAddress": "MapmyIndia Head Office New Delhi, Okhla Industrial Estate Phase 3, New Delhi, Delhi",
+            "placeName": "MapmyIndia Head Office New Delhi",
+            "type": ""
+        },
+        {
+            "eLoc": "HSPA8Z",
+            "orderIndex": 14,
+            "placeAddress": "Okhla Industrial Estate Phase 3, New Delhi, Delhi. 13 m from MapmyIndia Head Office New Delhi pin-110020",
+            "placeName": "MapmyIndia Head Office New Delhi, Okhla Industrial Estate Phase 3, New Delhi, Delhi",
+            "type": ""
         }
     ],
     "suggestedSearches": [
         {
-            "keyword": "corona testing lab",
+            "keyword": "mapmyindia",
             "identifier": "near",
             "location": "me",
-            "hyperLink": "https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&username=atlasuser&refLocation=28.550592,77.26877&keywords=hsptst",
+            "hyperLink": "https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&username=atlasuser&refLocation=28.627133913995547,77.23553525204144&keywords=mapmyindia",
             "orderIndex": 0,
             "eLoc": null
         }
@@ -221,8 +202,9 @@ https://atlas.mapmyindia.com/api/places/search/json?query=corona&location=28.550
 
 ## Sample request for Hindi
 
-```
-https://atlas.mapmyindia.com/api/places/search/json?query=गोदरेज Palm Retreat&responseLang=hi
+```js
+curl --location --request GET 'https://atlas.mapmyindia.com/api/places/search/json?bridge=&query=गीतांजलि salon&location=28.627133913995547,77.23553525204144' \
+--header 'Authorization: bearer 6xxxxxx4-9xxx-xxx7-xxxb-8dxxa7xxxdc'
 ```
 
 ## Sample Response for Hindi
@@ -230,70 +212,38 @@ https://atlas.mapmyindia.com/api/places/search/json?query=गोदरेज Pal
 {
     "suggestedLocations": [
         {
-            "type": "HOUSE_NUMBER",
-            "typeX": 12,
-            "placeAddress": "लोटस ग्रीन, सेक्टर 150, नोएडा, उत्तर प्रदेश, 201306",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
-            "eLoc": "OF4T44",
-            "entryLatitude": RESTRICTED,
-            "entryLongitude": RESTRICTED,
-            "placeName": "ए.सी.ई. गोदरेज पाम रिट्रीट",
+            "type": "POI",
+            "placeAddress": "D5, ग्राउण्ड फ्लोर, डिफेन्स कॉलोनी, नई दिल्ली, दिल्ली, 110024",
+            "eLoc": "FWV1GA",
+            "placeName": "गीतांजली सलोन",
             "alternateName": "",
-            "keywords": [],
-            "addressTokens": {},
-            "p": 18684,
-            "orderIndex": 3,
-            "score": 6.106412388359316,
-            "suggester": "placeName",
-            "distance": 24773,
-            "richInfo": {}
-        },
-        {
-            "type": "SUB_LOCALITY",
-            "typeX": 6,
-            "placeAddress": "सेक्टर 83, फरीदाबाद, हरियाणा, 121002",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
-            "eLoc": "SF7L5B",
-            "entryLatitude": RESTRICTED,
-            "entryLongitude": RESTRICTED,
-            "placeName": "गोदरेज रिट्रीट",
-            "alternateName": "",
-            "keywords": [],
-            "addressTokens": {},
-            "p": 8229,
+            "keywords": [
+                "आरटीसीएसएलएन"
+            ],
             "orderIndex": 1,
-            "score": 16.618524682438448,
             "suggester": "placeName",
-            "distance": 20342,
-            "richInfo": {}
+            "distance": 5592
         },
         {
-            "type": "SUB_LOCALITY",
-            "typeX": 6,
-            "placeAddress": "सेक्टर 88, फरीदाबाद, हरियाणा, 121002",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
-            "eLoc": "SF8290",
-            "entryLatitude": RESTRICTED,
-            "entryLongitude": RESTRICTED,
-            "placeName": "द ग्रैंड रिट्रीट",
-            "alternateName": "द रिट्रीट",
-            "keywords": [],
-            "addressTokens": {},
-            "p": 8229,
+            "type": "POI",
+            "placeAddress": "S13, ग्राउण्ड फ्लोर, मेन मार्किट, ग्रीन पार्क, नई दिल्ली, दिल्ली, 110016",
+            "eLoc": "GK3QFK",
+            "placeName": "गीतांजली सलोन",
+            "alternateName": "",
+            "keywords": [
+                "आरटीसीएसएलएन"
+            ],
             "orderIndex": 2,
-            "score": 6.222562487158036,
-            "suggester": "alternateName",
-            "distance": 17113,
-            "richInfo": {}
-        }        
+            "suggester": "placeName",
+            "distance": 8377
+        }
     ],
     "userAddedLocations": [],
     "suggestedSearches": []
 }
 ```
+
+<br>
 
 For any queries and support, please contact: 
 
@@ -305,10 +255,9 @@ Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-<br></br>
-<br></br>
+<br>
 
-[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
 

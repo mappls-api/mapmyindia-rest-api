@@ -130,10 +130,10 @@ components:
         - tel
         - email
         - website
-        - longitude
-        - latitude
-        - e_lng
-        - e_lat
+        # - longitude
+        # - latitude
+        # - e_lng
+        # - e_lat
         - brand_code
       properties:
         distance: 
@@ -239,34 +239,34 @@ components:
              Website of the POI
           format: string
           example: "www.nescafe.com"
-        longitude: 
-          type: number
-          title: 'longitude'
-          description: >-
-             Longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-          format: number
-          example: 'RESTRICTED'
-        latitude: 
-          type: number
-          title: 'latitude'
-          description: >-
-             Latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-          format: number
-          example: 'RESTRICTED'
-        e_lng: 
-          type: number
-          title: 'e_lng'
-          description: >-
-             Entry longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-          format: number
-          example: 'RESTRICTED'
-        e_lat: 
-          type: number
-          title: 'e_lat'
-          description: >-
-             Entry latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-          format: number
-          example: 'RESTRICTED'
+        # longitude: 
+        #   type: number
+        #   title: 'longitude'
+        #   description: >-
+        #      Longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+        #   format: number
+        #   example: 'RESTRICTED'
+        # latitude: 
+        #   type: number
+        #   title: 'latitude'
+        #   description: >-
+        #      Latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+        #   format: number
+        #   example: 'RESTRICTED'
+        # e_lng: 
+        #   type: number
+        #   title: 'e_lng'
+        #   description: >-
+        #      Entry longitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+        #   format: number
+        #   example: 'RESTRICTED'
+        # e_lat: 
+        #   type: number
+        #   title: 'e_lat'
+        #   description: >-
+        #      Entry latitude of the POI.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
+        #   format: number
+        #   example: 'RESTRICTED'
         brand_code: 
           type: string
           title: 'brand_code'

@@ -59,10 +59,11 @@ paths:
           example: 1
         - name: bias
           in: query
-          description: 'This parameter can be used to set Urban or Rural bias. A positive value sets the Urban bias and a negative value sets Rural bias. This optional parameter & its related effect on response is not applicable for regions apart from India (IND). Allowed values are:<br><ul>
-          <li>`0` : Default: (No bias)
-          <li>`-1` : Rural
-          <li>`1` : Urban</ul>'
+          description: >-
+            'This parameter can be used to set Urban or Rural bias. A positive value sets the Urban bias and a negative value sets Rural bias. This optional parameter & its related effect on response is not applicable for regions apart from India (IND). Allowed values are:<br><ul>
+            <li>`0` : Default: (No bias)
+            <li>`-1` : Rural
+            <li>`1` : Urban</ul>'
           required: false
           allowEmptyValue: false
           example: 0
@@ -70,20 +71,21 @@ paths:
             type: integer
         - name: podFilter
           in: query
-          description: 'This parameter can be used to set admin level restriction. The result will be either the given admin level or equivalent admin or higher in the hierarchy. No lower admin will be considered for geocoding.This optional parameter & its related effect on response is not applicable for regions apart from India (IND). <br> Allowed values are:<br>
-          <li>`hno` : house number
-          <li>`hna` : house name
-          <li>`poi` : point of interest
-          <li>`street` : street
-          <li>`sslc` : sub sub locality
-          <li>`village` : village
-          <li>`slc` : sub locality
-          <li>`sdist` : sub district
-          <li>`loc` : locality
-          <li>`city` : city
-          <li>`dist` : district
-          <li>`pincode` :pincode
-          <li>`state` : state'
+          description: >-
+            'This parameter can be used to set admin level restriction. The result will be either the given admin level or equivalent admin or higher in the hierarchy. No lower admin will be considered for geocoding.This optional parameter & its related effect on response is not applicable for regions apart from India (IND). <br> Allowed values are:<br>
+            <li>`hno` : house number
+            <li>`hna` : house name
+            <li>`poi` : point of interest
+            <li>`street` : street
+            <li>`sslc` : sub sub locality
+            <li>`village` : village
+            <li>`slc` : sub locality
+            <li>`sdist` : sub district
+            <li>`loc` : locality
+            <li>`city` : city
+            <li>`dist` : district
+            <li>`pincode` :pincode
+            <li>`state` : state'
           schema:
             type: string
         - name: bound
@@ -133,8 +135,8 @@ components:
         - state
         - formattedAddress
         - eLoc
-        - latitude
-        - longitude
+        # - latitude
+        # - longitude
         - geocodeLevel
         - confidenceScore
       properties:
@@ -213,16 +215,16 @@ components:
           description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
           format: string
           example: '2LH9OC'
-        latitude:
-          type: integer
-          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
-        longitude:
-          type: integer
-          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
+        # latitude:
+        #   type: integer
+        #   description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
+        # longitude:
+        #   type: integer
+        #   description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
         geocodeLevel:
           type: string
           description: 'This shows the level of the geocode means on which basis the poi has been geocoded.'

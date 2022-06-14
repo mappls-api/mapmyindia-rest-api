@@ -1,5 +1,4 @@
-
-![MapmyIndia APIs](https://www.mapmyindia.com/api/img/mapmyindia-api.png)
+[<img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 
 # Note 
 1. The response listed in the below documentation is ONLY indicative of the overall capabilities of MapmyIndia's Search APIs.
@@ -99,16 +98,8 @@ suggestedPOIs ([object array])
 13. `tel`(string): Telephone number of the POI
 14. `email`(string): Email of the POI
 15. `website`(string): Website of the POI
-16. `longitude`(double): Longitude of the POI.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-17. `latitude`(double): Latitude of the POI.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-18. `e_lng`(double): Entry latitude of the POI.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-19. `e_lat`(double): Entry latitude of the POI.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-20. `brand_code`(string): Brand id of the POI
-21. `category`<sup>1</sup> (string): the category code to which this POI belongs to. Comes only when multiple category search is used.
+16. `brand_code`(string): Brand id of the POI
+17. `category`<sup>1</sup> (string): the category code to which this POI belongs to. Comes only when multiple category search is used.
 <br><br>
 
 
@@ -309,6 +300,9 @@ curl --location --request POST 'https://atlas.mapmyindia.com/api/places/along_ro
     ]
 }
 ```
+
+<br>
+
 For any queries and support, please contact: 
 
 [<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
@@ -319,10 +313,9 @@ Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-<br></br>
-<br></br>
+<br>
 
-[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
 
@@ -331,7 +324,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 

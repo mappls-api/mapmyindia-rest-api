@@ -234,13 +234,13 @@ components:
         - distance
         - eloc
         - email
-        - entryLatitude
-        - entryLongitude
+        # - entryLatitude
+        # - entryLongitude
         - hourOfOperation
         - keywords
         - landlineNo
-        - latitude
-        - longitude
+        # - latitude
+        # - longitude
         - mobileNo
         - orderIndex
         - placeAddress
@@ -266,16 +266,16 @@ components:
           format: string
           example: xyz@email.com
           description: 'Email for contact'
-        entryLatitude:
-          type: number
-          format: double
-          example: 'RESTRICTED'
-          description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-        entryLongitude:
-          type: number
-          format: double
-          example: 'RESTRICTED'
-          description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        # entryLatitude:
+        #   type: number
+        #   format: double
+        #   example: 'RESTRICTED'
+        #   description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        # entryLongitude:
+        #   type: number
+        #   format: double
+        #   example: 'RESTRICTED'
+        #   description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         hourOfOperation:
           type: string
           format: string
@@ -291,16 +291,16 @@ components:
           format: integer
           example: 911133107634
           description: 'phone no for contact'
-        latitude:
-          type: number
-          format: double
-          example: 'RESTRICTED'
-          description: 'Latitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-        longitude:
-          type: number
-          format: double
-          example: 'RESTRICTED'
-          description: 'longitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        # latitude:
+        #   type: number
+        #   format: double
+        #   example: 'RESTRICTED'
+        #   description: 'Latitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        # longitude:
+        #   type: number
+        #   format: double
+        #   example: 'RESTRICTED'
+        #   description: 'longitude of the location.  Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
         mobileNo:
           type: number
           format: integer

@@ -115,11 +115,11 @@ components:
         - type
         - typeX
         - placeAddress
-        - latitude
-        - longitude
+        # - latitude
+        # - longitude
         - eLoc
-        - entryLatitude
-        - entryLongitude
+        # - entryLatitude
+        # - entryLongitude
         - placeName
         - alternateName
         - keywords
@@ -146,31 +146,31 @@ components:
           description: 'Address of the location.'
           format: string
           example: 'Yippee Rooms, Sector 56, Gurugram, Haryana, 122011'
-        latitude:
-          type: number
-          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
-        longitude:
-          type: number
-          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
+        # latitude:
+        #   type: number
+        #   description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
+        # longitude:
+        #   type: number
+        #   description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
         eLoc:
           type: string
           description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
           format: string
           example: '2LH9OC'
-        entryLatitude:
-          type: number
-          description: 'It shows us the entry latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
-        entryLongitude:
-          type: number
-          description: 'It shows us the entry longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
+        # entryLatitude:
+        #   type: number
+        #   description: 'It shows us the entry latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
+        # entryLongitude:
+        #   type: number
+        #   description: 'It shows us the entry longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
         placeName:
           type: string
           description: This shows the name of the POI
@@ -296,10 +296,10 @@ components:
       type: object
       required:
         - eLoc
-        - entryLatitude
-        - entryLongitude
-        - latitude
-        - longitude
+        # - entryLatitude
+        # - entryLongitude
+        # - latitude
+        # - longitude
         - orderIndex
         - placeAddress
         - placeName
@@ -312,26 +312,26 @@ components:
           description: 'It is the Six or eight digit unique code offered only by mapmyindia to search for any address through this eLoc.'
           format: string
           example: '2LH9OC'
-        entryLatitude:
-          type: number
-          format: double
-          example: 'RESTRICTED'
-          description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-        entryLongitude:
-          type: number
-          format: double
-          example: 'RESTRICTED'
-          description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-        latitude:
-          type: number
-          description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
-        longitude:
-          type: number
-          description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
-          format: double
-          example: 'RESTRICTED'
+        # entryLatitude:
+        #   type: number
+        #   format: double
+        #   example: 'RESTRICTED'
+        #   description: 'latitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        # entryLongitude:
+        #   type: number
+        #   format: double
+        #   example: 'RESTRICTED'
+        #   description: 'longitude of the entrance of the location. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        # latitude:
+        #   type: number
+        #   description: 'It shows us the latitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
+        # longitude:
+        #   type: number
+        #   description: 'It shows us the longitude of the location searched. Geometry information is NOT available in most use-case driven response; and is RESTRICTED.'
+        #   format: double
+        #   example: 'RESTRICTED'
         orderIndex:
           type: integer
           description: 'This shows the order of the search results priority wise.'

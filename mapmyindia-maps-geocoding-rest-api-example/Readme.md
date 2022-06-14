@@ -1,3 +1,4 @@
+[<img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 # Geocoding API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
@@ -117,12 +118,8 @@ Server-Side Issues:
 13. `pincode`(string): the pincode of the location.
 14. `formattedAddress`(string): the general protocol following address.
 15. `eloc`(string): eloc of the particular location.
-16. `latitude`(double): the latitude for the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-17. `longitude`(double): the longitude for the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-18. `geocodeLevel`(string): the best matched address component.
-19. `confidenceScore`(float): the confidence for current of geocodelevel.
+16. `geocodeLevel`(string): the best matched address component.
+17. `confidenceScore`(float): the confidence for current of geocodelevel.
 
 ## Sample Input
 
@@ -149,8 +146,6 @@ Geometry information is NOT available in most use-case driven response; and is R
         "pincode": "110020",
         "formattedAddress": "237, Okhla Industrial Estate Phase 3, Kalkaji, South East Delhi District, New Delhi, Delhi, 110020",
         "eLoc": "TIYF9Q",
-        "latitude": RESTRICTED,
-        "longitude": RESTRICTED,
         "geocodeLevel": "houseNumber",
         "confidenceScore": 0.4
     }
@@ -177,8 +172,6 @@ Geometry information is NOT available in most use-case driven response; and is R
             "pincode": "110001",
             "formattedAddress": "Lady Irwin College Campus, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
             "eLoc": "BGKAFR",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
             "geocodeLevel": "locality",
             "confidenceScore": 1
         },
@@ -198,8 +191,6 @@ Geometry information is NOT available in most use-case driven response; and is R
             "pincode": "110001",
             "formattedAddress": "Lady Irwin College, Sikandra Road, Lady Irwin College Campus, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
             "eLoc": "38FD1E",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
             "geocodeLevel": "street",
             "confidenceScore": 0.8
         },
@@ -219,8 +210,6 @@ Geometry information is NOT available in most use-case driven response; and is R
             "pincode": "110001",
             "formattedAddress": "Mandi House Metro Station, Sikandra Road, Connaught Place, Connaught Place, New Delhi District, New Delhi, Delhi, 110001",
             "eLoc": "DF2F4C",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
             "geocodeLevel": "street",
             "confidenceScore": 0.4
         }

@@ -1,3 +1,4 @@
+[<img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 # Text Search API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
@@ -54,25 +55,16 @@ a. suggestedLocations ([object array])
 1.  `type` (string): Type of location POI or Country or City.
 2. `typeX` (integer): for internal use only.
 3. `placeAddress` (string): Address of the location.
-4. `latitude` (double): Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-5. `longitude` (double): longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-6. `eLoc` (string): Place Id of the location 6-char alphanumeric.
-7. `entryLatitude` (double): latitude of the entrance of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-8. `entryLongitude` (double): longitude of the entrance of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-9. `placeName` (string): Name of the location.
-10. `alternateName` (string): Alternate name of the location.
-11. `keywords` (nullable [ string ] ): provides an array of matched keywords or codes.
-12. `p` (long integer): for internal use only.
-13. `distance` (nullable integer): for internal use only.
-14. `orderIndex` (integer): the order where this result should be placed
-15. `score` (double): for internal use only.
-16. `suggester` (string): for internal use only.
-17. `addressTokens` (array of objects): It shows the admin details along with the house address. Address token information is NOT available in generic response; and is RESTRICTED.
-18. `richInfo` (array of objects): for internal use only.
+4. `eLoc` (string): Place Id of the location 6-char alphanumeric.
+5. `placeName` (string): Name of the location.
+6. `alternateName` (string): Alternate name of the location.
+7. `keywords` (nullable [ string ] ): provides an array of matched keywords or codes.
+8. `p` (long integer): for internal use only.
+9. `distance` (nullable integer): for internal use only.
+10. `orderIndex` (integer): the order where this result should be placed
+11. `score` (double): for internal use only.
+12. `suggester` (string): for internal use only.
+13. `addressTokens` (array of objects): It shows the admin details along with the house address. Address token information is NOT available in generic response; and is RESTRICTED.
 
 b. userAddedLocations ([object array])
 
@@ -80,17 +72,9 @@ b. userAddedLocations ([object array])
 2. `placeName` (string): Name of the location.
 3. `placeAddress` (string): Address of the location.
 4. `type` (string): type of location POI or Country or City (if available)
-5. `latitude` (double): Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-6. `longitude` (double): longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-7. `orderIndex` (integer): the order where this result should be placed
-8. `entryLatitude` (double): Entry point Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-9. `entryLongitude` (double): Entry point longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-10. `resultType` (string): Type of the result according to user generated content (UGC). Mostly is 'UAP'.
-11. `userName` (string): The username of the person who has added this place.
+5. `orderIndex` (integer): the order where this result should be placed
+6. `resultType` (string): Type of the result according to user generated content (UGC). Mostly is 'UAP'.
+7. `userName` (string): The username of the person who has added this place.
 
 ## Response Type
 
@@ -127,11 +111,7 @@ https://atlas.mapmyindia.com/api/places/textsearch/json?query=okhla phase 3&regi
             "type": "POI",
             "typeX": 7,
             "placeAddress": "Sikandra Road, Connaught Place, New Delhi, Delhi, 110001",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
             "eLoc": "38FD1E",
-            "entryLatitude": RESTRICTED,
-            "entryLongitude": RESTRICTED,
             "placeName": "Lady Irwin College",
             "alternateName": "",
             "keywords": [
@@ -151,7 +131,7 @@ https://atlas.mapmyindia.com/api/places/textsearch/json?query=okhla phase 3&regi
 ```
 
 
-For more details, please visit our full documentation.
+<br>
 
 For any queries and support, please contact: 
 
@@ -163,9 +143,9 @@ Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-<br></br>
+<br>
 
-[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
 
@@ -174,7 +154,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 

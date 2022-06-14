@@ -1,4 +1,4 @@
-﻿![MapmyIndia APIs](https://www.mapmyindia.com/api/img/mapmyindia-api.png)
+﻿[<img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 # Nearby API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
@@ -98,21 +98,15 @@ a. suggestedLocations ([object array])
 1. `distance` (integer): provides the distance from the provided location bias in meters.
 2. `eLoc` (string): Place Id of the location 6-char alphanumeric.
 3. `email` (string): Email for contact.
-4. `entryLatitude` (double): latitude of the entrance of the location.
-5. `entryLongitude` (double): longitude of the entrance of the location.
-6. `keywords` ( [ string ] ): provides an array of matched keywords or codes.
-7. `landlineNo` (string): Email for contact.
-8. `latitude` (double): Latitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-9. `longitude` (double): longitude of the location.
-Geometry information is NOT available in most use-case driven response; and is RESTRICTED.
-10. `mobileNo` : Phone number for contact.
-11. `orderIndex` (integer): the order where this result should be placed
-12. `placeAddress` (string): Address of the location.
-13. `placeName` (string): Name of the location.
-14. `type` (string): Type of location POI or Country or City.
-15. `hourOfOperation`<sup>1</sup> (string): The hours of operation of the POI in a day.
-16. `addressTokens`<sup>2</sup> (object)
+4. `keywords` ( [ string ] ): provides an array of matched keywords or codes.
+5. `landlineNo` (string): Email for contact.
+6. `mobileNo` : Phone number for contact.
+7. `orderIndex` (integer): the order where this result should be placed
+8. `placeAddress` (string): Address of the location.
+9. `placeName` (string): Name of the location.
+10. `type` (string): Type of location POI or Country or City.
+11. `hourOfOperation`<sup>1</sup> (string): The hours of operation of the POI in a day.
+12. `addressTokens`<sup>2</sup> (object)
 Address token information is NOT available in generic response; and is RESTRICTED.
     - `houseNumber` (string): house number of the location.
     - `houseName` (string): house name of the location.
@@ -152,14 +146,10 @@ https://atlas.mapmyindia.com/api/places/nearby/json?keywords=coffee;beer&refLoca
             "distance": 192,
             "eLoc": "TPIGXI",
             "email": "",
-            "entryLatitude": RESTRICTED,
-            "entryLongitude": RESTRICTED,
             "keywords": [
                 "FODCOF"
             ],
             "landlineNo": "",
-            "latitude": RESTRICTED,
-            "longitude": RESTRICTED,
             "mobileNo": "",
             "orderIndex": 1,
             "placeAddress": "Okhla Industrial Estate Phase 3, New Delhi, Delhi, 110020",
@@ -184,6 +174,8 @@ curl --location --request GET 'https://atlas.mapmyindia.com/api/places/nearby/js
 
 For more details, please visit our full documentation.
 
+<br>
+
 For any queries and support, please contact: 
 
 [<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
@@ -194,6 +186,7 @@ Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
+<br></br>
 <br></br>
 
 [<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/MapmyIndia)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
@@ -206,6 +199,15 @@ Need support? contact us!
 
 
 <div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+
+<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>
+
+
+
+
+<div align="center">@ Copyright 2022 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 

@@ -1,10 +1,11 @@
-[![N|Solid](https://www.mapmyindia.com/api/img/mapmyindia-api.png)](https://www.mapmyindia.com/api/)
+[<img src="https://www.mapmyindia.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://about.mappls.com/api/)
+
 # MapmyIndia Address Standardization API
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
 
 Powered with India's most comprehensive and robust mapping functionalities.
-**Now Available**  for Srilanka, Nepal, Bhutan and Bangladesh
+**Now Available**  for Srilanka, Nepal, Bhutan, Myanmar and Bangladesh
 
 You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/](https://www.mapmyindia.com/api/)
 
@@ -63,6 +64,11 @@ GET
 			- `finder` (string): the mechanism & component used to deduce the admin.
 			- `typedName` (string): The sub-string that was typed in the query.
 	- `adminPattern` (array of strings): list of standardized [`adminType`](#adminTypes) tags extracted from the input address.
+5. `alternatives` (array of objects): This array contains address objects which are detected as alternatives to the provided list of address information present in the `addressInformation` object. Each object contains: 
+	- `adminPattern` (string): one of the list of standardized [`adminType`](#adminTypes) tags extracted from the input address.
+	- `originalName` (string): Original name of the admin.
+	- `addressParts` (string): the input address sub-string againsts which this alternate address object is provided.
+6. `formattedAddress` (string): The full fomatted human readable address provided after address standardization.
 
 ### <a name="adminTypes">Admin Types</a>
 1. `state`
@@ -96,84 +102,90 @@ GET
 1. `500`: Internal Server Error, the request caused an error in our systems. 
 2. `503`: Service Unavailable, during our maintenance break or server downtime.
 
-## Sample Input
+## Sample Input cURL
 
-```css
-https://atlas.mapmyindia.com/api/places/woodpecker?address=Sh Krishan Lal Nagpal Marg, Greater Kailash-1, C Block, Greater Kailash I, Greater Kailash, New Delhi, Delhi 110048
+```js
+curl --location --request GET 'https://atlas.mapmyindia.com/api/places/woodpecker?address=Shri Krishan Lal Nagpal Marg, Greater Kailash 1, E Block, Greater Kailash I, Greater Kailash, New Delhi, Delhi 110048&bias=1.5' \
+--header 'Authorization: bearer 6xxxxxx4-9xxx-xxx7-xxxb-8dxxa7xxxdc'
 ```
 
 ## Sample Response
 
 ```json
 {
-	"inputAddress": "Sh Krishan Lal Nagpal Marg, Greater Kailash-1, C Block, Greater Kailash I, Greater Kailash, New Delhi, Delhi 110048",
-	"remainingAddress": "sh krishan lal nagpal marg, greater kailash, - 1 greater kailash, new",
-	"referentialInformation": {
-		"pincodes": "110048",
-		"floors": null,
-		"roads": null,
-		"postOffices": null,
-		"careOfs": null,
-		"landmarks": null,
-		"houseNumbers": null
-	},
-	"addressInformation": {
-		"adminDetails": {
-			"state": {
-				"aliasName": "delhi",
-				"originalName": "Delhi",
-				"pincode": 110048,
-				"finder": "address"
-			},
-			"city": {
-				"aliasName": "delhi",
-				"originalName": "New Delhi",
-				"pincode": 110048,
-				"finder": "address"
-			},
-			"locality": {
-				"aliasName": "greater kailash i",
-				"originalName": "Greater Kailash 1",
-				"pincode": 110048,
-				"finder": "address"
-			},
-			"subLocality": [
-				{
-					"aliasName": "block c",
-					"originalName": "Block C",
-					"pincode": 110048,
-					"finder": "address"
-				}
-			]
-		},
-		"adminPattern": [
-			"state",
-			"city",
-			"locality",
-			"subLocality"
-		]
-	}
+    "inputAddress": "Shri Krishan Lal Nagpal Marg, Greater Kailash 1, E Block, Greater Kailash I, Greater Kailash, New Delhi, Delhi 110048",
+    "remainingAddress": "",
+    "referentialInformation": {
+        "pincodes": "110048",
+        "floors": null,
+        "roads": [
+            "Shri Krishan Lal Nagpal Marg"
+        ],
+        "postOffices": null,
+        "careOfs": null,
+        "landmarks": null,
+        "houseNumbers": {
+            "prefix": null,
+            "houseNo": "1",
+            "formatted": "1"
+        }
+    },
+    "addressInformation": {
+        "adminDetails": {
+            "state": {
+                "originalName": "Delhi"
+            },
+            "city": {
+                "originalName": "New Delhi"
+            },
+            "locality": {
+                "originalName": "Greater Kailash 1"
+            },
+            "subLocality": {
+                "originalName": "Block E"
+            },
+            "pincodes": {
+                "originalName": "110048"
+            }
+        },
+        "adminPattern": [
+            "state",
+            "city",
+            "locality",
+            "subLocality",
+            "pincodes"
+        ]
+    },
+    "alternatives": [],
+    "formattedAddress": "1, Shri Krishan Lal Nagpal Marg, Block E, Greater Kailash 1, New Delhi, Delhi, 110048"
 }
 ```
 
-For more details, please visit our full documentation.
+<br>
 
 For any queries and support, please contact: 
 
-![Email](https://www.google.com/a/cpanel/mapmyindia.co.in/images/logo.gif?service=google_gsuite) 
+[<img src="https://www.mapmyindia.com/images/logo.png" height="40"/> </p>](https://www.mapmyindia.com/api)
 Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
 
-![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
-[Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
-Ask a question under the mapmyindia-api
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
 [Support](https://www.mapmyindia.com/api/index.php#f_cont)
 Need support? contact us!
 
-![](https://www.mapmyindia.com/api/img/icons/blog.png)
-[Blog](http://www.mapmyindia.com/blog/)
-Read about the latest updates & customer stories
+<br>
+
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mapmyindia-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](http://www.mapmyindia.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
-> © Copyright 2019. CE Info Systems Pvt. Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
+
+[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/MapmyIndia)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/MapmyIndia)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mapmyindia)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/user/MapmyIndia/)
+
+
+
+
+<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+
+<div align="center"> <a href="https://www.mapmyindia.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mapmyindia.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mapmyindia.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mapmyindia.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mapmyindia.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>
