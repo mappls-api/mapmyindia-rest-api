@@ -1,4 +1,5 @@
-﻿
+﻿# DEPRECATED
+This repository is no longer in active development & use.<br><br>
 # MapmyIndia Map APIs (REST) !
 
 **Easy To Integrate Maps & Location APIs & SDKs For Web & Mobile Applications**
